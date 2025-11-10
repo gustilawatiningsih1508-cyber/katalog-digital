@@ -43,9 +43,7 @@
       <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
           <a class="navbar-brand" href="index.html">
-            <span>
-              Feane
-            </span>
+            <span>LapakGo</span>
           </a>
 
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,16 +53,16 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav  mx-auto ">
               <li class="nav-item active">
-                <a class="nav-link" href="{{ url('/') }}">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{ url('/') }}">Beranda<span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ url('/menu')}}">Menu</a>
+                <a class="nav-link" href="{{ url('/menu')}}">Produk</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ url('/about') }}">About</a>
+                <a class="nav-link" href="{{ url('/about') }}">Tentang kami</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ url('/book') }}">Book Table</a>
+                <a class="nav-link" href="{{ url('/book') }}">Kontak</a>
               </li>
             </ul>
             <div class="user_option">
@@ -130,8 +128,6 @@
                   <i class="fa fa-search" aria-hidden="true"></i>
                 </button>
               </form>
-              <a href="" class="order_online">
-                Order Online
               </a>
             </div>
           </div>
@@ -148,15 +144,14 @@
               <div class="row">
                 <div class="col-md-7 col-lg-6 ">
                   <div class="detail-box">
-                    <h1>
-                      Fast Food Restaurant
+                    <h1>Selamat datang di LapakGo
                     </h1>
                     <p>
-                      Doloremque, itaque aperiam facilis rerum, commodi, temporibus sapiente ad mollitia laborum quam quisquam esse error unde. Tempora ex doloremque, labore, sunt repellat dolore, iste magni quos nihil ducimus libero ipsam.
+                    Platform digital modern yang menghadirkan solusi mudah bagi pelaku usaha untuk memasarkan produk mereka secara online.
                     </p>
                     <div class="btn-box">
                       <a href="" class="btn1">
-                        Order Now
+                       Details
                       </a>
                     </div>
                   </div>
@@ -169,15 +164,13 @@
               <div class="row">
                 <div class="col-md-7 col-lg-6 ">
                   <div class="detail-box">
-                    <h1>
-                      Fast Food Restaurant
+                    <h1>Selamat datang di LapakGo
                     </h1>
                     <p>
-                      Doloremque, itaque aperiam facilis rerum, commodi, temporibus sapiente ad mollitia laborum quam quisquam esse error unde. Tempora ex doloremque, labore, sunt repellat dolore, iste magni quos nihil ducimus libero ipsam.
-                    </p>
+                    Platform digital modern yang menghadirkan solusi mudah bagi pelaku usaha untuk memasarkan produk mereka secara online. 
                     <div class="btn-box">
                       <a href="" class="btn1">
-                        Order Now
+                        Details
                       </a>
                     </div>
                   </div>
@@ -191,14 +184,13 @@
                 <div class="col-md-7 col-lg-6 ">
                   <div class="detail-box">
                     <h1>
-                      Fast Food Restaurant
+                    Selamat datang di LapakGo
                     </h1>
                     <p>
-                      Doloremque, itaque aperiam facilis rerum, commodi, temporibus sapiente ad mollitia laborum quam quisquam esse error unde. Tempora ex doloremque, labore, sunt repellat dolore, iste magni quos nihil ducimus libero ipsam.
-                    </p>
+                      Platform digital modern yang menghadirkan solusi mudah bagi pelaku usaha untuk memasarkan produk mereka secara online.
                     <div class="btn-box">
                       <a href="" class="btn1">
-                        Order Now
+                       Details
                       </a>
                     </div>
                   </div>
