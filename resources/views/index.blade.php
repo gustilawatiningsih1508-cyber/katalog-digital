@@ -369,7 +369,7 @@
     <div class="container">
       <div class="heading_container heading_center">
         <h2>
-          Our Menu
+          Menu
         </h2>
       </div>
 
