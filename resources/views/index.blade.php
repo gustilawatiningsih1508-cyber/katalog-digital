@@ -13,7 +13,7 @@
   <meta name="author" content="" />
   <link rel="shortcut icon" href="images/favicon.png" type="">
 
-  <title> Feane </title>
+  <title> LapakGo </title>
 
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
@@ -150,8 +150,6 @@
                     Platform digital modern yang menghadirkan solusi mudah bagi pelaku usaha untuk memasarkan produk mereka secara online.
                     </p>
                     <div class="btn-box">
-                      <a href="" class="btn1">
-                       Details
                       </a>
                     </div>
                   </div>
@@ -169,8 +167,6 @@
                     <p>
                     Platform digital modern yang menghadirkan solusi mudah bagi pelaku usaha untuk memasarkan produk mereka secara online. 
                     <div class="btn-box">
-                      <a href="" class="btn1">
-                        Details
                       </a>
                     </div>
                   </div>
@@ -189,8 +185,6 @@
                     <p>
                       Platform digital modern yang menghadirkan solusi mudah bagi pelaku usaha untuk memasarkan produk mereka secara online.
                     <div class="btn-box">
-                      <a href="" class="btn1">
-                       Details
                       </a>
                     </div>
                   </div>
@@ -221,17 +215,17 @@
           <div class="col-md-6  ">
             <div class="box ">
               <div class="img-box">
-                <img src="images/o1.jpg" alt="">
+                <img src="" alt="">
               </div>
               <div class="detail-box">
                 <h5>
-                  Tasty Thursdays
+                  LAPAK 1
                 </h5>
                 <h6>
-                  <span>20%</span> Off
+                  <span></span>
                 </h6>
                 <a href="">
-                  Order Now <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
+                  Details<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
                     <g>
                       <g>
                         <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
@@ -290,17 +284,17 @@
           <div class="col-md-6  ">
             <div class="box ">
               <div class="img-box">
-                <img src="images/o2.jpg" alt="">
+                <img src="" alt="">
               </div>
               <div class="detail-box">
                 <h5>
-                  Pizza Days
+                  LAPAK 2
                 </h5>
                 <h6>
-                  <span>15%</span> Off
+                  <span></span> 
                 </h6>
                 <a href="">
-                  Order Now <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
+                  Details <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
                     <g>
                       <g>
                         <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
