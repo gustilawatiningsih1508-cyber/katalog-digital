@@ -2,8 +2,33 @@
 
 @section('title', 'Feane - Home')
 
+<<<<<<< HEAD:resources/views/home.blade.php
 @section('content')
 <div class="hero_area">
+=======
+  <title> LapakGo </title>
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+  <!--owl slider stylesheet -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+  <!-- nice select  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ==" crossorigin="anonymous" />
+  <!-- font awesome style -->
+  <link href="css/font-awesome.min.css" rel="stylesheet" />
+
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+  <div class="hero_area">
+>>>>>>> 5760655392caac0609cdc4f39d77154b7ae123a7:resources/views/index.blade.php
     <div class="bg-box">
       <img src="{{ asset('assets/images/hero-bg.jpg') }}" alt="">
     </div>
@@ -12,9 +37,7 @@
       <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
           <a class="navbar-brand" href="index.html">
-            <span>
-              Feane
-            </span>
+            <span>LapakGo</span>
           </a>
 
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,6 +47,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav  mx-auto ">
               <li class="nav-item active">
+<<<<<<< HEAD:resources/views/home.blade.php
                 <a class="nav-link" href="home">Home <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
@@ -34,6 +58,18 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="book">Book Table</a>
+=======
+                <a class="nav-link" href="{{ url('/') }}">Beranda<span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url('/menu')}}">Produk</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url('/about') }}">Tentang kami</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url('/book') }}">Kontak</a>
+>>>>>>> 5760655392caac0609cdc4f39d77154b7ae123a7:resources/views/index.blade.php
               </li>
             </ul>
             <div class="user_option">
@@ -99,8 +135,6 @@
                   <i class="fa fa-search" aria-hidden="true"></i>
                 </button>
               </form>
-              <a href="" class="order_online">
-                Order Online
               </a>
             </div>
           </div>
@@ -117,15 +151,12 @@
               <div class="row">
                 <div class="col-md-7 col-lg-6 ">
                   <div class="detail-box">
-                    <h1>
-                      Fast Food Restaurant
+                    <h1>Selamat datang di LapakGo
                     </h1>
                     <p>
-                      Doloremque, itaque aperiam facilis rerum, commodi, temporibus sapiente ad mollitia laborum quam quisquam esse error unde. Tempora ex doloremque, labore, sunt repellat dolore, iste magni quos nihil ducimus libero ipsam.
+                    Platform digital modern yang menghadirkan solusi mudah bagi pelaku usaha untuk memasarkan produk mereka secara online.
                     </p>
                     <div class="btn-box">
-                      <a href="" class="btn1">
-                        Order Now
                       </a>
                     </div>
                   </div>
@@ -138,15 +169,11 @@
               <div class="row">
                 <div class="col-md-7 col-lg-6 ">
                   <div class="detail-box">
-                    <h1>
-                      Fast Food Restaurant
+                    <h1>Selamat datang di LapakGo
                     </h1>
                     <p>
-                      Doloremque, itaque aperiam facilis rerum, commodi, temporibus sapiente ad mollitia laborum quam quisquam esse error unde. Tempora ex doloremque, labore, sunt repellat dolore, iste magni quos nihil ducimus libero ipsam.
-                    </p>
+                    Platform digital modern yang menghadirkan solusi mudah bagi pelaku usaha untuk memasarkan produk mereka secara online. 
                     <div class="btn-box">
-                      <a href="" class="btn1">
-                        Order Now
                       </a>
                     </div>
                   </div>
@@ -160,14 +187,11 @@
                 <div class="col-md-7 col-lg-6 ">
                   <div class="detail-box">
                     <h1>
-                      Fast Food Restaurant
+                    Selamat datang di LapakGo
                     </h1>
                     <p>
-                      Doloremque, itaque aperiam facilis rerum, commodi, temporibus sapiente ad mollitia laborum quam quisquam esse error unde. Tempora ex doloremque, labore, sunt repellat dolore, iste magni quos nihil ducimus libero ipsam.
-                    </p>
+                      Platform digital modern yang menghadirkan solusi mudah bagi pelaku usaha untuk memasarkan produk mereka secara online.
                     <div class="btn-box">
-                      <a href="" class="btn1">
-                        Order Now
                       </a>
                     </div>
                   </div>
@@ -198,17 +222,21 @@
           <div class="col-md-6  ">
             <div class="box ">
               <div class="img-box">
+<<<<<<< HEAD:resources/views/home.blade.php
                 <img src="{{ asset('assets/images/o1.jpg') }}" alt="">
+=======
+                <img src="" alt="">
+>>>>>>> 5760655392caac0609cdc4f39d77154b7ae123a7:resources/views/index.blade.php
               </div>
               <div class="detail-box">
                 <h5>
-                  Tasty Thursdays
+                  LAPAK 1
                 </h5>
                 <h6>
-                  <span>20%</span> Off
+                  <span></span>
                 </h6>
                 <a href="">
-                  Order Now <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
+                  Details<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
                     <g>
                       <g>
                         <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
@@ -267,17 +295,21 @@
           <div class="col-md-6  ">
             <div class="box ">
               <div class="img-box">
+<<<<<<< HEAD:resources/views/home.blade.php
                 <img src="{{ asset('assets/images/o2.jpg') }}" alt="">
+=======
+                <img src="" alt="">
+>>>>>>> 5760655392caac0609cdc4f39d77154b7ae123a7:resources/views/index.blade.php
               </div>
               <div class="detail-box">
                 <h5>
-                  Pizza Days
+                  LAPAK 2
                 </h5>
                 <h6>
-                  <span>15%</span> Off
+                  <span></span> 
                 </h6>
                 <a href="">
-                  Order Now <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
+                  Details <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
                     <g>
                       <g>
                         <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
@@ -346,7 +378,7 @@
     <div class="container">
       <div class="heading_container heading_center">
         <h2>
-          Our Menu
+          Menu
         </h2>
       </div>
 

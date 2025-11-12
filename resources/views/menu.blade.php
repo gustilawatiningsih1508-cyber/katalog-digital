@@ -28,7 +28,11 @@
                 <a class="nav-link" href="{{ route('home') }}">Home</a>
               </li>
               <li class="nav-item active">
+<<<<<<< HEAD
                 <a class="nav-link" href="{{ route('menu') }}">Menu <span class="sr-only">(current)</span></a>
+=======
+                <a class="nav-link" href="menu.html">Produk <span class="sr-only">(current)</span> </a>
+>>>>>>> 5760655392caac0609cdc4f39d77154b7ae123a7
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{ route('about') }}">About</a>
