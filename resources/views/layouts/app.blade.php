@@ -9,7 +9,7 @@
   <meta name="author" content="" />
   <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" type="">
 
-  <title>@yield('title', 'Feane')</title>
+  <title>LapakGo</title>
 
   <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />

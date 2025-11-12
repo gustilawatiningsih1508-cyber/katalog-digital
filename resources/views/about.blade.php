@@ -14,7 +14,7 @@
         <nav class="navbar navbar-expand-lg custom_nav-container ">
           <a class="navbar-brand" href="{{ route('home') }}">
             <span>
-              Feane
+              LapakGo
             </span>
           </a>
 

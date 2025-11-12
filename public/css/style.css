@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap");
 body {
   font-family: "Arial", sans-serif;
-  color: #ffffff;
-  background-color: lab(37.01% 15.75 43.89);
+  color: #0c0c0c;
+  background-color: #ffffff;
   overflow-x: hidden;
 }
 
@@ -426,9 +426,6 @@ a:focus {
   border-radius: 100%;
   border: 5px solid #ffbe33;
   overflow: hidden;
-  
-  
-  
 }
 
 .offer_section .box .img-box img {
@@ -444,7 +441,7 @@ a:focus {
 }
 
 .offer_section .box .detail-box h6 {
-  font-family: 'Arial', cursive;
+  font-family: '', cursive;
   margin: 10px 0;
 }
 
