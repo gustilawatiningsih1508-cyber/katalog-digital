@@ -28,11 +28,8 @@
                 <a class="nav-link" href="{{ route('home') }}">Home</a>
               </li>
               <li class="nav-item">
-<<<<<<< HEAD
                 <a class="nav-link" href="{{ route('menu') }}">Menu</a>
-=======
-                <a class="nav-link" href="menu.html">Produk</a>
->>>>>>> 5760655392caac0609cdc4f39d77154b7ae123a7
+                <a class="nav-link" href="menu"></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{ route('about') }}">About</a>
@@ -218,7 +215,7 @@
       </div>
       <div class="footer-info">
         <p>
-          &copy; <span id="displayYear"></span> All Rights Reserved By
+          &copy; <span id="displayYear"></span> All Rights Reserved Byds
           <a href="https://html.design/">Free Html Templates</a><br><br>
           &copy; <span id="displayYear"></span> Distributed By
           <a href="https://themewagon.com/" target="_blank">ThemeWagon</a>

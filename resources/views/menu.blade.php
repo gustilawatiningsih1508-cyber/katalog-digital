@@ -28,11 +28,7 @@
                 <a class="nav-link" href="{{ route('home') }}">Home</a>
               </li>
               <li class="nav-item active">
-<<<<<<< HEAD
                 <a class="nav-link" href="{{ route('menu') }}">Menu <span class="sr-only">(current)</span></a>
-=======
-                <a class="nav-link" href="menu.html">Produk <span class="sr-only">(current)</span> </a>
->>>>>>> 5760655392caac0609cdc4f39d77154b7ae123a7
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{ route('about') }}">About</a>
@@ -480,11 +476,11 @@
             <div class="box">
               <div>
                 <div class="img-box">
-                  <img src="{{ asset('assets/images/f9.png') }}" alt="French Fries">
+                  <img src="{{ asset('assets/images/f5.png') }}" alt="French Fries">
                 </div>
                 <div class="detail-box">
                   <h5>
-                    French Fries
+                    French Fries1
                   </h5>
                   <p>
                     Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
@@ -526,7 +522,7 @@
             <div class="box">
               <div>
                 <div class="img-box">
-                  <img src="{{ asset('assets/images/f10.png') }}" alt="French Fries">
+                  <img src="{{ asset('assets/images/f9.png') }}" alt="French Fries">
                 </div>
                 <div class="detail-box">
                   <h5>
