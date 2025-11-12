@@ -1,42 +1,11 @@
-<!DOCTYPE html>
-<html>
+@extends('layouts.app')
 
-<head>
-  <!-- Basic -->
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <!-- Mobile Metas -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <!-- Site Metas -->
-  <meta name="keywords" content="" />
-  <meta name="description" content="" />
-  <meta name="author" content="" />
-  <link rel="shortcut icon" href="images/favicon.png" type="">
+@section('title', 'Feane - Home')
 
-  <title> Feane </title>
-
-  <!-- bootstrap core css -->
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-
-  <!--owl slider stylesheet -->
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
-  <!-- nice select  -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ==" crossorigin="anonymous" />
-  <!-- font awesome style -->
-  <link href="css/font-awesome.min.css" rel="stylesheet" />
-
-  <!-- Custom styles for this template -->
-  <link href="css/style.css" rel="stylesheet" />
-  <!-- responsive style -->
-  <link href="css/responsive.css" rel="stylesheet" />
-
-</head>
-
-<body>
-
-  <div class="hero_area">
+@section('content')
+<div class="hero_area">
     <div class="bg-box">
-      <img src="images/hero-bg.jpg" alt="">
+      <img src="{{ asset('assets/images/hero-bg.jpg') }}" alt="">
     </div>
     <!-- header section strats -->
     <header class="header_section">
@@ -55,16 +24,16 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav  mx-auto ">
               <li class="nav-item active">
-                <a class="nav-link" href="{{ url('/') }}">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="home">Home <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ url('/menu')}}">Menu</a>
+                <a class="nav-link" href="menu">Menu</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ url('/about') }}">About</a>
+                <a class="nav-link" href="about">About</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ url('/book') }}">Book Table</a>
+                <a class="nav-link" href="book">Book Table</a>
               </li>
             </ul>
             <div class="user_option">
@@ -229,7 +198,7 @@
           <div class="col-md-6  ">
             <div class="box ">
               <div class="img-box">
-                <img src="images/o1.jpg" alt="">
+                <img src="{{ asset('assets/images/o1.jpg') }}" alt="">
               </div>
               <div class="detail-box">
                 <h5>
@@ -298,7 +267,7 @@
           <div class="col-md-6  ">
             <div class="box ">
               <div class="img-box">
-                <img src="images/o2.jpg" alt="">
+                <img src="{{ asset('assets/images/o2.jpg') }}" alt="">
               </div>
               <div class="detail-box">
                 <h5>
@@ -395,7 +364,7 @@
             <div class="box">
               <div>
                 <div class="img-box">
-                  <img src="images/f1.png" alt="">
+                  <img src="{{ asset('assets/images/f1.png') }}" alt="">
                 </div>
                 <div class="detail-box">
                   <h5>
@@ -471,7 +440,7 @@
             <div class="box">
               <div>
                 <div class="img-box">
-                  <img src="images/f2.png" alt="">
+                  <img src="{{ asset('assets/images/f2.png') }}" alt="">
                 </div>
                 <div class="detail-box">
                   <h5>
@@ -547,7 +516,7 @@
             <div class="box">
               <div>
                 <div class="img-box">
-                  <img src="images/f3.png" alt="">
+                  <img src="{{ asset('assets/images/f3.png') }}" alt="">
                 </div>
                 <div class="detail-box">
                   <h5>
@@ -623,7 +592,7 @@
             <div class="box">
               <div>
                 <div class="img-box">
-                  <img src="images/f4.png" alt="">
+                  <img src="{{ asset('assets/images/f4.png') }}" alt="">
                 </div>
                 <div class="detail-box">
                   <h5>
@@ -699,7 +668,7 @@
             <div class="box">
               <div>
                 <div class="img-box">
-                  <img src="images/f5.png" alt="">
+                  <img src="{{ asset('assets/images/f5.png') }}" alt="">
                 </div>
                 <div class="detail-box">
                   <h5>
@@ -775,7 +744,7 @@
             <div class="box">
               <div>
                 <div class="img-box">
-                  <img src="images/f6.png" alt="">
+                  <img src="{{ asset('assets/images/f6.png') }}" alt="">
                 </div>
                 <div class="detail-box">
                   <h5>
@@ -851,7 +820,7 @@
             <div class="box">
               <div>
                 <div class="img-box">
-                  <img src="images/f7.png" alt="">
+                  <img src="{{ asset('assets/images/f7.png') }}" alt="">
                 </div>
                 <div class="detail-box">
                   <h5>
@@ -927,7 +896,7 @@
             <div class="box">
               <div>
                 <div class="img-box">
-                  <img src="images/f8.png" alt="">
+                  <img src="{{ asset('assets/images/f8.png') }}" alt="">
                 </div>
                 <div class="detail-box">
                   <h5>
@@ -1003,7 +972,7 @@
             <div class="box">
               <div>
                 <div class="img-box">
-                  <img src="images/f9.png" alt="">
+                  <img src="{{ asset('assets/images/f9.png') }}" alt="">
                 </div>
                 <div class="detail-box">
                   <h5>
@@ -1095,7 +1064,7 @@
       <div class="row">
         <div class="col-md-6 ">
           <div class="img-box">
-            <img src="images/about-img.png" alt="">
+            <img src="{{ asset('assets/images/about-img.png') }}" alt="">
           </div>
         </div>
         <div class="col-md-6">
@@ -1208,7 +1177,7 @@
                 </p>
               </div>
               <div class="img-box">
-                <img src="images/client1.jpg" alt="" class="box-img">
+                <img src="{{ asset('assets/images/client1.jpg') }}" alt="" class="box-img">
               </div>
             </div>
           </div>
@@ -1226,7 +1195,7 @@
                 </p>
               </div>
               <div class="img-box">
-                <img src="images/client2.jpg" alt="" class="box-img">
+                <img src="{{ asset('assets/images/client2.jpg') }}" alt="" class="box-img">
               </div>
             </div>
           </div>
@@ -1318,28 +1287,4 @@
     </div>
   </footer>
   <!-- footer section -->
-
-  <!-- jQery -->
-  <script src="js/jquery-3.4.1.min.js"></script>
-  <!-- popper js -->
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-  </script>
-  <!-- bootstrap js -->
-  <script src="js/bootstrap.js"></script>
-  <!-- owl slider -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
-  </script>
-  <!-- isotope js -->
-  <script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
-  <!-- nice select -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
-  <!-- custom js -->
-  <script src="js/custom.js"></script>
-  <!-- Google Map -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
-  </script>
-  <!-- End Google Map -->
-
-</body>
-
-</html>
+@endsection
