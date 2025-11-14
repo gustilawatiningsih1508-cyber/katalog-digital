@@ -526,39 +526,7 @@
                                         Sangat enak dan murah meriah
                                     </p>
                                     <div class="options">
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        </svg>
-                                        </a>
+                                       
                                     </div>
                                 </div>
                             </div>
