@@ -61,22 +61,4 @@ class PageController extends Controller
     {
         return view('products');
     }
-
-    /**
-     * Menangani form booking
-     */
-    public function bookStore(Request $request)
-    {
-        // Validasi data form
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'phone' => 'required|string|max:20',
-            'email' => 'required|email',
-            'persons' => 'required|numeric',
-            'date' => 'required|date',
-        ]);
-
-        // Redirect dengan pesan sukses
-        return redirect()->route('book')->with('success', 'Booking berhasil dibuat!');
-    }
 }
