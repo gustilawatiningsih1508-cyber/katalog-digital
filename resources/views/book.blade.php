@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
-@section('title', 'Feane - Book Table')
+@section('title', 'LapakGo - Book Table')
 @section('body-class', 'sub_page')
 
 @section('content')
 <div class="hero_area">
     <div class="bg-box">
-      <img src="{{ asset('assets/images/hero-bg.jpg') }}" alt="">
+      <img src="{{ asset('assets user/images/hero-bg.jpg') }}" alt="">
     </div>
     <!-- header section strats -->
     <header class="header_section">
@@ -14,7 +14,7 @@
         <nav class="navbar navbar-expand-lg custom_nav-container ">
           <a class="navbar-brand" href="{{ route('home') }}">
             <span>
-              Feane
+              LapakGo
             </span>
           </a>
 
