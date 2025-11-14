@@ -2,7 +2,9 @@
 body {
   font-family: "Arial", sans-serif;
   color: #ffffff;
-  background-color: lab(37.01% 15.75 43.89);
+background-color: lab(29.2% 32.8 25.6);
+
+
   overflow-x: hidden;
 }
 
@@ -32,7 +34,7 @@ body {
 
 h1,
 h2 {
-  font-family: 'Bahnschrift', cursive;
+  font-family: 'Arial', cursive;
 }
 
 .heading_container {
@@ -342,9 +344,11 @@ a:focus {
 }
 
 .slider_section .detail-box h1 {
+   text-align: center;
   font-size: 3.5rem;
   font-weight: bold;
   margin-bottom: 15px;
+ 
 }
 
 .slider_section .detail-box p {
@@ -1007,4 +1011,6 @@ a:focus {
 .footer_section .footer-info p a {
   color: inherit;
 }
+
+
 /*# sourceMappingURL=style.css.map */
