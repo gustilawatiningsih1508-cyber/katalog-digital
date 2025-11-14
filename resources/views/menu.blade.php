@@ -6,7 +6,7 @@
 @section('content')
 <div class="hero_area">
     <div class="bg-box">
-      <img src="{{ asset('assets/images/hero-bg.jpg') }}" alt="">
+      <img src="{{ asset('assets user/images/hero-bg.jpg') }}" alt="">
     </div>
     <!-- header section strats -->
     <header class="header_section">
@@ -104,7 +104,7 @@
             <div class="box">
               <div>
                 <div class="img-box">
-                  <img src="{{ asset('assets/images/f1.png') }}" alt="Delicious Pizza">
+                  <img src="{{ asset('assets user/images/f1.png') }}" alt="Delicious Pizza">
                 </div>
                 <div class="detail-box">
                   <h5>
@@ -151,7 +151,7 @@
             <div class="box">
               <div>
                 <div class="img-box">
-                  <img src="{{ asset('assets/images/f2.png') }}" alt="Delicious Pizza">
+                  <img src="{{ asset('assets user/images/f2.png') }}" alt="Delicious Pizza">
                 </div>
                 <div class="detail-box">
                   <h5>
@@ -197,7 +197,7 @@
             <div class="box">
               <div>
                 <div class="img-box">
-                  <img src="{{ asset('assets/images/f3.png') }}" alt="Delicious Pizza">
+                  <img src="{{ asset('assets user/images/f3.png') }}" alt="Delicious Pizza">
                 </div>
                 <div class="detail-box">
                   <h5>
@@ -244,7 +244,7 @@
             <div class="box">
               <div>
                 <div class="img-box">
-                  <img src="{{ asset('assets/images/f4.png') }}" alt="Delicious Burger">
+                  <img src="{{ asset('assets user/images/f4.png') }}" alt="Delicious Burger">
                 </div>
                 <div class="detail-box">
                   <h5>
@@ -290,7 +290,7 @@
             <div class="box">
               <div>
                 <div class="img-box">
-                  <img src="{{ asset('assets/images/f5.png') }}" alt="Delicious Burger">
+                  <img src="{{ asset('assets user/images/f5.png') }}" alt="Delicious Burger">
                 </div>
                 <div class="detail-box">
                   <h5>
@@ -336,7 +336,7 @@
             <div class="box">
               <div>
                 <div class="img-box">
-                  <img src="{{ asset('assets/images/f6.png') }}" alt="Delicious Burger">
+                  <img src="{{ asset('assets user/images/f6.png') }}" alt="Delicious Burger">
                 </div>
                 <div class="detail-box">
                   <h5>
@@ -383,7 +383,7 @@
             <div class="box">
               <div>
                 <div class="img-box">
-                  <img src="{{ asset('assets/images/f7.png') }}" alt="Delicious Pasta">
+                  <img src="{{ asset('assets user/images/f7.png') }}" alt="Delicious Pasta">
                 </div>
                 <div class="detail-box">
                   <h5>
@@ -429,7 +429,7 @@
             <div class="box">
               <div>
                 <div class="img-box">
-                  <img src="{{ asset('assets/images/f8.png') }}" alt="Delicious Pasta">
+                  <img src="{{ asset('assets user/images/f8.png') }}" alt="Delicious Pasta">
                 </div>
                 <div class="detail-box">
                   <h5>
@@ -476,7 +476,7 @@
             <div class="box">
               <div>
                 <div class="img-box">
-                  <img src="{{ asset('assets/images/f5.png') }}" alt="French Fries">
+                  <img src="{{ asset('assets user/images/f5.png') }}" alt="French Fries">
                 </div>
                 <div class="detail-box">
                   <h5>
@@ -522,7 +522,7 @@
             <div class="box">
               <div>
                 <div class="img-box">
-                  <img src="{{ asset('assets/images/f9.png') }}" alt="French Fries">
+                  <img src="{{ asset('assets user/images/f9.png') }}" alt="French Fries">
                 </div>
                 <div class="detail-box">
                   <h5>

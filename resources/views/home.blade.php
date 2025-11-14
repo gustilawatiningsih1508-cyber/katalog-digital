@@ -5,7 +5,7 @@
 @section('content')
 <div class="hero_area">
     <div class="bg-box">
-      <img src="{{ asset('assets/images/hero-bg.jpg') }}" alt="">
+      <img src="{{ asset('assets user/images/hero-bg.jpg') }}" alt="">
     </div>
     <!-- header section strats -->
     <header class="header_section">
@@ -24,7 +24,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav  mx-auto ">
               <li class="nav-item active">
-                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="home">Home <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="menu">Menu</a>
@@ -396,7 +396,7 @@
             <div class="box">
               <div>
                 <div class="img-box">
-                  <img src="{{ asset('assets/images/f1.png') }}" alt="">
+                  <img src="{{ asset('assets user/images/f1.png') }}" alt="">
                 </div>
                 <div class="detail-box">
                   <h5>
@@ -472,7 +472,7 @@
             <div class="box">
               <div>
                 <div class="img-box">
-                  <img src="{{ asset('assets/images/f2.png') }}" alt="">
+                  <img src="{{ asset('assets user/images/f2.png') }}" alt="">
                 </div>
                 <div class="detail-box">
                   <h5>
@@ -548,7 +548,7 @@
             <div class="box">
               <div>
                 <div class="img-box">
-                  <img src="{{ asset('assets/images/f3.png') }}" alt="">
+                  <img src="{{ asset('assets user/images/f3.png') }}" alt="">
                 </div>
                 <div class="detail-box">
                   <h5>
@@ -624,7 +624,7 @@
             <div class="box">
               <div>
                 <div class="img-box">
-                  <img src="{{ asset('assets/images/f4.png') }}" alt="">
+                  <img src="{{ asset('assets user/images/f4.png') }}" alt="">
                 </div>
                 <div class="detail-box">
                   <h5>
@@ -700,7 +700,7 @@
             <div class="box">
               <div>
                 <div class="img-box">
-                  <img src="{{ asset('assets/images/f5.png') }}" alt="">
+                  <img src="{{ asset('assets user/images/f5.png') }}" alt="">
                 </div>
                 <div class="detail-box">
                   <h5>
@@ -776,7 +776,7 @@
             <div class="box">
               <div>
                 <div class="img-box">
-                  <img src="{{ asset('assets/images/f6.png') }}" alt="">
+                  <img src="{{ asset('assets user/images/f6.png') }}" alt="">
                 </div>
                 <div class="detail-box">
                   <h5>
@@ -852,7 +852,7 @@
             <div class="box">
               <div>
                 <div class="img-box">
-                  <img src="{{ asset('assets/images/f7.png') }}" alt="">
+                  <img src="{{ asset('assets user/images/f7.png') }}" alt="">
                 </div>
                 <div class="detail-box">
                   <h5>
@@ -928,7 +928,7 @@
             <div class="box">
               <div>
                 <div class="img-box">
-                  <img src="{{ asset('assets/images/f8.png') }}" alt="">
+                  <img src="{{ asset('assets user/images/f8.png') }}" alt="">
                 </div>
                 <div class="detail-box">
                   <h5>
@@ -1004,7 +1004,7 @@
             <div class="box">
               <div>
                 <div class="img-box">
-                  <img src="{{ asset('assets/images/f9.png') }}" alt="">
+                  <img src="{{ asset('assets user/images/f9.png') }}" alt="">
                 </div>
                 <div class="detail-box">
                   <h5>
@@ -1096,7 +1096,7 @@
       <div class="row">
         <div class="col-md-6 ">
           <div class="img-box">
-            <img src="{{ asset('assets/images/about-img.png') }}" alt="">
+            <img src="{{ asset('assets user/images/about-img.png') }}" alt="">
           </div>
         </div>
         <div class="col-md-6">
@@ -1209,7 +1209,7 @@
                 </p>
               </div>
               <div class="img-box">
-                <img src="{{ asset('assets/images/client1.jpg') }}" alt="" class="box-img">
+                <img src="{{ asset('assets user/images/client1.jpg') }}" alt="" class="box-img">
               </div>
             </div>
           </div>
@@ -1227,7 +1227,7 @@
                 </p>
               </div>
               <div class="img-box">
-                <img src="{{ asset('assets/images/client2.jpg') }}" alt="" class="box-img">
+                <img src="{{ asset('assets user/images/client2.jpg') }}" alt="" class="box-img">
               </div>
             </div>
           </div>

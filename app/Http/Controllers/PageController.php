@@ -39,7 +39,31 @@ class PageController extends Controller
     }
 
     /**
-     * Menangani form booking (jika diperlukan)
+     * Dashboard
+     */
+    public function dashboard()
+    {
+        return view('dashboard');
+    }
+
+    /**
+     * Manajemen Users
+     */
+    public function users()
+    {
+        return view('users');
+    }
+
+    /**
+     * Manajemen Products
+     */
+    public function products()
+    {
+        return view('products');
+    }
+
+    /**
+     * Menangani form booking
      */
     public function bookStore(Request $request)
     {
@@ -51,11 +75,6 @@ class PageController extends Controller
             'persons' => 'required|numeric',
             'date' => 'required|date',
         ]);
-
-        // Di sini Anda bisa:
-        // 1. Simpan ke database
-        // 2. Kirim email notifikasi
-        // 3. Proses data lainnya
 
         // Redirect dengan pesan sukses
         return redirect()->route('book')->with('success', 'Booking berhasil dibuat!');
