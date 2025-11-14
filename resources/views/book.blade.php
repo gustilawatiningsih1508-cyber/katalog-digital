@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Feane - Book Table')
+@section('title', 'LapakGo - Book Table')
 @section('body-class', 'sub_page')
 
 @section('content')
@@ -14,7 +14,7 @@
         <nav class="navbar navbar-expand-lg custom_nav-container ">
           <a class="navbar-brand" href="{{ route('home') }}">
             <span>
-              Feane
+              LapakGo
             </span>
           </a>
 
