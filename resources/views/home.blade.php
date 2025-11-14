@@ -3,186 +3,13 @@
 @section('title', 'Feane - Home')
 
 @section('content')
-<<<<<<< HEAD
-    <div class="hero_area">
-        <div class="bg-box">
-            <img src=" {{ asset('assets/images/bc.png') }} " alt=" ">
-        </div>
-        <!-- header section strats -->
-        <header class="header_section">
-            <div class="container">
-                <nav class="navbar navbar-expand-lg custom_nav-container ">
-                    <a class="navbar-brand" href="index.html">
-                        <span>
-                            LapakGo
-                        </span>
-                    </a>
-
-                    <button class="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        <span class=""> </span>
-                    </button>
-
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav  mx-auto ">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="menu">Menu</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="about">About</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="book">Book Table</a>
-                            </li>
-                        </ul>
-                        <div class="user_option">
-                            <a href="" class="user_link">
-                                <i class="-user" aria-hidden="true"></i>
-                            </a>
-                            <a class="cart_link" href="#">
-                                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029"
-                                    style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
-                                    <g>
-                                        <g>
-
-                                        </g>
-                                    </g>
-                                    <g>
-                                    </g>
-                                    <g>
-                                    </g>
-                                    <g>
-                                    </g>
-                                    <g>
-                                    </g>
-                                    <g>
-                                    </g>
-                                    <g>
-                                    </g>
-                                    <g>
-                                    </g>
-                                    <g>
-                                    </g>
-                                    <g>
-                                    </g>
-                                    <g>
-                                    </g>
-                                    <g>
-                                    </g>
-                                    <g>
-                                    </g>
-                                    <g>
-                                    </g>
-                                    <g>
-                                    </g>
-                                    <g>
-                                    </g>
-                                </svg>
-                            </a>
-                            <form class="form-inline">
-                                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
-                                    <i class="fa fa-search" aria-hidden="true"></i>
-                                    </ul>
-                                    </a>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-        </header>
-        <!-- end header section -->
-        <!-- slider section -->
-        <section class="slider_section ">
-            <div id="customCarousel1" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="container ">
-                            <div class="row justify-content-center">
-                                <div class="col-md-7 col-lg-6 ">
-                                  <div class="detail-box text-center">
-                                        <h1>Selamat Datang Di <span>LapakGo</span></h1>
-                                        <p>
-                                            Platform digital modern yang menghadirkan solusi mudah bagi
-                                            pelaku usaha untuk memasarkan produk mereka secara online
-                                        </p>
-                                        <div class="btn-box">
-
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item ">
-                        <div class="container ">
-                            <div class="row justify-content-center">
-                                <div class="col-md-7 col-lg-6 ">
-                                  <div class="detail-box text-center">
-                                        <h1>Selamat Datang Di <span>LapakGo</span></h1>
-                                        <p>
-                                            Platform digital modern yang menghadirkan solusi mudah bagi 
-                                            pelaku usaha untuk memasarkan produk mereka secara online
-                                        </p>
-                                        <div class="btn-box">
-
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="container ">
-                            <div class="row justify-content-center">
-                                <div class="col-md-7 col-lg-6 ">
-                                   <div class="detail-box text-center">
-                                        <h1>
-                                            Selamat Datang Di lapakGo
-                                        </h1>
-                                        <p>
-                                            Platform digital modern yang menghadirkan solusi mudah bagi
-                                            pelaku usaha untuk memasarkan produk mereka secara online
-                                        </p>
-                                        <div class="btn-box">
-
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <ol class="carousel-indicators">
-                        <li data-target="#customCarousel1" data-slide-to="0" class="active"></li>
-                        <li data-target="#customCarousel1" data-slide-to="1"></li>
-                        <li data-target="#customCarousel1" data-slide-to="2"></li>
-                    </ol>
-                </div>
-            </div>
-
-        </section>
-        <!-- end slider section -->
-=======
 <div class="hero_area">
     <div class="bg-box">
       <img src="{{ asset('assets user/images/hero-bg.jpg') }}" alt="">
->>>>>>> 7b3302b40cc4e4c4a3f55766aac007bb70433a81
     </div>
 
     <!-- offer section -->
 
-<<<<<<< HEAD
-    <section class="offer_section layout_padding-bottom">
-        <div class="offer_container">
-=======
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav  mx-auto ">
               <li class="nav-item active">
@@ -271,7 +98,6 @@
       <div id="customCarousel1" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
->>>>>>> 7b3302b40cc4e4c4a3f55766aac007bb70433a81
             <div class="container ">
                 <div class="row">
                     <div class="col-md-6  ">
@@ -1081,13 +907,6 @@
     <section class="about_section layout_padding">
         <div class="container  ">
 
-<<<<<<< HEAD
-            <div class="row">
-                <div class="col-md-6 ">
-                    <div class="img-box">
-                        <img src="{{ asset('assets/images/about-img.png') }}" alt="">
-                    </div>
-=======
       <ul class="filters_menu">
         <li class="active" data-filter="*">All</li>
         <li data-filter=".burger">Burger</li>
@@ -1103,7 +922,6 @@
               <div>
                 <div class="img-box">
                   <img src="{{ asset('assets user/images/f1.png') }}" alt="">
->>>>>>> 7b3302b40cc4e4c4a3f55766aac007bb70433a81
                 </div>
                 <div class="col-md-6">
                     <div class="detail-box">
@@ -1127,8 +945,6 @@
                     </div>
                 </div>
             </div>
-<<<<<<< HEAD
-=======
           </div>
           <div class="col-sm-6 col-lg-4 all burger">
             <div class="box">
@@ -1738,17 +1554,11 @@
               </div>
             </div>
           </div>
->>>>>>> 7b3302b40cc4e4c4a3f55766aac007bb70433a81
         </div>
     </section>
 
     <!-- end about section -->
 
-<<<<<<< HEAD
-    <!-- book section -->
-    <section class="book_section layout_padding">
-        <div class="container">
-=======
   <!-- about section -->
 
   <section class="about_section layout_padding">
@@ -1762,7 +1572,6 @@
         </div>
         <div class="col-md-6">
           <div class="detail-box">
->>>>>>> 7b3302b40cc4e4c4a3f55766aac007bb70433a81
             <div class="heading_container">
                 <h2>
                     Book A Table
@@ -1955,9 +1764,6 @@
                     &copy; <span id="displayYear"></span> Distributed By
                     <a href="https://themewagon.com/" target="_blank">ThemeWagon</a>
                 </p>
-<<<<<<< HEAD
-            </div>
-=======
                 <h6>
                   Moana Michell
                 </h6>
@@ -1988,7 +1794,6 @@
               </div>
             </div>
           </div>
->>>>>>> 7b3302b40cc4e4c4a3f55766aac007bb70433a81
         </div>
     </footer>
     <!-- footer section -->
