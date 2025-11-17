@@ -1,0 +1,10 @@
+- [ ] Change title to 'LapakGo - Home'
+- [ ] Fix asset paths to 'assets user/images/'
+- [ ] Change 'Feane' to 'LapakGo' in headings and text
+- [ ] Fix HTML structure: close forms, fix SVGs, missing tags
+- [ ] Make carousel items consistent
+- [ ] Fix food section filters and classes
+- [ ] Add proper images where missing
+- [ ] Fix about section heading
+- [ ] Fix footer logo and text
+- [ ] Ensure all sections are properly closed
