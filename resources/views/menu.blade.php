@@ -1,659 +1,233 @@
 @extends('layouts.app')
 
-@section('title', 'Feane - Menu')
+@section('title', 'LapakGo - Menu')
 @section('body-class', 'sub_page')
 
 @section('content')
 <div class="hero_area">
     <div class="bg-box">
-      <img src="{{ asset('assets user/images/hero-bg.jpg') }}" alt="">
+        <img src="{{ asset('assets_user/images/hero-bg.jpg') }}" alt="">
     </div>
-    <!-- header section strats -->
+
+    <!-- header section starts -->
     <header class="header_section">
-      <div class="container">
-        <nav class="navbar navbar-expand-lg custom_nav-container ">
-          <a class="navbar-brand" href="{{ route('home') }}">
-            <span>
-              Feane
-            </span>
-          </a>
+        <div class="container">
+            <nav class="navbar navbar-expand-lg custom_nav-container">
+                <a class="navbar-brand" href="{{ route('home') }}">
+                    <span>LapakGo</span>
+                </a>
 
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class=""> </span>
-          </button>
-
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav  mx-auto ">
-              <li class="nav-item">
-                <a class="nav-link" href="{{ route('home') }}">Home</a>
-              </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="{{ route('menu') }}">Menu <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{ route('about') }}">About</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{ route('book') }}">Book Table</a>
-              </li>
-            </ul>
-            <div class="user_option">
-              <a href="" class="user_link">
-                <i class="fa fa-user" aria-hidden="true"></i>
-              </a>
-              <a class="cart_link" href="#">
-                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
-                  <g>
-                    <g>
-                      <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
-                   c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
-                    </g>
-                  </g>
-                  <g>
-                    <g>
-                      <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
-                   C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
-                   c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
-                   C457.728,97.71,450.56,86.958,439.296,84.91z" />
-                    </g>
-                  </g>
-                  <g>
-                    <g>
-                      <path d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
-                   c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
-                    </g>
-                  </g>
-                </svg>
-              </a>
-              <form class="form-inline">
-                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
-                  <i class="fa fa-search" aria-hidden="true"></i>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span></span>
                 </button>
-              </form>
-              <a href="" class="order_online">
-                Order Online
-              </a>
-            </div>
-          </div>
-        </nav>
-      </div>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('home') }}">Beranda</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ route('menu') }}">Menu <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('about') }}">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('book') }}">Book Table</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
     </header>
     <!-- end header section -->
-  </div>
+</div>
 
-  <!-- food section -->
-  <section class="food_section layout_padding">
+<!-- food section -->
+<section class="food_section layout_padding">
     <div class="container">
-      <div class="heading_container heading_center">
-        <h2>
-          Our Menu
-        </h2>
-      </div>
-
-      <ul class="filters_menu">
-        <li class="active" data-filter="*">All</li>
-        <li data-filter=".burger">Burger</li>
-        <li data-filter=".pizza">Pizza</li>
-        <li data-filter=".pasta">Pasta</li>
-        <li data-filter=".fries">Fries</li>
-      </ul>
-
-      <div class="filters-content">
-        <div class="row grid">
-          <div class="col-sm-6 col-lg-4 all pizza">
-            <div class="box">
-              <div>
-                <div class="img-box">
-                  <img src="{{ asset('assets user/images/f1.png') }}" alt="Delicious Pizza">
-                </div>
-                <div class="detail-box">
-                  <h5>
-                    Delicious Pizza
-                  </h5>
-                  <p>
-                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
-                  </p>
-                  <div class="options">
-                    <h6>
-                      $20
-                    </h6>
-                    <a href="">
-                      <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
-                        <g>
-                          <g>
-                            <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
-                         c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
-                          </g>
-                        </g>
-                        <g>
-                          <g>
-                            <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
-                         C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
-                         c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
-                         C457.728,97.71,450.56,86.958,439.296,84.91z" />
-                          </g>
-                        </g>
-                        <g>
-                          <g>
-                            <path d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
-                         c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
-                          </g>
-                        </g>
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Pizza Items -->
-          <div class="col-sm-6 col-lg-4 all pizza">
-            <div class="box">
-              <div>
-                <div class="img-box">
-                  <img src="{{ asset('assets user/images/f2.png') }}" alt="Delicious Pizza">
-                </div>
-                <div class="detail-box">
-                  <h5>
-                    Delicious Pizza
-                  </h5>
-                  <p>
-                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
-                  </p>
-                  <div class="options">
-                    <h6>
-                      $15
-                    </h6>
-                    <a href="">
-                      <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
-                        <g>
-                          <g>
-                            <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
-                         c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
-                          </g>
-                        </g>
-                        <g>
-                          <g>
-                            <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
-                         C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
-                         c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
-                         C457.728,97.71,450.56,86.958,439.296,84.91z" />
-                          </g>
-                        </g>
-                        <g>
-                          <g>
-                            <path d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
-                         c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
-                          </g>
-                        </g>
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-4 all pizza">
-            <div class="box">
-              <div>
-                <div class="img-box">
-                  <img src="{{ asset('assets user/images/f3.png') }}" alt="Delicious Pizza">
-                </div>
-                <div class="detail-box">
-                  <h5>
-                    Delicious Pizza
-                  </h5>
-                  <p>
-                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
-                  </p>
-                  <div class="options">
-                    <h6>
-                      $17
-                    </h6>
-                    <a href="">
-                      <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
-                        <g>
-                          <g>
-                            <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
-                         c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
-                          </g>
-                        </g>
-                        <g>
-                          <g>
-                            <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
-                         C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
-                         c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
-                         C457.728,97.71,450.56,86.958,439.296,84.91z" />
-                          </g>
-                        </g>
-                        <g>
-                          <g>
-                            <path d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
-                         c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
-                          </g>
-                        </g>
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Burger Items -->
-          <div class="col-sm-6 col-lg-4 all burger">
-            <div class="box">
-              <div>
-                <div class="img-box">
-                  <img src="{{ asset('assets user/images/f4.png') }}" alt="Delicious Burger">
-                </div>
-                <div class="detail-box">
-                  <h5>
-                    Delicious Burger
-                  </h5>
-                  <p>
-                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
-                  </p>
-                  <div class="options">
-                    <h6>
-                      $12
-                    </h6>
-                    <a href="">
-                      <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
-                        <g>
-                          <g>
-                            <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
-                         c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
-                          </g>
-                        </g>
-                        <g>
-                          <g>
-                            <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
-                         C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
-                         c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
-                         C457.728,97.71,450.56,86.958,439.296,84.91z" />
-                          </g>
-                        </g>
-                        <g>
-                          <g>
-                            <path d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
-                         c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
-                          </g>
-                        </g>
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-4 all burger">
-            <div class="box">
-              <div>
-                <div class="img-box">
-                  <img src="{{ asset('assets user/images/f5.png') }}" alt="Delicious Burger">
-                </div>
-                <div class="detail-box">
-                  <h5>
-                    Delicious Burger
-                  </h5>
-                  <p>
-                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
-                  </p>
-                  <div class="options">
-                    <h6>
-                      $14
-                    </h6>
-                    <a href="">
-                      <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
-                        <g>
-                          <g>
-                            <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
-                         c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
-                          </g>
-                        </g>
-                        <g>
-                          <g>
-                            <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
-                         C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
-                         c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
-                         C457.728,97.71,450.56,86.958,439.296,84.91z" />
-                          </g>
-                        </g>
-                        <g>
-                          <g>
-                            <path d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
-                         c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
-                          </g>
-                        </g>
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-4 all burger">
-            <div class="box">
-              <div>
-                <div class="img-box">
-                  <img src="{{ asset('assets user/images/f6.png') }}" alt="Delicious Burger">
-                </div>
-                <div class="detail-box">
-                  <h5>
-                    Delicious Burger
-                  </h5>
-                  <p>
-                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
-                  </p>
-                  <div class="options">
-                    <h6>
-                      $10
-                    </h6>
-                    <a href="">
-                      <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
-                        <g>
-                          <g>
-                            <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
-                         c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
-                          </g>
-                        </g>
-                        <g>
-                          <g>
-                            <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
-                         C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
-                         c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
-                         C457.728,97.71,450.56,86.958,439.296,84.91z" />
-                          </g>
-                        </g>
-                        <g>
-                          <g>
-                            <path d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
-                         c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
-                          </g>
-                        </g>
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Pasta Items -->
-          <div class="col-sm-6 col-lg-4 all pasta">
-            <div class="box">
-              <div>
-                <div class="img-box">
-                  <img src="{{ asset('assets user/images/f7.png') }}" alt="Delicious Pasta">
-                </div>
-                <div class="detail-box">
-                  <h5>
-                    Delicious Pasta
-                  </h5>
-                  <p>
-                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
-                  </p>
-                  <div class="options">
-                    <h6>
-                      $18
-                    </h6>
-                    <a href="">
-                      <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
-                        <g>
-                          <g>
-                            <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
-                         c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
-                          </g>
-                        </g>
-                        <g>
-                          <g>
-                            <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
-                         C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
-                         c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
-                         C457.728,97.71,450.56,86.958,439.296,84.91z" />
-                          </g>
-                        </g>
-                        <g>
-                          <g>
-                            <path d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
-                         c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
-                          </g>
-                        </g>
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-4 all pasta">
-            <div class="box">
-              <div>
-                <div class="img-box">
-                  <img src="{{ asset('assets user/images/f8.png') }}" alt="Delicious Pasta">
-                </div>
-                <div class="detail-box">
-                  <h5>
-                    Delicious Pasta
-                  </h5>
-                  <p>
-                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
-                  </p>
-                  <div class="options">
-                    <h6>
-                      $14
-                    </h6>
-                    <a href="">
-                      <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
-                        <g>
-                          <g>
-                            <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
-                         c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
-                          </g>
-                        </g>
-                        <g>
-                          <g>
-                            <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
-                         C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
-                         c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
-                         C457.728,97.71,450.56,86.958,439.296,84.91z" />
-                          </g>
-                        </g>
-                        <g>
-                          <g>
-                            <path d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
-                         c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
-                          </g>
-                        </g>
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Fries Items -->
-          <div class="col-sm-6 col-lg-4 all fries">
-            <div class="box">
-              <div>
-                <div class="img-box">
-                  <img src="{{ asset('assets user/images/f5.png') }}" alt="French Fries">
-                </div>
-                <div class="detail-box">
-                  <h5>
-                    French Fries1
-                  </h5>
-                  <p>
-                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
-                  </p>
-                  <div class="options">
-                    <h6>
-                      $10
-                    </h6>
-                    <a href="">
-                      <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
-                        <g>
-                          <g>
-                            <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
-                         c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
-                          </g>
-                        </g>
-                        <g>
-                          <g>
-                            <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
-                         C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
-                         c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
-                         C457.728,97.71,450.56,86.958,439.296,84.91z" />
-                          </g>
-                        </g>
-                        <g>
-                          <g>
-                            <path d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
-                         c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
-                          </g>
-                        </g>
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-4 all fries">
-            <div class="box">
-              <div>
-                <div class="img-box">
-                  <img src="{{ asset('assets user/images/f9.png') }}" alt="French Fries">
-                </div>
-                <div class="detail-box">
-                  <h5>
-                    French Fries
-                  </h5>
-                  <p>
-                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
-                  </p>
-                  <div class="options">
-                    <h6>
-                      $12
-                    </h6>
-                    <a href="">
-                      <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
-                        <g>
-                          <g>
-                            <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
-                         c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
-                          </g>
-                        </g>
-                        <g>
-                          <g>
-                            <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
-                         C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
-                         c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
-                         C457.728,97.71,450.56,86.958,439.296,84.91z" />
-                          </g>
-                        </g>
-                        <g>
-                          <g>
-                            <path d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
-                         c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
-                          </g>
-                        </g>
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="heading_container heading_center">
+            <h2>Our Menu</h2>
         </div>
-      </div>
-      <div class="btn-box">
-        <a href="">
-          View More
-        </a>
-      </div>
+
+        <!-- Filter Buttons -->
+        <ul class="filters_menu">
+            <li class="active" data-filter="*">Semua</li>
+            <li data-filter=".minuman">Minuman</li>
+            <li data-filter=".jajanan">Jajanan</li>
+            <li data-filter=".makanan-berat">Makanan Berat</li>
+        </ul>
+
+        <!-- Menu Items -->
+        <div class="filters-content">
+            <div class="row grid">
+
+                <!-- Minuman -->
+               <div class="col-sm-6 col-lg-4 all minuman">
+                    <div class="box">
+                        <div class="img-box">
+                            <img src="{{ asset('assets_user/images/f2.png') }}" alt="Milk Tea">
+                        </div>
+                        <div class="detail-box">
+                            <h5>Air Milo</h5>
+                            <p>Minuman coklat berenergi yang menyengarkan.</p>
+                            <div class="options">
+                                <h6>Rp10.000</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-lg-4 all minuman">
+                    <div class="box">
+                        <div class="img-box">
+                            <img src="{{ asset('assets_user/images/f2.png') }}" alt="Milk Tea">
+                        </div>
+                        <div class="detail-box">
+                            <h5>Milk Tea Mutiara Cincau</h5>
+                            <p>Milk tea creamy dengan perpaduan mutiara dan cincau yang menyegarkan.</p>
+                            <div class="options">
+                                <h6>Rp15.000</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-lg-4 all minuman">
+                    <div class="box">
+                        <div class="img-box">
+                            <img src="{{ asset('assets_user/images/f3.png') }}" alt="Kopi Milo">
+                        </div>
+                        <div class="detail-box">
+                            <h5>Kopi Milo</h5>
+                            <p>Perpaduan kopi kuat dan coklat Milo yang nikmat</p>
+                            <div class="options">
+                                <h6>Rp17.000</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jajanan -->
+                <div class="col-sm-6 col-lg-4 all jajanan">
+                    <div class="box">
+                        <div class="img-box">
+                            <img src="{{ asset('assets_user/images/f4.png') }}" alt="Kentang Spiral">
+                        </div>
+                        <div class="detail-box">
+                            <h5>Kentang Spiral</h5>
+                            <p>Cemilan crispy yang gurih dan nagih</p>
+                            <div class="options">
+                                <h6>Rp12.000</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-lg-4 all jajanan">
+                    <div class="box">
+                        <div class="img-box">
+                            <img src="{{ asset('assets_user/images/f5.png') }}" alt="Tela Tela">
+                        </div>
+                        <div class="detail-box">
+                            <h5>Tela Tela</h5>
+                            <p>Tela-tela lezat, pas untuk segala suasana</p>
+                            <div class="options">
+                                <h6>Rp14.000</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-lg-4 all jajanan">
+                    <div class="box">
+                        <div class="img-box">
+                            <img src="{{ asset('assets_user/images/f6.png') }}" alt="Pisang Coklat">
+                        </div>
+                        <div class="detail-box">
+                            <h5>Pisang Coklat</h5>
+                            <p>Pisang manis dengan lelehan coklat nikmat</p>
+                            <div class="options">
+                                <h6>Rp10.000</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Makanan Berat -->
+                <div class="col-sm-6 col-lg-4 all makanan-berat">
+                    <div class="box">
+                        <div class="img-box">
+                            <img src="{{ asset('assets_user/images/f8.png') }}" alt="Ayam Geprek">
+                        </div>
+                        <div class="detail-box">
+                            <h5>Ayam Geprek</h5>
+                            <p>Ayam crispy dengan sambal geprek pedas nikmat.</p>
+                            <div class="options">
+                                <h6>Rp14.000</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-lg-4 all makanan-berat">
+                    <div class="box">
+                        <div class="img-box">
+                            <img src="{{ asset('assets_user/images/f5.png') }}" alt="Lele Goreng">
+                        </div>
+                        <div class="detail-box">
+                            <h5>Lele Goreng</h5>
+                            <p>Lele goreng gurih dengan tekstur renyah khas Bengkalis.</p>
+                            <div class="options">
+                                <h6>Rp10.000</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-lg-4 all makanan-berat">
+                    <div class="box">
+                        <div class="img-box">
+                            <img src="{{ asset('assets_user/images/f9.png') }}" alt="Sayur Daun Singkong">
+                        </div>
+                        <div class="detail-box">
+                            <h5>Sayur Daun Singkong</h5>
+                            <p>Daun singkong lembut dengan bumbu santan yang gurih.</p>
+                            <div class="options">
+                                <h6>Rp12.000</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="btn-box">
+            <a href="#">View More</a>
+        </div>
     </div>
-  </section>
-  <!-- end food section -->
+</section>
 
-  <!-- footer section -->
-  <footer class="footer_section">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 footer-col">
-          <div class="footer_contact">
-            <h4>
-              Contact Us
-            </h4>
-            <div class="contact_link_box">
-              <a href="">
-                <i class="fa fa-map-marker" aria-hidden="true"></i>
-                <span>
-                  Location
-                </span>
-              </a>
-              <a href="">
-                <i class="fa fa-phone" aria-hidden="true"></i>
-                <span>
-                  Call +01 1234567890
-                </span>
-              </a>
-              <a href="">
-                <i class="fa fa-envelope" aria-hidden="true"></i>
-                <span>
-                  demo@gmail.com
-                </span>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 footer-col">
-          <div class="footer_detail">
-            <a href="" class="footer-logo">
-              Feane
-            </a>
-            <p>
-              Necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with
-            </p>
-            <div class="footer_social">
-              <a href="">
-                <i class="fa fa-facebook" aria-hidden="true"></i>
-              </a>
-              <a href="">
-                <i class="fa fa-twitter" aria-hidden="true"></i>
-              </a>
-              <a href="">
-                <i class="fa fa-linkedin" aria-hidden="true"></i>
-              </a>
-              <a href="">
-                <i class="fa fa-instagram" aria-hidden="true"></i>
-              </a>
-              <a href="">
-                <i class="fa fa-pinterest" aria-hidden="true"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 footer-col">
-          <h4>
-            Opening Hours
-          </h4>
-          <p>
-            Everyday
-          </p>
-          <p>
-            10.00 Am -10.00 Pm
-          </p>
-        </div>
-      </div>
-      <div class="footer-info">
-        <p>
-          &copy; <span id="displayYear"></span> All Rights Reserved By
-          <a href="https://html.design/">Free Html Templates</a><br><br>
-          &copy; <span id="displayYear"></span> Distributed By
-          <a href="https://themewagon.com/" target="_blank">ThemeWagon</a>
-        </p>
-      </div>
-    </div>
-  </footer>
-  <!-- footer section -->
+<!-- Include jQuery and Isotope JS -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var $grid = $('.filters-content .grid').isotope({
+            itemSelector: '.all',
+            layoutMode: 'fitRows'
+        });
+
+        $('.filters_menu li').click(function () {
+            $('.filters_menu li').removeClass('active');
+            $(this).addClass('active');
+
+            var filterValue = $(this).attr('data-filter');
+            $grid.isotope({ filter: filterValue });
+        });
+    });
+</script>
 @endsection
