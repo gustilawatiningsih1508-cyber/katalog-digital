@@ -13,6 +13,5 @@ Route::get('/book', [PageController::class, 'book'])->name('book');
 Route::get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
 Route::get('/users', [PageController::class, 'users'])->name('users');
 Route::get('/products', [PageController::class, 'products'])->name('products');
+Route::get('/search', [PageController::class, 'search'])->name('search');
 
-// Route untuk menangani form booking
-Route::post('/book', [PageController::class, 'bookStore'])->name('book.store');

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -60,5 +60,30 @@ class PageController extends Controller
     public function products()
     {
         return view('products');
+    }
+
+    /**
+     * Fitur Search Produk
+     */
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+        
+        // Validasi input
+        if (empty($query) || strlen($query) < 2) {
+            return redirect()->back()->with('message', 'Masukkan minimal 2 karakter untuk mencari');
+        }
+    
+        // Search di database - SESUAI KOLOM ASLI
+        $results = \DB::table('produk')
+            ->where('nama_produk', 'LIKE', '%' . $query . '%')
+            ->orWhere('deskripsi', 'LIKE', '%' . $query . '%')
+            ->orWhere('kategori', 'LIKE', '%' . $query . '%')
+            ->get();
+
+        return view('search-results', [
+            'results' => $results,
+            'query' => $query
+        ]);
     }
 }
