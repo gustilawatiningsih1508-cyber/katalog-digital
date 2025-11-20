@@ -6,7 +6,7 @@
 @section('content')
 <div class="hero_area">
     <div class="bg-box">
-        <img src="{{ asset('assets_user/images/hero-bg.jpg') }}" alt="">
+      <img src="{{ asset('assets user/images/hero-bg.jpg') }}" alt="">
     </div>
 
     <!-- header section starts -->
@@ -32,7 +32,7 @@
                             <a class="nav-link" href="{{ route('menu') }}">Menu <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('about') }}">About</a>
+                            <a class="nav-link" href="{{ route('promosi') }}">promosi</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('book') }}">Book Table</a>

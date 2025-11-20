@@ -25,13 +25,13 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav  mx-auto ">
                             <li class="nav-item active">
-                                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="home">Home <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="menu">Menu</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="about">About</a>
+                                <a class="nav-link" href="promosi">promosi</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="book">Book Table</a>
@@ -177,7 +177,7 @@
                                     <span></span>
                                 </h6>
                                 <a href="">
-                                    Details <svg version="" id="" xmlns="http://www.w3.org/2000/svg"
+                                    Kunjungi<svg version="" id="" xmlns="http://www.w3.org/2000/svg"
                                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                         viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;"
                                         xml:space="preserve">
@@ -237,7 +237,7 @@
                                     <span></span>
                                 </h6>
                                 <a href="">
-                                    Details <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                                    Kunjungi <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
                                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                         viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;"
                                         xml:space="preserve">
@@ -304,7 +304,7 @@
                                     <span></span>
                                 </h6>
                                 <a href="">
-                                    Details <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                                    Kunjungi<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
                                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                         viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;"
                                         xml:space="preserve">
@@ -340,7 +340,7 @@
         <div class="container">
             <div class="heading_container heading_center">
                 <h2>
-                    Menu
+                    Bestseller Menu
                 </h2>
             </div>
 

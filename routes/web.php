@@ -6,7 +6,7 @@ use App\Http\Controllers\PageController;
 // Public Routes
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/menu', [PageController::class, 'menu'])->name('menu');
-Route::get('/about', [PageController::class, 'about'])->name('about');
+Route::get('/promosi', [PageController::class, 'promosi'])->name('promosi');
 Route::get('/book', [PageController::class, 'book'])->name('book');
 
 // Dashboard Routes

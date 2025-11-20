@@ -32,7 +32,7 @@
                 <a class="nav-link" href="menu"></a>
               </li>
               <li class="nav-item active">
-                <a class="nav-link" href="{{ route('about') }}">About <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{ route('promosi') }}">promosi <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{ route('book') }}">Book Table</a>

@@ -25,9 +25,9 @@ class PageController extends Controller
     /**
      * Menampilkan halaman about
      */
-    public function about()
+    public function promosi()
     {
-        return view('about');
+        return view('promosi');
     }
 
     /**
