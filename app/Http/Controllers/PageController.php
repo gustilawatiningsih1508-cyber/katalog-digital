@@ -79,6 +79,11 @@ class PageController extends Controller
         return view('admin.sign-up');
     }
 
+    public function promosiAdmin()
+    {
+        return view('admin.promosi-admin');
+    }
+
     /**
      * Fitur Search Produk
      */

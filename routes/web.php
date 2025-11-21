@@ -16,4 +16,5 @@ Route::get('/products', [PageController::class, 'products'])->name('products');
 Route::get('/search', [PageController::class, 'search'])->name('search');
 Route::get('/sign-in', [PageController::class, 'signIn'])->name('signIn');
 Route::get('/sign-up', [PageController::class, 'signUp'])->name('signUp');
+Route::get('/promosi-admin', [PageController::class, 'promosiAdmin'])->name('promosiAdmin');
 
