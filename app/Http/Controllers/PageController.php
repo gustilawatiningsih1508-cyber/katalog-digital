@@ -11,7 +11,7 @@ class PageController extends Controller
      */
     public function home()
     {
-        return view('home');
+        return view('user.home');
     }
 
     /**
@@ -19,7 +19,7 @@ class PageController extends Controller
      */
     public function menu()
     {
-        return view('menu');
+        return view('user.menu');
     }
 
     /**
@@ -27,7 +27,7 @@ class PageController extends Controller
      */
     public function promosi()
     {
-        return view('promosi');
+        return view('user.promosi');
     }
 
     /**
@@ -35,7 +35,7 @@ class PageController extends Controller
      */
     public function Tentangkami()
     {
-        return view('tentangkami');
+        return view('user.tentangkami');
     }
 
     /**
@@ -43,7 +43,7 @@ class PageController extends Controller
      */
     public function dashboard()
     {
-        return view('dashboard');
+        return view('admin.dashboard');
     }
 
     /**
@@ -51,7 +51,7 @@ class PageController extends Controller
      */
     public function users()
     {
-        return view('users');
+        return view('admin.users');
     }
 
     /**
@@ -59,7 +59,7 @@ class PageController extends Controller
      */
     public function products()
     {
-        return view('products');
+        return view('admin.products');
     }
 
     /**
@@ -67,7 +67,7 @@ class PageController extends Controller
      */
     public function signIn()
     {
-        return view('sign-in');
+        return view('admin.sign-in');
     }
 
     
@@ -76,7 +76,7 @@ class PageController extends Controller
      */
     public function signUp()
     {
-        return view('sign-up');
+        return view('admin.sign-up');
     }
 
     /**
