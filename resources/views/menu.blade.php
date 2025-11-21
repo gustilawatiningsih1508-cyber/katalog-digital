@@ -5,15 +5,15 @@
 
 @section('content')
 <div class="hero_area">
-    <div class="bg-box">
-      <img src="{{ asset('assets user/images/hero-bg.jpg') }}" alt="">
-    </div>
+        <div class="bg-box">
+            <img src="{{ asset('assets user/images//hero-bg.jpg"') }}" alt="">
+        </div>
 
     <!-- header section starts -->
     <header class="header_section">
         <div class="container">
             <nav class="navbar navbar-expand-lg custom_nav-container">
-                <a class="navbar-brand" href="{{ route('home') }}">
+                <a class="navbar-brand">
                     <span>LapakGo</span>
                 </a>
 
@@ -35,7 +35,7 @@
                             <a class="nav-link" href="{{ route('promosi') }}">promosi</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('book') }}">Book Table</a>
+                            <a class="nav-link" href="{{ route('tentangkami') }}">Tentang Kami</a>
                         </li>
                     </ul>
                 </div>
@@ -43,6 +43,7 @@
         </div>
     </header>
     <!-- end header section -->
+    
 </div>
 
 <!-- food section -->
@@ -68,7 +69,8 @@
                <div class="col-sm-6 col-lg-4 all minuman">
                     <div class="box">
                         <div class="img-box">
-                            <img src="{{ asset('assets_user/images/f2.png') }}" alt="Milk Tea">
+                            <img src="{{ asset('assets user/images/milo2.jpg') }}" alt="Air Milo">
+                            
                         </div>
                         <div class="detail-box">
                             <h5>Air Milo</h5>
@@ -167,6 +169,21 @@
                             <p>Ayam crispy dengan sambal geprek pedas nikmat.</p>
                             <div class="options">
                                 <h6>Rp14.000</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-lg-4 all makanan-berat">
+                    <div class="box">
+                        <div class="img-box">
+                            <img src="{{ asset('assets_user/images/f5.png') }}" alt="Lele Goreng">
+                        </div>
+                        <div class="detail-box">
+                            <h5>Lele Goreng</h5>
+                            <p>Lele goreng gurih dengan tekstur renyah khas Bengkalis.</p>
+                            <div class="options">
+                                <h6>Rp10.000</h6>
                             </div>
                         </div>
                     </div>

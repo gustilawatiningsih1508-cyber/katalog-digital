@@ -32,10 +32,10 @@
                 <a class="nav-link" href="menu"></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ route('about') }}">About</a>
+                <a class="nav-link" href="{{ route('promosi') }}">promosi</a>
               </li>
               <li class="nav-item active">
-                <a class="nav-link" href="{{ route('book') }}">Book Table <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{ route('tentangkami') }}">Tentang Kami <span class="sr-only">(current)</span></a>
               </li>
             </ul>
             <div class="user_option">

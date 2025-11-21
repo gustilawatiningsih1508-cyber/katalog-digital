@@ -35,7 +35,7 @@
                 <a class="nav-link" href="{{ route('promosi') }}">promosi <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ route('book') }}">Book Table</a>
+                <a class="nav-link" href="{{ route('tentangkami') }}">Tentang Kami</a>
               </li>
             </ul>
             <div class="user_option">

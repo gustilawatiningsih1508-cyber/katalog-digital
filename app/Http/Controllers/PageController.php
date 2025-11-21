@@ -33,9 +33,9 @@ class PageController extends Controller
     /**
      * Menampilkan halaman book table
      */
-    public function book()
+    public function Tentangkami()
     {
-        return view('book');
+        return view('tentangkami');
     }
 
     /**
@@ -60,6 +60,23 @@ class PageController extends Controller
     public function products()
     {
         return view('products');
+    }
+
+    /**
+     * Menampilkan halaman sign-in
+     */
+    public function signIn()
+    {
+        return view('sign-in');
+    }
+
+    
+    /**
+     * Menampilkan halaman sign-up
+     */
+    public function signUp()
+    {
+        return view('sign-up');
     }
 
     /**

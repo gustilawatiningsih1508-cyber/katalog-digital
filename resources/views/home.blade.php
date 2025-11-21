@@ -4,13 +4,13 @@
 
     <div class="hero_area">
         <div class="bg-box">
-            <img src="{{ asset('assets user/images/bc.png') }}" alt="">
+            <img src="{{ asset('assets user/images/coklat.png') }}" alt="">
         </div>
         <!-- header section strats -->
         <header class="header_section">
             <div class="container">
                 <nav class="navbar navbar-expand-lg custom_nav-container ">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand">
                         <span>
                             LapakGo
                         </span>
@@ -25,7 +25,7 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav  mx-auto ">
                             <li class="nav-item active">
-                                <a class="nav-link" href="home">Home <span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="home">Home<span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="menu">Menu</a>
@@ -34,7 +34,7 @@
                                 <a class="nav-link" href="promosi">promosi</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="book">Book Table</a>
+                                <a class="nav-link" href="tentangkami">Tentang kami</a>
                             </li>
                         </ul>
 
