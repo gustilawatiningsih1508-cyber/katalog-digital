@@ -2,13 +2,16 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Admin extends Model
 {
+    use HasFactory;
+
     protected $table = 'admin';
     protected $primaryKey = 'id_admin';
-    public $timestamps = false;
+    public $timestamps = false; // Nonaktifkan timestamps
 
     protected $fillable = [
         'username',
@@ -19,13 +22,7 @@ class Admin extends Model
         'waktu_aktivitas'
     ];
 
-    public function kategoriProduk()
-    {
-        return $this->hasMany(KategoriProduk::class, 'id_admin');
-    }
-
-    public function promosi()
-    {
-        return $this->hasMany(Promosi::class, 'id_admin');
-    }
+    protected $casts = [
+        'waktu_aktivitas' => 'datetime'
+    ];
 }
