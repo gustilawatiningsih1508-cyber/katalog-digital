@@ -1,7 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PromosiController;
 
 // Public Routes
 Route::get('/', [PageController::class, 'home'])->name('home');
@@ -11,12 +14,11 @@ Route::get('/tentangkami', [PageController::class, 'tentangkami'])->name('tentan
 
 // Dashboard Routes
 Route::get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
-Route::get('/users', [PageController::class, 'users'])->name('users');
-Route::get('/products', [PageController::class, 'products'])->name('products');
 Route::get('/search', [PageController::class, 'search'])->name('search');
 Route::get('/sign-in', [PageController::class, 'signIn'])->name('signIn');
 Route::get('/sign-up', [PageController::class, 'signUp'])->name('signUp');
 Route::get('/promosi-admin', [PageController::class, 'promosiAdmin'])->name('promosiAdmin');
+
 
 // Daftar lapak
 Route::get('/lapak/{id}', [PageController::class, 'lapakDetail'])->name('lapak.detail');
@@ -33,5 +35,4 @@ Route::get('/about', function () {
 Route::get('/promosi', function () {
     return view('user.promosi');
 })->name('promosi');
-
 

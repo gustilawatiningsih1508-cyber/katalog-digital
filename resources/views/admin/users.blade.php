@@ -7,20 +7,20 @@
     <meta name="author" content="LapakGo">
     <meta name="generator" content="Hugo 0.143.0">
 
-    <title>Users List Page - LapakGo</title>
+    <title>Admin Management - LapakGo</title>
 
     <link rel="canonical" href="users">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets admin/css/app.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets admin/images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets admin/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets admin/images/favicon-16x16.png">
-    <link rel="icon" type="image/png" href="assets admin/images/favicon.ico">
-    <link rel="manifest" href="assets admin/images/site.webmanifest">
-    <link rel="mask-icon" href="assets admin/images/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="stylesheet" href="{{ asset('assets admin/css/app.css') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets admin/images/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets admin/images/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets admin/images/favicon-16x16.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('assets admin/images/favicon.ico') }}">
+    <link rel="manifest" href="{{ asset('assets admin/images/site.webmanifest') }}">
+    <link rel="mask-icon" href="{{ asset('assets admin/images/safari-pinned-tab.svg') }}" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
 
@@ -29,7 +29,6 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'UA-141734189-6');
     </script>
 
@@ -41,8 +40,7 @@
   </head>
   <body class="bg-gray-50">
       
-      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-THQTXJ7"
-      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-THQTXJ7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       
     <nav class="bg-white border-b border-gray-200 fixed z-30 w-full">
       <div class="px-3 py-3 lg:px-5 lg:pl-3">
@@ -52,8 +50,8 @@
               <svg id="toggleSidebarMobileHamburger" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
               <svg id="toggleSidebarMobileClose" class="w-6 h-6 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
             </button>
-            <a href="index.php" class="text-xl font-bold flex items-center lg:ml-2.5">
-              <img src="assets admin/images/logo.svg" class="h-6 mr-2" alt="LapakGo Logo">
+            <a href="/dashboard" class="text-xl font-bold flex items-center lg:ml-2.5">
+              <img src="{{ asset('assets admin/images/logo.svg') }}" class="h-6 mr-2" alt="LapakGo Logo">
               <span class="self-center whitespace-nowrap">LapakGo</span>
             </a>
             <form action="#" method="GET" class="hidden lg:block lg:pl-32">
@@ -98,37 +96,37 @@
                   </form>
                 </li>
                 <li>
-                  <a href="dashboard" class="text-base text-gray-900 font-normal rounded-lg flex items-center p-2 hover:bg-gray-100 group">
+                  <a href="/dashboard" class="text-base text-gray-900 font-normal rounded-lg flex items-center p-2 hover:bg-gray-100 group">
                     <svg class="w-6 h-6 text-gray-500 group-hover:text-gray-900 transition duration-75" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path><path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path></svg>
                     <span class="ml-3">Dashboard</span>
                   </a>
                 </li>
                 <li>
-                  <a href="users" class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group ">
+                  <a href="/admins" class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group ">
                     <svg class="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
-                    <span class="ml-3 flex-1 whitespace-nowrap">Users</span>
+                    <span class="ml-3 flex-1 whitespace-nowrap">Admin</span>
                   </a>
                 </li>
                 <li>
-                  <a href="products" class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group ">
+                  <a href="/products" class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group ">
                     <svg class="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path></svg>
                     <span class="ml-3 flex-1 whitespace-nowrap">Products</span>
                   </a>
                 </li>
                 <li>
-                  <a href="promosi-admin" class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group ">
+                  <a href="/promosi-admin" class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group ">
                     <svg class="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path></svg>
                     <span class="ml-3 flex-1 whitespace-nowrap">Promosi</span>
                   </a>
                 </li>
                 <li>
-                  <a href="sign-in" class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group ">
+                  <a href="/sign-in" class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group ">
                     <svg class="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd"></path></svg>
                     <span class="ml-3 flex-1 whitespace-nowrap">Sign-In</span>
                   </a>
                 </li>
                 <li>
-                  <a href="sign-up" class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group ">
+                  <a href="/sign-up" class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group ">
                     <svg class="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm-1 9v-1h5v2H5a1 1 0 01-1-1zm7 1h4a1 1 0 001-1v-1h-5v2zm0-4h5V8h-5v2zM9 8H4v2h5V8z" clip-rule="evenodd"></path></svg>
                     <span class="ml-3 flex-1 whitespace-nowrap">Sign-Up</span>
                   </a>
@@ -163,7 +161,7 @@
                     <li>
                       <div class="flex items-center">
                         <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
-                        <a href="#" class="text-gray-700 hover:text-gray-900 ml-1 md:ml-2 text-sm font-medium">Users</a>
+                        <a href="#" class="text-gray-700 hover:text-gray-900 ml-1 md:ml-2 text-sm font-medium">Admin</a>
                       </div>
                     </li>
                     <li>
@@ -174,14 +172,14 @@
                     </li>
                   </ol>
                 </nav>
-                <h1 class="text-xl sm:text-2xl font-semibold text-gray-900">All users</h1>
+                <h1 class="text-xl sm:text-2xl font-semibold text-gray-900">All Admins</h1>
               </div>
               <div class="sm:flex">
                 <div class="hidden sm:flex items-center sm:divide-x sm:divide-gray-100 mb-3 sm:mb-0">
                   <form class="lg:pr-3" action="#" method="GET">
                     <label for="users-search" class="sr-only">Search</label>
                     <div class="mt-1 relative lg:w-64 xl:w-96">
-                      <input type="text" name="email" id="users-search" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Search for users">
+                      <input type="text" name="email" id="users-search" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Search for admins">
                     </div>
                   </form>
                   <div class="flex space-x-1 pl-0 sm:pl-2 mt-3 sm:mt-0">
@@ -200,18 +198,38 @@
                   </div>
                 </div>
                 <div class="flex items-center space-x-2 sm:space-x-3 ml-auto">
-                  <button type="button" data-modal-toggle="add-user-modal" class="w-1/2 text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium inline-flex items-center justify-center rounded-lg text-sm px-3 py-2 text-center sm:w-auto">
+                  <button type="button" data-modal-toggle="add-admin-modal" class="w-1/2 text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium inline-flex items-center justify-center rounded-lg text-sm px-3 py-2 text-center sm:w-auto">
                     <svg class="-ml-1 mr-2 h-6 w-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
-                    Add user
+                    Add Admin
                   </button>
-                  <a href="#" class="w-1/2 text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-cyan-200 font-medium inline-flex items-center justify-center rounded-lg text-sm px-3 py-2 text-center sm:w-auto">
-                    <svg class="-ml-1 mr-2 h-6 w-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v3.586l-1.293-1.293a1 1 0 10-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 11.586V8z" clip-rule="evenodd"></path></svg>
-                    Export
-                  </a>
                 </div>
               </div>
             </div>
           </div>
+
+          <!-- NOTIFIKASI -->
+          @if(session('success'))
+          <div class="p-4 mb-4 text-sm text-green-800 bg-green-50 rounded-lg">
+            {{ session('success') }}
+          </div>
+          @endif
+
+          @if(session('error'))
+          <div class="p-4 mb-4 text-sm text-red-800 bg-red-50 rounded-lg">
+            {{ session('error') }}
+          </div>
+          @endif
+
+          @if($errors->any())
+          <div class="p-4 mb-4 text-sm text-red-800 bg-red-50 rounded-lg">
+            <ul>
+              @foreach($errors->all() as $error)
+              <li>{{ $error }}</li>
+              @endforeach
+            </ul>
+          </div>
+          @endif
+
           <div class="flex flex-col">
             <div class="overflow-x-auto">
               <div class="align-middle inline-block min-w-full">
@@ -220,89 +238,46 @@
                     <thead class="bg-gray-100">
                       <tr>
                         <th scope="col" class="p-4">
-                          <div class="flex items-center">
-                            <input id="checkbox-all" aria-describedby="checkbox-1" type="checkbox" class="bg-gray-50 border-gray-300 focus:ring-3 focus:ring-cyan-200 h-4 w-4 rounded">
-                            <label for="checkbox-all" class="sr-only">checkbox</label>
-                          </div>
                         </th>
-                        <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase">Name</th>
-                        <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase">Position</th>
-                        <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase">Country</th>
-                        <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
-                        <th scope="col" class="p-4"></th>
+                        <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase">ID Admin</th>
+                        <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase">Username</th>
+                        <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase">Email</th>
+                        <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase">Hak Akses</th>
+                        <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase">Waktu Aktivitas</th>
+                        <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase">Aksi</th>
                       </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
-                      <!-- User rows with local images -->
-                      <tr class="hover:bg-gray-100">
-                        <td class="p-4 w-4">
+                      @foreach($admins as $admin)
+                      <tr>
+                        <td class="p-4">
                           <div class="flex items-center">
-                            <input id="checkbox-1" aria-describedby="checkbox-1" type="checkbox" class="bg-gray-50 border-gray-300 focus:ring-3 focus:ring-cyan-200 h-4 w-4 rounded">
-                            <label for="checkbox-1" class="sr-only">checkbox</label>
+                            <input type="checkbox" class="bg-gray-50 border-gray-300 focus:ring-3 focus:ring-cyan-200 h-4 w-4 rounded">
                           </div>
                         </td>
-                        <td class="p-4 flex items-center whitespace-nowrap space-x-6 mr-12 lg:mr-0">
-                          <img class="h-10 w-10 rounded-full" src="assets admin/images/users/neil-sims.png" alt="Neil Sims avatar">
-                          <div class="text-sm font-normal text-gray-500">
-                            <div class="text-base font-semibold text-gray-900">Neil Sims</div>
-                            <div class="text-sm font-normal text-gray-500">neil.sims@lapakgo.com</div>
-                          </div>
+                        <td class="p-4 text-sm font-medium text-gray-900">
+                          {{ $admin->id_admin }}
                         </td>
-                        <td class="p-4 whitespace-nowrap text-base font-medium text-gray-900">Front-end developer</td>
-                        <td class="p-4 whitespace-nowrap text-base font-medium text-gray-900">United States</td>
-                        <td class="p-4 whitespace-nowrap text-base font-normal text-gray-900">
-                          <div class="flex items-center">
-                            <div class="h-2.5 w-2.5 rounded-full bg-green-400 mr-2"></div> Active
-                          </div>
+                        <td class="p-4 text-sm text-gray-900">
+                          {{ $admin->username }}
                         </td>
-                        <td class="p-4 whitespace-nowrap space-x-2">
-                          <button type="button" data-modal-toggle="user-modal" class="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center">
-                            <svg class="mr-2 h-5 w-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path><path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd"></path></svg>
-                            Edit user
-                          </button>
-                          <button type="button" data-modal-toggle="delete-user-modal" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center">
-                            <svg class="mr-2 h-5 w-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
-                            Delete user
-                          </button>
+                        <td class="p-4 text-sm text-gray-900">
+                          {{ $admin->email }}
+                        </td>
+                        <td class="p-4 text-sm text-gray-900">
+                          <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">
+                            {{ $admin->hak_akses == 1 ? 'Super Admin' : 'Penjual' }}
+                          </span>
+                        </td>
+                        <td class="p-4 text-sm text-gray-900">
+                          {{ $admin->waktu_aktivitas->format('d M Y H:i') }}
+                        </td>
+                        <td class="p-4 text-sm font-medium">
+                          <button type="button" data-modal-toggle="edit-admin-modal-{{ $admin->id_admin }}" class="text-cyan-600 hover:text-cyan-900 mr-3">Edit</button>
+                          <button type="button" data-modal-toggle="delete-admin-modal-{{ $admin->id_admin }}" class="text-red-600 hover:text-red-900">Hapus</button>
                         </td>
                       </tr>
-                      
-                      <!-- Other user rows with local images -->
-                      <tr class="hover:bg-gray-100">
-                        <td class="p-4 w-4">
-                          <div class="flex items-center">
-                            <input id="checkbox-2" aria-describedby="checkbox-1" type="checkbox" class="bg-gray-50 border-gray-300 focus:ring-3 focus:ring-cyan-200 h-4 w-4 rounded">
-                            <label for="checkbox-2" class="sr-only">checkbox</label>
-                          </div>
-                        </td>
-                        <td class="p-4 flex items-center whitespace-nowrap space-x-6 mr-12 lg:mr-0">
-                          <img class="h-10 w-10 rounded-full" src="assets admin/images/users/roberta-casas.png" alt="Roberta Casas avatar">
-                          <div class="text-sm font-normal text-gray-500">
-                            <div class="text-base font-semibold text-gray-900">Roberta Casas</div>
-                            <div class="text-sm font-normal text-gray-500">roberta.casas@lapakgo.com</div>
-                          </div>
-                        </td>
-                        <td class="p-4 whitespace-nowrap text-base font-medium text-gray-900">Designer</td>
-                        <td class="p-4 whitespace-nowrap text-base font-medium text-gray-900">Spain</td>
-                        <td class="p-4 whitespace-nowrap text-base font-normal text-gray-900">
-                          <div class="flex items-center">
-                            <div class="h-2.5 w-2.5 rounded-full bg-green-400 mr-2"></div> Active
-                          </div>
-                        </td>
-                        <td class="p-4 whitespace-nowrap space-x-2">
-                          <button type="button" data-modal-toggle="user-modal" class="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center">
-                            <svg class="mr-2 h-5 w-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path><path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd"></path></svg>
-                            Edit user
-                          </button>
-                          <button type="button" data-modal-toggle="delete-user-modal" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-3 py-2 text-center">
-                            <svg class="mr-2 h-5 w-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
-                            Delete user
-                          </button>
-                        </td>
-                      </tr>
-                      
-                      <!-- Continue with other user rows, updating image paths and emails -->
-                      
+                      @endforeach
                     </tbody>
                   </table>
                 </div>
@@ -318,7 +293,7 @@
               <a href="#" class="text-gray-500 hover:text-gray-900 cursor-pointer p-1 hover:bg-gray-100 rounded inline-flex justify-center mr-2">
                 <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
               </a>
-              <span class="text-sm font-normal text-gray-500">Showing <span class="text-gray-900 font-semibold">1-20</span> of <span class="text-gray-900 font-semibold">2290</span></span>
+              <span class="text-sm font-normal text-gray-500">Showing <span class="text-gray-900 font-semibold">1-{{ $admins->count() }}</span> of <span class="text-gray-900 font-semibold">{{ $admins->count() }}</span></span>
             </div>
             <div class="flex items-center space-x-3">
               <a href="#" class="flex-1 text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium inline-flex items-center justify-center rounded-lg text-sm px-3 py-2 text-center">
@@ -332,138 +307,128 @@
             </div>
           </div>
 
-          <!-- Edit User Modal -->
-          <div class="hidden overflow-x-hidden overflow-y-auto fixed top-4 left-0 right-0 md:inset-0 z-50 justify-center items-center h-modal sm:h-full" id="user-modal">
+          <!-- MODAL EDIT UNTUK SETIAP ADMIN -->
+          @foreach($admins as $admin)
+          <div class="hidden overflow-x-hidden overflow-y-auto fixed top-4 left-0 right-0 md:inset-0 z-50 justify-center items-center h-modal sm:h-full" id="edit-admin-modal-{{ $admin->id_admin }}">
             <div class="relative w-full max-w-2xl px-4 h-full md:h-auto">
-              <!-- Modal content -->
               <div class="bg-white rounded-lg shadow relative">
-                <!-- Modal header -->
                 <div class="flex items-start justify-between p-5 border-b rounded-t">
-                  <h3 class="text-xl font-semibold">Edit user</h3>
-                  <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" data-modal-toggle="user-modal">
+                  <h3 class="text-xl font-semibold">Edit Admin</h3>
+                  <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" data-modal-toggle="edit-admin-modal-{{ $admin->id_admin }}">
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>  
                   </button>
                 </div>
-                <!-- Modal body -->
-                <div class="p-6 space-y-6">
-                  <form action="#">
+                <form action="{{ route('admins.update', $admin->id_admin) }}" method="POST">
+                  @csrf
+                  @method('PUT')
+                  <div class="p-6 space-y-6">
                     <div class="grid grid-cols-6 gap-6">
                       <div class="col-span-6 sm:col-span-3">
-                        <label for="first-name" class="text-sm font-medium text-gray-900 block mb-2">First Name</label>
-                        <input type="text" name="first-name" id="first-name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Bonnie" required>
+                        <label for="edit-username-{{ $admin->id_admin }}" class="text-sm font-medium text-gray-900 block mb-2">Username</label>
+                        <input type="text" name="username" id="edit-username-{{ $admin->id_admin }}" value="{{ $admin->username }}" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" required>
                       </div>
                       <div class="col-span-6 sm:col-span-3">
-                        <label for="last-name" class="text-sm font-medium text-gray-900 block mb-2">Last Name</label>
-                        <input type="text" name="last-name" id="last-name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Green" required>
+                        <label for="edit-email-{{ $admin->id_admin }}" class="text-sm font-medium text-gray-900 block mb-2">Email</label>
+                        <input type="email" name="email" id="edit-email-{{ $admin->id_admin }}" value="{{ $admin->email }}" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" required>
                       </div>
                       <div class="col-span-6 sm:col-span-3">
-                        <label for="email" class="text-sm font-medium text-gray-900 block mb-2">Email</label>
-                        <input type="email" name="email" id="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="example@company.com" required>
+                        <label for="edit-password-{{ $admin->id_admin }}" class="text-sm font-medium text-gray-900 block mb-2">Password (Kosongkan jika tidak diubah)</label>
+                        <input type="password" name="password" id="edit-password-{{ $admin->id_admin }}" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="••••••••">
                       </div>
                       <div class="col-span-6 sm:col-span-3">
-                        <label for="phone-number" class="text-sm font-medium text-gray-900 block mb-2">Phone Number</label>
-                        <input type="number" name="phone-number" id="phone-number" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="e.g. +(12)3456 789" required>
+                        <label for="edit-hak-akses-{{ $admin->id_admin }}" class="text-sm font-medium text-gray-900 block mb-2">Hak Akses</label>
+                        <select name="hak_akses" id="edit-hak-akses-{{ $admin->id_admin }}" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" required>
+                          <option value="1" {{ $admin->hak_akses == 1 ? 'selected' : '' }}>Super Admin</option>
+                          <option value="2" {{ $admin->hak_akses == 2 ? 'selected' : '' }}>Penjual</option>
+                        </select>
                       </div>
-                      <div class="col-span-6 sm:col-span-3">
-                        <label for="department" class="text-sm font-medium text-gray-900 block mb-2">Department</label>
-                        <input type="text" name="department" id="department" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Development" required>
+                      <div class="col-span-6">
+                        <label for="edit-laporan-aktifitas-{{ $admin->id_admin }}" class="text-sm font-medium text-gray-900 block mb-2">Laporan Aktifitas</label>
+                        <textarea name="laporan_aktifitas" id="edit-laporan-aktifitas-{{ $admin->id_admin }}" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5">{{ $admin->laporan_aktifitas }}</textarea>
                       </div>
-                      <div class="col-span-6 sm:col-span-3">
-                        <label for="company" class="text-sm font-medium text-gray-900 block mb-2">Company</label>
-                        <input type="number" name="company" id="company" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="123456" required>
-                      </div>
-                      <div class="col-span-6 sm:col-span-3">
-                        <label for="current-password" class="text-sm font-medium text-gray-900 block mb-2">Current Password</label>
-                        <input type="password" name="current-password" id="current-password" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="••••••••" required>
-                      </div>
-                      <div class="col-span-6 sm:col-span-3">
-                        <label for="new-password" class="text-sm font-medium text-gray-900 block mb-2">New Password</label>
-                        <input type="password" name="new-password" id="new-password" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="••••••••" required>
-                      </div>
-                    </div> 
-                  </form>
-                </div>
-                <!-- Modal footer -->
-                <div class="items-center p-6 border-t border-gray-200 rounded-b">
-                  <button class="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="submit">Save all</button>
-                </div>
+                    </div>
+                  </div>
+                  <div class="p-6 border-t border-gray-200 rounded-b">
+                    <button type="submit" class="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Simpan Perubahan</button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
+          @endforeach
 
-          <!-- Add User Modal -->
-          <div class="hidden overflow-x-hidden overflow-y-auto fixed top-4 left-0 right-0 md:inset-0 z-50 justify-center items-center h-modal sm:h-full" id="add-user-modal">
-            <div class="relative w-full max-w-2xl px-4 h-full md:h-auto">
-              <!-- Modal content -->
-              <div class="bg-white rounded-lg shadow relative">
-                <!-- Modal header -->
-                <div class="flex items-start justify-between p-5 border-b rounded-t">
-                  <h3 class="text-xl font-semibold">Add new user</h3>
-                  <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" data-modal-toggle="add-user-modal">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>  
-                  </button>
-                </div>
-                <!-- Modal body -->
-                <div class="p-6 space-y-6">
-                  <form action="#">
-                    <div class="grid grid-cols-6 gap-6">
-                      <div class="col-span-6 sm:col-span-3">
-                        <label for="first-name" class="text-sm font-medium text-gray-900 block mb-2">First Name</label>
-                        <input type="text" name="first-name" id="first-name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Bonnie" required>
-                      </div>
-                      <div class="col-span-6 sm:col-span-3">
-                        <label for="last-name" class="text-sm font-medium text-gray-900 block mb-2">Last Name</label>
-                        <input type="text" name="last-name" id="last-name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Green" required>
-                      </div>
-                      <div class="col-span-6 sm:col-span-3">
-                        <label for="email" class="text-sm font-medium text-gray-900 block mb-2">Email</label>
-                        <input type="email" name="email" id="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="example@company.com" required>
-                      </div>
-                      <div class="col-span-6 sm:col-span-3">
-                        <label for="phone-number" class="text-sm font-medium text-gray-900 block mb-2">Phone Number</label>
-                        <input type="number" name="phone-number" id="phone-number" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="e.g. +(12)3456 789" required>
-                      </div>
-                      <div class="col-span-6 sm:col-span-3">
-                        <label for="department" class="text-sm font-medium text-gray-900 block mb-2">Department</label>
-                        <input type="text" name="department" id="department" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Development" required>
-                      </div>
-                      <div class="col-span-6 sm:col-span-3">
-                        <label for="company" class="text-sm font-medium text-gray-900 block mb-2">Company</label>
-                        <input type="number" name="company" id="company" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="123456" required>
-                      </div>
-                    </div> 
-                  </form>
-                </div>
-                <!-- Modal footer -->
-                <div class="items-center p-6 border-t border-gray-200 rounded-b">
-                  <button class="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="submit">Add user</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Delete User Modal -->
-          <div class="hidden overflow-x-hidden overflow-y-auto fixed top-4 left-0 right-0 md:inset-0 z-50 justify-center items-center h-modal sm:h-full" id="delete-user-modal">
+          <!-- MODAL HAPUS UNTUK SETIAP ADMIN -->
+          @foreach($admins as $admin)
+          <div class="hidden overflow-x-hidden overflow-y-auto fixed top-4 left-0 right-0 md:inset-0 z-50 justify-center items-center h-modal sm:h-full" id="delete-admin-modal-{{ $admin->id_admin }}">
             <div class="relative w-full max-w-md px-4 h-full md:h-auto">
-              <!-- Modal content -->
               <div class="bg-white rounded-lg shadow relative">
-                <!-- Modal header -->
                 <div class="flex justify-end p-2">
-                  <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" data-modal-toggle="delete-user-modal">
+                  <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" data-modal-toggle="delete-admin-modal-{{ $admin->id_admin }}">
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>  
                   </button>
                 </div>
-                <!-- Modal body -->
-                <div class="p-6 pt-0 text-center">
-                  <svg class="w-20 h-20 text-red-600 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                  <h3 class="text-xl font-normal text-gray-500 mt-5 mb-6">Are you sure you want to delete this user?</h3>
-                  <a href="#" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-base inline-flex items-center px-3 py-2.5 text-center mr-2">
-                    Yes, I'm sure
-                  </a>
-                  <a href="#" class="text-gray-900 bg-white hover:bg-gray-100 focus:ring-4 focus:ring-cyan-200 border border-gray-200 font-medium inline-flex items-center rounded-lg text-base px-3 py-2.5 text-center" data-modal-toggle="delete-user-modal">
-                    No, cancel
-                  </a>
+                <form action="{{ route('admins.destroy', $admin->id_admin) }}" method="POST">
+                  @csrf
+                  @method('DELETE')
+                  <div class="p-6 pt-0 text-center">
+                    <svg class="w-20 h-20 text-red-600 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <h3 class="text-xl font-normal text-gray-500 mt-5 mb-6">Are you sure you want to delete this admin?</h3>
+                    <button type="submit" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-base inline-flex items-center px-3 py-2.5 text-center mr-2">
+                      Yes, I'm sure
+                    </button>
+                    <button type="button" class="text-gray-900 bg-white hover:bg-gray-100 focus:ring-4 focus:ring-cyan-200 border border-gray-200 font-medium inline-flex items-center rounded-lg text-base px-3 py-2.5 text-center" data-modal-toggle="delete-admin-modal-{{ $admin->id_admin }}">
+                      No, cancel
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          @endforeach
+
+          <!-- Add Admin Modal -->
+          <div class="hidden overflow-x-hidden overflow-y-auto fixed top-4 left-0 right-0 md:inset-0 z-50 justify-center items-center h-modal sm:h-full" id="add-admin-modal">
+            <div class="relative w-full max-w-2xl px-4 h-full md:h-auto">
+              <div class="bg-white rounded-lg shadow relative">
+                <div class="flex items-start justify-between p-5 border-b rounded-t">
+                  <h3 class="text-xl font-semibold">Add new admin</h3>
+                  <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" data-modal-toggle="add-admin-modal">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>  
+                  </button>
                 </div>
+                <form action="{{ route('admins.store') }}" method="POST">
+                  @csrf
+                  <div class="p-6 space-y-6">
+                    <div class="grid grid-cols-6 gap-6">
+                      <div class="col-span-6 sm:col-span-3">
+                        <label for="username" class="text-sm font-medium text-gray-900 block mb-2">Username</label>
+                        <input type="text" name="username" id="username" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" required>
+                      </div>
+                      <div class="col-span-6 sm:col-span-3">
+                        <label for="email" class="text-sm font-medium text-gray-900 block mb-2">Email</label>
+                        <input type="email" name="email" id="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" required>
+                      </div>
+                      <div class="col-span-6 sm:col-span-3">
+                        <label for="password" class="text-sm font-medium text-gray-900 block mb-2">Password</label>
+                        <input type="password" name="password" id="password" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" required>
+                      </div>
+                      <div class="col-span-6 sm:col-span-3">
+                        <label for="hak_akses" class="text-sm font-medium text-gray-900 block mb-2">Hak Akses</label>
+                        <select name="hak_akses" id="hak_akses" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" required>
+                          <option value="1">Super Admin</option>
+                          <option value="2">Penjual</option>
+                        </select>
+                      </div>
+                      <div class="col-span-6">
+                        <label for="laporan_aktifitas" class="text-sm font-medium text-gray-900 block mb-2">Laporan Aktifitas</label>
+                        <textarea name="laporan_aktifitas" id="laporan_aktifitas" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="p-6 border-t border-gray-200 rounded-b">
+                    <button type="submit" class="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Add Admin</button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
@@ -471,6 +436,6 @@
       </div>
     </div>
 
-    <script src="assets admin/js/app.bundle.js"></script>
+    <script src="{{ asset('assets admin/js/app.bundle.js') }}"></script>
   </body>
 </html>
