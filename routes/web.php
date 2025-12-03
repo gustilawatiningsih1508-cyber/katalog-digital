@@ -18,3 +18,20 @@ Route::get('/sign-in', [PageController::class, 'signIn'])->name('signIn');
 Route::get('/sign-up', [PageController::class, 'signUp'])->name('signUp');
 Route::get('/promosi-admin', [PageController::class, 'promosiAdmin'])->name('promosiAdmin');
 
+// Daftar lapak
+Route::get('/lapak/{id}', [PageController::class, 'lapakDetail'])->name('lapak.detail');
+
+// Menu lapak
+Route::get('/lapak/{id}/menu', [PageController::class, 'menuLapak'])->name('lapak.menu');
+
+Route::get('/lapak/{id}', [PageController::class, 'lapakDetail'])->name('lapak.show');
+
+Route::get('/about', function () {
+    return view('user.about');
+})->name('about');
+
+Route::get('/promosi', function () {
+    return view('user.promosi');
+})->name('promosi');
+
+

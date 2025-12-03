@@ -11,6 +11,9 @@
 
   <title>LapakGo</title>
 
+<link rel="stylesheet" 
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;600;700&display=swap">
+
   <link rel="stylesheet" href="{{ asset('assets user/css/bootstrap.css') }}">
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" />
@@ -43,4 +46,4 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
   </script>
 </body>
-</html>
+</html> app.blade
