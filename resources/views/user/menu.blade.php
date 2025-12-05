@@ -69,29 +69,48 @@
                     <div class="col-sm-6 col-lg-4 all minuman">
                         <div class="box">
                             <div class="img-box">
-                                <img src="{{ asset('assets user/images/es.jpeg') }}" alt="Air Milo">
-
+                                <img src="{{ asset('assets user/images/es.jpeg') }}" alt="Air Milo" width="500"
+                                    height="300">
                             </div>
                             <div class="detail-box">
                                 <h5>Air Milo</h5>
                                 <p>Minuman coklat berenergi yang menyengarkan.</p>
                                 <div class="options">
-                                    <h6>Rp10.000</h6>
+                                    <h6 class="price">Rp10.000</h6>
+                                    <h6 class="store-info">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" viewBox="0 0 16 16" style="vertical-align: text-bottom;">
+                                            <path
+                                                d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z" />
+                                        </svg>
+                                        Miloku
+                                    </h6>
                                 </div>
                             </div>
                         </div>
                     </div>
 
+
+
+
                     <div class="col-sm-6 col-lg-4 all minuman">
                         <div class="box">
                             <div class="img-box">
-                                <img src="{{ asset('assets user/images/cincau.jpg') }}" alt="Milk Tea">
+                                <img src="{{ asset('assets user/images/cincau.jpg') }}" alt="Milk Tea" width="500"
+                                    height="300">
                             </div>
                             <div class="detail-box">
                                 <h5>Milk Tea Mutiara Cincau</h5>
                                 <p>Milk tea creamy dengan perpaduan mutiara dan cincau yang menyegarkan.</p>
                                 <div class="options">
                                     <h6>Rp15.000</h6>
+                                    <h6 class="store-info">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" viewBox="0 0 16 16" style="vertical-align: text-bottom;">
+                                            <path
+                                                d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z" />
+                                        </svg>
+                                        Miloku
                                 </div>
                             </div>
                         </div>
@@ -107,21 +126,37 @@
                                 <p>Perpaduan kopi kuat dan coklat Milo yang nikmat</p>
                                 <div class="options">
                                     <h6>Rp17.000</h6>
+                                    <h6 class="store-info">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" viewBox="0 0 16 16" style="vertical-align: text-bottom;">
+                                            <path
+                                                d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z" />
+                                        </svg>
+                                        Miloku
                                 </div>
                             </div>
                         </div>
                     </div>
 
+
+                    
                     <div class="col-sm-6 col-lg-4 all minuman">
                         <div class="box">
                             <div class="img-box">
-                                <img src="{{ asset('assets user/images/kopi2.jpg') }}" alt="Kopi Milo">
+                                <img src="{{ asset('assets user/images/f1.png') }}" alt="Lychee Tea">
                             </div>
                             <div class="detail-box">
-                                <h5>Kopi Milo</h5>
-                                <p>Perpaduan kopi kuat dan coklat Milo yang nikmat</p>
+                                <h5>Lychee Tea</h5>
+                                <p>Rasanya yang lembut,dingin dan menyengarkan</p>
                                 <div class="options">
-                                    <h6>Rp17.000</h6>
+                                    <h6>Rp8.000</h6>
+                                     <h6 class="store-info">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" viewBox="0 0 16 16" style="vertical-align: text-bottom;">
+                                            <path
+                                                d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z" />
+                                        </svg>
+                                        Miloku
                                 </div>
                             </div>
                         </div>
@@ -173,7 +208,7 @@
                         </div>
                     </div>
 
-                      <div class="col-sm-6 col-lg-4 all jajanan">
+                    <div class="col-sm-6 col-lg-4 all jajanan">
                         <div class="box">
                             <div class="img-box">
                                 <img src="{{ asset('assets user/images/Pisang.jpg') }}" alt="Pisang Coklat">
@@ -188,7 +223,7 @@
                         </div>
                     </div>
 
-                    
+
 
                     <div class="col-sm-6 col-lg-4 all jajanan">
                         <div class="box">
@@ -239,7 +274,7 @@
                     <div class="col-sm-6 col-lg-4 all makanan-berat">
                         <div class="box">
                             <div class="img-box">
-                                <img src="{{ asset('assets_user/images/f5.png') }}" alt="Lele Goreng">
+                                <img src="{{ asset('assets user/images/lele.jpg') }}" alt="Lele Goreng">
                             </div>
                             <div class="detail-box">
                                 <h5>Lele Goreng</h5>
@@ -254,10 +289,10 @@
                     <div class="col-sm-6 col-lg-4 all makanan-berat">
                         <div class="box">
                             <div class="img-box">
-                                <img src="{{ asset('assets_user/images/f5.png') }}" alt="Lele Goreng">
+                                <img src="{{ asset('assets user/images/telor.jpg') }}" alt="">
                             </div>
                             <div class="detail-box">
-                                <h5>Ayam gulai</h5>
+                                <h5>Telor balado</h5>
                                 <p>Lele goreng gurih dengan tekstur renyah khas Bengkalis.</p>
                                 <div class="options">
                                     <h6>Rp10.000</h6>
@@ -266,10 +301,10 @@
                         </div>
                     </div>
 
-                     <div class="col-sm-6 col-lg-4 all makanan-berat">
+                    <div class="col-sm-6 col-lg-4 all makanan-berat">
                         <div class="box">
                             <div class="img-box">
-                                <img src="{{ asset('assets_user/images/f5.png') }}" alt="Lele Goreng">
+                                <img src="{{ asset('assets user/images/ayamgulai.jpg') }}" alt="">
                             </div>
                             <div class="detail-box">
                                 <h5>Ayam gulai</h5>
@@ -284,7 +319,7 @@
                     <div class="col-sm-6 col-lg-4 all makanan-berat">
                         <div class="box">
                             <div class="img-box">
-                                <img src="{{ asset('assets_user/images/f9.png') }}" alt="Sayur Daun Singkong">
+                                <img src="{{ asset('assets user/images/sayur.jpg') }}" alt="Sayur Daun Singkong">
                             </div>
                             <div class="detail-box">
                                 <h5>Sayur Daun Singkong</h5>
@@ -296,37 +331,34 @@
                         </div>
                     </div>
 
+
                 </div>
             </div>
 
-            
 
 
-            <div class="btn-box">
-                <a href="#">View More</a>
-            </div>
-        </div>
-    </section>
 
-    <!-- Include jQuery and Isotope JS -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            var $grid = $('.filters-content .grid').isotope({
-                itemSelector: '.all',
-                layoutMode: 'fitRows'
-            });
 
-            $('.filters_menu li').click(function() {
-                $('.filters_menu li').removeClass('active');
-                $(this).addClass('active');
 
-                var filterValue = $(this).attr('data-filter');
-                $grid.isotope({
-                    filter: filterValue
+            <!-- Include jQuery and Isotope JS -->
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+            <script>
+                $(document).ready(function() {
+                    var $grid = $('.filters-content .grid').isotope({
+                        itemSelector: '.all',
+                        layoutMode: 'fitRows'
+                    });
+
+                    $('.filters_menu li').click(function() {
+                        $('.filters_menu li').removeClass('active');
+                        $(this).addClass('active');
+
+                        var filterValue = $(this).attr('data-filter');
+                        $grid.isotope({
+                            filter: filterValue
+                        });
+                    });
                 });
-            });
-        });
-    </script>
-@endsection
+            </script>
+        @endsection

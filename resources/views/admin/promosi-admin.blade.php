@@ -16,8 +16,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets admin/css/app.css') }}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets admin/images/apple-touch-icon.png') }}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets admin/images/favicon-32x32.png') }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets admin/images/favicon-16x16.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets admin/images/favicon.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets admin/images/favicon.png') }}">
     <link rel="icon" type="image/png" href="{{ asset('assets admin/images/favicon.ico') }}">
     <link rel="manifest" href="{{ asset('assets admin/images/site.webmanifest') }}">
     <link rel="mask-icon" href="{{ asset('assets admin/images/safari-pinned-tab.svg') }}" color="#5bbad5">
@@ -51,7 +51,7 @@
               <svg id="toggleSidebarMobileClose" class="w-6 h-6 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
             </button>
             <a href="/dashboard" class="text-xl font-bold flex items-center lg:ml-2.5">
-              <img src="{{ asset('assets admin/images/logo.svg') }}" class="h-6 mr-2" alt="LapakGo Logo">
+              <img src="{{ asset('assets admin/images/favicon.svg') }}" class="h-6 mr-2" alt="LapakGo Logo">
               <span class="self-center whitespace-nowrap">LapakGo</span>
             </a>
             <form action="#" method="GET" class="hidden lg:block lg:pl-32">
@@ -193,7 +193,7 @@
                       <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
                     </a>
                     <a href="#" class="text-gray-500 hover:text-gray-900 cursor-pointer p-1 hover:bg-gray-100 rounded inline-flex justify-center">
-                      <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z"></path></svg>
+                      <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 a2 2 0 010 4zM10 18a2 2 0 110-4 a2 2 0 010 4z"></path></svg>
                     </a>
                   </div>
                   <button type="button" data-modal-toggle="add-promosi-modal" class="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium inline-flex items-center rounded-lg text-sm px-3 py-2 text-center sm:ml-auto">
@@ -417,26 +417,33 @@
                       <div class="col-span-6 sm:col-span-3">
                         <label for="id_pelaku_usaha" class="text-sm font-medium text-gray-900 block mb-2">Pelaku Usaha</label>
                         <select name="id_pelaku_usaha" id="id_pelaku_usaha" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" required>
-
+                          <!-- PERBAIKAN: Hapus option hardcoded dengan value kosong -->
+                          <option value="">Warung mangan wong limo putri</option>
+                          <option value="">miloku</option>
+                          <option value="">ngemil yok</option>
                           @foreach($pelakuUsaha as $usaha)
-                          <option value="{{ $usaha->id_pelaku_usaha }}">{{ $usaha->nama_usaha }}</option>
+                          <option value="{{ $usaha->id_pelaku_usaha }}" {{ old('id_pelaku_usaha') == $usaha->id_pelaku_usaha ? 'selected' : '' }}>
+                            {{ $usaha->nama_usaha }}
+                          </option>
                           @endforeach
                         </select>
                       </div>
                       <div class="col-span-6 sm:col-span-3">
                         <label for="judul_promosi" class="text-sm font-medium text-gray-900 block mb-2">Judul Promosi</label>
-                        <input type="text" name="judul_promosi" id="judul_promosi" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" required>
+                        <input type="text" name="judul_promosi" id="judul_promosi" value="{{ old('judul_promosi') }}" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" required>
                       </div>
                       <div class="col-span-6">
                         <label for="deskripsi_promosi" class="text-sm font-medium text-gray-900 block mb-2">Deskripsi Promosi</label>
-                        <textarea name="deskripsi_promosi" id="deskripsi_promosi" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" rows="4" required></textarea>
+                        <textarea name="deskripsi_promosi" id="deskripsi_promosi" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" rows="4" required>{{ old('deskripsi_promosi') }}</textarea>
                       </div>
                       <div class="col-span-6 sm:col-span-3">
                         <label for="id_admin" class="text-sm font-medium text-gray-900 block mb-2">Admin</label>
                         <select name="id_admin" id="id_admin" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5">
                           <option value="">Pilih Admin</option>
                           @foreach($admins as $admin)
-                          <option value="{{ $admin->id_admin }}">{{ $admin->username }}</option>
+                          <option value="{{ $admin->id_admin }}" {{ old('id_admin') == $admin->id_admin ? 'selected' : '' }}>
+                            {{ $admin->username }}
+                          </option>
                           @endforeach
                         </select>
                       </div>
@@ -454,5 +461,41 @@
     </div>
 
     <script src="{{ asset('assets admin/js/app.bundle.js') }}"></script>
+    
+    <script>
+    // Modal toggle functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        // Toggle sidebar mobile
+        const toggleSidebarMobile = document.getElementById('toggleSidebarMobile');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarBackdrop = document.getElementById('sidebarBackdrop');
+        
+        if (toggleSidebarMobile) {
+            toggleSidebarMobile.addEventListener('click', function() {
+                sidebar.classList.toggle('hidden');
+                sidebarBackdrop.classList.toggle('hidden');
+            });
+        }
+        
+        // Close sidebar when clicking backdrop
+        if (sidebarBackdrop) {
+            sidebarBackdrop.addEventListener('click', function() {
+                sidebar.classList.add('hidden');
+                sidebarBackdrop.classList.add('hidden');
+            });
+        }
+        
+        // Modal toggle functionality
+        document.querySelectorAll('[data-modal-toggle]').forEach(button => {
+            button.addEventListener('click', function() {
+                const target = this.getAttribute('data-modal-toggle');
+                const modal = document.getElementById(target);
+                if (modal) {
+                    modal.classList.toggle('hidden');
+                }
+            });
+        });
+    });
+    </script>
   </body>
 </html>

@@ -483,10 +483,9 @@ c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,21
                             </div>
                             <div class="detail-box">
                                 <h5>Tasty Burger</h5>
-                                <p>Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem
-                                    repellendus sed eaque</p>
+                                <p></p>
                                 <div class="options">
-                                    <h6>$12</h6>
+                                    <h6>$</h6>
                                     </a>
                                 </div>
 
