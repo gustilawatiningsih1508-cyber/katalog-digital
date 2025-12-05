@@ -472,10 +472,9 @@
                             </div>
                             <div class="detail-box">
                                 <h5>Tasty Burger</h5>
-                                <p>Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem
-                                    repellendus sed eaque</p>
+                                <p></p>
                                 <div class="options">
-                                    <h6>$12</h6>
+                                    <h6>$</h6>
                                     </a>
                                 </div>
                             </div>
