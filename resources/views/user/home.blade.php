@@ -154,20 +154,25 @@
                             </div>
                             <div class="detail-box">
                                 <h5>
-                                    Milokuu
+                                    Miloku
                                 </h5>
                                 <h6>
                                     <span></span>
                                 </h6>
-                                <a href="">
-                                    Kunjungi<svg version="" id="" xmlns="http://www.w3.org/2000/svg"
-                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                        viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;"
-                                        xml:space="preserve">
+                                <a href="{{ url('/lapak/1') }}">
+                                    Kunjungi
+                                </a>
+                                <svg version="" id="" xmlns="http://www.w3.org/2000/svg"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029"
+                                    style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
+                                    <g>
                                         <g>
+                                            <g>
+                                            </g>
                                             <g>
                                                 <g>
                                                 </g>
+<
                                                 <g>
                                                     <g>
                                                     </g>
@@ -217,57 +222,60 @@
                                 <h6>
                                     <span></span>
                                 </h6>
-                                <a href="">
-                                    Kunjungi <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                        viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;"
-                                        xml:space="preserve">
+                                </h6>
+                                <a href="{{ url('/lapak/2') }}">
+                                    Kunjungi
+                                </a>
+                                <svg version="" id="" xmlns="http://www.w3.org/2000/svg"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                    viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;"
+                                    xml:space="preserve">
+                                    <g>
                                         <g>
                                             <g>
-
                                             </g>
-                                        </g>
-                                        <g>
                                             <g>
+                                                <g>
 
+
+                                                </g>
                                             </g>
-                                        </g>
-                                        <g>
                                             <g>
+                                                <g>
 
+                                                </g>
                                             </g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                    </svg>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                </svg>
                                 </a>
                             </div>
                         </div>
@@ -284,26 +292,28 @@
                                 <h6>
                                     <span></span>
                                 </h6>
-                                <a href="">
-                                    Kunjungi<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                        viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;"
-                                        xml:space="preserve">
+                                </h6>
+                                <a href="{{ url('/lapak/3') }}">
+                                    Kunjungi
+                                </a>
+                                <svg version="" id="" xmlns="http://www.w3.org/2000/svg"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                    viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;"
+                                    xml:space="preserve">
+                                    <g>
                                         <g>
                                             <g>
-
                                             </g>
-                                        </g>
-                                        <g>
                                             <g>
+                                                <g>
 
+                                                </g>
                                             </g>
-                                        </g>
-                                        <g>
                                             <g>
+                                                <g>
 
-                                            </g>
-                                    </svg>
+                                                </g>
+                                </svg>
                                 </a>
                             </div>
                         </div>
@@ -389,6 +399,7 @@
                     <!-- BARIS 2 -->
                     <div class="col-lg-4 all pizza">
                         <div class="box">
+
                             <div class="img-box">
                                 <img src="{{ asset('assets user/images/cincau.jpg') }}" alt="Milk Tea">
                             </div>
@@ -397,7 +408,6 @@
                                 <p>Milk tea creamy dengan perpaduan mutiara dan cincau yang menyegarkan.</p>
                                 <div class="options">
                                     <h6>Miloku</h6>
-                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -405,6 +415,7 @@
 
                     <div class="col-lg-4 all pasta">
                         <div class="box">
+
                             <div class="img-box">
                                 <img src="{{ asset('assets user/images/Pisang.jpg') }}" alt="Pisang Coklat">
                             </div>
@@ -413,7 +424,6 @@
                                 <p>Pisang manis dengan lelehan coklat nikmat</p>
                                 <div class="options">
                                     <h6>Ngemil yuk</h6>
-                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -421,6 +431,7 @@
 
                     <div class="col-lg-4 all burger">
                         <div class="box">
+
                             <div class="img-box">
                                 <img src="{{ asset('assets/images/f6.png') }}" alt="">
                             </div>
@@ -429,7 +440,6 @@
                                 <p>lebih segar</p>
                                 <div class="options">
                                     <h6>Miloku</h6>
-                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -438,6 +448,7 @@
                     <!-- BARIS 3 -->
                     <div class="col-lg-4 all pizza">
                         <div class="box">
+
                             <div class="img-box">
                                 <img src="{{ asset('assets user/images/f1.png') }}" alt="">
                             </div>
@@ -446,7 +457,6 @@
                                 <p> Rasanya yang lembut,dingin dan menyengarkan</p>
                                 <div class="options">
                                     <h6>Miloku</h6>
-                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -464,6 +474,7 @@
                                     <h6>$</h6>
                                     </a>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -478,7 +489,6 @@
                                 <p>enak dan segar</p>
                                 <div class="options">
                                     <h6>Miloku</h6>
-                                    </a>
                                 </div>
                             </div>
                         </div>

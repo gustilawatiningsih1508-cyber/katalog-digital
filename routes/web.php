@@ -19,16 +19,20 @@ Route::get('/sign-in', [PageController::class, 'signIn'])->name('signIn');
 Route::get('/sign-up', [PageController::class, 'signUp'])->name('signUp');
 Route::get('/promosi-admin', [PageController::class, 'promosiAdmin'])->name('promosiAdmin');
 
-// Products Routes
-Route::resource('products', ProductController::class);
 
-// Admin Routes - PASTIKAN INI ADA
-Route::resource('users', AdminController::class);
+// Daftar lapak
+Route::get('/lapak/{id}', [PageController::class, 'lapakDetail'])->name('lapak.detail');
 
-// ATAU JIKA MASIH ERROR, COBA ROUTE MANUAL:
-Route::get('/admins', [AdminController::class, 'index'])->name('admins.index');
-Route::post('/admins', [AdminController::class, 'store'])->name('admins.store');
-Route::put('/admins/{id}', [AdminController::class, 'update'])->name('admins.update');
-Route::delete('/admins/{id}', [AdminController::class, 'destroy'])->name('admins.destroy');
+// Menu lapak
+Route::get('/lapak/{id}/menu', [PageController::class, 'menuLapak'])->name('lapak.menu');
 
-Route::resource('promosi-admin', PromosiController::class);
+Route::get('/lapak/{id}', [PageController::class, 'lapakDetail'])->name('lapak.show');
+
+Route::get('/about', function () {
+    return view('user.about');
+})->name('about');
+
+Route::get('/promosi', function () {
+    return view('user.promosi');
+})->name('promosi');
+
