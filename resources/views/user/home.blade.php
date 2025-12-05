@@ -36,15 +36,14 @@
                                 <a class="nav-link" href="tentangkami">Tentang kami</a>
                             </li>
                         </ul>
-
                         <div class="user_option">
-                            <a href="" class="user_link">
-
+                            <a href="sign-in" class="user_link">
+                                <i class="fa fa-user" aria-hidden="true"></i>
                             </a>
                             <g>
                                 <path
                                     d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
-                                                         c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
+                                                                 c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
                             </g>
                             </g>
                             <g>
@@ -56,24 +55,12 @@
                                 <g>
                                     <path
                                         d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
-                                                         c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
+                                                                 c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
                                 </g>
                             </g>
                             </svg>
 
                             </a>
-
-                            <!-- SEARCH FORM BARU -->
-                            <form action="{{ route('search') }}" method="GET" class="form-inline search-form">
-                                <div class="search-input-group">
-                                    <i class="fa fa-search search-icon"></i>
-                                    <input type="text" name="query" placeholder="Search products..."
-                                        class="form-control search-input" minlength="2" required>
-                                    <button type="submit" class="btn-search">
-                                        <i class="fa fa-arrow-right"></i>
-                                    </button>
-                                </div>
-                            </form>
                         </div>
                     </div>
                 </nav>
@@ -288,11 +275,11 @@
                     <div class="col-md-6  ">
                         <div class="box ">
                             <div class="img-box">
-                                 <img src="{{ asset('assets user/images/warung.jpg') }}" alt="">
+                                <img src="{{ asset('assets user/images/warung.jpg') }}" alt="">
                             </div>
                             <div class="detail-box">
                                 <h5>
-                                 Warung Mangan Limo Putri
+                                    Warung Mangan Limo Putri
                                 </h5>
                                 <h6>
                                     <span></span>
@@ -351,7 +338,7 @@
                     <div class="col-lg-4 all pizza">
                         <div class="box">
                             <div class="img-box">
-                               <img src="{{ asset('assets user/images/es.jpeg') }}" alt="Air Milo">
+                                <img src="{{ asset('assets user/images/es.jpeg') }}" alt="Air Milo">
 
                             </div>
                             <div class="detail-box">
@@ -369,7 +356,7 @@
                     <div class="col-lg-4 all burger">
                         <div class="box">
                             <div class="img-box">
-                                 <img src="{{ asset('assets user/images/ayam1.jpg') }}" alt="Ayam Geprek">
+                                <img src="{{ asset('assets user/images/ayam1.jpg') }}" alt="Ayam Geprek">
                             </div>
                             <div class="detail-box">
                                 <h5>Ayam Geprek</h5>
@@ -385,8 +372,8 @@
                     <div class="col-lg-4 all pasta">
                         <div class="box">
                             <div class="img-box">
-                                 <img src="{{ asset('assets user/images/f5.png') }}" alt="Kentang Kripsi">
-                                
+                                <img src="{{ asset('assets user/images/f5.png') }}" alt="Kentang Kripsi">
+
                             </div>
                             <div class="detail-box">
                                 <h5>Kentang krispi</h5>
@@ -403,11 +390,11 @@
                     <div class="col-lg-4 all pizza">
                         <div class="box">
                             <div class="img-box">
-                                  <img src="{{ asset('assets user/images/cincau.jpg') }}" alt="Milk Tea">
+                                <img src="{{ asset('assets user/images/cincau.jpg') }}" alt="Milk Tea">
                             </div>
                             <div class="detail-box">
                                 <h5>Milk Tea Mutiara Cincau</h5>
-                                 <p>Milk tea creamy dengan perpaduan mutiara dan cincau yang menyegarkan.</p>
+                                <p>Milk tea creamy dengan perpaduan mutiara dan cincau yang menyegarkan.</p>
                                 <div class="options">
                                     <h6>Miloku</h6>
                                     </a>
@@ -419,7 +406,7 @@
                     <div class="col-lg-4 all pasta">
                         <div class="box">
                             <div class="img-box">
-                                 <img src="{{ asset('assets user/images/Pisang.jpg') }}" alt="Pisang Coklat">
+                                <img src="{{ asset('assets user/images/Pisang.jpg') }}" alt="Pisang Coklat">
                             </div>
                             <div class="detail-box">
                                 <h5>Pisang Coklat</h5>
@@ -515,20 +502,22 @@
             <div class="row">
                 <div class="col-md-6 ">
                     <div class="img-box">
-                            <img src="{{ asset('assets user/images/es.jpeg') }}" alt="">
+                        <img src="{{ asset('assets user/images/es.jpeg') }}" alt="">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="detail-box">
                         <div class="heading_container">
                             <h2>
-                               Milo malaysia
+                                Milo malaysia
                             </h2>
                         </div>
                         <p>
-                           Hadir dengan cita rasa cokelat yang kaya dan creamy, MILO Premium Drink menjadi pilihan terbaik untuk menemani aktivitas harian Anda. Diracik dengan standar kualitas UMKM, setiap gelas menghadirkan pengalaman minum yang lembut, menyegarkan, dan penuh energi.
+                            Hadir dengan cita rasa cokelat yang kaya dan creamy, MILO Premium Drink menjadi pilihan terbaik
+                            untuk menemani aktivitas harian Anda. Diracik dengan standar kualitas UMKM, setiap gelas
+                            menghadirkan pengalaman minum yang lembut, menyegarkan, dan penuh energi.
                         </p>
-                       
+
                     </div>
                 </div>
             </div>

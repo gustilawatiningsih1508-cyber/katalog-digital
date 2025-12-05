@@ -29,7 +29,6 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{ route('menu') }}">Menu</a>
-                <a class="nav-link" href="menu"></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{ route('promosi') }}">promosi</a>
@@ -39,7 +38,7 @@
               </li>
             </ul>
             <div class="user_option">
-              <a href="" class="user_link">
+              <a href="sign-in" class="user_link">
                 <i class="fa fa-user" aria-hidden="true"></i>
               </a>
               <a class="cart_link" href="#">
