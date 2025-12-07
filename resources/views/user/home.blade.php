@@ -4,13 +4,13 @@
 
     <div class="hero_area">
         <div class="bg-box">
-            <img src="{{ asset('assets user/images/coklat.png') }}" alt="">
+            <img src="{{ asset('assets user/images/coklat.png') }}" alt="Background">
         </div>
         <!-- header section strats -->
         <header class="header_section">
             <div class="container">
                 <nav class="navbar navbar-expand-lg custom_nav-container ">
-                    <a class="navbar-brand">
+                    <a class="navbar-brand" href="{{ url('/') }}">
                         <span>
                             LapakGo
                         </span>
@@ -18,48 +18,27 @@
 
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class=""> </span>
+                        <span class="navbar-toggler-icon"></span>
                     </button>
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav  mx-auto ">
+                        <ul class="navbar-nav mx-auto">
                             <li class="nav-item active">
-                                <a class="nav-link" href="">Beranda<span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="{{ url('/') }}">Beranda <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="menu">Menu</a>
+                                <a class="nav-link" href="{{ url('/menu') }}">Menu</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="promosi">promosi</a>
+                                <a class="nav-link" href="{{ url('/promosi') }}">Promosi</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="tentangkami">Tentang kami</a>
+                                <a class="nav-link" href="{{ url('/tentangkami') }}">Tentang Kami</a>
                             </li>
                         </ul>
                         <div class="user_option">
-                            <a href="sign-in" class="user_link">
+                            <a href="{{ url('/sign-in') }}" class="user_link">
                                 <i class="fa fa-user" aria-hidden="true"></i>
-                            </a>
-                            <g>
-                                <path
-                                    d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
-                                                                 c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
-                            </g>
-                            </g>
-                            <g>
-                                <g>
-
-                                </g>
-                            </g>
-                            <g>
-                                <g>
-                                    <path
-                                        d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
-                                                                 c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
-                                </g>
-                            </g>
-                            </svg>
-
                             </a>
                         </div>
                     </div>
@@ -67,254 +46,105 @@
             </div>
         </header>
         <!-- end header section -->
+        
         <!-- slider section -->
-        <section class="slider_section ">
-            <div id="customCarousel1" class="carousel slide" data-ride="carousel">
+        <section class="slider_section">
+            <div id="customCarousel1" class="carousel slide" data-ride="carousel" data-interval="3000">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <div class="container ">
+                        <div class="container">
                             <div class="row justify-content-center">
-                                <div class="col-md-7 col-lg-6 ">
+                                <div class="col-md-7 col-lg-6">
                                     <div class="detail-box text-center">
                                         <h1>Selamat Datang Di <span>LapakGo</span></h1>
                                         <p>
                                             Platform digital modern yang menghadirkan solusi mudah bagi
                                             pelaku usaha untuk memasarkan produk mereka secara online
                                         </p>
-                                        <div class="btn-box">
-
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item ">
-                        <div class="container ">
-                            <div class="row justify-content-center">
-                                <div class="col-md-7 col-lg-6 ">
-                                    <div class="detail-box text-center">
-                                        <h1>Selamat Datang Di <span>LapakGo</span></h1>
-                                        <p>
-                                            Platform digital modern yang menghadirkan solusi mudah bagi
-                                            pelaku usaha untuk memasarkan produk mereka secara online
-                                        </p>
-                                        <div class="btn-box">
-
-                                            </a>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <div class="container ">
+                        <div class="container">
                             <div class="row justify-content-center">
-                                <div class="col-md-7 col-lg-6 ">
+                                <div class="col-md-7 col-lg-6">
                                     <div class="detail-box text-center">
-                                        <h1>
-                                            Selamat Datang Di LapakGo
-                                        </h1>
+                                        <h1>Selamat Datang Di <span>LapakGo</span></h1>
                                         <p>
                                             Platform digital modern yang menghadirkan solusi mudah bagi
                                             pelaku usaha untuk memasarkan produk mereka secara online
                                         </p>
-                                        <div class="btn-box">
-
-                                            </a>
-                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-md-7 col-lg-6">
+                                    <div class="detail-box text-center">
+                                        <h1>Selamat Datang Di <span>LapakGo</span></h1>
+                                        <p>
+                                            Platform digital modern yang menghadirkan solusi mudah bagi
+                                            pelaku usaha untuk memasarkan produk mereka secara online
+                                        </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="container">
-                    <div id="customCarousel1" class="carousel slide" data-ride="carousel" data-interval="2000">
-                    </div>
-
-                    <div></div>
-                </div>
-
+                <ol class="carousel-indicators">
+                    <li data-target="#customCarousel1" data-slide-to="0" class="active"></li>
+                    <li data-target="#customCarousel1" data-slide-to="1"></li>
+                    <li data-target="#customCarousel1" data-slide-to="2"></li>
+                </ol>
+            </div>
         </section>
         <!-- end slider section -->
     </div>
-    <!-- offer section -->
 
+    <!-- offer section -->
     <section class="offer_section layout_padding-bottom">
         <div class="offer_container">
-            <div class="container ">
+            <div class="container">
                 <div class="row">
-                    <div class="col-md-6  ">
-                        <div class="box ">
+                    <div class="col-md-6">
+                        <div class="box">
                             <div class="img-box">
-                                <img src="{{ asset('assets user/images/milo1.jpg') }}" alt="10">
+                                <img src="{{ asset('assets user/images/milo1.jpg') }}" alt="Miloku">
                             </div>
                             <div class="detail-box">
-                                <h5>
-                                    Miloku
-                                </h5>
-                                <h6>
-                                    <span></span>
-                                </h6>
-                                <a href="{{ url('/lapak/1') }}">
-                                    Kunjungi
-                                </a>
-                                <svg version="" id="" xmlns="http://www.w3.org/2000/svg"
-                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029"
-                                    style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
-                                    <g>
-                                        <g>
-                                            <g>
-                                            </g>
-                                            <g>
-                                                <g>
-                                                </g>
-<
-                                                <g>
-                                                    <g>
-                                                    </g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                    </svg>
-                                </a>
+                                <h5>Miloku</h5>
+                                <h6><span></span></h6>
+                                <a href="{{ url('/lapak/1') }}">Kunjungi</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6  ">
-                        <div class="box ">
+                    <div class="col-md-6">
+                        <div class="box">
                             <div class="img-box">
-                                <img src="{{ asset('assets user/images/ngemil2.jpg') }}" alt="">
+                                <img src="{{ asset('assets user/images/ngemil2.jpg') }}" alt="Ngemil Yuk">
                             </div>
                             <div class="detail-box">
-                                <h5>
-                                    Ngemil Yuk
-                                </h5>
-                                <h6>
-                                    <span></span>
-                                </h6>
-                                </h6>
-                                <a href="{{ url('/lapak/2') }}">
-                                    Kunjungi
-                                </a>
-                                <svg version="" id="" xmlns="http://www.w3.org/2000/svg"
-                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                    viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;"
-                                    xml:space="preserve">
-                                    <g>
-                                        <g>
-                                            <g>
-                                            </g>
-                                            <g>
-                                                <g>
-
-
-                                                </g>
-                                            </g>
-                                            <g>
-                                                <g>
-
-                                                </g>
-                                            </g>
-                                            <g>
-                                            </g>
-                                            <g>
-                                            </g>
-                                            <g>
-                                            </g>
-                                            <g>
-                                            </g>
-                                            <g>
-                                            </g>
-                                            <g>
-                                            </g>
-                                            <g>
-                                            </g>
-                                            <g>
-                                            </g>
-                                            <g>
-                                            </g>
-                                            <g>
-                                            </g>
-                                            <g>
-                                            </g>
-                                            <g>
-                                            </g>
-                                            <g>
-                                            </g>
-                                            <g>
-                                            </g>
-                                            <g>
-                                            </g>
-                                </svg>
-                                </a>
+                                <h5>Ngemil Yuk</h5>
+                                <h6><span></span></h6>
+                                <a href="{{ url('/lapak/2') }}">Kunjungi</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6  ">
-                        <div class="box ">
+                    <div class="col-md-6">
+                        <div class="box">
                             <div class="img-box">
-                                <img src="{{ asset('assets user/images/warung.jpg') }}" alt="">
+                                <img src="{{ asset('assets user/images/warung.jpg') }}" alt="Warung Mangan">
                             </div>
                             <div class="detail-box">
-                                <h5>
-                                    Warung Mangan Limo Putri
-                                </h5>
-                                <h6>
-                                    <span></span>
-                                </h6>
-                                </h6>
-                                <a href="{{ url('/lapak/3') }}">
-                                    Kunjungi
-                                </a>
-                                <svg version="" id="" xmlns="http://www.w3.org/2000/svg"
-                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                    viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;"
-                                    xml:space="preserve">
-                                    <g>
-                                        <g>
-                                            <g>
-                                            </g>
-                                            <g>
-                                                <g>
-
-                                                </g>
-                                            </g>
-                                            <g>
-                                                <g>
-
-                                                </g>
-                                </svg>
-                                </a>
+                                <h5>Warung Mangan Limo Putri</h5>
+                                <h6><span></span></h6>
+                                <a href="{{ url('/lapak/3') }}">Kunjungi</a>
                             </div>
                         </div>
                     </div>
@@ -322,17 +152,13 @@
             </div>
         </div>
     </section>
-
     <!-- end offer section -->
 
     <!-- food section -->
-
     <section class="food_section layout_padding-bottom">
         <div class="container">
             <div class="heading_container heading_center">
-                <h2>
-                    Bestseller Menu
-                </h2>
+                <h2>Bestseller Menu</h2>
             </div>
 
             <ul class="filters_menu">
@@ -345,25 +171,22 @@
             <div class="filters-content">
                 <div class="row grid">
                     <!-- BARIS 1 -->
-                    <div class="col-lg-4 all pizza">
+                    <div class="col-sm-6 col-lg-4 all pizza">
                         <div class="box">
                             <div class="img-box">
-                                <img src="{{ asset('assets user/images/es.jpeg') }}" alt="Air Milo">
-
+                                <img src="{{ asset('assets user/images/es.jpeg') }}" alt="Milo Malaysia">
                             </div>
                             <div class="detail-box">
                                 <h5>Milo Malaysia</h5>
-                                <p>Minuman coklat berenergi yang menyengarkan.</p>
+                                <p>Minuman coklat berenergi yang menyegarkan.</p>
                                 <div class="options">
                                     <h6>Miloku yuk</h6>
-
-                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-lg-4 all burger">
+                    <div class="col-sm-6 col-lg-4 all burger">
                         <div class="box">
                             <div class="img-box">
                                 <img src="{{ asset('assets user/images/ayam1.jpg') }}" alt="Ayam Geprek">
@@ -373,33 +196,29 @@
                                 <p>Ayam crispy dengan sambal geprek pedas.</p>
                                 <div class="options">
                                     <h6>Warung mangan limo putri</h6>
-                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-lg-4 all pasta">
+                    <div class="col-sm-6 col-lg-4 all pasta">
                         <div class="box">
                             <div class="img-box">
-                                <img src="{{ asset('assets user/images/f5.png') }}" alt="Kentang Kripsi">
-
+                                <img src="{{ asset('assets user/images/f5.png') }}" alt="Kentang Krispi">
                             </div>
                             <div class="detail-box">
-                                <h5>Kentang krispi</h5>
-                                <p>Cemilan crispy yang gurih renyah dan gurih</p>
+                                <h5>Kentang Krispi</h5>
+                                <p>Camilan kentang tipis yang digoreng renyah dengan rasa gurih dan ringan.</p>
                                 <div class="options">
                                     <h6>Ngemil yuk</h6>
-                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- BARIS 2 -->
-                    <div class="col-lg-4 all pizza">
+                    <div class="col-sm-6 col-lg-4 all pizza">
                         <div class="box">
-
                             <div class="img-box">
                                 <img src="{{ asset('assets user/images/cincau.jpg') }}" alt="Milk Tea">
                             </div>
@@ -413,9 +232,8 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 all pasta">
+                    <div class="col-sm-6 col-lg-4 all pasta">
                         <div class="box">
-
                             <div class="img-box">
                                 <img src="{{ asset('assets user/images/Pisang.jpg') }}" alt="Pisang Coklat">
                             </div>
@@ -429,64 +247,14 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 all burger">
+                    <div class="col-sm-6 col-lg-4 all pizza">
                         <div class="box">
-
                             <div class="img-box">
-                                <img src="{{ asset('assets/images/f6.png') }}" alt="">
-                            </div>
-                            <div class="detail-box">
-                                <h5>jeruk peras</h5>
-                                <p>lebih segar</p>
-                                <div class="options">
-                                    <h6>Miloku</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- BARIS 3 -->
-                    <div class="col-lg-4 all pizza">
-                        <div class="box">
-
-                            <div class="img-box">
-                                <img src="{{ asset('assets user/images/f1.png') }}" alt="">
+                                <img src="{{ asset('assets user/images/f1.png') }}" alt="Lychee Tea">
                             </div>
                             <div class="detail-box">
                                 <h5>Lychee Tea</h5>
-                                <p> Rasanya yang lembut,dingin dan menyengarkan</p>
-                                <div class="options">
-                                    <h6>Miloku</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 all burger">
-                        <div class="box">
-                            <div class="img-box">
-                                <img src="{{ asset('assets/images/f8.png') }}" alt="">
-                            </div>
-                            <div class="detail-box">
-                                <h5>Tasty Burger</h5>
-                                <p></p>
-                                <div class="options">
-                                    <h6>$</h6>
-                                    </a>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 all pasta">
-                        <div class="box">
-                            <div class="img-box">
-                                <img src="{{ asset('assets/images/f1.png') }}" alt="">
-                            </div>
-                            <div class="detail-box">
-                                <h5>Lyvhee tea</h5>
-                                <p>enak dan segar</p>
+                                <p>Rasanya yang lembut, dingin dan menyegarkan</p>
                                 <div class="options">
                                     <h6>Miloku</h6>
                                 </div>
@@ -497,52 +265,43 @@
             </div>
 
             <div class="btn-box">
-                <a href="">View More</a>
+                <a href="{{ url('/menu') }}">View More</a>
             </div>
         </div>
     </section>
-
     <!-- end food section -->
 
     <!-- about section -->
-
     <section class="about_section layout_padding">
-        <div class="container  ">
-
+        <div class="container">
             <div class="row">
-                <div class="col-md-6 ">
+                <div class="col-md-6">
                     <div class="img-box">
-                        <img src="{{ asset('assets user/images/es.jpeg') }}" alt="">
+                        <img src="{{ asset('assets user/images/es.jpeg') }}" alt="Milo Malaysia">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="detail-box">
                         <div class="heading_container">
-                            <h2>
-                                Milo malaysia
-                            </h2>
+                            <h2>Milo Malaysia</h2>
                         </div>
                         <p>
                             Hadir dengan cita rasa cokelat yang kaya dan creamy, MILO Premium Drink menjadi pilihan terbaik
                             untuk menemani aktivitas harian Anda. Diracik dengan standar kualitas UMKM, setiap gelas
                             menghadirkan pengalaman minum yang lembut, menyegarkan, dan penuh energi.
                         </p>
-
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
     <!-- end about section -->
 
     <!-- book section -->
     <section class="book_section layout_padding">
         <div class="container">
             <div class="heading_container">
-                <h2>
-                    Book A Table
-                </h2>
+                <h2>Book A Table</h2>
             </div>
             <div class="row">
                 <div class="col-md-6">
@@ -559,36 +318,24 @@
                             </div>
                             <div>
                                 <select class="form-control nice-select wide">
-                                    <option value="" disabled selected>
-                                        How many persons?
-                                    </option>
-                                    <option value="">
-                                        2
-                                    </option>
-                                    <option value="">
-                                        3
-                                    </option>
-                                    <option value="">
-                                        4
-                                    </option>
-                                    <option value="">
-                                        5
-                                    </option>
+                                    <option value="" disabled selected>How many persons?</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
                                 </select>
                             </div>
                             <div>
                                 <input type="date" class="form-control">
                             </div>
                             <div class="btn_box">
-                                <button>
-                                    Book Now
-                                </button>
+                                <button type="submit">Book Now</button>
                             </div>
                         </form>
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="map_container ">
+                    <div class="map_container">
                         <div id="googleMap"></div>
                     </div>
                 </div>
@@ -598,15 +345,12 @@
     <!-- end book section -->
 
     <!-- client section -->
-
     <section class="client_section layout_padding-bottom">
         <div class="container">
             <div class="heading_container heading_center psudo_white_primary mb_45">
-                <h2>
-                    What Says Our Customers
-                </h2>
+                <h2>What Says Our Customers</h2>
             </div>
-            <div class="carousel-wrap row ">
+            <div class="carousel-wrap row">
                 <div class="owl-carousel client_owl-carousel">
                     <div class="item">
                         <div class="box">
@@ -615,15 +359,11 @@
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                                     incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
                                 </p>
-                                <h6>
-                                    Moana Michell
-                                </h6>
-                                <p>
-                                    magna aliqua
-                                </p>
+                                <h6>Moana Michell</h6>
+                                <p>magna aliqua</p>
                             </div>
                             <div class="img-box">
-                                <img src="{{ asset('assets user/images/client1.jpg') }}" alt="" class="box-img">
+                                <img src="{{ asset('assets user/images/client1.jpg') }}" alt="Client 1" class="box-img">
                             </div>
                         </div>
                     </div>
@@ -634,15 +374,11 @@
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                                     incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
                                 </p>
-                                <h6>
-                                    Mike Hamell
-                                </h6>
-                                <p>
-                                    magna aliqua
-                                </p>
+                                <h6>Mike Hamell</h6>
+                                <p>magna aliqua</p>
                             </div>
                             <div class="img-box">
-                                <img src="{{ asset('assets user/images/client2.jpg') }}" alt="" class="box-img">
+                                <img src="{{ asset('assets user/images/client2.jpg') }}" alt="Client 2" class="box-img">
                             </div>
                         </div>
                     </div>
@@ -650,7 +386,6 @@
             </div>
         </div>
     </section>
-
     <!-- end client section -->
 
     <!-- footer section -->
@@ -659,70 +394,43 @@
             <div class="row">
                 <div class="col-md-4 footer-col">
                     <div class="footer_contact">
-                        <h4>
-                            Contact Us
-                        </h4>
+                        <h4>Contact Us</h4>
                         <div class="contact_link_box">
-                            <a href="">
+                            <a href="#">
                                 <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                <span>
-                                    Location
-                                </span>
+                                <span>Location</span>
                             </a>
-                            <a href="">
+                            <a href="tel:+011234567890">
                                 <i class="fa fa-phone" aria-hidden="true"></i>
-                                <span>
-                                    Call +01 1234567890
-                                </span>
+                                <span>Call +01 1234567890</span>
                             </a>
-                            <a href="">
+                            <a href="mailto:demo@gmail.com">
                                 <i class="fa fa-envelope" aria-hidden="true"></i>
-                                <span>
-                                    demo@gmail.com
-                                </span>
+                                <span>demo@gmail.com</span>
                             </a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 footer-col">
                     <div class="footer_detail">
-                        <a href="" class="footer-logo">
-                            LapakGo
-                        </a>
+                        <a href="{{ url('/') }}" class="footer-logo">LapakGo</a>
                         <p>
                             Necessary, making this the first true generator on the Internet. It uses a dictionary of
-                            over
-                            200 Latin words, combined with
+                            over 200 Latin words, combined with
                         </p>
                         <div class="footer_social">
-                            <a href="">
-                                <i class="fa fa-facebook" aria-hidden="true"></i>
-                            </a>
-                            <a href="">
-                                <i class="fa fa-twitter" aria-hidden="true"></i>
-                            </a>
-                            <a href="">
-                                <i class="fa fa-linkedin" aria-hidden="true"></i>
-                            </a>
-                            <a href="">
-                                <i class="fa fa-instagram" aria-hidden="true"></i>
-                            </a>
-                            <a href="">
-                                <i class="fa fa-pinterest" aria-hidden="true"></i>
-                            </a>
+                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 footer-col">
-                    <h4>
-                        Opening Hours
-                    </h4>
-                    <p>
-                        Everyday
-                    </p>
-                    <p>
-                        10.00 Am -10.00 Pm
-                    </p>
+                    <h4>Opening Hours</h4>
+                    <p>Everyday</p>
+                    <p>10.00 Am - 10.00 Pm</p>
                 </div>
             </div>
             <div class="footer-info">
@@ -735,4 +443,6 @@
             </div>
         </div>
     </footer>
+    <!-- end footer section -->
+
 @endsection
