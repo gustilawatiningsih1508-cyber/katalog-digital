@@ -51,7 +51,7 @@
               <svg id="toggleSidebarMobileClose" class="w-6 h-6 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
             </button>
             <a href="/dashboard" class="text-xl font-bold flex items-center lg:ml-2.5">
-              <img src="{{ asset('assets admin/images/favicon.svg') }}" class="h-6 mr-2" alt="LapakGo Logo">
+              <img src="{{ asset('assets admin/images/favicon.png') }}" class="h-6 mr-2" alt="">
               <span class="self-center whitespace-nowrap">LapakGo</span>
             </a>
             <form action="#" method="GET" class="hidden lg:block lg:pl-32">
@@ -117,18 +117,6 @@
                   <a href="/promosi-admin" class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group ">
                     <svg class="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path></svg>
                     <span class="ml-3 flex-1 whitespace-nowrap">Promosi</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="/sign-in" class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group ">
-                    <svg class="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd"></path></svg>
-                    <span class="ml-3 flex-1 whitespace-nowrap">Sign-In</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="/sign-up" class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group ">
-                    <svg class="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm-1 9v-1h5v2H5a1 1 0 01-1-1zm7 1h4a1 1 0 001-1v-1h-5v2zm0-4h5V8h-5v2zM9 8H4v2h5V8z" clip-rule="evenodd"></path></svg>
-                    <span class="ml-3 flex-1 whitespace-nowrap">Sign-Up</span>
                   </a>
                 </li>
               </ul>
@@ -400,65 +388,72 @@
           </div>
           @endforeach
 
-          <!-- Add Promosi Modal -->
-          <div class="hidden overflow-x-hidden overflow-y-auto fixed top-4 left-0 right-0 md:inset-0 z-50 justify-center items-center h-modal sm:h-full" id="add-promosi-modal">
-            <div class="relative w-full max-w-2xl px-4 h-full md:h-auto">
-              <div class="bg-white rounded-lg shadow relative">
-                <div class="flex items-start justify-between p-5 border-b rounded-t">
-                  <h3 class="text-xl font-semibold">Add new promosi</h3>
-                  <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" data-modal-toggle="add-promosi-modal">
+<!-- Add Promosi Modal -->
+<div class="hidden overflow-x-hidden overflow-y-auto fixed top-4 left-0 right-0 md:inset-0 z-50 justify-center items-center h-modal sm:h-full" id="add-promosi-modal">
+    <div class="relative w-full max-w-2xl px-4 h-full md:h-auto">
+        <div class="bg-white rounded-lg shadow relative">
+            <div class="flex items-start justify-between p-5 border-b rounded-t">
+                <h3 class="text-xl font-semibold">Add new promosi</h3>
+                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" data-modal-toggle="add-promosi-modal">
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>  
-                  </button>
-                </div>
-                <form action="{{ route('promosi-admin.store') }}" method="POST">
-                  @csrf
-                  <div class="p-6 space-y-6">
-                    <div class="grid grid-cols-6 gap-6">
-                      <div class="col-span-6 sm:col-span-3">
-                        <label for="id_pelaku_usaha" class="text-sm font-medium text-gray-900 block mb-2">Pelaku Usaha</label>
-                        <select name="id_pelaku_usaha" id="id_pelaku_usaha" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" required>
-                          <!-- PERBAIKAN: Hapus option hardcoded dengan value kosong -->
-                          <option value="">Warung mangan wong limo putri</option>
-                          <option value="">miloku</option>
-                          <option value="">ngemil yok</option>
-                          @foreach($pelakuUsaha as $usaha)
-                          <option value="{{ $usaha->id_pelaku_usaha }}" {{ old('id_pelaku_usaha') == $usaha->id_pelaku_usaha ? 'selected' : '' }}>
-                            {{ $usaha->nama_usaha }}
-                          </option>
-                          @endforeach
-                        </select>
-                      </div>
-                      <div class="col-span-6 sm:col-span-3">
-                        <label for="judul_promosi" class="text-sm font-medium text-gray-900 block mb-2">Judul Promosi</label>
-                        <input type="text" name="judul_promosi" id="judul_promosi" value="{{ old('judul_promosi') }}" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" required>
-                      </div>
-                      <div class="col-span-6">
-                        <label for="deskripsi_promosi" class="text-sm font-medium text-gray-900 block mb-2">Deskripsi Promosi</label>
-                        <textarea name="deskripsi_promosi" id="deskripsi_promosi" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" rows="4" required>{{ old('deskripsi_promosi') }}</textarea>
-                      </div>
-                      <div class="col-span-6 sm:col-span-3">
-                        <label for="id_admin" class="text-sm font-medium text-gray-900 block mb-2">Admin</label>
-                        <select name="id_admin" id="id_admin" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5">
-                          <option value="">Pilih Admin</option>
-                          @foreach($admins as $admin)
-                          <option value="{{ $admin->id_admin }}" {{ old('id_admin') == $admin->id_admin ? 'selected' : '' }}>
-                            {{ $admin->username }}
-                          </option>
-                          @endforeach
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="p-6 border-t border-gray-200 rounded-b">
-                    <button type="submit" class="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Add Promosi</button>
-                  </div>
-                </form>
-              </div>
+                </button>
             </div>
-          </div>
-        </main>
-      </div>
+            <form action="{{ route('promosi-admin.store') }}" method="POST">
+                @csrf
+                <div class="p-6 space-y-6">
+                    <div class="grid grid-cols-6 gap-6">
+                        <div class="col-span-6 sm:col-span-3">
+                            <label for="id_pelaku_usaha" class="text-sm font-medium text-gray-900 block mb-2">Pelaku Usaha *</label>
+                            <select name="id_pelaku_usaha" id="id_pelaku_usaha" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5 @error('id_pelaku_usaha') border-red-500 @enderror" required>
+                                <!-- PERBAIKAN: Hapus option hardcoded dengan value kosong -->
+                                <option value="">Pilih Pelaku Usaha</option>
+                                @foreach($pelakuUsaha as $usaha)
+                                <option value="{{ $usaha->id_pelaku_usaha }}" {{ old('id_pelaku_usaha') == $usaha->id_pelaku_usaha ? 'selected' : '' }}>
+                                    {{ $usaha->nama_usaha }} ({{ $usaha->nama_pemilik }})
+                                </option>
+                                @endforeach
+                            </select>
+                            @error('id_pelaku_usaha')
+                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div class="col-span-6 sm:col-span-3">
+                            <label for="judul_promosi" class="text-sm font-medium text-gray-900 block mb-2">Judul Promosi *</label>
+                            <input type="text" name="judul_promosi" id="judul_promosi" value="{{ old('judul_promosi') }}" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5 @error('judul_promosi') border-red-500 @enderror" required>
+                            @error('judul_promosi')
+                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div class="col-span-6">
+                            <label for="deskripsi_promosi" class="text-sm font-medium text-gray-900 block mb-2">Deskripsi Promosi *</label>
+                            <textarea name="deskripsi_promosi" id="deskripsi_promosi" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5 @error('deskripsi_promosi') border-red-500 @enderror" rows="4" required>{{ old('deskripsi_promosi') }}</textarea>
+                            @error('deskripsi_promosi')
+                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div class="col-span-6 sm:col-span-3">
+                            <label for="id_admin" class="text-sm font-medium text-gray-900 block mb-2">Admin</label>
+                            <select name="id_admin" id="id_admin" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5 @error('id_admin') border-red-500 @enderror">
+                                <option value="">Pilih Admin (Opsional)</option>
+                                @foreach($admins as $admin)
+                                <option value="{{ $admin->id_admin }}" {{ old('id_admin') == $admin->id_admin ? 'selected' : '' }}>
+                                    {{ $admin->username }}
+                                </option>
+                                @endforeach
+                            </select>
+                            @error('id_admin')
+                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6 border-t border-gray-200 rounded-b">
+                    <button type="submit" class="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Add Promosi</button>
+                </div>
+            </form>
+        </div>
     </div>
+</div>
 
     <script src="{{ asset('assets admin/js/app.bundle.js') }}"></script>
     

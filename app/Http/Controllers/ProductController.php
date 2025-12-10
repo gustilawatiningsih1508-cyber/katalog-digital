@@ -27,7 +27,7 @@ class ProductController extends Controller
 
         // Validasi
         $validated = $request->validate([
-            'id_pelaku_usaha' => 'required|integer',
+            'id_pelaku_usaha' => 'required|string|max:100',
             'nama_produk' => 'required|string|max:100',
             'harga' => 'required|numeric|min:0',
             'kategori' => 'required|string|max:50',
@@ -76,7 +76,7 @@ class ProductController extends Controller
         Log::info('Data request:', $request->all());
 
         $validated = $request->validate([
-            'id_pelaku_usaha' => 'required|integer',
+            'id_pelaku_usaha' => 'required|string|max:100',
             'nama_produk' => 'required|string|max:100',
             'harga' => 'required|numeric|min:0',
             'kategori' => 'required|string|max:50',

@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,10 +18,15 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        // PERBAIKAN: Gunakan firstOrCreate untuk menghindari duplikasi
+        User::firstOrCreate(
+            ['email' => 'test@example.com'], // Cek berdasarkan email
+            [
+                'name' => 'Test User',
+                'password' => Hash::make('password'), // Tambahkan password
+                'email_verified_at' => now(), // Tambahkan email_verified_at
+            ]
+        );
 
         // Tambahkan seeder untuk pelaku usaha
         $this->call([
