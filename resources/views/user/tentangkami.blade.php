@@ -6,7 +6,7 @@
 @section('content')
 <div class="hero_area">
     <div class="bg-box">
-        <img src="{{ asset('assets user/images/hero-bg.jpg') }}" alt="">
+        <img src="{{ asset('assets/user/images/hero-bg.jpg') }}" alt="">
     </div>
     
     <header class="header_section">
@@ -52,7 +52,7 @@
         <div class="row align-items-center">
             <div class="col-md-6 mb-4 mb-md-0">
                 <div class="img-box">
-                    <img src="{{ asset('assets user/images/about-img.jpg') }}" alt="Tentang LapakGo" class="w-100 shadow-lg rounded">
+                    <img src="{{ asset('assets/user/images/about-img.jpg') }}" alt="Tentang LapakGo" class="w-100 shadow-lg rounded">
                 </div>
             </div>
             

@@ -6,7 +6,7 @@
 @section('content')
     <div class="hero_area">
         <div class="bg-box">
-            <img src="{{ asset('assets_user/images/banner-promosi.jpg') }}" alt="Banner Promosi">
+            <img src="{{ asset('assets/user/images/banner-promosi.jpg') }}" alt="Banner Promosi">
         </div>
 
 
@@ -34,7 +34,6 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('menu') }}">Menu</a>
-                            <a class="nav-link" href="menu"></a>
                         </li>
                         <li class="nav-item active">
                             <a class="nav-link" href="{{ route('promosi') }}">promosi <span
@@ -97,7 +96,7 @@
 
                 <div class="col-md-6">
                     <div class="img-box">
-                        <img src="{{ asset('assets user/images/promo-banner.png') }}" alt="Banner Promo UMKM Bengkalis">
+                        <img src="{{ asset('assets/user/images/promo-banner.png') }}" alt="Banner Promo UMKM Bengkalis">
                     </div>
                 </div>
 

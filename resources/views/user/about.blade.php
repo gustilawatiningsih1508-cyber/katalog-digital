@@ -4,7 +4,7 @@
 
 @section('content')
     <!-- Hero Section -->
-    <section class="hero_area" style="background: url('{{ asset('assets_user/images/hero-bg.jpg') }}') center/cover no-repeat; padding: 120px 0; color: #fff;">
+    <section class="hero_area" style="background: url('{{ asset('assets/user/images/hero-bg.jpg') }}') center/cover no-repeat; padding: 120px 0; color: #fff;">
         <div class="container text-center">
             <h1 class="mb-3" style="font-weight:700;">Tentang Kami</h1>
             <p style="font-size:18px;">Menyajikan hidangan terbaik dengan kualitas dan cita rasa unggulan.</p>
@@ -18,7 +18,7 @@
                 
                 <!-- Gambar About -->
                 <div class="col-md-6">
-                    <img src="{{ asset('assets_user/images/about-img.png') }}" class="img-fluid rounded shadow" alt="Tentang Kami">
+                    <img src="{{ asset('assets/user/images/about-img.png') }}" class="img-fluid rounded shadow" alt="Tentang Kami">
                 </div>
 
                 <!-- Deskripsi -->

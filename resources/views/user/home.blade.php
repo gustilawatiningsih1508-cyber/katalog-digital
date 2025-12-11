@@ -4,7 +4,7 @@
 
     <div class="hero_area">
         <div class="bg-box">
-            <img src="{{ asset('assets user/images/coklat.png') }}" alt="Background">
+            <img src="{{ asset('assets/user/images/coklat.png') }}" alt="Background">
         </div>
         <!-- header section strats -->
         <header class="header_section">
@@ -117,7 +117,7 @@
                     <div class="col-md-6">
                         <div class="box">
                             <div class="img-box">
-                                <img src="{{ asset('assets user/images/milo1.jpg') }}" alt="Miloku">
+                                <img src="{{ asset('assets/user/images/milo1.jpg') }}" alt="Miloku">
                             </div>
                             <div class="detail-box">
                                 <h5>Miloku</h5>
@@ -129,7 +129,7 @@
                     <div class="col-md-6">
                         <div class="box">
                             <div class="img-box">
-                                <img src="{{ asset('assets user/images/ngemil2.jpg') }}" alt="Ngemil Yuk">
+                                <img src="{{ asset('assets/user/images/ngemil2.jpg') }}" alt="Ngemil Yuk">
                             </div>
                             <div class="detail-box">
                                 <h5>Ngemil Yuk</h5>
@@ -141,7 +141,7 @@
                     <div class="col-md-6">
                         <div class="box">
                             <div class="img-box">
-                                <img src="{{ asset('assets user/images/warung.jpg') }}" alt="Warung Mangan">
+                                <img src="{{ asset('assets/user/images/warung.jpg') }}" alt="Warung Mangan">
                             </div>
                             <div class="detail-box">
                                 <h5>Warung Mangan Limo Putri</h5>
@@ -176,7 +176,7 @@
                     <div class="col-sm-6 col-lg-4 all pizza">
                         <div class="box">
                             <div class="img-box">
-                                <img src="{{ asset('assets user/images/es.jpeg') }}" alt="Milo Malaysia">
+                                <img src="{{ asset('assets/user/images/es.jpeg') }}" alt="Milo Malaysia">
                             </div>
                             <div class="detail-box">
                                 <h5>Milo Malaysia</h5>
@@ -191,7 +191,7 @@
                     <div class="col-sm-6 col-lg-4 all burger">
                         <div class="box">
                             <div class="img-box">
-                                <img src="{{ asset('assets user/images/ayam1.jpg') }}" alt="Ayam Geprek">
+                                <img src="{{ asset('assets/user/images/ayam1.jpg') }}" alt="Ayam Geprek">
                             </div>
                             <div class="detail-box">
                                 <h5>Ayam Geprek</h5>
@@ -206,7 +206,7 @@
                     <div class="col-sm-6 col-lg-4 all pasta">
                         <div class="box">
                             <div class="img-box">
-                                <img src="{{ asset('assets user/images/f5.png') }}" alt="Kentang Krispi">
+                                <img src="{{ asset('assets/user/images/f5.png') }}" alt="Kentang Krispi">
                             </div>
                             <div class="detail-box">
                                 <h5>Kentang Krispi</h5>
@@ -222,7 +222,7 @@
                     <div class="col-sm-6 col-lg-4 all pizza">
                         <div class="box">
                             <div class="img-box">
-                                <img src="{{ asset('assets user/images/cincau.jpg') }}" alt="Milk Tea">
+                                <img src="{{ asset('assets/user/images/cincau.jpg') }}" alt="Milk Tea">
                             </div>
                             <div class="detail-box">
                                 <h5>Milk Tea Mutiara Cincau</h5>
@@ -237,7 +237,7 @@
                     <div class="col-sm-6 col-lg-4 all pasta">
                         <div class="box">
                             <div class="img-box">
-                                <img src="{{ asset('assets user/images/Pisang.jpg') }}" alt="Pisang Coklat">
+                                <img src="{{ asset('assets/user/images/Pisang.jpg') }}" alt="Pisang Coklat">
                             </div>
                             <div class="detail-box">
                                 <h5>Pisang Coklat</h5>
@@ -252,7 +252,7 @@
                     <div class="col-sm-6 col-lg-4 all pizza">
                         <div class="box">
                             <div class="img-box">
-                                <img src="{{ asset('assets user/images/f1.png') }}" alt="Lychee Tea">
+                                <img src="{{ asset('assets/user/images/f1.png') }}" alt="Lychee Tea">
                             </div>
                             <div class="detail-box">
                                 <h5>Lychee Tea</h5>
@@ -279,7 +279,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="img-box">
-                        <img src="{{ asset('assets user/images/es.jpeg') }}" alt="Milo Malaysia">
+                        <img src="{{ asset('assets/user/images/es.jpeg') }}" alt="Milo Malaysia">
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -340,7 +340,7 @@
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="profile_card p-4 shadow rounded text-center">
                         <div class="profile_image mb-3">
-                             <img src="{{ asset('assets user/images/aidil1.jpg') }}" alt="Lychee Tea">
+                             <img src="{{ asset('assets/user/images/aidil1.jpg') }}" alt="Lychee Tea">
                         </div>
                         <div class="profile_info">
                             <h5 class="mb-2">Muhammad Aidil Fitriansyah</h5>

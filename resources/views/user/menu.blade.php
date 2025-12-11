@@ -6,7 +6,7 @@
 @section('content')
     <div class="hero_area">
         <div class="bg-box">
-            <img src="{{ asset('assets user/images//hero-bg.jpg') }}" alt="">
+            <img src="{{ asset('assets/user/images//hero-bg.jpg') }}" alt="">
         </div>
 
         <!-- header section starts -->
@@ -97,7 +97,7 @@
                     <div class="col-sm-6 col-lg-4 all minuman">
                         <div class="box">
                             <div class="img-box">
-                                <img src="{{ asset('assets user/images/milo.png') }}" alt="Air Milo" width="500"
+                                <img src="{{ asset('assets/user/images/milo.png') }}" alt="Air Milo" width="500"
                                     height="300">
                             </div>
                             <div class="detail-box">
@@ -121,7 +121,7 @@
                     <div class="col-sm-6 col-lg-4 all minuman">
                         <div class="box">
                             <div class="img-box">
-                                <img src="{{ asset('assets user/images/cincau.jpg') }}" alt="Milk Tea" width="500"
+                                <img src="{{ asset('assets/user/images/cincau.jpg') }}" alt="Milk Tea" width="500"
                                     height="300">
                             </div>
                             <div class="detail-box">
@@ -145,7 +145,7 @@
                     <div class="col-sm-6 col-lg-4 all minuman">
                         <div class="box">
                             <div class="img-box">
-                                <img src="{{ asset('assets user/images/kopi2.jpg') }}" alt="Kopi Milo">
+                                <img src="{{ asset('assets/user/images/kopi2.jpg') }}" alt="Kopi Milo">
                             </div>
                             <div class="detail-box">
                                 <h5 class="item-name">Kopi Milo</h5>
@@ -168,7 +168,7 @@
                     <div class="col-sm-6 col-lg-4 all minuman">
                         <div class="box">
                             <div class="img-box">
-                                <img src="{{ asset('assets user/images/f1.png') }}" alt="Lychee Tea">
+                                <img src="{{ asset('assets/user/images/f1.png') }}" alt="Lychee Tea">
                             </div>
                             <div class="detail-box">
                                 <h5 class="item-name">Lychee Tea</h5>
@@ -215,7 +215,7 @@
                     <div class="col-sm-6 col-lg-4 all jajanan">
                         <div class="box">
                             <div class="img-box">
-                                <img src="{{ asset('assets user/images/kentang.jpeg') }}" alt="Kentang Spiral">
+                                <img src="{{ asset('assets/user/images/kentang.jpeg') }}" alt="Kentang Spiral">
                             </div>
                             <div class="detail-box">
                                 <h5 class="item-name">Kentang Spiral</h5>
@@ -238,7 +238,7 @@
                     <div class="col-sm-6 col-lg-4 all jajanan">
                         <div class="box">
                             <div class="img-box">
-                                <img src="{{ asset('assets user/images/Pisang.jpg') }}" alt="Pisang Coklat">
+                                <img src="{{ asset('assets/user/images/Pisang.jpg') }}" alt="Pisang Coklat">
                             </div>
                             <div class="detail-box">
                                 <h5 class="item-name">Pisang Coklat</h5>
@@ -261,7 +261,7 @@
                     <div class="col-sm-6 col-lg-4 all jajanan">
                         <div class="box">
                             <div class="img-box">
-                                <img src="{{ asset('assets user/images/curly.jpg') }}" alt="Kentang Spiral Kecil">
+                                <img src="{{ asset('assets/user/images/curly.jpg') }}" alt="Kentang Spiral Kecil">
                             </div>
                             <div class="detail-box">
                                 <h5 class="item-name">Kentang Spiral Kecil</h5>
@@ -284,7 +284,7 @@
                     <div class="col-sm-6 col-lg-4 all jajanan">
                         <div class="box">
                             <div class="img-box">
-                                <img src="{{ asset('assets user/images/tela.jpg') }}" alt="Tela Tela">
+                                <img src="{{ asset('assets/user/images/tela.jpg') }}" alt="Tela Tela">
                             </div>
                             <div class="detail-box">
                                 <h5 class="item-name">Tela Tela</h5>
@@ -307,7 +307,7 @@
                     <div class="col-sm-6 col-lg-4 all jajanan">
                         <div class="box">
                             <div class="img-box">
-                                <img src="{{ asset('assets user/images/f5.png') }}" alt="Kentang Goreng">
+                                <img src="{{ asset('assets/user/images/f5.png') }}" alt="Kentang Goreng">
                             </div>
                             <div class="detail-box">
                                 <h5 class="item-name">Kentang Goreng</h5>
@@ -331,7 +331,7 @@
                     <div class="col-sm-6 col-lg-4 all makanan-berat">
                         <div class="box">
                             <div class="img-box">
-                                <img src="{{ asset('assets user/images/ayam1.jpg') }}" alt="Ayam Geprek">
+                                <img src="{{ asset('assets/user/images/ayam1.jpg') }}" alt="Ayam Geprek">
                             </div>
                             <div class="detail-box">
                                 <h5 class="item-name">Ayam Geprek</h5>
@@ -354,7 +354,7 @@
                     <div class="col-sm-6 col-lg-4 all makanan-berat">
                         <div class="box">
                             <div class="img-box">
-                                <img src="{{ asset('assets user/images/lele.jpg') }}" alt="Lele Goreng">
+                                <img src="{{ asset('assets/user/images/lele.jpg') }}" alt="Lele Goreng">
                             </div>
                             <div class="detail-box">
                                 <h5 class="item-name">Lele Goreng</h5>
@@ -377,7 +377,7 @@
                     <div class="col-sm-6 col-lg-4 all makanan-berat">
                         <div class="box">
                             <div class="img-box">
-                                <img src="{{ asset('assets user/images/telor.jpg') }}" alt="Telor Balado">
+                                <img src="{{ asset('assets/user/images/telor.jpg') }}" alt="Telor Balado">
                             </div>
                             <div class="detail-box">
                                 <h5 class="item-name">Telor Balado</h5>
@@ -400,7 +400,7 @@
                     <div class="col-sm-6 col-lg-4 all makanan-berat">
                         <div class="box">
                             <div class="img-box">
-                                <img src="{{ asset('assets user/images/ayamgulai.jpg') }}" alt="Ayam Gulai">
+                                <img src="{{ asset('assets/user/images/ayamgulai.jpg') }}" alt="Ayam Gulai">
                             </div>
                             <div class="detail-box">
                                 <h5 class="item-name">Ayam Gulai</h5>
@@ -423,7 +423,7 @@
                     <div class="col-sm-6 col-lg-4 all makanan-berat">
                         <div class="box">
                             <div class="img-box">
-                                <img src="{{ asset('assets user/images/sayur.jpg') }}" alt="Sayur Daun Singkong">
+                                <img src="{{ asset('assets/user/images/sayur.jpg') }}" alt="Sayur Daun Singkong">
                             </div>
                             <div class="detail-box">
                                 <h5 class="item-name">Sayur Daun Singkong</h5>
