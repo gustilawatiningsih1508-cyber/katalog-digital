@@ -461,7 +461,7 @@
         <!-- Left Panel -->
         <div class="left-panel">
             <div class="logo-section">
-                <img src="{{ asset('assets admin/images/favicon.png') }}" alt="Lapak Go Logo">
+                <img src="{{ asset('assets/admin/images/favicon.png') }}" alt="Lapak Go Logo">
                 <h1>Lapak Go</h1>
             </div>
             

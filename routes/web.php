@@ -8,6 +8,7 @@ use App\Http\Controllers\PromosiController;
 use App\Http\Controllers\AuthController;
 
 
+
 /* ---------------------------------------------
 |   PUBLIC ROUTES
 --------------------------------------------- */
@@ -20,7 +21,7 @@ Route::get('/tentangkami', [PageController::class, 'tentangkami'])->name('tentan
 /* ---------------------------------------------
 |   DASHBOARD
 --------------------------------------------- */
-Route::middleware('auth')->get('dashboard', [PageController::class, 'dashboard'])->name('dashboard');
+Route::get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
 Route::get('/search', [PageController::class, 'search'])->name('search');
 
 

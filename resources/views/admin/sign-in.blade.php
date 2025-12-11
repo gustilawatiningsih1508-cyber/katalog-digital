@@ -497,7 +497,7 @@
         <!-- Left Side - Branding & Info -->
         <div class="login-left">
             <div class="brand-logo">
-                <img src="{{ asset('assets admin/images/favicon.png') }}" alt="Lapak Go Logo">
+                <img src="{{ asset('assets/admin/images/favicon.png') }}" alt="Lapak Go Logo">
                 <h1>Lapak Go</h1>
             </div>
             

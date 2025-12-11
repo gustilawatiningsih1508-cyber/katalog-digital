@@ -15,13 +15,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="{{ asset('assets admin/css/app.css') }}">
-  <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets admin/images/apple-touch-icon.png') }}">
-  <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets admin/images/favicon-32x32.png') }}">
-  <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets admin/images/favicon-16x16.png') }}">
-  <link rel="icon" type="image/png" href="{{ asset('assets admin images/favicon.ico') }}">
-  <link rel="manifest" href="{{ asset('assets admin/images/site.webmanifest') }}">
-  <link rel="mask-icon" href="{{ asset('assets admin/images/safari-pinned-tab.svg') }}" color="#5bbad5">
+  <link rel="stylesheet" href="{{ asset('assets/admin/css/app.css') }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/admin/images/apple-touch-icon.png') }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/admin/images/favicon-32x32.png') }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/admin/images/favicon-16x16.png') }}">
+  <link rel="icon" type="image/png" href="{{ asset('assets/admin/images/favicon.ico') }}">
+  <link rel="manifest" href="{{ asset('assets/admin/images/site.webmanifest') }}">
+  <link rel="mask-icon" href="{{ asset('assets/admin/images/safari-pinned-tab.svg') }}" color="#5bbad5">
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="theme-color" content="#ffffff">
 
@@ -68,7 +68,7 @@
             </svg>
           </button>
           <a href="/dashboard" class="text-xl font-bold flex items-center lg:ml-2.5">
-            <img src="{{ asset('assets admin/images/favicon.png') }}" class="h-6 mr-2" alt="LapakGo Logo">
+            <img src="{{ asset('assets/admin/images/favicon.png') }}" class="h-6 mr-2" alt="LapakGo Logo">
             <span class="self-center whitespace-nowrap">LapakGo</span>
           </a>
           <form action="#" method="GET" class="hidden lg:block lg:pl-32">
@@ -192,6 +192,7 @@
                 <span class="ml-3">Help</span>
               </a>
               <div class="p-4 border-t border-gray-700 mt-auto">
+                <button style="margin-top: 9cm;"></button>
                 <a href="/" class="block py-2 px-3 rounded bg-red-600 text-center hover:bg-red-700">
                   Logout
                 </a>
@@ -632,7 +633,7 @@
     </div>
   </div>
 
-  <script src="{{ asset('assets admin/js/app.bundle.js') }}"></script>
+  <script src="{{ asset('assets/admin/js/app.bundle.js') }}"></script>
 </body>
 
 </html>
