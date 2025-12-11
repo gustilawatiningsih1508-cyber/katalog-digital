@@ -2,6 +2,17 @@
 
 @section('title', 'Tentang Kami')
 
+
+<link rel="stylesheet" href="{{ asset('assets/user/css/style.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/user/css/font-awesome.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/user/css/bootstrap.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/user/css/style.css.map') }}">
+<link rel="stylesheet" href="{{ asset('assets/user/css/responsive.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/user/js/jquery-3.4.1.min.js') }}">
+<link rel="stylesheet" href="{{ asset('assets/user/js/custom.js') }}">
+<link rel="stylesheet" href="{{ asset('assets/user/js/bootstrap.js') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+
 @section('content')
     <!-- Hero Section -->
     <section class="hero_area" style="background: url('{{ asset('assets/user/images/hero-bg.jpg') }}') center/cover no-repeat; padding: 120px 0; color: #fff;">

@@ -4,12 +4,26 @@
 @section('body-class', 'sub_page')
 
 @section('content')
+
+<link rel="stylesheet" href="{{ asset('assets/user/css/bootstrap.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/user/css/font-awesome.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/user/css/responsive.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/user/css/style.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/user/css/style.css.map') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/style.scss') }}">
+
+<link rel="stylesheet" href="{{ asset('assets/user/fonts/fontawesome-webfont.ttf') }}">
+<link rel="stylesheet" href="{{ asset('assets/user/fonts/fontawesome-webfont.woff') }}">
+<link rel="stylesheet" href="{{ asset('assets/user/fonts/fontawesome-webfont.woff2') }}">
+
+<link rel="stylesheet" href="{{ asset('assets/user/js/bootstrap.js') }}">
+<link rel="stylesheet" href="{{ asset('assets/user/js/custom.js') }}">
+<link rel="stylesheet" href="{{ asset('assets/user/js/jquery-3.4.1.min.js') }}">
+
     <div class="hero_area">
         <div class="bg-box">
             <img src="{{ asset('assets/user/images/banner-promosi.jpg') }}" alt="Banner Promosi">
         </div>
-
-
     </div>
 
     <!-- header section strats -->
