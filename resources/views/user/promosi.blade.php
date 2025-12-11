@@ -1,215 +1,189 @@
 @extends('layouts.app')
 
-@section('title', 'Promo UMKM Bengkalis')
+@section('title', 'Feane - About Us')
+@section('body-class', 'sub_page')
 
 @section('content')
-
-<!-- Header Section -->
-<header class="header_section">
-    <div class="container">
-        <nav class="navbar navbar-expand-lg custom_nav-container">
-            <a class="navbar-brand" href="{{ route('home') }}">
-                <span>LapakGo</span>
-            </a>
-            
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('home') }}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('menu') }}">Menu</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{ route('promosi') }}">Promosi <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('tentangkami') }}">Tentang Kami</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </div>
-</header>
-
-<!-- Hero Section -->
-<div class="hero_area">
-    <div class="hero-content">
-        <h1>Promo UMKM Bengkalis</h1>
-        <p>Promo spesial minuman, jajanan, dan makanan berat</p>
-        <a href="#promo" class="btn-scroll">Lihat Promo</a>
-    </div>
-</div>
-
-<!-- PROMOTION LIST -->
-<section id="promo" class="food_section layout_padding py-5">
-    <div class="container">
-
-        <!-- =============== PROMO MINUMAN ================= -->
-        <div class="heading_container heading_center mb-4">
-            <h2>🍹 PROMO MINUMAN</h2>
-            <p>Diskon spesial & paket hemat khusus minuman favorit</p>
+    <div class="hero_area">
+        <div class="bg-box">
+            <img src="{{ asset('assets_user/images/banner-promosi.jpg') }}" alt="Banner Promosi">
         </div>
 
-        <div class="row">
-            <!-- Minuman 1 -->
-            <div class="col-sm-6 col-lg-4 mb-4">
-                <div class="box position-relative">
-                    <span class="badge-promo">Beli 2 Gratis 1</span>
-                    <div class="img-box">
-                        <img src="{{ asset('assets_user/images/milo.jpg') }}" alt="Air Milo Malaysia">
-                    </div>
-                    <div class="detail-box">
-                        <h5>Air Milo Malaysia</h5>
-                        <p>Beli 2 Milo Malaysia, GRATIS 1 Milo mini (khusus minggu ini!)</p>
-                        <h6>Rp 10.000/cup</h6>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Minuman 2 -->
-            <div class="col-sm-6 col-lg-4 mb-4">
-                <div class="box position-relative">
-                    <span class="badge-promo">Diskon Rp 1.500</span>
-                    <div class="img-box">
-                        <img src="{{ asset('assets_user/images/lychee.jpg') }}" alt="Lychee Tea Fresh">
-                    </div>
-                    <div class="detail-box">
-                        <h5>Lychee Tea Fresh</h5>
-                        <p>Segar & manis alami. Diskon langsung tanpa syarat!</p>
-                        <h6>Rp 8.500 <span class="old">Rp 10.000</span></h6>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Minuman 3 -->
-            <div class="col-sm-6 col-lg-4 mb-4">
-                <div class="box position-relative">
-                    <span class="badge-promo">Paket Hemat</span>
-                    <div class="img-box">
-                        <img src="{{ asset('assets_user/images/milktea.jpg') }}" alt="Milk Tea Boba">
-                    </div>
-                    <div class="detail-box">
-                        <h5>Milk Tea Boba</h5>
-                        <p>Paket 3 cup hanya 25K (hemat 7K)!</p>
-                        <h6>Rp 25.000 / 3 cup</h6>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- =============== PROMO JAJANAN ================= -->
-        <div class="heading_container heading_center mt-5 mb-4">
-            <h2>🍟 PROMO JAJANAN</h2>
-            <p>Promo cemilan favorit anak muda</p>
-        </div>
-
-        <div class="row">
-            <!-- Jajanan 1 -->
-            <div class="col-sm-6 col-lg-4 mb-4">
-                <div class="box position-relative">
-                    <span class="badge-promo">Diskon 20%</span>
-                    <div class="img-box">
-                        <img src="{{ asset('assets_user/images/kentang.jpg') }}" alt="Kentang Goreng Crispy">
-                    </div>
-                    <div class="detail-box">
-                        <h5>Kentang Goreng Crispy</h5>
-                        <p>Cemilan renyah, cocok dimakan kapan saja.</p>
-                        <h6>Rp 8.000 <span class="old">Rp 10.000</span></h6>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Jajanan 2 -->
-            <div class="col-sm-6 col-lg-4 mb-4">
-                <div class="box position-relative">
-                    <span class="badge-promo">Beli 3 Hemat</span>
-                    <div class="img-box">
-                        <img src="{{ asset('assets_user/images/rotibakar.jpg') }}" alt="Roti Bakar Coklat">
-                    </div>
-                    <div class="detail-box">
-                        <h5>Roti Bakar Coklat</h5>
-                        <p>Paket 3 pcs hanya Rp 20K (hemat 4K).</p>
-                        <h6>Rp 20.000 / 3 pcs</h6>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Jajanan 3 -->
-            <div class="col-sm-6 col-lg-4 mb-4">
-                <div class="box position-relative">
-                    <span class="badge-promo">Diskon Rp 2.000</span>
-                    <div class="img-box">
-                        <img src="{{ asset('assets_user/images/pisang.jpg') }}" alt="Pisang Goreng Lumer">
-                    </div>
-                    <div class="detail-box">
-                        <h5>Pisang Goreng Lumer</h5>
-                        <p>Pisang manis dengan coklat lumer yang nikmat.</p>
-                        <h6>Rp 6.000 <span class="old">Rp 8.000</span></h6>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- =============== PROMO MAKANAN BERAT ================= -->
-        <div class="heading_container heading_center mt-5 mb-4">
-            <h2>🍛 PROMO MAKANAN BERAT</h2>
-            <p>Porsi kenyang harga miring</p>
-        </div>
-
-        <div class="row">
-            <!-- Makanan 1 -->
-            <div class="col-sm-6 col-lg-4 mb-4">
-                <div class="box position-relative">
-                    <span class="badge-promo">Diskon 10%</span>
-                    <div class="img-box">
-                        <img src="{{ asset('assets_user/images/nasigoreng.jpg') }}" alt="Nasi Goreng">
-                    </div>
-                    <div class="detail-box">
-                        <h5>Nasi Goreng Spesial</h5>
-                        <p>Nasi goreng dengan topping sosis & ayam suwir.</p>
-                        <h6>Rp 13.500 <span class="old">Rp 15.000</span></h6>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Makanan 2 -->
-            <div class="col-sm-6 col-lg-4 mb-4">
-                <div class="box position-relative">
-                    <span class="badge-promo">Paket Hemat</span>
-                    <div class="img-box">
-                        <img src="{{ asset('assets_user/images/ayamgeprek.jpg') }}" alt="Ayam Geprek">
-                    </div>
-                    <div class="detail-box">
-                        <h5>Ayam Geprek</h5>
-                        <p>Ayam Geprek + Es Teh hanya 17K.</p>
-                        <h6>Rp 17.000</h6>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Makanan 3 -->
-            <div class="col-sm-6 col-lg-4 mb-4">
-                <div class="box position-relative">
-                    <span class="badge-promo">Gratis Minum</span>
-                    <div class="img-box">
-                        <img src="{{ asset('assets_user/images/mieayam.jpg') }}" alt="Mie Ayam Bakso">
-                    </div>
-                    <div class="detail-box">
-                        <h5>Mie Ayam Bakso</h5>
-                        <p>Beli 1 mie ayam bakso GRATIS teh hangat.</p>
-                        <h6>Rp 12.000</h6>
-                    </div>
-                </div>
-            </div>
-        </div>
 
     </div>
-</section>
 
-@endsection
+    <!-- header section strats -->
+    <header class="header_section">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg custom_nav-container ">
+                <a class="navbar-brand" href="{{ route('home') }}">
+                    <span>
+                        LapakGo
+                    </span>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class=""> </span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav  mx-auto ">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('home') }}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('menu') }}">Menu</a>
+                            <a class="nav-link" href="menu"></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ route('promosi') }}">promosi <span
+                                    class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('tentangkami') }}">Tentang Kami</a>
+                        </li>
+                    </ul>
+                    <div class="user_option">
+                        <a href="" class="user_link">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                        </a>
+                        <a class="cart_link" href="#">
+                            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029"
+                                style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
+                                <g>
+                                    <g>
+                                        <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
+                       c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
+                                    </g>
+                                </g>
+                                <g>
+                                    <g>
+                                        <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
+                       C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
+                       c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
+                       C457.728,97.71,450.56,86.958,439.296,84.91z" />
+                                    </g>
+                                </g>
+                                <g>
+                                    <g>
+                                        <path d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
+                       c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
+                                    </g>
+                                </g>
+                            </svg>
+                        </a>
+                        <form class="form-inline">
+                            <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </button>
+                        </form>
+                        <a href="" class="order_online">
+                            Order Online
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!-- end header section -->
+    </div>
+
+    <!-- about section -->
+    <section class="about_section layout_padding">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-6">
+                    <div class="img-box">
+                        <img src="{{ asset('assets user/images/promo-banner.png') }}" alt="Banner Promo UMKM Bengkalis">
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="detail-box">
+                        <div class="heading_container">
+                            <h2>Promo UMKM Bengkalis</h2>
+                        </div>
+                        <p>
+                            Nikmati berbagai penawaran menarik dari pelaku UMKM Bengkalis. Harga lebih hemat, produk lebih
+                            lengkap, dan promo terbatas setiap hari!
+                        </p>
+                        <a href="/promo">Lihat Promo</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- end about section -->
+
+    <!-- footer section -->
+    <footer class="footer_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 footer-col">
+                    <div class="footer_contact">
+                        <h4>
+                            Contact Us
+                        </h4>
+                        <div class="contact_link_box">
+                            <a href="">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                <span>
+                                    Location
+                                </span>
+                            </a>
+                            <a href="">
+                                <i class="fa fa-phone" aria-hidden="true"></i>
+                                <span>
+                                    Call +62 812-xxxx-xxxx
+                                </span>
+                            </a>
+                            <a href="mailto:lapakgo.support@gmail.com">
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                                <span>
+                                    lapakgo.support@gmail.com
+                                </span>
+                            </a>
+
+                            <div class="col-md-4 footer-col">
+                                <div class="footer_detail">
+                                    <a href="{{ route('home') }}" class="footer-logo">
+                                        LapakGo
+                                    </a>
+                                    </a>
+                                    <p>
+                                        Necessary, making this the first true generator on the Internet. It uses a
+                                        dictionary of over 200 Latin words, combined with
+                                    </p>
+                                    <div class="footer_social">
+                                        <a href="">
+                                            <i class="fa fa-facebook" aria-hidden="true"></i>
+                                        </a>
+                                        <a href="">
+                                            <i class="fa fa-twitter" aria-hidden="true"></i>
+                                        </a>
+                                        <a href="">
+                                            <i class="fa fa-linkedin" aria-hidden="true"></i>
+                                        </a>
+                                        <a href="">
+                                            <i class="fa fa-instagram" aria-hidden="true"></i>
+                                        </a>
+                                        <a href="">
+                                            <i class="fa fa-pinterest" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="footer-info">
+                                <p>
+                                    &copy; <span id="displayYear"></span> LapakGo. All Rights Reserved.
+                                </p>
+                            </div>
+                        </div>
+    </footer>
+    <!-- footer section -->
+@endsection (promosi)

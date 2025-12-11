@@ -800,7 +800,94 @@ a:hover, a:focus {
 
 /* BOOK SECTION */
 .book_section {
-  position: relative;
+    background: #191820; /* Warna background seperti gambar */
+    padding: 80px 0;
+    min-height: 100vh;
+}
+
+.heading_container h2 {
+    color: white;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.heading_container p {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.1rem;
+}
+
+.profile_card {
+    background: #2d3748; /* Card abu-abu gelap seperti gambar */
+    border-radius: 15px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    height: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.profile_card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+}
+
+.profile_image {
+    display: inline-block;
+    margin: 0 auto;
+}
+
+.profile_image img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #fbbf24; /* Border kuning/gold seperti gambar */
+    box-shadow: 0 5px 15px rgba(251, 191, 36, 0.3);
+}
+
+.profile_info h5 {
+    color: white;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.profile_info p {
+    color: #fbbf24; /* Warna kuning/gold seperti "Miloku" & "Ngemil yuk" */
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.profile_info small {
+    color: rgba(255, 255, 255, 0.65); /* Teks deskripsi abu-abu */
+    font-size: 0.9rem;
+    display: block;
+}
+
+/* Styling untuk tombol VIEW MORE jika ada */
+.view_more_btn {
+    background: #fbbf24; /* Kuning/gold */
+    color: #222831; /* Text gelap */
+    padding: 12px 40px;
+    border-radius: 25px;
+    border: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.3s;
+    display: block;
+    margin: 40px auto 0;
+}
+
+.view_more_btn:hover {
+    background: #f59e0b;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(251, 191, 36, 0.4);
+}
+
+@media (max-width: 768px) {
+    .profile_card {
+        margin-bottom: 20px;
+    }
 }
 
 .book_section .heading_container {

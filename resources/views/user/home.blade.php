@@ -16,15 +16,17 @@
                         </span>
                     </a>
 
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                        aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mx-auto">
                             <li class="nav-item active">
-                                <a class="nav-link" href="{{ url('/') }}">Beranda <span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="{{ url('/') }}">Beranda <span
+                                        class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/menu') }}">Menu</a>
@@ -46,7 +48,7 @@
             </div>
         </header>
         <!-- end header section -->
-        
+
         <!-- slider section -->
         <section class="slider_section">
             <div id="customCarousel1" class="carousel slide" data-ride="carousel" data-interval="3000">
@@ -300,93 +302,57 @@
     <!-- book section -->
     <section class="book_section layout_padding">
         <div class="container">
-            <div class="heading_container">
-                <h2>Book A Table</h2>
+            <div class="heading_container text-center mb-5">
+                <h2>Meet Our Team</h2>
+                <p class="text-muted">The people behind your perfect dining experience</p>
             </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form_container">
-                        <form action="">
-                            <div>
-                                <input type="text" class="form-control" placeholder="Your Name" />
-                            </div>
-                            <div>
-                                <input type="text" class="form-control" placeholder="Phone Number" />
-                            </div>
-                            <div>
-                                <input type="email" class="form-control" placeholder="Your Email" />
-                            </div>
-                            <div>
-                                <select class="form-control nice-select wide">
-                                    <option value="" disabled selected>How many persons?</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                </select>
-                            </div>
-                            <div>
-                                <input type="date" class="form-control">
-                            </div>
-                            <div class="btn_box">
-                                <button type="submit">Book Now</button>
-                            </div>
-                        </form>
+
+            <div class="row justify-content-center">
+                <!-- Profile Card 1 -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="profile_card p-4 shadow rounded text-center">
+                        <div class="profile_image mb-3">
+                            <img src="{{ asset('images/team/chef1.jpg') }}" alt="Chef 1">
+                        </div>
+                        <div class="profile_info">
+                            <h5 class="mb-2">Gustillawati Ningsih</h5>
+                            <p class="text-muted mb-2">Head Chef</p>
+                            <small class="text-secondary">10+ years experience in Italian cuisine</small>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="map_container">
-                        <div id="googleMap"></div>
+
+                <!-- Profile Card 2 -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="profile_card p-4 shadow rounded text-center">
+                        <div class="profile_image mb-3">
+                            <img src="{{ asset('images/team/chef2.jpg') }}" alt="Chef 2">
+                        </div>
+                        <div class="profile_info">
+                            <h5 class="mb-2">Afin al-rakhi</h5>
+                            <p class="text-muted mb-2">Sous Chef</p>
+                            <small class="text-secondary">Specialist in French pastry & desserts</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile Card 3 -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="profile_card p-4 shadow rounded text-center">
+                        <div class="profile_image mb-3">
+                             <img src="{{ asset('assets user/images/aidil1.jpg') }}" alt="Lychee Tea">
+                        </div>
+                        <div class="profile_info">
+                            <h5 class="mb-2">Muhammad Aidil Fitriansyah</h5>
+                            <p class="text-muted mb-2">Restaurant Manager</p>
+                            <small class="text-secondary">Ensuring your perfect dining experience</small>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <!-- end book section -->
-
-    <!-- client section -->
-    <section class="client_section layout_padding-bottom">
-        <div class="container">
-            <div class="heading_container heading_center psudo_white_primary mb_45">
-                <h2>What Says Our Customers</h2>
-            </div>
-            <div class="carousel-wrap row">
-                <div class="owl-carousel client_owl-carousel">
-                    <div class="item">
-                        <div class="box">
-                            <div class="detail-box">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
-                                </p>
-                                <h6>Moana Michell</h6>
-                                <p>magna aliqua</p>
-                            </div>
-                            <div class="img-box">
-                                <img src="{{ asset('assets user/images/client1.jpg') }}" alt="Client 1" class="box-img">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="box">
-                            <div class="detail-box">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
-                                </p>
-                                <h6>Mike Hamell</h6>
-                                <p>magna aliqua</p>
-                            </div>
-                            <div class="img-box">
-                                <img src="{{ asset('assets user/images/client2.jpg') }}" alt="Client 2" class="box-img">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- end client section -->
 
     <!-- footer section -->
     <footer class="footer_section">
