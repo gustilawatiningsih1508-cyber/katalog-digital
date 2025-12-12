@@ -155,7 +155,7 @@
                     <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
                       clip-rule="evenodd"></path>
                   </svg>
-                  <span class="ml-3 flex-1 whitespace-nowrap">Admin</span>
+                  <span class="ml-3 flex-1 whitespace-nowrap">Users</span>
                 </a>
               </li>
               <li>
@@ -197,10 +197,13 @@
                 </a>
               </div>
               <div class="p-4 border-t border-gray-700 mt-auto">
-                <button style="margin-top: 9cm;"></button>
-                <a href="/" class="block py-2 px-3 rounded bg-red-600 text-center hover:bg-red-700">
-                  Logout
-                </a>
+                <form method="POST" action="{{ route('logout') }}">
+                  @csrf
+                  <button type="submit"
+                    class="w-full block py-2 px-3 rounded bg-red-600 text-center hover:bg-red-700 text-white">
+                    Logout
+                  </button>
+                </form>
               </div>
           </div>
         </div>

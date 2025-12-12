@@ -30,6 +30,6 @@ class Promosi extends Model
     // Relasi ke admin (jika ada model Admin)
     public function admin()
     {
-        return $this->belongsTo(Admin::class, 'id_admin', 'id_admin');
+        return $this->belongsTo(User::class, 'id_admin', 'id_admin');
     }
 }

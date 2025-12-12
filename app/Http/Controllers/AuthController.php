@@ -2,16 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use App\Models\User;
+use Illuminate\Support\Facades\Log;
 
 class AuthController extends Controller
 {
-    /**
-     * Handle user login (Sign In)
-     */
+    // Show login form
+    public function showLogin()
+    {
+        return view('admin.sign-in');
+    }
+
+    // Show register form
+    public function showRegister()
+    {
+        return view('admin.sign-up');
+    }
+
+    // Process login
     public function login(Request $request)
     {
         $request->validate([
@@ -21,10 +32,20 @@ class AuthController extends Controller
 
         $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials, $request->remember)) {
             $request->session()->regenerate();
+            
+            // Update waktu aktivitas
+            $user = Auth::user();
+            $user->waktu_aktivitas = now();
+            $user->save();
 
-            return redirect()->route('dashboard')->with('success', 'Berhasil login!');
+            // Redirect berdasarkan hak akses
+            if ($user->hak_akses == 1) {
+                return redirect()->route('admin.dashboard')->with('success', 'Login berhasil!');
+            } else {
+                return redirect()->route('dashboard')->with('success', 'Login berhasil!');
+            }
         }
 
         return back()->withErrors([
@@ -32,39 +53,46 @@ class AuthController extends Controller
         ])->withInput();
     }
 
-    /**
-     * Handle user registration (Sign Up)
-     * Setelah register → Redirect ke halaman Sign In
-     */
+    // Process register
     public function register(Request $request)
     {
         $request->validate([
-            'name'     => 'required|string|max:255',
-            'email'    => 'required|email|unique:users,email',
+            'username' => 'required|string|max:255|unique:users,username',
+            'email' => 'required|email|unique:users,email',
             'password' => 'required|min:6|confirmed'
         ]);
 
-        // Buat user baru
-        User::create([
-            'name'     => $request->name,
-            'email'    => $request->email,
-            'password' => Hash::make($request->password)
-        ]);
+        try {
+            $user = User::create([
+                'username' => $request->username,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'hak_akses' => 2, // Default sebagai penjual
+                'waktu_aktivitas' => now()
+            ]);
 
-        // Redirect ke sign-in (route name: signIn)
-        return redirect()->route('signIn')->with('success', 'Akun berhasil dibuat! Silakan login.');
+            Log::info('User registered successfully', ['user_id' => $user->id]);
+
+            // Option 1: Login otomatis setelah register
+            // Auth::login($user);
+            // return redirect()->route('dashboard')->with('success', 'Akun berhasil dibuat!');
+
+            // Option 2: Redirect ke login
+            return redirect()->route('signIn')->with('success', 'Akun berhasil dibuat! Silakan login.');
+
+        } catch (\Exception $e) {
+            Log::error('Registration failed: ' . $e->getMessage());
+            return back()->withErrors(['error' => 'Registrasi gagal. Silakan coba lagi.'])->withInput();
+        }
     }
 
-    /**
-     * Logout user
-     */
+    // Logout
     public function logout(Request $request)
     {
         Auth::logout();
-
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/')->with('success', 'Anda berhasil logout!');
+        return redirect('/')->with('success', 'Logout berhasil!');
     }
 }

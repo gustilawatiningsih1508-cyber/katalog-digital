@@ -1,10 +1,10 @@
 <?php
-
+// app/Http/Controllers/PromosiController.php
 namespace App\Http\Controllers;
 
 use App\Models\Promosi;
 use App\Models\PelakuUsaha;
-use App\Models\Admin;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -12,21 +12,24 @@ class PromosiController extends Controller
 {
     public function index()
     {
-        $promos = Promosi::with(['pelakuUsaha', 'admin'])->get();
-        $pelakuUsaha = PelakuUsaha::all();
-        $admins = Admin::all();
-        
-        return view('admin.promosi-admin', compact('promos', 'pelakuUsaha', 'admins'));
+        try {
+            $promos = Promosi::with(['pelakuUsaha', 'admin'])->get();
+            $pelakuUsaha = PelakuUsaha::all();
+            $admins = User::where('hak_akses', 1)->get(); // Ambil user dengan hak_akses = 1
+            
+            return view('admin.promosi-admin', compact('promos', 'pelakuUsaha', 'admins'));
+        } catch (\Exception $e) {
+            Log::error('Error di index promosi: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+        }
     }
 
     public function create()
     {
         $pelakuUsaha = PelakuUsaha::all();
-        $admins = Admin::all();
+        $admins = User::where('hak_akses', 1)->get();
         
-        // Kirim ke view yang sama dengan mode create
-        $promos = Promosi::with(['pelakuUsaha', 'admin'])->get();
-        return view('admin.promosi-admin', compact('promos', 'pelakuUsaha', 'admins'));
+        return view('admin.promosi-create', compact('pelakuUsaha', 'admins'));
     }
 
     public function store(Request $request)
@@ -34,34 +37,28 @@ class PromosiController extends Controller
         Log::info('Store method dipanggil untuk Promosi');
         Log::info('Data request:', $request->all());
 
-        // PERBAIKAN 1: Ubah validasi tipe data id_pelaku_usaha
         $validated = $request->validate([
             'id_pelaku_usaha' => 'required|exists:pelaku_usaha,id_pelaku_usaha',
             'judul_promosi' => 'required|string|max:100',
             'deskripsi_promosi' => 'required|string',
-            'id_admin' => 'nullable|exists:admin,id_admin',
+            'id_admin' => 'nullable|exists:users,id', // Validasi ke tabel users
         ], [
-            // PERBAIKAN 2: Tambahkan pesan error custom
             'id_pelaku_usaha.required' => 'Pilih pelaku usaha terlebih dahulu.',
             'id_pelaku_usaha.exists' => 'Pelaku usaha yang dipilih tidak valid.',
             'judul_promosi.required' => 'Judul promosi harus diisi.',
             'deskripsi_promosi.required' => 'Deskripsi promosi harus diisi.',
+            'id_admin.exists' => 'Admin yang dipilih tidak valid.',
         ]);
 
         try {
-            Log::info('Mencoba membuat promosi...');
-
-            // PERBAIKAN 3: Pastikan id_admin null jika kosong
             $promosiData = [
                 'id_pelaku_usaha' => $validated['id_pelaku_usaha'],
                 'judul_promosi' => $validated['judul_promosi'],
                 'deskripsi_promosi' => $validated['deskripsi_promosi'],
-                'id_admin' => $validated['id_admin'] ?? null,
+                'id_admin' => $validated['id_admin'] ?? auth()->id(), // Default ke user yang login
             ];
 
-            $promosi = Promosi::create($promosiData);
-
-            Log::info('Promosi berhasil dibuat:', $promosi->toArray());
+            Promosi::create($promosiData);
 
             return redirect()->route('promosi-admin.index')
                 ->with('success', 'Promosi berhasil ditambahkan!');
@@ -77,19 +74,26 @@ class PromosiController extends Controller
 
     public function show($id)
     {
-        // Tetap kosong karena tidak digunakan
-        return response()->json(['message' => 'Method not used'], 404);
+        try {
+            $promosi = Promosi::with(['pelakuUsaha', 'admin'])->findOrFail($id);
+            return response()->json($promosi);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Promosi tidak ditemukan'], 404);
+        }
     }
 
     public function edit($id)
     {
-        $promosi = Promosi::findOrFail($id);
-        $pelakuUsaha = PelakuUsaha::all();
-        $admins = Admin::all();
-        
-        // Kirim semua data ke view
-        $promos = Promosi::with(['pelakuUsaha', 'admin'])->get();
-        return view('admin.promosi-admin', compact('promos', 'promosi', 'pelakuUsaha', 'admins'));
+        try {
+            $promosi = Promosi::findOrFail($id);
+            $pelakuUsaha = PelakuUsaha::all();
+            $admins = User::where('hak_akses', 1)->get();
+            
+            return view('admin.promosi-edit', compact('promosi', 'pelakuUsaha', 'admins'));
+        } catch (\Exception $e) {
+            return redirect()->route('promosi-admin.index')
+                ->with('error', 'Promosi tidak ditemukan');
+        }
     }
 
     public function update(Request $request, $id)
@@ -97,39 +101,33 @@ class PromosiController extends Controller
         Log::info('Update method dipanggil untuk Promosi ID: ' . $id);
         Log::info('Data request:', $request->all());
 
-        $promosi = Promosi::findOrFail($id);
+        try {
+            $promosi = Promosi::findOrFail($id);
+        } catch (\Exception $e) {
+            return redirect()->route('promosi-admin.index')
+                ->with('error', 'Promosi tidak ditemukan');
+        }
 
-        // PERBAIKAN: Sama seperti store
         $validated = $request->validate([
             'id_pelaku_usaha' => 'required|exists:pelaku_usaha,id_pelaku_usaha',
             'judul_promosi' => 'required|string|max:100',
             'deskripsi_promosi' => 'required|string',
-            'id_admin' => 'nullable|exists:admin,id_admin',
-        ], [
-            'id_pelaku_usaha.required' => 'Pilih pelaku usaha terlebih dahulu.',
-            'id_pelaku_usaha.exists' => 'Pelaku usaha yang dipilih tidak valid.',
-            'judul_promosi.required' => 'Judul promosi harus diisi.',
-            'deskripsi_promosi.required' => 'Deskripsi promosi harus diisi.',
+            'id_admin' => 'nullable|exists:users,id',
         ]);
 
         try {
-            $updateData = [
+            $promosi->update([
                 'id_pelaku_usaha' => $validated['id_pelaku_usaha'],
                 'judul_promosi' => $validated['judul_promosi'],
                 'deskripsi_promosi' => $validated['deskripsi_promosi'],
-                'id_admin' => $validated['id_admin'] ?? null,
-            ];
-
-            $promosi->update($updateData);
-
-            Log::info('Promosi berhasil diupdate');
+                'id_admin' => $validated['id_admin'] ?? $promosi->id_admin,
+            ]);
 
             return redirect()->route('promosi-admin.index')
                 ->with('success', 'Promosi berhasil diperbarui!');
 
         } catch (\Exception $e) {
             Log::error('Error update promosi: ' . $e->getMessage());
-            Log::error('Error trace: ' . $e->getTraceAsString());
             
             return redirect()->route('promosi-admin.index')
                 ->with('error', 'Gagal memperbarui promosi: ' . $e->getMessage());
@@ -144,14 +142,11 @@ class PromosiController extends Controller
             $promosi = Promosi::findOrFail($id);
             $promosi->delete();
 
-            Log::info('Promosi berhasil dihapus');
-
             return redirect()->route('promosi-admin.index')
                 ->with('success', 'Promosi berhasil dihapus!');
 
         } catch (\Exception $e) {
             Log::error('Error hapus promosi: ' . $e->getMessage());
-            Log::error('Error trace: ' . $e->getTraceAsString());
             
             return redirect()->route('promosi-admin.index')
                 ->with('error', 'Gagal menghapus promosi: ' . $e->getMessage());

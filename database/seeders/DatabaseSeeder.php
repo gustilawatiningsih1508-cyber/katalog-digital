@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
         User::firstOrCreate(
             ['email' => 'test@example.com'], // Cek berdasarkan email
             [
-                'name' => 'Test User',
+                'username' => 'Test User',
                 'password' => Hash::make('password'), // Tambahkan password
                 'email_verified_at' => now(), // Tambahkan email_verified_at
             ]

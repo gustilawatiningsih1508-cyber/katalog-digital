@@ -454,6 +454,32 @@
                 font-size: 1.4rem;
             }
         }
+        
+        /* Error message styling */
+        .alert {
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .alert-success {
+            background-color: #d1fae5;
+            color: #065f46;
+            border: 1px solid #a7f3d0;
+        }
+        
+        .alert-error {
+            background-color: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fecaca;
+        }
+        
+        .error-message {
+            color: #ef4444;
+            font-size: 0.8rem;
+            margin-top: 4px;
+        }
     </style>
 </head>
 <body>
@@ -515,17 +541,37 @@
                 <p>Isi informasi di bawah untuk memulai perjalanan Anda</p>
             </div>
             
+            <!-- Tampilkan pesan error/success -->
+            @if(session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+            
+            @if($errors->any())
+                <div class="alert alert-error">
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            
             <form action="{{ route('register.process') }}" method="POST" class="register-form" id="registerForm">
                 @csrf
                 
-                <!-- Name -->
+                <!-- Username -->
                 <div class="form-group">
-                    <label class="form-label" for="name">Nama Lengkap *</label>
+                    <label class="form-label" for="username">Username *</label>
                     <div class="input-with-icon">
                         <i class="fas fa-user input-icon"></i>
-                        <input type="text" name="name" id="name" class="form-control" 
-                               placeholder="Masukkan nama lengkap" required>
+                        <input type="text" name="username" id="username" class="form-control" 
+                               placeholder="Masukkan username" value="{{ old('username') }}" required>
                     </div>
+                    @error('username')
+                        <div class="error-message">{{ $message }}</div>
+                    @enderror
                 </div>
                 
                 <!-- Email -->
@@ -534,8 +580,11 @@
                     <div class="input-with-icon">
                         <i class="fas fa-envelope input-icon"></i>
                         <input type="email" name="email" id="email" class="form-control" 
-                               placeholder="nama@contoh.com" required>
+                               placeholder="nama@contoh.com" value="{{ old('email') }}" required>
                     </div>
+                    @error('email')
+                        <div class="error-message">{{ $message }}</div>
+                    @enderror
                 </div>
                 
                 <!-- Password -->
@@ -549,6 +598,9 @@
                             <i class="fas fa-eye"></i>
                         </button>
                     </div>
+                    @error('password')
+                        <div class="error-message">{{ $message }}</div>
+                    @enderror
                     <div class="password-strength">
                         <div class="strength-meter">
                             <div class="strength-fill" id="passwordStrength"></div>
@@ -581,6 +633,9 @@
                         Saya setuju dengan <a href="#">Syarat & Ketentuan</a> dan <a href="#">Kebijakan Privasi</a> Lapak Go.
                     </span>
                 </div>
+                @error('terms')
+                    <div class="error-message">{{ $message }}</div>
+                @enderror
                 
                 <!-- Submit Button -->
                 <button type="submit" class="submit-btn" id="submitBtn">
@@ -714,13 +769,13 @@
             e.preventDefault();
             
             // Basic validation
-            const name = document.getElementById('name').value;
+            const username = document.getElementById('username').value;
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
             const confirmPassword = document.getElementById('password_confirmation').value;
             const terms = document.getElementById('terms').checked;
             
-            if (!name || !email || !password || !confirmPassword) {
+            if (!username || !email || !password || !confirmPassword) {
                 alert('Harap isi semua kolom yang wajib diisi');
                 return;
             }

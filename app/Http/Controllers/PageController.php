@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
+    /* ============================================
+       PUBLIC PAGES
+    ============================================ */
+    
     public function home()
     {
         return view('user.home');
@@ -26,9 +30,22 @@ class PageController extends Controller
         return view('user.tentangkami');
     }
 
+    /* ============================================
+       USER DASHBOARD (Setelah Login)
+    ============================================ */
+    
     public function dashboard()
     {
         return view('admin.dashboard');
+    }
+
+    /* ============================================
+       ADMIN PAGES (Hak Akses = 1)
+    ============================================ */
+    
+    public function adminSettings()
+    {
+        return view('admin.settings');
     }
 
     public function users()
@@ -56,6 +73,10 @@ class PageController extends Controller
         return view('admin.promosi-admin');
     }
 
+    /* ============================================
+       SEARCH FUNCTIONALITY
+    ============================================ */
+    
     public function search(Request $request)
     {
         $query = $request->input('query');
@@ -76,9 +97,9 @@ class PageController extends Controller
         ]);
     }
 
-    // ===========================
-    //     DATA LAPAK (STATIC)
-    // ===========================
+    /* ============================================
+       LAPAK (TOKO) - STATIC DATA
+    ============================================ */
 
     public function lapakDetail($id)
     {
@@ -88,7 +109,7 @@ class PageController extends Controller
                 'id'        => 1,
                 'nama'      => 'Miloku',
                 'owner'     => 'Merianti',
-                'gambar'    => asset('assets user/images/milo1.jpg'),
+                'gambar'    => asset('assets/user/images/milo1.jpg'),
                 'deskripsi' => 'Miloku adalah usaha minuman kekinian dengan rasa Milo premium yang ada di Bengkalis.',
                 'wa'        => '081234567890',
                 'alamat'    => 'Jl. Ahmad Yani No. 45, Bengkalis',
@@ -100,7 +121,6 @@ class PageController extends Controller
                     ['nama' => 'Es Teh Jumbo', 'harga' => 15000],
                     ['nama' => 'Sirup Marjan Grenadine', 'harga' => 15000],
                     ['nama' => 'Sirup Marjan Melon', 'harga' => 15000],
-                   
                 ],
             ],
 
@@ -108,7 +128,7 @@ class PageController extends Controller
                 'id'        => 2,
                 'nama'      => 'Ngemil Yuk',
                 'owner'     => 'Lilis Sari',
-                'gambar'    => asset('assets user/images/ngemil.jpg'),
+                'gambar'    => asset('assets/user/images/ngemil.jpg'),
                 'deskripsi' => 'Ngemil Yuk menyediakan aneka camilan crispy, manis, dan pedas.',
                 'wa'        => '081298765432',
                 'alamat'    => 'Jl. Bantan No. 12, Bengkalis',
@@ -123,7 +143,7 @@ class PageController extends Controller
                 'id'        => 3,
                 'nama'      => 'Warung Mangan Limo Putri',
                 'owner'     => 'Siti Aminah',
-                'gambar'    => asset('assets user/images/mangan.jpg'),
+                'gambar'    => asset('assetss/user/images/mangan.jpg'),
                 'deskripsi' => 'Warung makan rumahan dengan menu favorit harian khas Bengkalis.',
                 'wa'        => '081377112233',
                 'alamat'    => 'Jl. Kelapapati No. 88, Bengkalis',
@@ -147,4 +167,10 @@ class PageController extends Controller
         return view('layouts.lapak.lapak-detail', compact('lapak', 'menu'));
     }
 
+    public function menuLapak($id)
+    {
+        // Implementasi untuk menampilkan menu lapak
+        // Bisa berupa API atau view
+        return view('layouts.lapak.lapak-menu', ['lapakId' => $id]);
+    }
 }

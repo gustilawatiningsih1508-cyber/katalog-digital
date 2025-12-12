@@ -1,93 +1,81 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\PageController;
-use App\Http\Controllers\PromosiController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PromosiController;
+use App\Http\Controllers\UsersController;
 
-
-
-/* ---------------------------------------------
-|   PUBLIC ROUTES
---------------------------------------------- */
+/* ============================================
+   PUBLIC ROUTES (Tanpa Login)
+============================================ */
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/menu', [PageController::class, 'menu'])->name('menu');
 Route::get('/promosi', [PageController::class, 'promosi'])->name('promosi');
 Route::get('/tentangkami', [PageController::class, 'tentangkami'])->name('tentangkami');
+Route::view('/about', 'user.about')->name('about');
 
+// Lapak Public
+Route::get('/lapak/{id}', [PageController::class, 'lapakDetail'])->name('lapak.detail');
+Route::get('/lapak/{id}/menu', [PageController::class, 'menuLapak'])->name('lapak.menu');
 
-/* ---------------------------------------------
-|   DASHBOARD
---------------------------------------------- */
-Route::get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
-Route::get('/search', [PageController::class, 'search'])->name('search');
+/* ============================================
+   AUTH ROUTES
+============================================ */
+// Views
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+Route::get('/sign-in', [AuthController::class, 'showLogin'])->name('signIn');
+Route::get('/sign-up', [AuthController::class, 'showRegister'])->name('signUp');
 
-
-/* ---------------------------------------------
-|   AUTH PAGE (SIGN IN & SIGN UP)
---------------------------------------------- */
-Route::get('/sign-in', [PageController::class, 'signIn'])->name('signIn');
-Route::get('/sign-up', [PageController::class, 'signUp'])->name('signUp');
-
-// PROCESS
+// Process
 Route::post('/login', [AuthController::class, 'login'])->name('login.process');
 Route::post('/register', [AuthController::class, 'register'])->name('register.process');
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
+/* ============================================
+   PROTECTED ROUTES (Perlu Login)
+============================================ */
+Route::middleware(['auth'])->group(function () {
+    // Dashboard User
+    Route::get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
+    
+    // Search
+    Route::get('/search', [PageController::class, 'search'])->name('search');
+    
+    // Logout
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    
+    // Products CRUD
+    Route::resource('products', ProductController::class);
+    
+    // Promosi Admin Page (View saja)
+    Route::get('/promosi-admin-page', [PageController::class, 'promosiAdmin'])->name('promosiAdmin');
+    
+    // Users Search (harus di atas Route::resource)
+    Route::get('users/search', [UsersController::class, 'search'])->name('users.search');
+    
+    // Users CRUD
+    Route::resource('users', UsersController::class);
+});
 
-/* ---------------------------------------------
-|   PRODUCTS ROUTES
---------------------------------------------- */
-Route::resource('products', ProductController::class);
+/* ============================================
+   ADMIN ROUTES (Hak Akses = 1)
+============================================ */
+Route::middleware(['auth', 'hak_akses:1'])->group(function () {
+    // Admin Dashboard
+    Route::get('/admin/dashboard', [PageController::class, 'dashboard'])
+        ->name('admin.dashboard');
+    
+    // Admin Settings
+    Route::get('/admin/settings', [PageController::class, 'adminSettings'])
+        ->name('admin.settings');
+    
+    // CRUD Promosi (khusus admin)
+    Route::resource('promosi-admin', PromosiController::class);
+});
 
-
-/* ---------------------------------------------
-|   ADMIN ROUTES
---------------------------------------------- */
-Route::resource('users', AdminController::class);
-
-// Manual Admin (tetap dipertahankan)
-Route::get('/admins', [AdminController::class, 'index'])->name('admins.index');
-Route::post('/admins', [AdminController::class, 'store'])->name('admins.store');
-Route::put('/admins/{id}', [AdminController::class, 'update'])->name('admins.update');
-Route::delete('/admins/{id}', [AdminController::class, 'destroy'])->name('admins.destroy');
-
-
-/* ---------------------------------------------
-|   PROMOSI ADMIN (TIDAK DIHAPUS)
---------------------------------------------- */
-
-// Halaman admin (page)
-Route::get('/promosi-admin-page', [PageController::class, 'promosiAdmin'])
-    ->name('promosiAdmin');
-
-// CRUD (resource)
-Route::resource('promosi-admin', PromosiController::class);
-
-
-/* ---------------------------------------------
-|   LAPAK ROUTES (Perbaikan duplikat)
---------------------------------------------- */
-
-// Route detail lapak → dipakai yang ini
-Route::get('/lapak/{id}', [PageController::class, 'lapakDetail'])
-    ->name('lapak.detail');
-
-// Menu lapak
-Route::get('/lapak/{id}/menu', [PageController::class, 'menuLapak'])
-    ->name('lapak.menu');
-
-// DUPLIKAT DIPERBAIKI → ubah name saja agar tidak tabrakan
-Route::get('/lapak/{id}', [PageController::class, 'lapakDetail'])
-    ->name('lapak.show');  // tetap ada tapi tidak mengacaukan route utama
-
-
-/* ---------------------------------------------
-|   STATIC PAGES
---------------------------------------------- */
-Route::get('/about', function () {
-    return view('user.about');
-})->name('about');
-
+/* ============================================
+   FALLBACK ROUTE
+============================================ */
+Route::fallback(function () {
+    return redirect()->route('home');
+});

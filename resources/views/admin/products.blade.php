@@ -68,7 +68,7 @@
             </svg>
           </button>
           <a href="/dashboard" class="text-xl font-bold flex items-center lg:ml-2.5">
-            <img src="{{ asset('assets/admin/images/favicon.png') }}" class="h-6 mr-2" alt="LapakGo Logo">
+            <img src="{{ +('assets/admin/images/favicon.png') }}" class="h-6 mr-2" alt="LapakGo Logo">
             <span class="self-center whitespace-nowrap">LapakGo</span>
           </a>
           <form action="#" method="GET" class="hidden lg:block lg:pl-32">
@@ -152,7 +152,7 @@
                     <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
                       clip-rule="evenodd"></path>
                   </svg>
-                  <span class="ml-3 flex-1 whitespace-nowrap">Admin</span>
+                  <span class="ml-3 flex-1 whitespace-nowrap">Users</span>
                 </a>
               </li>
               <li>

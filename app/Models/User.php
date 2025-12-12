@@ -1,54 +1,51 @@
 <?php
-
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
+    protected $table = 'users';
+    protected $primaryKey = 'id';
+
     protected $fillable = [
-        'name',
+        'username',
         'email',
         'password',
+        'hak_akses',
+        'laporan_aktifitas',
+        'waktu_aktivitas',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var list<string>
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
     protected function casts(): array
     {
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'waktu_aktivitas' => 'datetime',
+            'hak_akses' => 'integer',
         ];
     }
+
+    // Scope untuk search
     public function scopeSearch($query, $term)
     {
-        return $query->where('name', 'LIKE', '%' . $term . '%')
-            ->orWhere('description', 'LIKE', '%' . $term . '%')
-            ->orWhere('category', 'LIKE', '%' . $term . '%');
+        return $query->where('username', 'LIKE', '%' . $term . '%')
+            ->orWhere('email', 'LIKE', '%' . $term . '%');
+    }
+
+    // Mutator untuk mengupdate waktu aktivitas
+    public function updateLastActivity()
+    {
+        $this->update(['waktu_aktivitas' => now()]);
     }
 }
