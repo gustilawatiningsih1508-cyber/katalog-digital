@@ -15,8 +15,10 @@ class PromosiController extends Controller
         try {
             $promos = Promosi::with(['pelakuUsaha', 'admin'])->get();
             $pelakuUsaha = PelakuUsaha::all();
-            $admins = User::where('hak_akses', 1)->get(); // Ambil user dengan hak_akses = 1
-            
+
+            // PERBAIKAN: Ambil users dengan hak_akses = 1, bukan id_admin
+            $admins = User::where('hak_akses', 1)->get();
+
             return view('admin.promosi-admin', compact('promos', 'pelakuUsaha', 'admins'));
         } catch (\Exception $e) {
             Log::error('Error di index promosi: ' . $e->getMessage());
@@ -28,7 +30,7 @@ class PromosiController extends Controller
     {
         $pelakuUsaha = PelakuUsaha::all();
         $admins = User::where('hak_akses', 1)->get();
-        
+
         return view('admin.promosi-create', compact('pelakuUsaha', 'admins'));
     }
 
@@ -66,7 +68,7 @@ class PromosiController extends Controller
         } catch (\Exception $e) {
             Log::error('Error membuat promosi: ' . $e->getMessage());
             Log::error('Error trace: ' . $e->getTraceAsString());
-            
+
             return redirect()->route('promosi-admin.index')
                 ->with('error', 'Gagal menambahkan promosi: ' . $e->getMessage());
         }
@@ -88,7 +90,7 @@ class PromosiController extends Controller
             $promosi = Promosi::findOrFail($id);
             $pelakuUsaha = PelakuUsaha::all();
             $admins = User::where('hak_akses', 1)->get();
-            
+
             return view('admin.promosi-edit', compact('promosi', 'pelakuUsaha', 'admins'));
         } catch (\Exception $e) {
             return redirect()->route('promosi-admin.index')
@@ -128,7 +130,7 @@ class PromosiController extends Controller
 
         } catch (\Exception $e) {
             Log::error('Error update promosi: ' . $e->getMessage());
-            
+
             return redirect()->route('promosi-admin.index')
                 ->with('error', 'Gagal memperbarui promosi: ' . $e->getMessage());
         }
@@ -147,7 +149,7 @@ class PromosiController extends Controller
 
         } catch (\Exception $e) {
             Log::error('Error hapus promosi: ' . $e->getMessage());
-            
+
             return redirect()->route('promosi-admin.index')
                 ->with('error', 'Gagal menghapus promosi: ' . $e->getMessage());
         }

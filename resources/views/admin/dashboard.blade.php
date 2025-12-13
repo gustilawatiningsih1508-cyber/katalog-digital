@@ -38,7 +38,7 @@
                 clip-rule="evenodd"></path>
             </svg>
           </button>
-          <a href="{{ route('admin.dashboard') }}" class="text-xl font-bold flex items-center lg:ml-2.5">
+          <a href="{{ route('dashboard') }}" class="text-xl font-bold flex items-center lg:ml-2.5">
             <img src="{{ asset('assets/admin/images/favicon.png') }}" class="h-6 mr-2" alt="LapakGo Logo"
               onerror="this.style.display='none'">
             <span class="self-center whitespace-nowrap">LapakGo</span>
@@ -48,6 +48,11 @@
           <div class="hidden lg:flex items-center">
             <span class="text-base font-normal text-gray-500 mr-5">
               {{ Auth::user()->username ?? 'User' }}
+              @if(Auth::user()->hak_akses == 1)
+                <span class="ml-2 px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded">Admin</span>
+              @else
+                <span class="ml-2 px-2 py-1 text-xs bg-green-100 text-green-800 rounded">Penjual</span>
+              @endif
             </span>
           </div>
         </div>
@@ -64,8 +69,9 @@
         <div class="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
           <div class="flex-1 px-3 bg-white divide-y space-y-1">
             <ul class="space-y-2 pb-2">
+              <!-- Dashboard -->
               <li>
-                <a href="{{ route('admin.dashboard') }}"
+                <a href="{{ route('dashboard') }}"
                   class="text-base text-gray-900 font-normal rounded-lg flex items-center p-2 hover:bg-gray-100 group bg-gray-100">
                   <svg class="w-6 h-6 text-gray-900 group-hover:text-gray-900 transition duration-75"
                     fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -75,6 +81,9 @@
                   <span class="ml-3">Dashboard</span>
                 </a>
               </li>
+              
+              <!-- Users - HANYA UNTUK ADMIN -->
+              @if(Auth::user()->hak_akses == 1)
               <li>
                 <a href="{{ route('users.index') }}"
                   class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group">
@@ -84,8 +93,12 @@
                       clip-rule="evenodd"></path>
                   </svg>
                   <span class="ml-3 flex-1 whitespace-nowrap">Users</span>
+                  <span class="bg-red-100 text-red-800 text-xs font-medium px-2 py-0.5 rounded"></span>
                 </a>
               </li>
+              @endif
+              
+              <!-- Products - ADMIN & PENJUAL -->
               <li>
                 <a href="{{ route('products.index') }}"
                   class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group">
@@ -98,6 +111,8 @@
                   <span class="ml-3 flex-1 whitespace-nowrap">Products</span>
                 </a>
               </li>
+              
+              <!-- Promosi - ADMIN & PENJUAL -->
               <li>
                 <a href="{{ route('promosi-admin.index') }}"
                   class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group">
@@ -111,6 +126,8 @@
                 </a>
               </li>
             </ul>
+            
+            <!-- Help -->
             <a href="#!"
               class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 group transition duration-75 flex items-center p-2">
               <svg class="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75"
@@ -121,8 +138,10 @@
               </svg>
               <span class="ml-3">Help</span>
             </a>
+            
+            <!-- Logout -->
             <div class="space-y-2 pt-2">
-              <button style="margin-top: 9cm;"></button>
+              <button style="margin-top: 400px;"></button>
               <div class="p-4 border-t border-gray-200 mt-auto">
                 <form method="POST" action="{{ route('logout') }}">
                   @csrf
@@ -157,7 +176,12 @@
 
         <!-- Welcome Section -->
         <div class="mb-8">
-          <h1 class="text-2xl font-bold text-gray-900">Selamat Datang di Dashboard LapakGo</h1>
+          <h1 class="text-2xl font-bold text-gray-900">
+            Selamat Datang di Dashboard LapakGo
+            @if(Auth::user()->hak_akses == 2)
+              <span class="text-lg font-normal text-gray-600">, {{ Auth::user()->username }}</span>
+            @endif
+          </h1>
           <p class="text-gray-600">Kelola toko online Anda dengan mudah dan efisien</p>
         </div>
 
@@ -267,6 +291,7 @@
               <p class="text-sm font-medium text-green-700">Buat Promosi</p>
             </a>
 
+            @if(Auth::user()->hak_akses == 1)
             <a href="{{ route('users.index') }}"
               class="p-4 bg-purple-50 rounded-lg text-center hover:bg-purple-100 transition-colors">
               <div class="mx-auto w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center mb-2">
@@ -278,6 +303,7 @@
               </div>
               <p class="text-sm font-medium text-purple-700">Kelola User</p>
             </a>
+            @endif
 
             <a href="#" class="p-4 bg-yellow-50 rounded-lg text-center hover:bg-yellow-100 transition-colors">
               <div class="mx-auto w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center mb-2">
