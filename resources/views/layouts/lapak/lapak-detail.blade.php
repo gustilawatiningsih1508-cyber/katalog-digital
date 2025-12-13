@@ -2,156 +2,344 @@
 
 @section('content')
 <style>
-    .lapak-container {
-        max-width: 850px;
-        margin: 20px auto;
-        background: #ffffff;
-        padding: 25px 35px;
-        border-radius: 18px;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
     }
 
-    .lapak-header {
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 20px;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    /* Back Button */
+    .back-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: rgba(255, 255, 255, 0.95);
+        color: #667eea;
+        padding: 12px 24px;
+        border-radius: 50px;
+        font-size: 16px;
+        font-weight: 600;
+        text-decoration: none;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+        margin-bottom: 20px;
+        border: 2px solid transparent;
+    }
+
+    .back-button:hover {
+        background: white;
+        transform: translateX(-5px);
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+        border-color: #667eea;
+    }
+
+    .back-icon {
+        font-size: 20px;
+        transition: transform 0.3s ease;
+    }
+
+    .back-button:hover .back-icon {
+        transform: translateX(-3px);
+    }
+
+    /* Hero Section */
+    .hero-section {
+        background: white;
+        border-radius: 24px;
+        padding: 40px;
+        margin-bottom: 30px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        position: relative;
+        overflow: hidden;
+        animation: slideDown 0.6s ease;
+    }
+
+    .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 6px;
+        background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    }
+
+    .business-header {
         display: flex;
         align-items: center;
-        gap: 20px;
-        margin-bottom: 25px;
+        gap: 30px;
+        margin-bottom: 30px;
     }
 
-    .lapak-photo {
-        width: 85px;
-        height: 85px;
-        border-radius: 50%;
-        background: #eee;
+    .business-logo {
+        width: 120px;
+        height: 120px;
+        border-radius: 24px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         display: flex;
+        align-items: center;
         justify-content: center;
-        align-items: center;
+        font-size: 48px;
+        color: white;
+        font-weight: bold;
+        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        flex-shrink: 0;
+    }
+
+    .business-info h1 {
+        font-size: 42px;
+        color: #2d3748;
+        margin-bottom: 10px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .business-category {
+        display: inline-block;
+        padding: 8px 20px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border-radius: 50px;
         font-size: 14px;
-        color: #555;
-        border: 2px solid #ff4500;
+        font-weight: 600;
+        letter-spacing: 0.5px;
     }
 
-    .lapak-title {
-        font-size: 28px;
-        font-weight: 700;
-        color: #2e2e2e;
+    /* Info Cards Grid */
+    .info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 24px;
+        margin-bottom: 30px;
     }
 
-    .info-box {
+    .info-card {
+        background: white;
+        border-radius: 20px;
+        padding: 30px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+        animation: fadeIn 0.6s ease;
+        border: 2px solid transparent;
+    }
+
+    .info-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+        border-color: #667eea;
+    }
+
+    .card-header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
         margin-bottom: 20px;
     }
 
-    .info-title {
-        font-weight: 700;
-        font-size: 18px;
-        color: #333;
-        margin-bottom: 5px;
-    }
-
-    .info-text {
-        color: #555;
-        font-size: 16px;
-    }
-
-    .wa-btn {
-        display: inline-block;
-        background: #25D366;
-        color: white;
-        padding: 10px 18px;
-        border-radius: 8px;
-        font-size: 16px;
-        text-decoration: none;
-        font-weight: 600;
-        margin-top: 8px;
-    }
-
-    .menu-title {
-        font-size: 22px;
-        font-weight: 700;
-        color: #d64025;
-        margin-top: 30px;
-        margin-bottom: 10px;
-    }
-
-    .menu-card {
+    .card-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         display: flex;
-        justify-content: space-between;
-        background: #f8f8f8;
-        padding: 14px 18px;
-        margin-bottom: 10px;
-        border-radius: 10px;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        flex-shrink: 0;
+    }
+
+    .card-title {
+        font-size: 20px;
+        font-weight: 700;
+        color: #2d3748;
+    }
+
+    .card-content {
+        color: #4a5568;
         font-size: 16px;
-        color: #333;
+        line-height: 1.8;
     }
 
-    .menu-card:hover {
-        background: #ffe8e2;
-        transition: 0.2s;
+    /* Owner Info */
+    .owner-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 15px;
     }
 
+    /* WhatsApp Button */
+    .whatsapp-section {
+        background: white;
+        border-radius: 20px;
+        padding: 30px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        margin-bottom: 30px;
+        animation: fadeIn 0.8s ease;
+    }
+
+    .whatsapp-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 15px;
+        background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+        color: white;
+        padding: 18px 40px;
+        border-radius: 50px;
+        font-size: 18px;
+        font-weight: 700;
+        text-decoration: none;
+        box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+    }
+
+    .whatsapp-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 15px 40px rgba(37, 211, 102, 0.5);
+    }
+
+    .whatsapp-icon {
+        font-size: 28px;
+    }
+
+
+
+
+
+    /* Animations */
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .business-header {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .business-info h1 {
+            font-size: 32px;
+        }
+
+        .info-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .hero-section {
+            padding: 25px;
+        }
+    }
 </style>
 
-<div class="lapak-container">
+<div class="container">
+    <!-- Back Button -->
+    <a href="{{ url()->previous() }}" class="back-button">
+        <span class="back-icon">←</span>
+        <span>Kembali</span>
+    </a>
 
-    {{-- HEADER --}}
-    <div class="lapak-header">
-        <div class="lapak-photo">Foto</div>
-        <div class="lapak-title">Miloku</div>
-    </div>
-
-    {{-- DESKRIPSI --}}
-    <div class="info-box">
-        <div class="info-title"> Deskripsi Usaha</div>
-        <div class="info-text">Miloku adalah usaha minuman kekinian dengan rasa Milo premium.</div>
-    </div>
-
-    {{-- PELAKU USAHA --}}
-    <div class="info-box">
-        <div class="info-title"> Pelaku Usaha</div>
-        <div class="info-text">Merianti</div>
-    </div>
-
-    {{-- WHATSAPP --}}
-    <div class="info-box">
-        <div class="info-title"> Kontak WhatsApp</div>
-        <a href="https://wa.me/6281234567890" class="wa-btn">Chat via WhatsApp</a>
-    </div>
-
-    {{-- ALAMAT --}}
-    <div class="info-box">
-        <div class="info-title"> Alamat</div>
-        <div class="info-text">Jl. Ahmad Yani No. 45, Bengkalis</div>
-    </div>
-
-    {{-- DAFTAR MENU --}}
-<div class="menu-title"> Daftar Menu</div>
-
-<button 
-    onclick="toggleMenu()" 
-    class="px-4 py-2 rounded-lg mb-3"
-    style="
-        cursor:pointer;
-        background:#b6f2b6; 
-        color:#222; 
-        font-weight:600;
-        border:1px solid #7ad67a;
-    ">
-     Lihat Menu
-</button>
-
-
-<div id="menuList" style="display:none;">
-    @foreach ($menu as $item)
-        <div class="menu-card" style="display: flex; justify-content: space-between; padding: 10px; border: 1px solid #ddd; border-radius: 6px; margin-bottom: 8px;">
-            <span>{{ $item['nama'] }}</span>
-            <span>Rp{{ number_format($item['harga'], 0, ',', '.') }}</span>
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="business-header">
+            <div class="business-logo">
+                {{ substr($lapak['nama'], 0, 1) }}
+            </div>
+            <div class="business-info">
+                <h1>{{ $lapak['nama'] }}</h1>
+                <span class="business-category">{{ $lapak['owner'] }}</span>
+            </div>
         </div>
-    @endforeach
-</div>
+    </div>
 
-<script>
-function toggleMenu() {
-    const menu = document.getElementById('menuList');
-    menu.style.display = (menu.style.display === "none") ? "block" : "none";
-}
-</script>
+    <!-- Info Cards Grid -->
+    <div class="info-grid">
+        <!-- Description Card -->
+        <div class="info-card">
+            <div class="card-header">
+                <div class="card-icon">📝</div>
+                <h3 class="card-title">Deskripsi Usaha</h3>
+            </div>
+            <div class="card-content">
+                {{ $lapak['deskripsi'] }}
+            </div>
+        </div>
+
+        <!-- Owner Card -->
+        <div class="info-card">
+            <div class="card-header">
+                <div class="card-icon">👤</div>
+                <h3 class="card-title">Pelaku Usaha</h3>
+            </div>
+            <div class="card-content">
+                <span class="owner-badge">
+                    <span>✨</span>
+                    {{ $lapak['owner'] }}
+                </span>
+            </div>
+        </div>
+
+        <!-- Address Card -->
+        <div class="info-card">
+            <div class="card-header">
+                <div class="card-icon">📍</div>
+                <h3 class="card-title">Alamat</h3>
+            </div>
+            <div class="card-content">
+                {{ $lapak['alamat'] ?? $lapak->alamat ?? 'Alamat belum tersedia' }}
+            </div>
+        </div>
+    </div>
+
+    <!-- WhatsApp Section -->
+    @if(isset($lapak['whatsapp']) || isset($lapak->whatsapp))
+    <div class="whatsapp-section">
+        <h3 style="font-size: 24px; color: #2d3748; margin-bottom: 20px;">💬 Hubungi Kami</h3>
+        <a href="https://wa.me/{{ $lapak['whatsapp'] ?? $lapak->whatsapp }}" target="_blank" class="whatsapp-btn">
+            <span class="whatsapp-icon">📱</span>
+            <span>Chat via WhatsApp</span>
+        </a>
+    </div>
+    @endif

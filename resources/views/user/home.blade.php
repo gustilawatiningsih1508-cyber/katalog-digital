@@ -2,26 +2,26 @@
 @section('title', 'LapakGo - Home')
 @section('content')
 
+{{-- Perbaiki: Deklarasi CSS harus menggunakan link rel="stylesheet" --}}
 <link rel="stylesheet" href="{{ asset('assets/user/css/bootstrap.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/user/css/font-awesome.min.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/user/css/responsive.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/user/css/style.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/user/css/style.css.map') }}">
-<link rel="stylesheet" href="{{ asset('assets/css/style.scss') }}">
+{{-- Map files and SCSS links are typically not loaded directly as stylesheet --}}
+{{-- <link rel="stylesheet" href="{{ asset('assets/user/css/style.css.map') }}"> --}}
+{{-- <link rel="stylesheet" href="{{ asset('assets/css/style.scss') }}"> --}}
 
-<link rel="stylesheet" href="{{ asset('assets/user/fonts/fontawesome-webfont.ttf') }}">
-<link rel="stylesheet" href="{{ asset('assets/user/fonts/fontawesome-webfont.woff') }}">
-<link rel="stylesheet" href="{{ asset('assets/user/fonts/fontawesome-webfont.woff2') }}">
+{{-- Font files are usually linked inside CSS or using @font-face --}}
+{{-- <link rel="stylesheet" href="{{ asset('assets/user/fonts/fontawesome-webfont.ttf') }}"> --}}
+{{-- <link rel="stylesheet" href="{{ asset('assets/user/fonts/fontawesome-webfont.woff') }}"> --}}
+{{-- <link rel="stylesheet" href="{{ asset('assets/user/fonts/fontawesome-webfont.woff2') }}"> --}}
 
-<link rel="stylesheet" href="{{ asset('assets/user/js/bootstrap.js') }}">
-<link rel="stylesheet" href="{{ asset('assets/user/js/custom.js') }}">
-<link rel="stylesheet" href="{{ asset('assets/user/js/jquery-3.4.1.min.js') }}">
+{{-- **HAPUS PENGGUNAAN LINK REL="STYLESHEET" UNTUK FILE JAVASCRIPT** --}}
 
     <div class="hero_area">
         <div class="bg-box">
             <img src="{{ asset('assets/user/images/coklat.png') }}" alt="Background">
         </div>
-        <!-- header section strats -->
         <header class="header_section">
             <div class="container">
                 <nav class="navbar navbar-expand-lg custom_nav-container ">
@@ -31,6 +31,7 @@
                         </span>
                     </a>
 
+                    {{-- Tombol Toggle Navbar (untuk tampilan mobile) --}}
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                         aria-label="Toggle navigation">
@@ -62,9 +63,6 @@
                 </nav>
             </div>
         </header>
-        <!-- end header section -->
-
-        <!-- slider section -->
         <section class="slider_section">
             <div id="customCarousel1" class="carousel slide" data-ride="carousel" data-interval="3000">
                 <div class="carousel-inner">
@@ -121,10 +119,8 @@
                 </ol>
             </div>
         </section>
-        <!-- end slider section -->
-    </div>
+        </div>
 
-    <!-- offer section -->
     <section class="offer_section layout_padding-bottom">
         <div class="offer_container">
             <div class="container">
@@ -169,26 +165,27 @@
             </div>
         </div>
     </section>
-    <!-- end offer section -->
-
-    <!-- food section -->
     <section class="food_section layout_padding-bottom">
         <div class="container">
             <div class="heading_container heading_center">
                 <h2>Bestseller Menu</h2>
             </div>
 
+            {{-- PERBAIKAN 1: Sesuaikan data-filter dengan nama class yang logis & tambahkan titik (.) --}}
             <ul class="filters_menu">
                 <li class="active" data-filter="*">All</li>
-                <li data-filter=".burger">Food</li>
-                <li data-filter=".pizza">Drinks</li>
-                <li data-filter=".pasta">Snack</li>
+                <li data-filter=".food">Food</li>
+                <li data-filter=".drinks">Drinks</li>
+                <li data-filter=".snack">Snack</li>
             </ul>
 
             <div class="filters-content">
+                {{-- Pastikan parent memiliki class 'grid' untuk selector Isotope --}}
                 <div class="row grid">
-                    <!-- BARIS 1 -->
-                    <div class="col-sm-6 col-lg-4 all pizza">
+                    
+                    {{-- ITEM 1: MILO (DRINKS) --}}
+                    {{-- Ubah class 'pizza' menjadi 'drinks' --}}
+                    <div class="col-sm-6 col-lg-4 all drinks">
                         <div class="box">
                             <div class="img-box">
                                 <img src="{{ asset('assets/user/images/es.jpeg') }}" alt="Milo Malaysia">
@@ -203,7 +200,9 @@
                         </div>
                     </div>
 
-                    <div class="col-sm-6 col-lg-4 all burger">
+                    {{-- ITEM 2: AYAM GEPREK (FOOD) --}}
+                    {{-- Ubah class 'burger' menjadi 'food' --}}
+                    <div class="col-sm-6 col-lg-4 all food">
                         <div class="box">
                             <div class="img-box">
                                 <img src="{{ asset('assets/user/images/ayam1.jpg') }}" alt="Ayam Geprek">
@@ -218,14 +217,16 @@
                         </div>
                     </div>
 
-                    <div class="col-sm-6 col-lg-4 all pasta">
+                    {{-- ITEM 3: KENTANG KRISPI (SNACK) --}}
+                    {{-- Ubah class 'pasta' menjadi 'snack' --}}
+                    <div class="col-sm-6 col-lg-4 all snack">
                         <div class="box">
                             <div class="img-box">
                                 <img src="{{ asset('assets/user/images/f5.png') }}" alt="Kentang Krispi">
                             </div>
                             <div class="detail-box">
                                 <h5>Kentang Krispi</h5>
-                                <p>Camilan kentang tipis yang digoreng renyah dengan rasa gurih dan ringan.</p>
+                                <p>Camilan kentang tipis yang digoreng renyah.</p>
                                 <div class="options">
                                     <h6>Ngemil yuk</h6>
                                 </div>
@@ -233,15 +234,15 @@
                         </div>
                     </div>
 
-                    <!-- BARIS 2 -->
-                    <div class="col-sm-6 col-lg-4 all pizza">
+                    {{-- ITEM 4: MILK TEA (DRINKS) --}}
+                    <div class="col-sm-6 col-lg-4 all drinks">
                         <div class="box">
                             <div class="img-box">
                                 <img src="{{ asset('assets/user/images/cincau.jpg') }}" alt="Milk Tea">
                             </div>
                             <div class="detail-box">
                                 <h5>Milk Tea Mutiara Cincau</h5>
-                                <p>Milk tea creamy dengan perpaduan mutiara dan cincau yang menyegarkan.</p>
+                                <p>Milk tea creamy dengan perpaduan mutiara.</p>
                                 <div class="options">
                                     <h6>Miloku</h6>
                                 </div>
@@ -249,7 +250,8 @@
                         </div>
                     </div>
 
-                    <div class="col-sm-6 col-lg-4 all pasta">
+                    {{-- ITEM 5: PISANG COKLAT (SNACK) --}}
+                    <div class="col-sm-6 col-lg-4 all snack">
                         <div class="box">
                             <div class="img-box">
                                 <img src="{{ asset('assets/user/images/Pisang.jpg') }}" alt="Pisang Coklat">
@@ -264,7 +266,8 @@
                         </div>
                     </div>
 
-                    <div class="col-sm-6 col-lg-4 all pizza">
+                    {{-- ITEM 6: LYCHEE TEA (DRINKS) --}}
+                    <div class="col-sm-6 col-lg-4 all drinks">
                         <div class="box">
                             <div class="img-box">
                                 <img src="{{ asset('assets/user/images/f1.png') }}" alt="Lychee Tea">
@@ -278,6 +281,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
 
@@ -286,9 +290,34 @@
             </div>
         </div>
     </section>
-    <!-- end food section -->
 
-    <!-- about section -->
+    {{-- TAMBAHAN: Script ini untuk memastikan filter berjalan meskipun custom.js error --}}
+    {{-- Letakkan script ini tepat SEBELUM @endsection --}}
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Cek apakah jQuery sudah dimuat
+            if (typeof $ !== 'undefined') {
+                // Inisialisasi Isotope jika plugin tersedia
+                if ($.fn.isotope) {
+                    var $grid = $('.grid').isotope({
+                        itemSelector: '.all',
+                        layoutMode: 'fitRows'
+                    });
+
+                    // Filter items on button click
+                    $('.filters_menu li').on('click', function() {
+                        $('.filters_menu li').removeClass('active');
+                        $(this).addClass('active');
+                        
+                        var filterValue = $(this).attr('data-filter');
+                        $grid.isotope({ filter: filterValue });
+                    });
+                }
+            }
+        });
+    </script>
+    </div>
+</section>
     <section class="about_section layout_padding">
         <div class="container">
             <div class="row">
@@ -312,9 +341,6 @@
             </div>
         </div>
     </section>
-    <!-- end about section -->
-
-    <!-- book section -->
     <section class="book_section layout_padding">
         <div class="container">
             <div class="heading_container text-center mb-5">
@@ -323,53 +349,49 @@
             </div>
 
             <div class="row justify-content-center">
-                <!-- Profile Card 1 -->
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="profile_card p-4 shadow rounded text-center">
                         <div class="profile_image mb-3">
-                            <img src="{{ asset('images/team/chef1.jpg') }}" alt="Chef 1">
+                            {{-- Perhatikan path ini, jika gambarnya tidak muncul, pastikan chef1.jpg ada di folder images/team --}}
+                           <img src="{{ asset('assets/user/images/tila.jpg') }}" alt="">
                         </div>
                         <div class="profile_info">
                             <h5 class="mb-2">Gustillawati Ningsih</h5>
-                            <p class="text-muted mb-2">Head Chef</p>
-                            <small class="text-secondary">10+ years experience in Italian cuisine</small>
+                            <p class="text-muted mb-2"></p>
+                            <small class="text-secondary"></small>
                         </div>
                     </div>
                 </div>
 
-                <!-- Profile Card 2 -->
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="profile_card p-4 shadow rounded text-center">
                         <div class="profile_image mb-3">
-                            <img src="{{ asset('images/team/chef2.jpg') }}" alt="Chef 2">
+                            {{-- Perhatikan path ini, jika gambarnya tidak muncul, pastikan chef2.jpg ada di folder images/team --}}
+                            <img src="{{ asset('assets/user/images/afin.jpg') }}" alt="">
                         </div>
                         <div class="profile_info">
                             <h5 class="mb-2">Afin al-rakhi</h5>
-                            <p class="text-muted mb-2">Sous Chef</p>
-                            <small class="text-secondary">Specialist in French pastry & desserts</small>
+                            <p class="text-muted mb-2"></p>
+                            <small class="text-secondary"></small>
                         </div>
                     </div>
                 </div>
 
-                <!-- Profile Card 3 -->
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="profile_card p-4 shadow rounded text-center">
                         <div class="profile_image mb-3">
-                             <img src="{{ asset('assets/user/images/aidil1.jpg') }}" alt="Lychee Tea">
+                            <img src="{{ asset('assets/user/images/aidil1.jpg') }}" alt="Lychee Tea">
                         </div>
                         <div class="profile_info">
                             <h5 class="mb-2">Muhammad Aidil Fitriansyah</h5>
-                            <p class="text-muted mb-2">Restaurant Manager</p>
-                            <small class="text-secondary">Ensuring your perfect dining experience</small>
+                            <p class="text-muted mb-2"></p>
+                            <small class="text-secondary"></small>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- end book section -->
-
-    <!-- footer section -->
     <footer class="footer_section">
         <div class="container">
             <div class="row">
@@ -424,6 +446,14 @@
             </div>
         </div>
     </footer>
-    <!-- end footer section -->
+    {{-- **TAMBAHKAN SCRIPT JAVASCRIPT DI SINI DENGAN TAG <script>** --}}
+    <script src="{{ asset('assets/user/js/jquery-3.4.1.min.js') }}"></script>
+    <script src="{{ asset('assets/user/js/bootstrap.js') }}"></script>
+    <script src="{{ asset('assets/user/js/custom.js') }}"></script>
+    <script>
+        // Pastikan fungsi untuk mengatur tahun di footer berjalan
+        document.getElementById('displayYear').textContent = new Date().getFullYear();
+    </script>
+    {{-- Anda mungkin juga perlu memastikan ada script untuk filter menu "food section" di custom.js --}}
 
 @endsection

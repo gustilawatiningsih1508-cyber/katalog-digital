@@ -6,582 +6,449 @@
 
 <link rel="stylesheet" href="{{ asset('assets/user/css/bootstrap.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/user/css/font-awesome.min.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/user/css/responsive.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/user/css/style.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/user/css/style.css.map') }}">
-<link rel="stylesheet" href="{{ asset('assets/css/style.scss') }}">
-
-<link rel="stylesheet" href="{{ asset('assets/user/fonts/fontawesome-webfont.ttf') }}">
-<link rel="stylesheet" href="{{ asset('assets/user/fonts/fontawesome-webfont.woff') }}">
-<link rel="stylesheet" href="{{ asset('assets/user/fonts/fontawesome-webfont.woff2') }}">
-
-<link rel="stylesheet" href="{{ asset('assets/user/js/bootstrap.js') }}">
-<link rel="stylesheet" href="{{ asset('assets/user/js/custom.js') }}">
-<link rel="stylesheet" href="{{ asset('assets/user/js/jquery-3.4.1.min.js') }}">
-
-    <div class="hero_area">
-        <div class="bg-box">
-            <img src="{{ asset('assets/user/images//hero-bg.jpg') }}" alt="">
-        </div>
-
-        <!-- header section starts -->
-        <header class="header_section">
-            <div class="container">
-                <nav class="navbar navbar-expand-lg custom_nav-container">
-                    <a class="navbar-brand">
-                        <span>LapakGo</span>
-                    </a>
-
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span></span>
-                    </button>
-
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav mx-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('home') }}">Beranda</a>
-                            </li>
-                            <li class="nav-item active">
-                                <a class="nav-link" href="{{ route('menu') }}">Menu <span
-                                        class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('promosi') }}">promosi</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('tentangkami') }}">Tentang Kami</a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
-        </header>
-        <!-- end header section -->
-
+<div class="hero_area">
+    <div class="bg-box">
+        <img src="{{ asset('assets/user/images//hero-bg.jpg') }}" alt="">
     </div>
 
-    <!-- food section -->
-    <section class="food_section layout_padding">
+    <header class="header_section">
         <div class="container">
-            <div class="heading_container heading_center">
-                <h2>Our Menu</h2>
-            </div>
-
-            <!-- Search Bar -->
-            <div class="row mb-4">
-                <div class="col-md-8 mx-auto">
-                    <div class="input-group">
-                        <input type="text" id="searchInput" class="form-control" placeholder="Cari menu makanan atau minuman..." 
-                               aria-label="Search" aria-describedby="search-addon">
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-primary" type="button" id="searchButton">
-                                <i class="fa fa-search"></i> Cari
-                            </button>
-                        </div>
-                    </div>
-                    <div class="mt-2">
-                        <small class="text-muted" id="searchResultInfo">Ketik nama menu, kategori, atau toko</small>
-                    </div>
+            <nav class="navbar navbar-expand-lg custom_nav-container">
+                <a class="navbar-brand">
+                    <span>LapakGo</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+                    <span></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('home') }}">Beranda</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ route('menu') }}">Menu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('promosi') }}">Promosi</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('tentangkami') }}">Tentang Kami</a>
+                        </li>
+                    </ul>
                 </div>
-            </div>
+            </nav>
+        </div>
+    </header>
+</div>
 
-            <!-- Filter Buttons -->
-            <ul class="filters_menu">
-                <li class="active" data-filter="*">Semua</li>
-                <li data-filter=".minuman">Minuman</li>
-                <li data-filter=".jajanan">Jajanan</li>
-                <li data-filter=".makanan-berat">Makanan Berat</li>
-            </ul>
+<section class="food_section layout_padding">
+    <div class="container">
+        
+        <div class="heading_container heading_center mb-5 animate__fadeInUp">
+            <h2>Our Menu</h2>
+            <p>Temukan rasa favoritmu dari berbagai pilihan menu terbaik kami</p>
+        </div>
 
-            <!-- No Results Message -->
-            <div id="noResults" class="text-center mt-4" style="display: none;">
-                <div class="alert alert-warning">
-                    <i class="fa fa-search" style="font-size: 2rem;"></i>
-                    <h5 class="mt-2">Menu tidak ditemukan</h5>
-                    <p>Coba kata kunci lain atau lihat semua menu</p>
-                    <button class="btn btn-outline-primary btn-sm" id="showAllButton">Tampilkan Semua Menu</button>
-                </div>
-            </div>
-
-            <!-- Menu Items -->
-            <div class="filters-content">
-                <div class="row grid">
-
-                    <!-- Minuman -->
-                    <div class="col-sm-6 col-lg-4 all minuman">
-                        <div class="box">
-                            <div class="img-box">
-                                <img src="{{ asset('assets/user/images/milo.png') }}" alt="Air Milo" width="500"
-                                    height="300">
-                            </div>
-                            <div class="detail-box">
-                                <h5 class="item-name">Air Milo</h5>
-                                <p class="item-description">Minuman coklat berenergi yang menyengarkan.</p>
-                                <div class="options">
-                                    <h6 class="price">Rp10.000</h6>
-                                    <h6 class="store-info" data-store="Miloku">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" viewBox="0 0 16 16" style="vertical-align: text-bottom;">
-                                            <path
-                                                d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z" />
-                                        </svg>
-                                        Miloku
-                                    </h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-6 col-lg-4 all minuman">
-                        <div class="box">
-                            <div class="img-box">
-                                <img src="{{ asset('assets/user/images/cincau.jpg') }}" alt="Milk Tea" width="500"
-                                    height="300">
-                            </div>
-                            <div class="detail-box">
-                                <h5 class="item-name">Milk Tea Mutiara Cincau</h5>
-                                <p class="item-description">Milk tea creamy dengan perpaduan mutiara dan cincau yang menyegarkan.</p>
-                                <div class="options">
-                                    <h6 class="price">Rp15.000</h6>
-                                    <h6 class="store-info" data-store="Miloku">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" viewBox="0 0 16 16" style="vertical-align: text-bottom;">
-                                            <path
-                                                d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z" />
-                                        </svg>
-                                        Miloku
-                                    </h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-6 col-lg-4 all minuman">
-                        <div class="box">
-                            <div class="img-box">
-                                <img src="{{ asset('assets/user/images/kopi2.jpg') }}" alt="Kopi Milo">
-                            </div>
-                            <div class="detail-box">
-                                <h5 class="item-name">Kopi Milo</h5>
-                                <p class="item-description">Perpaduan kopi kuat dan coklat Milo yang nikmat</p>
-                                <div class="options">
-                                    <h6 class="price">Rp17.000</h6>
-                                    <h6 class="store-info" data-store="Miloku">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" viewBox="0 0 16 16" style="vertical-align: text-bottom;">
-                                            <path
-                                                d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z" />
-                                        </svg>
-                                        Miloku
-                                    </h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-6 col-lg-4 all minuman">
-                        <div class="box">
-                            <div class="img-box">
-                                <img src="{{ asset('assets/user/images/f1.png') }}" alt="Lychee Tea">
-                            </div>
-                            <div class="detail-box">
-                                <h5 class="item-name">Lychee Tea</h5>
-                                <p class="item-description">Rasanya yang lembut, dingin dan menyegarkan</p>
-                                <div class="options">
-                                    <h6 class="price">Rp8.000</h6>
-                                    <h6 class="store-info" data-store="Miloku">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" viewBox="0 0 16 16" style="vertical-align: text-bottom;">
-                                            <path
-                                                d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z" />
-                                        </svg>
-                                        Miloku
-                                    </h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-6 col-lg-4 all minuman">
-                        <div class="box">
-                            <div class="img-box">
-                                <img src="{{ asset('assets/user/images/e.jpg') }}" alt="Lemon Tea">
-                            </div>
-                            <div class="detail-box">
-                                <h5 class="item-name">Lemon Tea</h5>
-                                <p class="item-description">Es teh lemon dingin menggoda, penuh es batu bening dan irisan lemon segar</p>
-                                <div class="options">
-                                    <h6 class="price">Rp7.000</h6>
-                                    <h6 class="store-info" data-store="Miloku">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" viewBox="0 0 16 16" style="vertical-align: text-bottom;">
-                                            <path
-                                                d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z" />
-                                        </svg>
-                                        Miloku
-                                    </h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Jajanan -->
-                    <div class="col-sm-6 col-lg-4 all jajanan">
-                        <div class="box">
-                            <div class="img-box">
-                                <img src="{{ asset('assets/user/images/kentang.jpeg') }}" alt="Kentang Spiral">
-                            </div>
-                            <div class="detail-box">
-                                <h5 class="item-name">Kentang Spiral</h5>
-                                <p class="item-description">kentang dipotong spiral dan digoreng renyah dengan bumbu</p>
-                                <div class="options">
-                                    <h6 class="price">Rp12.000</h6>
-                                    <h6 class="store-info" data-store="Ngemil yuk">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" viewBox="0 0 16 16" style="vertical-align: text-bottom;">
-                                            <path
-                                                d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z" />
-                                        </svg>
-                                        Ngemil yuk
-                                    </h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-6 col-lg-4 all jajanan">
-                        <div class="box">
-                            <div class="img-box">
-                                <img src="{{ asset('assets/user/images/Pisang.jpg') }}" alt="Pisang Coklat">
-                            </div>
-                            <div class="detail-box">
-                                <h5 class="item-name">Pisang Coklat</h5>
-                                <p class="item-description">Pisang manis dengan lelehan coklat nikmat</p>
-                                <div class="options">
-                                    <h6 class="price">Rp10.000</h6>
-                                    <h6 class="store-info" data-store="Ngemil yuk">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" viewBox="0 0 16 16" style="vertical-align: text-bottom;">
-                                            <path
-                                                d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z" />
-                                        </svg>
-                                        Ngemil yuk
-                                    </h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-6 col-lg-4 all jajanan">
-                        <div class="box">
-                            <div class="img-box">
-                                <img src="{{ asset('assets/user/images/curly.jpg') }}" alt="Kentang Spiral Kecil">
-                            </div>
-                            <div class="detail-box">
-                                <h5 class="item-name">Kentang Spiral Kecil</h5>
-                                <p class="item-description">kentang goreng berbentuk spiral kecil yang renyah dan berbumbu.</p>
-                                <div class="options">
-                                    <h6 class="price">Rp10.000</h6>
-                                    <h6 class="store-info" data-store="Ngemil yuk">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" viewBox="0 0 16 16" style="vertical-align: text-bottom;">
-                                            <path
-                                                d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z" />
-                                        </svg>
-                                        Ngemil yuk
-                                    </h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-6 col-lg-4 all jajanan">
-                        <div class="box">
-                            <div class="img-box">
-                                <img src="{{ asset('assets/user/images/tela.jpg') }}" alt="Tela Tela">
-                            </div>
-                            <div class="detail-box">
-                                <h5 class="item-name">Tela Tela</h5>
-                                <p class="item-description">Tela-tela lezat, pas untuk segala suasana</p>
-                                <div class="options">
-                                    <h6 class="price">Rp10.000</h6>
-                                    <h6 class="store-info" data-store="Ngemil yuk">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" viewBox="0 0 16 16" style="vertical-align: text-bottom;">
-                                            <path
-                                                d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z" />
-                                        </svg>
-                                        Ngemil yuk
-                                    </h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-6 col-lg-4 all jajanan">
-                        <div class="box">
-                            <div class="img-box">
-                                <img src="{{ asset('assets/user/images/f5.png') }}" alt="Kentang Goreng">
-                            </div>
-                            <div class="detail-box">
-                                <h5 class="item-name">Kentang Goreng</h5>
-                                <p class="item-description">Camilan kentang tipis yang digoreng renyah dengan rasa gurih dan ringan.</p>
-                                <div class="options">
-                                    <h6 class="price">Rp10.000</h6>
-                                    <h6 class="store-info" data-store="Ngemil yuk">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" viewBox="0 0 16 16" style="vertical-align: text-bottom;">
-                                            <path
-                                                d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z" />
-                                        </svg>
-                                        Ngemil yuk
-                                    </h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Makanan Berat -->
-                    <div class="col-sm-6 col-lg-4 all makanan-berat">
-                        <div class="box">
-                            <div class="img-box">
-                                <img src="{{ asset('assets/user/images/ayam1.jpg') }}" alt="Ayam Geprek">
-                            </div>
-                            <div class="detail-box">
-                                <h5 class="item-name">Ayam Geprek</h5>
-                                <p class="item-description">Ayam crispy dengan sambal geprek pedas nikmat.</p>
-                                <div class="options">
-                                    <h6 class="price">Rp14.000</h6>
-                                    <h6 class="store-info" data-store="Warung Makan">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" viewBox="0 0 16 16" style="vertical-align: text-bottom;">
-                                            <path
-                                                d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z" />
-                                        </svg>
-                                        Warung Makan
-                                    </h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-6 col-lg-4 all makanan-berat">
-                        <div class="box">
-                            <div class="img-box">
-                                <img src="{{ asset('assets/user/images/lele.jpg') }}" alt="Lele Goreng">
-                            </div>
-                            <div class="detail-box">
-                                <h5 class="item-name">Lele Goreng</h5>
-                                <p class="item-description">Lele goreng gurih dengan tekstur renyah khas Bengkalis.</p>
-                                <div class="options">
-                                    <h6 class="price">Rp10.000</h6>
-                                    <h6 class="store-info" data-store="Warung Makan">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" viewBox="0 0 16 16" style="vertical-align: text-bottom;">
-                                            <path
-                                                d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z" />
-                                        </svg>
-                                        Warung Makan
-                                    </h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-6 col-lg-4 all makanan-berat">
-                        <div class="box">
-                            <div class="img-box">
-                                <img src="{{ asset('assets/user/images/telor.jpg') }}" alt="Telor Balado">
-                            </div>
-                            <div class="detail-box">
-                                <h5 class="item-name">Telor Balado</h5>
-                                <p class="item-description">Telur rebus dengan sambal balado pedas menggoda.</p>
-                                <div class="options">
-                                    <h6 class="price">Rp10.000</h6>
-                                    <h6 class="store-info" data-store="Warung Makan">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" viewBox="0 0 16 16" style="vertical-align: text-bottom;">
-                                            <path
-                                                d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z" />
-                                        </svg>
-                                        Warung Makan
-                                    </h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-6 col-lg-4 all makanan-berat">
-                        <div class="box">
-                            <div class="img-box">
-                                <img src="{{ asset('assets/user/images/ayamgulai.jpg') }}" alt="Ayam Gulai">
-                            </div>
-                            <div class="detail-box">
-                                <h5 class="item-name">Ayam Gulai</h5>
-                                <p class="item-description">Ayam dimasak dengan bumbu gulai khas Padang.</p>
-                                <div class="options">
-                                    <h6 class="price">Rp12.000</h6>
-                                    <h6 class="store-info" data-store="Warung Makan">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" viewBox="0 0 16 16" style="vertical-align: text-bottom;">
-                                            <path
-                                                d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z" />
-                                        </svg>
-                                        Warung Makan
-                                    </h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-6 col-lg-4 all makanan-berat">
-                        <div class="box">
-                            <div class="img-box">
-                                <img src="{{ asset('assets/user/images/sayur.jpg') }}" alt="Sayur Daun Singkong">
-                            </div>
-                            <div class="detail-box">
-                                <h5 class="item-name">Sayur Daun Singkong</h5>
-                                <p class="item-description">Daun singkong lembut dengan bumbu santan yang gurih.</p>
-                                <div class="options">
-                                    <h6 class="price">Rp12.000</h6>
-                                    <h6 class="store-info" data-store="Warung Makan">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" viewBox="0 0 16 16" style="vertical-align: text-bottom;">
-                                            <path
-                                                d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z" />
-                                        </svg>
-                                        Warung Makan
-                                    </h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+       <div class="row mb-4">
+    <div class="col-12">
+        <div class="menu-search-container d-flex justify-content-center animate__fadeInUp" style="animation-delay: 0.1s;">
+            <div class="menu-search-wrapper">
+                <div class="search-input-group custom-search">
+                    <i class="fa fa-search search-icon"></i>
+                    <input type="text" class="search-input" id="searchInput" placeholder="Cari menu favorit kamu...">
+                    <button class="btn-search" type="button" id="searchButton"></button>
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
-        <!-- Include jQuery, Isotope JS, and Font Awesome -->
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-        
-        <script>
-            $(document).ready(function() {
-                var $grid = $('.filters-content .grid').isotope({
-                    itemSelector: '.all',
-                    layoutMode: 'fitRows'
-                });
+        <ul class="filters_menu animate__fadeInUp" style="animation-delay: 0.2s;">
+            <li class="active" data-filter="*">Semua</li>
+            <li data-filter=".minuman">Minuman</li>
+            <li data-filter=".jajanan">Jajanan</li>
+            <li data-filter=".makanan-berat">Makanan Berat</li>
+        </ul>
 
-                // Filter functionality
-                $('.filters_menu li').click(function() {
-                    $('.filters_menu li').removeClass('active');
-                    $(this).addClass('active');
+        <div id="noResults" class="text-center" style="display: none;">
+            <div class="not-found-box animate__fadeInUp">
+                <i class="fa fa-search" style="font-size: 3rem; margin-bottom: 20px;"></i>
+                <h5 style="font-family: 'Playfair Display', serif; font-weight: 700;">Menu tidak ditemukan</h5>
+                <p class="text-muted">Maaf, kami tidak dapat menemukan menu dengan kata kunci tersebut.</p>
+                <button class="btn btn-warning" id="showAllButton" style="border-radius: 50px; padding: 10px 30px; font-weight: 600; background-color: #ffbe33; border: none;">
+                    Lihat Semua Menu
+                </button>
+            </div>
+        </div>
 
-                    var filterValue = $(this).attr('data-filter');
-                    $grid.isotope({
-                        filter: filterValue
-                    });
-                    
-                    // Update search result info
-                    updateSearchResultInfo();
-                });
+        <div class="filters-content">
+            <div class="row grid">
 
-                // Search functionality
-                function performSearch() {
-                    var searchTerm = $('#searchInput').val().toLowerCase().trim();
-                    
-                    if (searchTerm === '') {
-                        // If search is empty, show all items
-                        $grid.isotope({ filter: '*' });
-                        $('#noResults').hide();
-                        $('#searchResultInfo').text('Ketik nama menu, kategori, atau toko');
-                        $('.filters_menu li').removeClass('active');
-                        $('.filters_menu li[data-filter="*"]').addClass('active');
-                        return;
-                    }
+                <div class="col-sm-6 col-lg-4 all minuman">
+                    <div class="box animate__fadeInUp">
+                        <div class="img-box">
+                            <img src="{{ asset('assets/user/images/milo.png') }}" alt="Air Milo">
+                        </div>
+                        <div class="detail-box">
+                            <h5 class="item-name">Air Milo</h5>
+                            <p class="item-description">Minuman coklat berenergi yang menyegarkan.</p>
+                            <div class="options">
+                                <h6 class="price">Rp10.000</h6>
+                                <h6 class="store-info" data-store="Miloku">
+                                    <i class="fa fa-store" style="color: #ffbe33;"></i> Miloku
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                    // Filter items based on search term
-                    $grid.isotope({
-                        filter: function() {
-                            var $this = $(this);
-                            var itemName = $this.find('.item-name').text().toLowerCase();
-                            var itemDescription = $this.find('.item-description').text().toLowerCase();
-                            var storeName = $this.find('.store-info').data('store').toLowerCase();
-                            var category = $this.attr('class').toLowerCase();
-                            
-                            // Search in multiple fields
-                            return itemName.includes(searchTerm) || 
-                                   itemDescription.includes(searchTerm) || 
-                                   storeName.includes(searchTerm) ||
-                                   category.includes(searchTerm);
-                        }
-                    });
+                <div class="col-sm-6 col-lg-4 all minuman">
+                    <div class="box animate__fadeInUp">
+                        <div class="img-box">
+                            <img src="{{ asset('assets/user/images/cincau.jpg') }}" alt="Milk Tea">
+                        </div>
+                        <div class="detail-box">
+                            <h5 class="item-name">Milk Tea Mutiara Cincau</h5>
+                            <p class="item-description">Milk tea creamy dengan perpaduan mutiara dan cincau.</p>
+                            <div class="options">
+                                <h6 class="price">Rp15.000</h6>
+                                <h6 class="store-info" data-store="Miloku">
+                                    <i class="fa fa-store" style="color: #ffbe33;"></i> Miloku
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                    // Show/hide no results message
-                    var visibleItems = $grid.isotope('getFilteredItemElements').length;
-                    if (visibleItems === 0) {
-                        $('#noResults').show();
-                        $('#searchResultInfo').html('<span class="text-danger">Hasil pencarian untuk "' + searchTerm + '" tidak ditemukan</span>');
-                    } else {
-                        $('#noResults').hide();
-                        $('#searchResultInfo').html('<span class="text-success">Ditemukan ' + visibleItems + ' hasil untuk "' + searchTerm + '"</span>');
-                    }
+                <div class="col-sm-6 col-lg-4 all minuman">
+                    <div class="box animate__fadeInUp">
+                        <div class="img-box">
+                            <img src="{{ asset('assets/user/images/kopi2.jpg') }}" alt="Kopi Milo">
+                        </div>
+                        <div class="detail-box">
+                            <h5 class="item-name">Kopi Milo</h5>
+                            <p class="item-description">Perpaduan kopi kuat dan coklat Milo yang nikmat.</p>
+                            <div class="options">
+                                <h6 class="price">Rp17.000</h6>
+                                <h6 class="store-info" data-store="Miloku">
+                                    <i class="fa fa-store" style="color: #ffbe33;"></i> Miloku
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                    // Update filter buttons to show all
-                    $('.filters_menu li').removeClass('active');
-                }
+                <div class="col-sm-6 col-lg-4 all minuman">
+                    <div class="box animate__fadeInUp">
+                        <div class="img-box">
+                            <img src="{{ asset('assets/user/images/f1.png') }}" alt="Lychee Tea">
+                        </div>
+                        <div class="detail-box">
+                            <h5 class="item-name">Lychee Tea</h5>
+                            <p class="item-description">Rasanya yang lembut, dingin dan menyegarkan.</p>
+                            <div class="options">
+                                <h6 class="price">Rp8.000</h6>
+                                <h6 class="store-info" data-store="Miloku">
+                                    <i class="fa fa-store" style="color: #ffbe33;"></i> Miloku
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                // Search button click event
-                $('#searchButton').click(function() {
-                    performSearch();
-                });
+                <div class="col-sm-6 col-lg-4 all minuman">
+                    <div class="box animate__fadeInUp">
+                        <div class="img-box">
+                            <img src="{{ asset('assets/user/images/e.jpg') }}" alt="Lemon Tea">
+                        </div>
+                        <div class="detail-box">
+                            <h5 class="item-name">Lemon Tea</h5>
+                            <p class="item-description">Es teh lemon dingin menggoda dengan irisan lemon.</p>
+                            <div class="options">
+                                <h6 class="price">Rp7.000</h6>
+                                <h6 class="store-info" data-store="Miloku">
+                                    <i class="fa fa-store" style="color: #ffbe33;"></i> Miloku
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                // Enter key event for search input
-                $('#searchInput').keypress(function(e) {
-                    if (e.which === 13) { // Enter key
-                        performSearch();
-                    }
-                });
+                <div class="col-sm-6 col-lg-4 all jajanan">
+                    <div class="box animate__fadeInUp">
+                        <div class="img-box">
+                            <img src="{{ asset('assets/user/images/kentang.jpeg') }}" alt="Kentang Spiral">
+                        </div>
+                        <div class="detail-box">
+                            <h5 class="item-name">Kentang Spiral</h5>
+                            <p class="item-description">Kentang dipotong spiral dan digoreng renyah.</p>
+                            <div class="options">
+                                <h6 class="price">Rp12.000</h6>
+                                <h6 class="store-info" data-store="Ngemil yuk">
+                                    <i class="fa fa-store" style="color: #ffbe33;"></i> Ngemil yuk
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                // Real-time search as user types (optional)
-                $('#searchInput').on('input', function() {
-                    var searchTerm = $(this).val().trim();
-                    if (searchTerm.length >= 2) {
-                        performSearch();
-                    } else if (searchTerm === '') {
-                        $grid.isotope({ filter: '*' });
-                        $('#noResults').hide();
-                        $('#searchResultInfo').text('Ketik nama menu, kategori, atau toko');
-                    }
-                });
+                <div class="col-sm-6 col-lg-4 all jajanan">
+                    <div class="box animate__fadeInUp">
+                        <div class="img-box">
+                            <img src="{{ asset('assets/user/images/Pisang.jpg') }}" alt="Pisang Coklat">
+                        </div>
+                        <div class="detail-box">
+                            <h5 class="item-name">Pisang Coklat</h5>
+                            <p class="item-description">Pisang manis dengan lelehan coklat nikmat.</p>
+                            <div class="options">
+                                <h6 class="price">Rp10.000</h6>
+                                <h6 class="store-info" data-store="Ngemil yuk">
+                                    <i class="fa fa-store" style="color: #ffbe33;"></i> Ngemil yuk
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                // Show all button click event
-                $('#showAllButton').click(function() {
-                    $('#searchInput').val('');
-                    $grid.isotope({ filter: '*' });
-                    $('#noResults').hide();
-                    $('#searchResultInfo').text('Ketik nama menu, kategori, atau toko');
-                    $('.filters_menu li').removeClass('active');
-                    $('.filters_menu li[data-filter="*"]').addClass('active');
-                });
+                <div class="col-sm-6 col-lg-4 all jajanan">
+                    <div class="box animate__fadeInUp">
+                        <div class="img-box">
+                            <img src="{{ asset('assets/user/images/curly.jpg') }}" alt="Kentang Spiral Kecil">
+                        </div>
+                        <div class="detail-box">
+                            <h5 class="item-name">Kentang Spiral Kecil</h5>
+                            <p class="item-description">Kentang goreng spiral kecil yang renyah.</p>
+                            <div class="options">
+                                <h6 class="price">Rp10.000</h6>
+                                <h6 class="store-info" data-store="Ngemil yuk">
+                                    <i class="fa fa-store" style="color: #ffbe33;"></i> Ngemil yuk
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                // Function to update search result info
-                function updateSearchResultInfo() {
-                    var activeFilter = $('.filters_menu li.active').text();
-                    var visibleItems = $grid.isotope('getFilteredItemElements').length;
-                    
-                    if (activeFilter !== 'Semua') {
-                        $('#searchResultInfo').text('Menampilkan ' + visibleItems + ' item dalam kategori ' + activeFilter);
-                    } else {
-                        $('#searchResultInfo').text('Ketik nama menu, kategori, atau toko');
-                    }
-                }
+                <div class="col-sm-6 col-lg-4 all jajanan">
+                    <div class="box animate__fadeInUp">
+                        <div class="img-box">
+                            <img src="{{ asset('assets/user/images/tela.jpg') }}" alt="Tela Tela">
+                        </div>
+                        <div class="detail-box">
+                            <h5 class="item-name">Tela Tela</h5>
+                            <p class="item-description">Tela-tela lezat, pas untuk segala suasana.</p>
+                            <div class="options">
+                                <h6 class="price">Rp10.000</h6>
+                                <h6 class="store-info" data-store="Ngemil yuk">
+                                    <i class="fa fa-store" style="color: #ffbe33;"></i> Ngemil yuk
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                // Initial update
-                updateSearchResultInfo();
+                <div class="col-sm-6 col-lg-4 all jajanan">
+                    <div class="box animate__fadeInUp">
+                        <div class="img-box">
+                            <img src="{{ asset('assets/user/images/f5.png') }}" alt="Kentang Goreng">
+                        </div>
+                        <div class="detail-box">
+                            <h5 class="item-name">Kentang Goreng</h5>
+                            <p class="item-description">Camilan kentang tipis yang digoreng renyah.</p>
+                            <div class="options">
+                                <h6 class="price">Rp10.000</h6>
+                                <h6 class="store-info" data-store="Ngemil yuk">
+                                    <i class="fa fa-store" style="color: #ffbe33;"></i> Ngemil yuk
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-lg-4 all makanan-berat">
+                    <div class="box animate__fadeInUp">
+                        <div class="img-box">
+                            <img src="{{ asset('assets/user/images/ayam1.jpg') }}" alt="Ayam Geprek">
+                        </div>
+                        <div class="detail-box">
+                            <h5 class="item-name">Ayam Geprek</h5>
+                            <p class="item-description">Ayam crispy dengan sambal geprek pedas nikmat.</p>
+                            <div class="options">
+                                <h6 class="price">Rp14.000</h6>
+                                <h6 class="store-info" data-store="Warung Makan">
+                                    <i class="fa fa-store" style="color: #ffbe33;"></i> Warung Makan
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-lg-4 all makanan-berat">
+                    <div class="box animate__fadeInUp">
+                        <div class="img-box">
+                            <img src="{{ asset('assets/user/images/lele.jpg') }}" alt="Lele Goreng">
+                        </div>
+                        <div class="detail-box">
+                            <h5 class="item-name">Lele Goreng</h5>
+                            <p class="item-description">Lele goreng gurih dengan tekstur renyah.</p>
+                            <div class="options">
+                                <h6 class="price">Rp10.000</h6>
+                                <h6 class="store-info" data-store="Warung Makan">
+                                    <i class="fa fa-store" style="color: #ffbe33;"></i> Warung Makan
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-lg-4 all makanan-berat">
+                    <div class="box animate__fadeInUp">
+                        <div class="img-box">
+                            <img src="{{ asset('assets/user/images/telor.jpg') }}" alt="Telor Balado">
+                        </div>
+                        <div class="detail-box">
+                            <h5 class="item-name">Telor Balado</h5>
+                            <p class="item-description">Telur rebus dengan sambal balado pedas menggoda.</p>
+                            <div class="options">
+                                <h6 class="price">Rp10.000</h6>
+                                <h6 class="store-info" data-store="Warung Makan">
+                                    <i class="fa fa-store" style="color: #ffbe33;"></i> Warung Makan
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-lg-4 all makanan-berat">
+                    <div class="box animate__fadeInUp">
+                        <div class="img-box">
+                            <img src="{{ asset('assets/user/images/ayamgulai.jpg') }}" alt="Ayam Gulai">
+                        </div>
+                        <div class="detail-box">
+                            <h5 class="item-name">Ayam Gulai</h5>
+                            <p class="item-description">Ayam dimasak dengan bumbu gulai khas Padang.</p>
+                            <div class="options">
+                                <h6 class="price">Rp12.000</h6>
+                                <h6 class="store-info" data-store="Warung Makan">
+                                    <i class="fa fa-store" style="color: #ffbe33;"></i> Warung Makan
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-lg-4 all makanan-berat">
+                    <div class="box animate__fadeInUp">
+                        <div class="img-box">
+                            <img src="{{ asset('assets/user/images/sayur.jpg') }}" alt="Sayur Daun Singkong">
+                        </div>
+                        <div class="detail-box">
+                            <h5 class="item-name">Sayur Daun Singkong</h5>
+                            <p class="item-description">Daun singkong lembut dengan bumbu santan yang gurih.</p>
+                            <div class="options">
+                                <h6 class="price">Rp12.000</h6>
+                                <h6 class="store-info" data-store="Warung Makan">
+                                    <i class="fa fa-store" style="color: #ffbe33;"></i> Warung Makan
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        $(window).on('load', function() {
+            // Inisialisasi Isotope
+            var $grid = $('.grid').isotope({
+                itemSelector: '.all',
+                layoutMode: 'fitRows'
             });
-        </script>
-    </section>
+
+            // 1. Logika Klik Filter Kategori
+            $('.filters_menu li').click(function() {
+                // Hapus class active dari semua tombol
+                $('.filters_menu li').removeClass('active');
+                // Tambah class active ke tombol yang diklik
+                $(this).addClass('active');
+
+                // Ambil nilai filter
+                var filterValue = $(this).attr('data-filter');
+                
+                // Jika klik filter kategori, kosongkan kolom pencarian agar tidak bingung
+                $('#searchInput').val(''); 
+                
+                // Jalankan Isotope
+                $grid.isotope({ filter: filterValue });
+
+                // Cek hasil (untuk menampilkan pesan jika kosong, walau jarang terjadi di kategori)
+                setTimeout(checkResults, 200);
+            });
+
+            // 2. Logika Pencarian Real-time
+            function performSearch() {
+                var searchTerm = $('#searchInput').val().toLowerCase().trim();
+
+                // Reset tombol filter visual menjadi "Semua" saat mengetik
+                // Ini UX yang lebih baik: User mengetik = mencari di seluruh menu
+                $('.filters_menu li').removeClass('active');
+                $('.filters_menu li[data-filter="*"]').addClass('active');
+
+                // Filter Isotope dengan fungsi custom
+                $grid.isotope({
+                    filter: function() {
+                        var $this = $(this);
+                        var itemName = $this.find('.item-name').text().toLowerCase();
+                        var itemDesc = $this.find('.item-description').text().toLowerCase();
+                        var storeName = $this.find('.store-info').text().toLowerCase();
+                        
+                        // Cari di Nama, Deskripsi, atau Nama Toko
+                        return itemName.includes(searchTerm) || 
+                               itemDesc.includes(searchTerm) || 
+                               storeName.includes(searchTerm);
+                    }
+                });
+
+                checkResults();
+            }
+
+            // Jalankan pencarian saat mengetik (Input event)
+            $('#searchInput').on('input', function() {
+                performSearch();
+            });
+
+            // Tombol cari diklik (opsional, karena sudah real-time)
+            $('#searchButton').on('click', function() {
+                performSearch();
+            });
+
+            // 3. Fungsi Cek Hasil Kosong
+            function checkResults() {
+                // Hitung item yang terlihat
+                var visibleItems = $grid.isotope('getFilteredItemElements').length;
+
+                if (visibleItems === 0) {
+                    $('#noResults').fadeIn();
+                } else {
+                    $('#noResults').hide();
+                }
+            }
+
+            // 4. Tombol "Tampilkan Semua" pada pesan error
+            $('#showAllButton').click(function() {
+                $('#searchInput').val('');
+                $('.filters_menu li').removeClass('active');
+                $('.filters_menu li[data-filter="*"]').addClass('active');
+                $grid.isotope({ filter: '*' });
+                $('#noResults').hide();
+            });
+        });
+    </script>
+</section>
 @endsection

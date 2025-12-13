@@ -68,7 +68,7 @@
         <div class="row align-items-center">
             <div class="col-md-6 mb-4 mb-md-0">
                 <div class="img-box">
-                    <img src="{{ asset('assets/user/images/about-img.jpg') }}" alt="Tentang LapakGo" class="w-100 shadow-lg rounded">
+                    <img src="{{ asset('assets/user/images/tentang.jpg') }}" alt="Tentang LapakGo" class="w-100 shadow-lg rounded">
                 </div>
             </div>
             
@@ -80,17 +80,10 @@
                         </h2>
                     </div>
                     <p class="mt-3 text-secondary">
-                        LapakGo adalah perwujudan dari kecintaan kami terhadap kuliner otentik. Berdiri sejak tahun 2018, kami berkomitmen menyajikan hidangan dengan cita rasa terbaik, dibuat dari bahan-bahan segar pilihan dan proses yang higienis.
+                         Kami adalah UMKM yang berkomitmen untuk menghadirkan berbagai pilihan makanan dan minuman berkualitas tinggi 
+                        dengan rasa khas. Kami percaya bahwa kepuasan pelanggan adalah prioritas utama dan selalu memberikan 
+                        pelayanan terbaik dalam setiap hidangan yang kami sajikan.
                     </p>
-                    <p class="text-secondary">
-                        Kami percaya bahwa makanan lezat harus dapat dinikmati oleh semua orang. Oleh karena itu, LapakGo selalu berusaha memberikan pelayanan terbaik dan suasana yang hangat, baik saat Anda bersantap di tempat maupun memesan secara online.
-                    </p>
-                    
-                    <ul class="list-unstyled mt-4">
-                        <li class="mb-2"><i class="fa fa-star text-warning mr-2" aria-hidden="true"></i> Resep Autentik yang Terjaga</li>
-                        <li class="mb-2"><i class="fa fa-leaf text-warning mr-2" aria-hidden="true"></i> Komitmen Terhadap Kesegaran Bahan</li>
-                        <li class="mb-2"><i class="fa fa-users text-warning mr-2" aria-hidden="true"></i> Tim Pelayanan yang Ramah</li>
-                    </ul>
 
                     <a href="{{ route('menu') }}" class="btn btn-warning text-white rounded-pill px-4 py-2 mt-4 shadow">
                         Jelajahi Menu Kami
@@ -100,58 +93,58 @@
         </div>
     </div>
 </section>
+ <section class="book_section layout_padding">
+        <div class="container">
+            <div class="heading_container text-center mb-5">
+                <h2>Meet Our Team</h2>
+                <p class="text-muted">The people behind your perfect dining experience</p>
+            </div>
 
-<section class="why_section layout_padding bg-light">
-    <div class="container">
-        <div class="heading_container heading_center mb-5">
-            <h2>
-                Mengapa Memilih Kami?
-            </h2>
-        </div>
-        <div class="row">
-            <div class="col-md-4 mb-4">
-                <div class="box shadow p-5 h-100 text-center bg-white rounded">
-                    <div class="img-box mb-4">
-                        <i class="fa fa-cutlery fa-3x text-warning" aria-hidden="true"></i>
-                    </div>
-                    <div class="detail-box">
-                        <h5 class="font-weight-bold">Rasa Menggoda</h5>
-                        <p class="text-muted">
-                            Kombinasi bumbu rahasia dan teknik memasak yang sempurna.
-                        </p>
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="profile_card p-4 shadow rounded text-center">
+                        <div class="profile_image mb-3">
+                            {{-- Perhatikan path ini, jika gambarnya tidak muncul, pastikan chef1.jpg ada di folder images/team --}}
+                           <img src="{{ asset('assets/user/images/tila.jpg') }}" alt="">
+                        </div>
+                        <div class="profile_info">
+                            <h5 class="mb-2">Gustillawati Ningsih</h5>
+                            <p class="text-muted mb-2"></p>
+                            <small class="text-secondary"></small>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="box shadow p-5 h-100 text-center bg-white rounded">
-                    <div class="img-box mb-4">
-                        <i class="fa fa-shield fa-3x text-warning" aria-hidden="true"></i>
-                    </div>
-                    <div class="detail-box">
-                        <h5 class="font-weight-bold">Keamanan Terjamin</h5>
-                        <p class="text-muted">
-                            Dapur dan proses penyajian kami selalu menjaga standar kebersihan tertinggi.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="box shadow p-5 h-100 text-center bg-white rounded">
-                    <div class="img-box mb-4">
-                        <i class="fa fa-clock-o fa-3x text-warning" aria-hidden="true"></i>
-                    </div>
-                    <div class="detail-box">
-                        <h5 class="font-weight-bold">Layanan Cepat</h5>
-                        <p class="text-muted">
-                            Kami menghargai waktu Anda. Pesanan disajikan dengan cekatan dan akurat.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="profile_card p-4 shadow rounded text-center">
+                        <div class="profile_image mb-3">
+                            {{-- Perhatikan path ini, jika gambarnya tidak muncul, pastikan chef2.jpg ada di folder images/team --}}
+                            <img src="{{ asset('assets/user/images/afin.jpg') }}" alt="">
+                        </div>
+                        <div class="profile_info">
+                            <h5 class="mb-2">Afin al-rakhi</h5>
+                            <p class="text-muted mb-2"></p>
+                            <small class="text-secondary"></small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="profile_card p-4 shadow rounded text-center">
+                        <div class="profile_image mb-3">
+                            <img src="{{ asset('assets/user/images/aidil1.jpg') }}" alt="Lychee Tea">
+                        </div>
+                        <div class="profile_info">
+                            <h5 class="mb-2">Muhammad Aidil Fitriansyah</h5>
+                            <p class="text-muted mb-2"></p>
+                            <small class="text-secondary"></small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
 <footer class="footer_section">
     <div class="container">
         <div class="row">
@@ -192,4 +185,5 @@
         </div>
     </div>
 </footer>
+
 @endsection
