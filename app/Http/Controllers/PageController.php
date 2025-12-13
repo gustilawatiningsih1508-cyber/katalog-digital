@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
 {
     /* ============================================
-       PUBLIC PAGES
+       PUBLIC PAGES (Tidak perlu login)
     ============================================ */
     
     public function home()
@@ -31,11 +32,24 @@ class PageController extends Controller
     }
 
     /* ============================================
-       USER DASHBOARD (Setelah Login)
+       USER DASHBOARD (Setelah Login - HAK AKSES 2)
     ============================================ */
     
     public function dashboard()
     {
+        // PENTING: Cek dulu apakah user sudah login
+        if (!Auth::check()) {
+            return redirect()->route('signIn')
+                ->with('error', 'Silakan login terlebih dahulu');
+        }
+
+        $user = Auth::user();
+        
+        // Redirect admin ke dashboard admin
+        if ($user->hak_akses == 1) {
+            return redirect()->route('admin.dashboard');
+        }
+
         return view('admin.dashboard');
     }
 
@@ -43,33 +57,58 @@ class PageController extends Controller
        ADMIN PAGES (Hak Akses = 1)
     ============================================ */
     
+    public function adminDashboard()
+    {
+        // PENTING: Cek dulu apakah user sudah login
+        if (!Auth::check()) {
+            return redirect()->route('signIn')
+                ->with('error', 'Silakan login terlebih dahulu');
+        }
+
+        $user = Auth::user();
+        
+        // Hanya admin yang bisa akses
+        if ($user->hak_akses != 1) {
+            return redirect()->route('dashboard')
+                ->with('error', 'Anda tidak memiliki akses admin');
+        }
+
+        return view('admin.dashboard');
+    }
+
     public function adminSettings()
     {
+        if (!Auth::check()) {
+            return redirect()->route('signIn');
+        }
+
         return view('admin.settings');
     }
 
     public function users()
     {
+        if (!Auth::check()) {
+            return redirect()->route('signIn');
+        }
+
         return view('admin.users');
     }
 
     public function products()
     {
+        if (!Auth::check()) {
+            return redirect()->route('signIn');
+        }
+
         return view('admin.products');
-    }
-
-    public function signIn()
-    {
-        return view('admin.sign-in');
-    }
-
-    public function signUp()
-    {
-        return view('admin.sign-up');
     }
 
     public function promosiAdmin()
     {
+        if (!Auth::check()) {
+            return redirect()->route('signIn');
+        }
+
         return view('admin.promosi-admin');
     }
 
@@ -143,7 +182,7 @@ class PageController extends Controller
                 'id'        => 3,
                 'nama'      => 'Warung Mangan Limo Putri',
                 'owner'     => 'Siti Aminah',
-                'gambar'    => asset('assetss/user/images/mangan.jpg'),
+                'gambar'    => asset('assets/user/images/mangan.jpg'),
                 'deskripsi' => 'Warung makan rumahan dengan menu favorit harian khas Bengkalis.',
                 'wa'        => '081377112233',
                 'alamat'    => 'Jl. Kelapapati No. 88, Bengkalis',

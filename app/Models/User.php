@@ -32,20 +32,18 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'waktu_aktivitas' => 'datetime',
-            'hak_akses' => 'integer',
+            'hak_akses' => 'integer', // PENTING: Cast ke integer
         ];
     }
 
-    // Scope untuk search
-    public function scopeSearch($query, $term)
+    // Helper method untuk cek role
+    public function isAdmin()
     {
-        return $query->where('username', 'LIKE', '%' . $term . '%')
-            ->orWhere('email', 'LIKE', '%' . $term . '%');
+        return $this->hak_akses === 1;
     }
 
-    // Mutator untuk mengupdate waktu aktivitas
-    public function updateLastActivity()
+    public function isPenjual()
     {
-        $this->update(['waktu_aktivitas' => now()]);
+        return $this->hak_akses === 2;
     }
 }

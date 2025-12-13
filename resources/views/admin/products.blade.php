@@ -68,7 +68,7 @@
             </svg>
           </button>
           <a href="/dashboard" class="text-xl font-bold flex items-center lg:ml-2.5">
-            <img src="{{ +('assets/admin/images/favicon.png') }}" class="h-6 mr-2" alt="LapakGo Logo">
+            <img src="{{ ('assets/admin/images/favicon.png') }}" class="h-6 mr-2" alt="LapakGo Logo">
             <span class="self-center whitespace-nowrap">LapakGo</span>
           </a>
           <form action="#" method="GET" class="hidden lg:block lg:pl-32">
@@ -134,7 +134,7 @@
                 </form>
               </li>
               <li>
-                <a href="/dashboard"
+                <a href="admin/dashboard"
                   class="text-base text-gray-900 font-normal rounded-lg flex items-center p-2 hover:bg-gray-100 group">
                   <svg class="w-6 h-6 text-gray-500 group-hover:text-gray-900 transition duration-75"
                     fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -191,11 +191,17 @@
                 </svg>
                 <span class="ml-3">Help</span>
               </a>
-              <div class="p-4 border-t border-gray-700 mt-auto">
+              <div class="space-y-2 pt-2">
                 <button style="margin-top: 9cm;"></button>
-                <a href="/" class="block py-2 px-3 rounded bg-red-600 text-center hover:bg-red-700">
-                  Logout
-                </a>
+                <div class="p-4 border-t border-gray-200 mt-auto">
+                  <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit"
+                      class="w-full block py-2 px-3 rounded bg-red-600 text-center hover:bg-red-700 text-white">
+                      Logout
+                    </button>
+                  </form>
+                </div>
               </div>
             </div>
           </div>

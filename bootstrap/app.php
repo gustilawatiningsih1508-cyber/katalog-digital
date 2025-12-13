@@ -9,11 +9,20 @@ return Application::configure(basePath: dirname(__DIR__))
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
     )
-    ->withMiddleware(function (Middleware $middleware): void {
+    ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
             'hak_akses' => \App\Http\Middleware\CheckHakAkses::class,
         ]);
+        
+        // Redirect jika sudah login dan coba akses halaman guest
+        $middleware->redirectGuestsTo('/sign-in');
+        $middleware->redirectUsersTo(function () {
+            if (auth()->user()->hak_akses == 1) {
+                return route('admin.dashboard');
+            }
+            return route('dashboard');
+        });
     })
-    ->withExceptions(function (Exceptions $exceptions): void {
+    ->withExceptions(function (Exceptions $exceptions) {
         //
     })->create();

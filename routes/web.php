@@ -20,62 +20,78 @@ Route::get('/lapak/{id}', [PageController::class, 'lapakDetail'])->name('lapak.d
 Route::get('/lapak/{id}/menu', [PageController::class, 'menuLapak'])->name('lapak.menu');
 
 /* ============================================
-   AUTH ROUTES
+   AUTH ROUTES (Guest Only - Belum Login)
 ============================================ */
-// Views
-Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
-Route::get('/sign-in', [AuthController::class, 'showLogin'])->name('signIn');
-Route::get('/sign-up', [AuthController::class, 'showRegister'])->name('signUp');
-
-// Process
-Route::post('/login', [AuthController::class, 'login'])->name('login.process');
-Route::post('/register', [AuthController::class, 'register'])->name('register.process');
-
-/* ============================================
-   PROTECTED ROUTES (Perlu Login)
-============================================ */
-Route::middleware(['auth'])->group(function () {
-    // Dashboard User
-    Route::get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
+Route::middleware('guest')->group(function () {
+    // Views
+    Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+    Route::get('/sign-in', [AuthController::class, 'showLogin'])->name('signIn');
+    Route::get('/sign-up', [AuthController::class, 'showRegister'])->name('signUp');
     
-    // Search
-    Route::get('/search', [PageController::class, 'search'])->name('search');
-    
-    // Logout
-    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-    
-    // Products CRUD
-    Route::resource('products', ProductController::class);
-    
-    // Promosi Admin Page (View saja)
-    Route::get('/promosi-admin-page', [PageController::class, 'promosiAdmin'])->name('promosiAdmin');
-    
-    // Users Search (harus di atas Route::resource)
-    Route::get('users/search', [UsersController::class, 'search'])->name('users.search');
-    
-    // Users CRUD
-    Route::resource('users', UsersController::class);
+    // Process
+    Route::post('/login', [AuthController::class, 'login'])->name('login.process');
+    Route::post('/register', [AuthController::class, 'register'])->name('register.process');
 });
 
 /* ============================================
-   ADMIN ROUTES (Hak Akses = 1)
+   PENJUAL ROUTES (Hak Akses = 2)
+============================================ */
+Route::middleware(['auth', 'hak_akses:2'])->group(function () {
+    // Dashboard Penjual
+    Route::get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
+    
+    // Products CRUD (Penjual hanya bisa kelola produk sendiri)
+    Route::resource('products', ProductController::class)->except(['index', 'show']);
+    Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+    
+    // Promosi View Only (Penjual bisa lihat)
+    Route::get('/promosi-admin', [PromosiController::class, 'index'])->name('promosi-admin.index');
+    Route::get('/promosi-admin/{id}', [PromosiController::class, 'show'])->name('promosi-admin.show');
+});
+
+/* ============================================
+   ADMIN ROUTES (Hak Akses = 1) - FULL ACCESS
 ============================================ */
 Route::middleware(['auth', 'hak_akses:1'])->group(function () {
-    // Admin Dashboard
-    Route::get('/admin/dashboard', [PageController::class, 'dashboard'])
+    // Admin Dashboard - ROUTE BERBEDA
+    Route::get('/admin/dashboard', [PageController::class, 'adminDashboard'])
         ->name('admin.dashboard');
     
     // Admin Settings
     Route::get('/admin/settings', [PageController::class, 'adminSettings'])
         ->name('admin.settings');
     
-    // CRUD Promosi (khusus admin)
+    // Users Management (Hanya Admin)
+    Route::get('/users/search', [UsersController::class, 'search'])->name('users.search');
+    Route::resource('users', UsersController::class);
+    
+    // Products Management Full (Admin bisa kelola semua)
+    Route::resource('products', ProductController::class);
+    
+    // Promosi Management Full (Admin full CRUD)
     Route::resource('promosi-admin', PromosiController::class);
+    
+    // Search
+    Route::get('/search', [PageController::class, 'search'])->name('search');
+});
+
+/* ============================================
+   LOGOUT ROUTE (Semua User yang Login)
+============================================ */
+Route::middleware(['auth'])->group(function () {
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
 /* ============================================
    FALLBACK ROUTE
 ============================================ */
 Route::fallback(function () {
+    if (Auth::check()) {
+        $user = Auth::user();
+        if ($user->hak_akses == 1) {
+            return redirect()->route('admin.dashboard');
+        }
+        return redirect()->route('dashboard');
+    }
     return redirect()->route('home');
 });

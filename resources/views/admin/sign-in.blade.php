@@ -242,6 +242,26 @@
             font-size: 1rem;
         }
         
+        /* Alert Messages */
+        .alert {
+            padding: 12px 16px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .alert-success {
+            background-color: #d1fae5;
+            color: #065f46;
+            border: 1px solid #a7f3d0;
+        }
+        
+        .alert-error {
+            background-color: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fecaca;
+        }
+        
         .form-group {
             margin-bottom: 1.5rem;
         }
@@ -391,6 +411,11 @@
         
         .login-button:active {
             transform: translateY(0);
+        }
+        
+        .login-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
         }
         
         .divider {
@@ -552,6 +577,23 @@
                     <p>Masukkan kredensial Anda untuk mengakses dashboard</p>
                 </div>
                 
+                <!-- Success Message -->
+                @if(session('success'))
+                <div class="alert alert-success">
+                    <i class="fas fa-check-circle"></i> {{ session('success') }}
+                </div>
+                @endif
+                
+                <!-- Error Messages -->
+                @if($errors->any())
+                <div class="alert alert-error">
+                    <i class="fas fa-exclamation-circle"></i>
+                    @foreach($errors->all() as $error)
+                        {{ $error }}<br>
+                    @endforeach
+                </div>
+                @endif
+                
                 <form class="login-form" action="{{ route('login.process') }}" method="POST" id="loginForm">
                     @csrf
                     
@@ -559,7 +601,8 @@
                         <label class="form-label" for="email">Email</label>
                         <div class="input-with-icon">
                             <i class="fas fa-envelope input-icon"></i>
-                            <input type="email" name="email" id="email" class="form-control" placeholder="nama@contoh.com" required>
+                            <input type="email" name="email" id="email" class="form-control" 
+                                   placeholder="nama@contoh.com" value="{{ old('email') }}" required>
                         </div>
                     </div>
                     
@@ -567,7 +610,8 @@
                         <label class="form-label" for="password">Kata Sandi</label>
                         <div class="input-with-icon">
                             <i class="fas fa-lock input-icon"></i>
-                            <input type="password" name="password" id="password" class="form-control" placeholder="Masukkan kata sandi" required>
+                            <input type="password" name="password" id="password" class="form-control" 
+                                   placeholder="Masukkan kata sandi" required>
                             <button type="button" class="password-toggle" id="togglePassword">
                                 <i class="fas fa-eye"></i>
                             </button>
@@ -585,7 +629,7 @@
                         <a href="#" class="forgot-link">Lupa kata sandi?</a>
                     </div>
                     
-                    <button type="submit" class="login-button">
+                    <button type="submit" class="login-button" id="submitBtn">
                         <i class="fas fa-sign-in-alt"></i>
                         Masuk ke Akun
                     </button>
@@ -609,12 +653,12 @@
                     </div>
                     
                     <div class="register-link">
-                        Belum punya akun? <a href="/sign-up">Daftar sekarang</a>
+                        Belum punya akun? <a href="{{ route('signUp') }}">Daftar sekarang</a>
                     </div>
                 </form>
                 
                 <div class="footer">
-                    <p>&copy; 202 Lapak Go. Hak cipta dilindungi.</p>
+                    <p>&copy; 2024 Lapak Go. Hak cipta dilindungi.</p>
                 </div>
             </div>
         </div>
@@ -639,7 +683,6 @@
         
         // Form submission handling
         document.getElementById('loginForm').addEventListener('submit', function(e) {
-            // Basic validation
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
             
@@ -649,30 +692,11 @@
                 return;
             }
             
-            // Simulate loading state
-            const submitButton = this.querySelector('.login-button');
+            // Show loading state
+            const submitButton = document.getElementById('submitBtn');
             const originalText = submitButton.innerHTML;
             submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memproses...';
             submitButton.disabled = true;
-            
-            // In a real application, this would be an AJAX call
-            // For demo purposes, we'll revert after 2 seconds
-            setTimeout(() => {
-                submitButton.innerHTML = originalText;
-                submitButton.disabled = false;
-            }, 2000);
-        });
-        
-        // Add focus effects to form inputs
-        const formInputs = document.querySelectorAll('.form-control');
-        formInputs.forEach(input => {
-            input.addEventListener('focus', function() {
-                this.parentElement.classList.add('focused');
-            });
-            
-            input.addEventListener('blur', function() {
-                this.parentElement.classList.remove('focused');
-            });
         });
         
         // Social login button interactions
