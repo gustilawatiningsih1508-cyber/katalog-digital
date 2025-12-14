@@ -20,11 +20,14 @@
     <!-- Styles -->
     <style>
         :root {
-            --primary-color: #0ea5e9;
-            --primary-dark: #0284c7;
-            --secondary-color: #10b981;
-            --light-bg: #f8fafc;
-            --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --primary-color: #8B4513;
+            --primary-dark: #654321;
+            --primary-light: #D2691E;
+            --secondary-color: #A0522D;
+            --accent-color: #DEB887;
+            --light-bg: #FFF8DC;
+            --card-bg: #FAF3E0;
+            --card-shadow: 0 10px 25px -5px rgba(139, 69, 19, 0.1), 0 10px 10px -5px rgba(139, 69, 19, 0.04);
             --smooth-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -37,7 +40,7 @@
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
             background-color: var(--light-bg);
-            color: #334155;
+            color: #5D4037;
             line-height: 1.5;
             min-height: 100vh;
             position: relative;
@@ -52,9 +55,9 @@
             width: 100%;
             height: 100%;
             background-image:
-                radial-gradient(at 40% 20%, rgba(14, 165, 233, 0.08) 0px, transparent 50%),
-                radial-gradient(at 80% 0%, rgba(16, 185, 129, 0.08) 0px, transparent 50%),
-                radial-gradient(at 0% 50%, rgba(139, 92, 246, 0.05) 0px, transparent 50%);
+                radial-gradient(at 40% 20%, rgba(139, 69, 19, 0.08) 0px, transparent 50%),
+                radial-gradient(at 80% 0%, rgba(160, 82, 45, 0.08) 0px, transparent 50%),
+                radial-gradient(at 0% 50%, rgba(222, 184, 135, 0.05) 0px, transparent 50%);
             z-index: -1;
         }
 
@@ -66,7 +69,7 @@
         /* Left Side - Branding & Info */
         .login-left {
             flex: 1;
-            background: linear-gradient(135deg, #0ea5e9 0%, #0c94d8 100%);
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
             color: white;
             padding: 3rem;
             display: none;
@@ -117,6 +120,7 @@
         .brand-logo img {
             height: 50px;
             margin-right: 15px;
+            filter: brightness(0) invert(1);
         }
 
         .brand-logo h1 {
@@ -199,7 +203,7 @@
         }
 
         .login-card:hover {
-            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 20px 40px -15px rgba(139, 69, 19, 0.15);
         }
 
         .mobile-logo {
@@ -223,7 +227,7 @@
         .mobile-logo h1 {
             font-size: 1.8rem;
             font-weight: 700;
-            color: #0f172a;
+            color: var(--primary-dark);
             letter-spacing: -0.5px;
         }
 
@@ -235,12 +239,12 @@
         .login-header h2 {
             font-size: 1.8rem;
             font-weight: 700;
-            color: #0f172a;
+            color: var(--primary-dark);
             margin-bottom: 0.5rem;
         }
 
         .login-header p {
-            color: #64748b;
+            color: #795548;
             font-size: 1rem;
         }
 
@@ -253,15 +257,15 @@
         }
 
         .alert-success {
-            background-color: #d1fae5;
-            color: #065f46;
-            border: 1px solid #a7f3d0;
+            background-color: #E8F5E9;
+            color: #2E7D32;
+            border: 1px solid #C8E6C9;
         }
 
         .alert-error {
-            background-color: #fee2e2;
-            color: #991b1b;
-            border: 1px solid #fecaca;
+            background-color: #FFEBEE;
+            color: #C62828;
+            border: 1px solid #FFCDD2;
         }
 
         .form-group {
@@ -272,7 +276,7 @@
             display: block;
             font-size: 0.9rem;
             font-weight: 600;
-            color: #475569;
+            color: #5D4037;
             margin-bottom: 0.5rem;
         }
 
@@ -285,18 +289,18 @@
             left: 15px;
             top: 50%;
             transform: translateY(-50%);
-            color: #94a3b8;
+            color: #A1887F;
             font-size: 1.1rem;
         }
 
         .form-control {
             width: 100%;
             padding: 0.875rem 1rem 0.875rem 3rem;
-            border: 1.5px solid #e2e8f0;
+            border: 1.5px solid #D7CCC8;
             border-radius: 12px;
             font-size: 1rem;
             font-family: 'Inter', sans-serif;
-            color: #334155;
+            color: #4E342E;
             background-color: white;
             transition: var(--smooth-transition);
         }
@@ -304,11 +308,11 @@
         .form-control:focus {
             outline: none;
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.15);
+            box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.15);
         }
 
         .form-control::placeholder {
-            color: #94a3b8;
+            color: #A1887F;
         }
 
         .password-toggle {
@@ -318,9 +322,13 @@
             transform: translateY(-50%);
             background: transparent;
             border: none;
-            color: #94a3b8;
+            color: #A1887F;
             cursor: pointer;
             font-size: 1.1rem;
+        }
+
+        .password-toggle:hover {
+            color: var(--primary-color);
         }
 
         .form-options {
@@ -348,7 +356,7 @@
         .checkmark {
             width: 18px;
             height: 18px;
-            border: 2px solid #cbd5e1;
+            border: 2px solid #BCAAA4;
             border-radius: 5px;
             margin-right: 10px;
             display: flex;
@@ -371,7 +379,7 @@
 
         .checkbox-label {
             font-size: 0.9rem;
-            color: #475569;
+            color: #5D4037;
         }
 
         .forgot-link {
@@ -408,7 +416,7 @@
 
         .login-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(14, 165, 233, 0.25);
+            box-shadow: 0 10px 20px rgba(139, 69, 19, 0.25);
         }
 
         .login-button:active {
@@ -429,12 +437,12 @@
         .divider-line {
             flex: 1;
             height: 1px;
-            background-color: #e2e8f0;
+            background-color: #D7CCC8;
         }
 
         .divider-text {
             padding: 0 1rem;
-            color: #94a3b8;
+            color: #8D6E63;
             font-size: 0.9rem;
         }
 
@@ -449,27 +457,29 @@
             width: 44px;
             height: 44px;
             border-radius: 12px;
-            border: 1.5px solid #e2e8f0;
+            border: 1.5px solid #D7CCC8;
             background-color: white;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #475569;
+            color: #5D4037;
             font-size: 1.2rem;
             cursor: pointer;
             transition: var(--smooth-transition);
+            text-decoration: none;
         }
 
         .social-button:hover {
             border-color: var(--primary-color);
             color: var(--primary-color);
             transform: translateY(-2px);
+            background-color: #F5F5F5;
         }
 
         .register-link {
             text-align: center;
             font-size: 0.95rem;
-            color: #64748b;
+            color: #795548;
         }
 
         .register-link a {
@@ -487,7 +497,7 @@
         .footer {
             text-align: center;
             margin-top: 2.5rem;
-            color: #94a3b8;
+            color: #8D6E63;
             font-size: 0.85rem;
         }
 
@@ -523,6 +533,28 @@
                 align-items: flex-start;
                 gap: 1rem;
             }
+            
+            .login-left {
+                padding: 2rem;
+            }
+            
+            .login-content h2 {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .login-card {
+                padding: 1.5rem;
+            }
+            
+            body {
+                padding: 1rem;
+            }
+            
+            .login-right {
+                padding: 1rem;
+            }
         }
     </style>
 </head>
@@ -557,7 +589,7 @@
                         </div>
                         <div>
                             <h3>Keamanan Terjamin</h3>
-                            <p>Data Anda dilindungi</p>
+                            <p>Data Anda dilindungi dengan enkripsi tingkat tinggi</p>
                         </div>
                     </div>
 
@@ -711,6 +743,14 @@
             submitButton.disabled = true;
         });
 
+        // Auto focus on email field
+        document.addEventListener('DOMContentLoaded', function() {
+            const emailField = document.getElementById('email');
+            if (emailField) {
+                emailField.focus();
+            }
+        });
+    </script>
 </body>
 
 </html>

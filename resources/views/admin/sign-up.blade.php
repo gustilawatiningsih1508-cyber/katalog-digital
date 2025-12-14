@@ -18,11 +18,14 @@
 
     <style>
         :root {
-            --primary-color: #0ea5e9;
-            --primary-dark: #0284c7;
-            --secondary-color: #10b981;
-            --light-bg: #f8fafc;
-            --card-shadow: 0 20px 40px -15px rgba(14, 165, 233, 0.15);
+            --primary-color: #8B4513;
+            --primary-dark: #654321;
+            --primary-light: #D2691E;
+            --secondary-color: #A0522D;
+            --accent-color: #DEB887;
+            --light-bg: #FFF8DC;
+            --card-bg: #FAF3E0;
+            --card-shadow: 0 20px 40px -15px rgba(139, 69, 19, 0.15);
             --smooth-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -34,8 +37,8 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-            color: #1e293b;
+            background: linear-gradient(135deg, #FFF8DC 0%, #FAEBD7 100%);
+            color: #5D4037;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -59,7 +62,7 @@
         /* Left Panel */
         .left-panel {
             flex: 1;
-            background: linear-gradient(160deg, #0ea5e9 0%, #0c4a6e 100%);
+            background: linear-gradient(160deg, var(--primary-dark) 0%, var(--primary-color) 100%);
             color: white;
             padding: 40px;
             display: flex;
@@ -187,6 +190,7 @@
             justify-content: center;
             overflow-y: auto;
             min-width: 0;
+            background-color: var(--light-bg);
         }
 
         .mobile-header {
@@ -201,12 +205,12 @@
         .form-header h2 {
             font-size: 1.8rem;
             font-weight: 800;
-            color: #0f172a;
+            color: var(--primary-dark);
             margin-bottom: 8px;
         }
 
         .form-header p {
-            color: #64748b;
+            color: #795548;
             font-size: 0.95rem;
         }
 
@@ -224,10 +228,10 @@
             justify-content: center;
             gap: 10px;
             padding: 14px;
-            border: 2px solid #e2e8f0;
+            border: 2px solid #D7CCC8;
             border-radius: 12px;
             background: white;
-            color: #475569;
+            color: #5D4037;
             font-size: 0.95rem;
             font-weight: 600;
             cursor: pointer;
@@ -237,9 +241,9 @@
 
         .social-btn:hover {
             border-color: var(--primary-color);
-            background: #f8fafc;
+            background: #F5F5F5;
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.15);
+            box-shadow: 0 4px 12px rgba(139, 69, 19, 0.15);
         }
 
         .social-btn i {
@@ -247,11 +251,12 @@
         }
 
         .google-btn {
-            color: #ea4335;
+            color: #5D4037;
         }
 
         .google-btn:hover {
-            border-color: #ea4335;
+            border-color: var(--primary-color);
+            color: var(--primary-dark);
         }
 
         /* Divider */
@@ -264,12 +269,12 @@
         .divider-line {
             flex: 1;
             height: 1px;
-            background: #e2e8f0;
+            background: #D7CCC8;
         }
 
         .divider-text {
             padding: 0 15px;
-            color: #94a3b8;
+            color: #8D6E63;
             font-size: 0.9rem;
             white-space: nowrap;
         }
@@ -289,7 +294,7 @@
             display: block;
             font-size: 0.9rem;
             font-weight: 600;
-            color: #475569;
+            color: #5D4037;
             margin-bottom: 8px;
         }
 
@@ -302,18 +307,18 @@
             left: 16px;
             top: 50%;
             transform: translateY(-50%);
-            color: #94a3b8;
+            color: #A1887F;
             font-size: 1.1rem;
         }
 
         .form-control {
             width: 100%;
             padding: 14px 16px 14px 46px;
-            border: 2px solid #e2e8f0;
+            border: 2px solid #D7CCC8;
             border-radius: 12px;
             font-size: 0.95rem;
             font-family: 'Inter', sans-serif;
-            color: #334155;
+            color: #4E342E;
             background: white;
             transition: var(--smooth-transition);
         }
@@ -321,7 +326,7 @@
         .form-control:focus {
             outline: none;
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.15);
+            box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.15);
         }
 
         .password-toggle {
@@ -331,7 +336,7 @@
             transform: translateY(-50%);
             background: transparent;
             border: none;
-            color: #94a3b8;
+            color: #A1887F;
             cursor: pointer;
             font-size: 1.1rem;
             padding: 5px;
@@ -354,7 +359,7 @@
         .strength-meter {
             flex: 1;
             height: 6px;
-            background: #e2e8f0;
+            background: #D7CCC8;
             border-radius: 3px;
             overflow: hidden;
         }
@@ -362,14 +367,14 @@
         .strength-fill {
             height: 100%;
             width: 20%;
-            background: #ef4444;
+            background: var(--primary-light);
             border-radius: 3px;
             transition: var(--smooth-transition);
         }
 
         .strength-text {
             font-size: 0.8rem;
-            color: #64748b;
+            color: #795548;
             min-width: 100px;
         }
 
@@ -392,7 +397,7 @@
         .custom-checkbox {
             width: 18px;
             height: 18px;
-            border: 2px solid #cbd5e1;
+            border: 2px solid #BCAAA4;
             border-radius: 5px;
             display: flex;
             align-items: center;
@@ -416,7 +421,7 @@
 
         .terms-label {
             font-size: 0.85rem;
-            color: #475569;
+            color: #5D4037;
             line-height: 1.5;
         }
 
@@ -452,7 +457,7 @@
 
         .submit-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(14, 165, 233, 0.3);
+            box-shadow: 0 8px 20px rgba(139, 69, 19, 0.3);
         }
 
         .submit-btn:active {
@@ -464,7 +469,7 @@
             text-align: center;
             margin-top: 20px;
             font-size: 0.9rem;
-            color: #64748b;
+            color: #795548;
         }
 
         .login-link a {
@@ -481,7 +486,7 @@
         .footer {
             text-align: center;
             margin-top: 25px;
-            color: #94a3b8;
+            color: #8D6E63;
             font-size: 0.8rem;
         }
 
@@ -494,19 +499,19 @@
         }
 
         .alert-success {
-            background-color: #d1fae5;
-            color: #065f46;
-            border: 1px solid #a7f3d0;
+            background-color: #E8F5E9;
+            color: #2E7D32;
+            border: 1px solid #C8E6C9;
         }
 
         .alert-error {
-            background-color: #fee2e2;
-            color: #991b1b;
-            border: 1px solid #fecaca;
+            background-color: #FFEBEE;
+            color: #C62828;
+            border: 1px solid #FFCDD2;
         }
 
         .error-message {
-            color: #ef4444;
+            color: #D84315;
             font-size: 0.85rem;
             margin-top: 6px;
             display: flex;
@@ -879,34 +884,34 @@
 
             let strength = 0;
             let text = 'Kosong';
-            let color = '#ef4444';
+            let color = '#D2691E';
             let width = 0;
 
             if (password.length > 0) {
                 strength = 1;
                 text = 'Sangat Lemah';
-                color = '#ef4444';
+                color = '#D2691E';
                 width = 20;
             }
 
             if (password.length >= 6) {
                 strength = 2;
                 text = 'Lemah';
-                color = '#f59e0b';
+                color = '#A0522D';
                 width = 40;
             }
 
             if (password.length >= 8 && /[A-Z]/.test(password) && /[0-9]/.test(password)) {
                 strength = 3;
                 text = 'Cukup';
-                color = '#3b82f6';
+                color = '#8B4513';
                 width = 60;
             }
 
             if (password.length >= 10 && /[A-Z]/.test(password) && /[0-9]/.test(password) && /[^A-Za-z0-9]/.test(password)) {
                 strength = 4;
                 text = 'Kuat';
-                color = '#10b981';
+                color = '#654321';
                 width = 80;
             }
 
@@ -927,16 +932,16 @@
 
             if (confirmPassword.length === 0) {
                 passwordMatch.textContent = '';
-                passwordMatch.style.color = '#64748b';
+                passwordMatch.style.color = '#795548';
                 return;
             }
 
             if (password === confirmPassword) {
                 passwordMatch.textContent = '✓ Password cocok';
-                passwordMatch.style.color = '#10b981';
+                passwordMatch.style.color = '#2E7D32';
             } else {
                 passwordMatch.textContent = '✗ Password tidak cocok';
-                passwordMatch.style.color = '#ef4444';
+                passwordMatch.style.color = '#C62828';
             }
         }
 
