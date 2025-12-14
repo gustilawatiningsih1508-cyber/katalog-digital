@@ -16,6 +16,8 @@ class User extends Authenticatable
         'username',
         'email',
         'password',
+        'google_id',      // TAMBAHAN
+        'avatar',         // TAMBAHAN
         'hak_akses',
         'laporan_aktifitas',
         'waktu_aktivitas',
@@ -32,11 +34,10 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'waktu_aktivitas' => 'datetime',
-            'hak_akses' => 'integer', // PENTING: Cast ke integer
+            'hak_akses' => 'integer',
         ];
     }
 
-    // Helper method untuk cek role
     public function isAdmin()
     {
         return $this->hak_akses === 1;

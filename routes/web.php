@@ -87,3 +87,9 @@ Route::fallback(function () {
     }
     return redirect()->route('home');
 });
+
+/* ============================================
+   GOOGLE OAUTH ROUTES
+============================================ */
+Route::get('/auth/google', [AuthController::class, 'redirectToGoogle'])->name('auth.google');
+Route::get('/auth/google/callback', [AuthController::class, 'handleGoogleCallback']);

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
+use Laravel\Socialite\Facades\Socialite;
+use Exception;
 
 class AuthController extends Controller
 {
@@ -21,7 +23,7 @@ class AuthController extends Controller
             }
             return redirect()->route('dashboard');
         }
-        
+
         return view('admin.sign-in');
     }
 
@@ -36,7 +38,7 @@ class AuthController extends Controller
             }
             return redirect()->route('dashboard');
         }
-        
+
         return view('admin.sign-up');
     }
 
@@ -59,14 +61,14 @@ class AuthController extends Controller
         // Coba login
         if (Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();
-            
+
             // Update waktu aktivitas
             $user = Auth::user();
             $user->waktu_aktivitas = now();
             $user->save();
 
             Log::info('User logged in successfully', [
-                'user_id' => $user->id, 
+                'user_id' => $user->id,
                 'email' => $user->email,
                 'hak_akses' => $user->hak_akses
             ]);
@@ -85,7 +87,7 @@ class AuthController extends Controller
 
         // Login gagal
         Log::warning('Login failed', ['email' => $request->email]);
-        
+
         return back()
             ->withErrors(['email' => 'Email atau password salah!'])
             ->withInput($request->only('email'));
@@ -121,21 +123,21 @@ class AuthController extends Controller
             ]);
 
             Log::info('User registered successfully', [
-                'user_id' => $user->id, 
+                'user_id' => $user->id,
                 'username' => $user->username,
                 'email' => $user->email
             ]);
 
             // Auto login setelah register
             Auth::login($user);
-            
+
             // Redirect ke dashboard penjual
             return redirect()->route('dashboard')
                 ->with('success', 'Akun berhasil dibuat! Selamat datang, ' . $user->username . '!');
 
         } catch (\Exception $e) {
             Log::error('Registration failed: ' . $e->getMessage());
-            
+
             return back()
                 ->withErrors(['error' => 'Registrasi gagal. Silakan coba lagi.'])
                 ->withInput($request->except('password', 'password_confirmation'));
@@ -146,7 +148,7 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         $username = Auth::user()->username ?? 'User';
-        
+
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
@@ -156,4 +158,85 @@ class AuthController extends Controller
         return redirect()->route('home')
             ->with('success', 'Logout berhasil! Sampai jumpa, ' . $username . '!');
     }
+
+    /**
+     * Redirect ke Google OAuth
+     */
+    public function redirectToGoogle()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    /**
+     * Handle callback dari Google
+     */
+    public function handleGoogleCallback()
+    {
+        try {
+            // Ambil data user dari Google
+            $googleUser = Socialite::driver('google')->user();
+
+            // Cari user berdasarkan Google ID
+            $user = User::where('google_id', $googleUser->getId())->first();
+
+            if ($user) {
+                // Jika user sudah ada, update data
+                $user->update([
+                    'avatar' => $googleUser->getAvatar(),
+                    'email_verified_at' => now(),
+                    'waktu_aktivitas' => now(),
+                ]);
+            } else {
+                // Cek apakah email sudah terdaftar (dari registrasi biasa)
+                $user = User::where('email', $googleUser->getEmail())->first();
+
+                if ($user) {
+                    // Link akun yang sudah ada dengan Google
+                    $user->update([
+                        'google_id' => $googleUser->getId(),
+                        'avatar' => $googleUser->getAvatar(),
+                        'email_verified_at' => now(),
+                        'waktu_aktivitas' => now(),
+                    ]);
+                } else {
+                    // Buat user baru dari Google
+                    $user = User::create([
+                        'username' => $googleUser->getName(),
+                        'email' => $googleUser->getEmail(),
+                        'google_id' => $googleUser->getId(),
+                        'avatar' => $googleUser->getAvatar(),
+                        'hak_akses' => 2, // Default sebagai penjual
+                        'email_verified_at' => now(),
+                        'waktu_aktivitas' => now(),
+                        'password' => null, // Password null untuk login Google
+                    ]);
+                }
+            }
+
+            // Login user
+            Auth::login($user, true);
+
+            Log::info('User logged in via Google', [
+                'user_id' => $user->id,
+                'email' => $user->email,
+                'google_id' => $user->google_id
+            ]);
+
+            // Redirect berdasarkan hak akses
+            if ($user->hak_akses == 1) {
+                return redirect()->route('admin.dashboard')
+                    ->with('success', 'Selamat datang, Admin ' . $user->username . '!');
+            } else {
+                return redirect()->route('dashboard')
+                    ->with('success', 'Selamat datang, ' . $user->username . '!');
+            }
+
+        } catch (Exception $e) {
+            Log::error('Google Login Error: ' . $e->getMessage());
+
+            return redirect()->route('signIn')
+                ->with('error', 'Terjadi kesalahan saat login dengan Google. Silakan coba lagi.');
+        }
+    }
+
 }

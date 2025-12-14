@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,11 +11,12 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
         :root {
             --primary-color: #0ea5e9;
@@ -24,13 +26,13 @@
             --card-shadow: 0 20px 40px -15px rgba(14, 165, 233, 0.15);
             --smooth-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
@@ -42,7 +44,7 @@
             padding: 20px;
             overflow: hidden;
         }
-        
+
         .container {
             width: 100%;
             max-width: 1200px;
@@ -55,7 +57,7 @@
             box-shadow: var(--card-shadow);
             background: white;
         }
-        
+
         /* Left Panel */
         .left-panel {
             flex: 1;
@@ -68,7 +70,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .left-panel::before {
             content: '';
             position: absolute;
@@ -79,7 +81,7 @@
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.05);
         }
-        
+
         .left-panel::after {
             content: '';
             position: absolute;
@@ -90,7 +92,7 @@
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.03);
         }
-        
+
         .logo-section {
             display: flex;
             align-items: center;
@@ -98,49 +100,49 @@
             z-index: 2;
             position: relative;
         }
-        
+
         .logo-section img {
             height: 40px;
             margin-right: 12px;
         }
-        
+
         .logo-section h1 {
             font-size: 1.6rem;
             font-weight: 800;
             letter-spacing: -0.5px;
         }
-        
+
         .content {
             z-index: 2;
             position: relative;
         }
-        
+
         .content h2 {
             font-size: 1.8rem;
             font-weight: 800;
             margin-bottom: 15px;
             line-height: 1.2;
         }
-        
+
         .content p {
             font-size: 0.95rem;
             opacity: 0.9;
             margin-bottom: 25px;
         }
-        
+
         .features {
             display: flex;
             flex-direction: column;
             gap: 15px;
             margin-top: 20px;
         }
-        
+
         .feature {
             display: flex;
             align-items: center;
             gap: 12px;
         }
-        
+
         .feature-icon {
             width: 36px;
             height: 36px;
@@ -151,19 +153,19 @@
             justify-content: center;
             flex-shrink: 0;
         }
-        
+
         .feature-text h3 {
             font-size: 0.9rem;
             font-weight: 600;
             margin-bottom: 3px;
         }
-        
+
         .feature-text p {
             font-size: 0.8rem;
             opacity: 0.8;
             margin-bottom: 0;
         }
-        
+
         /* Right Panel */
         .right-panel {
             flex: 1;
@@ -173,54 +175,54 @@
             justify-content: center;
             overflow: hidden;
         }
-        
+
         .mobile-header {
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 20px;
         }
-        
+
         .mobile-header img {
             height: 40px;
             margin-right: 12px;
         }
-        
+
         .mobile-header h1 {
             font-size: 1.6rem;
             font-weight: 800;
             color: #0f172a;
             letter-spacing: -0.5px;
         }
-        
+
         .form-header {
             text-align: center;
             margin-bottom: 25px;
         }
-        
+
         .form-header h2 {
             font-size: 1.6rem;
             font-weight: 800;
             color: #0f172a;
             margin-bottom: 8px;
         }
-        
+
         .form-header p {
             color: #64748b;
             font-size: 0.9rem;
         }
-        
+
         /* Form */
         .register-form {
             width: 100%;
             max-width: 400px;
             margin: 0 auto;
         }
-        
+
         .form-group {
             margin-bottom: 16px;
         }
-        
+
         .form-label {
             display: block;
             font-size: 0.85rem;
@@ -228,11 +230,11 @@
             color: #475569;
             margin-bottom: 6px;
         }
-        
+
         .input-with-icon {
             position: relative;
         }
-        
+
         .input-icon {
             position: absolute;
             left: 14px;
@@ -241,7 +243,7 @@
             color: #94a3b8;
             font-size: 1rem;
         }
-        
+
         .form-control {
             width: 100%;
             padding: 12px 14px 12px 42px;
@@ -253,13 +255,13 @@
             background: white;
             transition: var(--smooth-transition);
         }
-        
+
         .form-control:focus {
             outline: none;
             border-color: var(--primary-color);
             box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.15);
         }
-        
+
         .password-toggle {
             position: absolute;
             right: 14px;
@@ -271,14 +273,14 @@
             cursor: pointer;
             font-size: 1rem;
         }
-        
+
         .password-strength {
             margin-top: 6px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
-        
+
         .strength-meter {
             flex: 1;
             height: 4px;
@@ -286,7 +288,7 @@
             border-radius: 2px;
             overflow: hidden;
         }
-        
+
         .strength-fill {
             height: 100%;
             width: 20%;
@@ -294,13 +296,13 @@
             border-radius: 2px;
             transition: var(--smooth-transition);
         }
-        
+
         .strength-text {
             font-size: 0.75rem;
             color: #64748b;
             min-width: 110px;
         }
-        
+
         /* Terms */
         .terms {
             margin: 15px 0;
@@ -308,15 +310,15 @@
             align-items: flex-start;
             gap: 10px;
         }
-        
+
         .terms-checkbox {
             margin-top: 3px;
         }
-        
+
         .terms-checkbox input {
             display: none;
         }
-        
+
         .custom-checkbox {
             width: 16px;
             height: 16px;
@@ -329,31 +331,31 @@
             cursor: pointer;
             flex-shrink: 0;
         }
-        
-        .terms-checkbox input:checked + .custom-checkbox {
+
+        .terms-checkbox input:checked+.custom-checkbox {
             background: var(--primary-color);
             border-color: var(--primary-color);
         }
-        
-        .terms-checkbox input:checked + .custom-checkbox::after {
+
+        .terms-checkbox input:checked+.custom-checkbox::after {
             content: '✓';
             color: white;
             font-size: 0.7rem;
             font-weight: bold;
         }
-        
+
         .terms-label {
             font-size: 0.8rem;
             color: #475569;
             line-height: 1.4;
         }
-        
+
         .terms-label a {
             color: var(--primary-color);
             text-decoration: none;
             font-weight: 600;
         }
-        
+
         /* Submit Button */
         .submit-btn {
             width: 100%;
@@ -373,12 +375,12 @@
             gap: 8px;
             margin: 10px 0;
         }
-        
+
         .submit-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 16px rgba(14, 165, 233, 0.25);
         }
-        
+
         /* Login Link */
         .login-link {
             text-align: center;
@@ -386,17 +388,17 @@
             font-size: 0.85rem;
             color: #64748b;
         }
-        
+
         .login-link a {
             color: var(--primary-color);
             text-decoration: none;
             font-weight: 700;
         }
-        
+
         .login-link a:hover {
             text-decoration: underline;
         }
-        
+
         /* Footer */
         .footer {
             text-align: center;
@@ -404,18 +406,18 @@
             color: #94a3b8;
             font-size: 0.75rem;
         }
-        
+
         /* Media Queries */
         @media (min-width: 1024px) {
             .left-panel {
                 display: flex;
             }
-            
+
             .mobile-header {
                 display: none;
             }
         }
-        
+
         @media (max-width: 1023px) {
             .container {
                 height: auto;
@@ -423,38 +425,38 @@
                 max-height: none;
                 flex-direction: column;
             }
-            
+
             .left-panel {
                 display: none;
             }
-            
+
             .right-panel {
                 padding: 30px 20px;
             }
-            
+
             .mobile-header {
                 display: flex;
             }
         }
-        
+
         @media (max-width: 480px) {
             body {
                 padding: 10px;
             }
-            
+
             .container {
                 border-radius: 16px;
             }
-            
+
             .right-panel {
                 padding: 25px 15px;
             }
-            
+
             .form-header h2 {
                 font-size: 1.4rem;
             }
         }
-        
+
         /* Error message styling */
         .alert {
             padding: 12px 16px;
@@ -462,19 +464,19 @@
             margin-bottom: 20px;
             font-size: 0.9rem;
         }
-        
+
         .alert-success {
             background-color: #d1fae5;
             color: #065f46;
             border: 1px solid #a7f3d0;
         }
-        
+
         .alert-error {
             background-color: #fee2e2;
             color: #991b1b;
             border: 1px solid #fecaca;
         }
-        
+
         .error-message {
             color: #ef4444;
             font-size: 0.8rem;
@@ -482,6 +484,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <!-- Left Panel -->
@@ -490,11 +493,12 @@
                 <img src="{{ asset('assets/admin/images/favicon.png') }}" alt="Lapak Go Logo">
                 <h1>Lapak Go</h1>
             </div>
-            
+
             <div class="content">
                 <h2>Mulai Perjalanan Bisnis Online Anda</h2>
-                <p>Bergabunglah dengan ribuan seller sukses yang telah mempercayai Lapak Go sebagai platform e-commerce mereka.</p>
-                
+                <p>Bergabunglah dengan ribuan seller sukses yang telah mempercayai Lapak Go sebagai platform e-commerce
+                    mereka.</p>
+
                 <div class="features">
                     <div class="feature">
                         <div class="feature-icon">
@@ -505,7 +509,7 @@
                             <p>Kelola produk, pesanan, dan analisis penjualan</p>
                         </div>
                     </div>
-                    
+
                     <div class="feature">
                         <div class="feature-icon">
                             <i class="fas fa-shield-alt"></i>
@@ -515,7 +519,7 @@
                             <p>Enkripsi untuk melindungi informasi bisnis</p>
                         </div>
                     </div>
-                    
+
                     <div class="feature">
                         <div class="feature-icon">
                             <i class="fas fa-chart-line"></i>
@@ -528,26 +532,26 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Right Panel -->
         <div class="right-panel">
             <div class="mobile-header">
                 <img src="{{ asset('assets/admin/images/favicon.png') }}" alt="Lapak Go Logo">
                 <h1>Lapak Go</h1>
             </div>
-            
+
             <div class="form-header">
                 <h2>Buat Akun Baru</h2>
                 <p>Isi informasi di bawah untuk memulai perjalanan Anda</p>
             </div>
-            
+
             <!-- Tampilkan pesan error/success -->
             @if(session('success'))
                 <div class="alert alert-success">
                     {{ session('success') }}
                 </div>
             @endif
-            
+
             @if($errors->any())
                 <div class="alert alert-error">
                     <ul>
@@ -557,43 +561,43 @@
                     </ul>
                 </div>
             @endif
-            
+
             <form action="{{ route('register.process') }}" method="POST" class="register-form" id="registerForm">
                 @csrf
-                
+
                 <!-- Username -->
                 <div class="form-group">
                     <label class="form-label" for="username">Username *</label>
                     <div class="input-with-icon">
                         <i class="fas fa-user input-icon"></i>
-                        <input type="text" name="username" id="username" class="form-control" 
-                               placeholder="Masukkan username" value="{{ old('username') }}" required>
+                        <input type="text" name="username" id="username" class="form-control"
+                            placeholder="Masukkan username" value="{{ old('username') }}" required>
                     </div>
                     @error('username')
                         <div class="error-message">{{ $message }}</div>
                     @enderror
                 </div>
-                
+
                 <!-- Email -->
                 <div class="form-group">
                     <label class="form-label" for="email">Email *</label>
                     <div class="input-with-icon">
                         <i class="fas fa-envelope input-icon"></i>
-                        <input type="email" name="email" id="email" class="form-control" 
-                               placeholder="nama@contoh.com" value="{{ old('email') }}" required>
+                        <input type="email" name="email" id="email" class="form-control" placeholder="nama@contoh.com"
+                            value="{{ old('email') }}" required>
                     </div>
                     @error('email')
                         <div class="error-message">{{ $message }}</div>
                     @enderror
                 </div>
-                
+
                 <!-- Password -->
                 <div class="form-group">
                     <label class="form-label" for="password">Password *</label>
                     <div class="input-with-icon">
                         <i class="fas fa-lock input-icon"></i>
-                        <input type="password" name="password" id="password" class="form-control" 
-                               placeholder="Buat password yang kuat" required>
+                        <input type="password" name="password" id="password" class="form-control"
+                            placeholder="Buat password yang kuat" required>
                         <button type="button" class="password-toggle" id="togglePassword">
                             <i class="fas fa-eye"></i>
                         </button>
@@ -608,21 +612,21 @@
                         <div class="strength-text" id="passwordText">Lemah</div>
                     </div>
                 </div>
-                
+
                 <!-- Confirm Password -->
                 <div class="form-group">
                     <label class="form-label" for="password_confirmation">Konfirmasi Password *</label>
                     <div class="input-with-icon">
                         <i class="fas fa-lock input-icon"></i>
-                        <input type="password" name="password_confirmation" id="password_confirmation" 
-                               class="form-control" placeholder="Ulangi password Anda" required>
+                        <input type="password" name="password_confirmation" id="password_confirmation"
+                            class="form-control" placeholder="Ulangi password Anda" required>
                         <button type="button" class="password-toggle" id="toggleConfirmPassword">
                             <i class="fas fa-eye"></i>
                         </button>
                     </div>
                     <div id="passwordMatch" class="strength-text" style="margin-top: 4px;"></div>
                 </div>
-                
+
                 <!-- Terms -->
                 <div class="terms">
                     <label class="terms-checkbox">
@@ -630,24 +634,39 @@
                         <span class="custom-checkbox"></span>
                     </label>
                     <span class="terms-label">
-                        Saya setuju dengan <a href="#">Syarat & Ketentuan</a> dan <a href="#">Kebijakan Privasi</a> Lapak Go.
+                        Saya setuju dengan <a href="#">Syarat & Ketentuan</a> dan <a href="#">Kebijakan Privasi</a>
+                        Lapak Go.
                     </span>
+                </div>
+                <!-- Bagian social login di sign-in.blade.php -->
+                <div class="social-login">
+                    <a href="{{ route('auth.google') }}" class="social-button" title="Login dengan Google">
+                        <i class="fab fa-google"></i>
+                    </a>
+                    <button type="button" class="social-button"
+                        onclick="alert('Fitur Facebook login akan segera tersedia!')">
+                        <i class="fab fa-facebook-f"></i>
+                    </button>
+                    <button type="button" class="social-button"
+                        onclick="alert('Fitur Twitter login akan segera tersedia!')">
+                        <i class="fab fa-twitter"></i>
+                    </button>
                 </div>
                 @error('terms')
                     <div class="error-message">{{ $message }}</div>
                 @enderror
-                
+
                 <!-- Submit Button -->
                 <button type="submit" class="submit-btn" id="submitBtn">
                     <i class="fas fa-user-plus"></i>
                     Buat Akun Baru
                 </button>
-                
+
                 <!-- Login Link -->
                 <div class="login-link">
                     Sudah punya akun? <a href="/sign-in">Masuk ke akun Anda</a>
                 </div>
-                
+
                 <!-- Footer -->
                 <div class="footer">
                     <p>&copy; 2023 Lapak Go. Hak cipta dilindungi.</p>
@@ -655,16 +674,16 @@
             </form>
         </div>
     </div>
-    
+
     <script>
         // Toggle password visibility
         const togglePassword = document.getElementById('togglePassword');
         const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
-        
-        togglePassword.addEventListener('click', function() {
+
+        togglePassword.addEventListener('click', function () {
             const passwordInput = document.getElementById('password');
             const icon = this.querySelector('i');
-            
+
             if (passwordInput.type === 'password') {
                 passwordInput.type = 'text';
                 icon.classList.remove('fa-eye');
@@ -675,11 +694,11 @@
                 icon.classList.add('fa-eye');
             }
         });
-        
-        toggleConfirmPassword.addEventListener('click', function() {
+
+        toggleConfirmPassword.addEventListener('click', function () {
             const confirmInput = document.getElementById('password_confirmation');
             const icon = this.querySelector('i');
-            
+
             if (confirmInput.type === 'password') {
                 confirmInput.type = 'text';
                 icon.classList.remove('fa-eye');
@@ -690,71 +709,71 @@
                 icon.classList.add('fa-eye');
             }
         });
-        
+
         // Password strength checker
         const passwordInput = document.getElementById('password');
         const strengthFill = document.getElementById('passwordStrength');
         const strengthText = document.getElementById('passwordText');
         const passwordMatch = document.getElementById('passwordMatch');
-        
-        passwordInput.addEventListener('input', function() {
+
+        passwordInput.addEventListener('input', function () {
             const password = this.value;
-            
+
             let strength = 0;
             let text = 'Kosong';
             let color = '#ef4444';
             let width = 0;
-            
+
             if (password.length > 0) {
                 strength = 1;
                 text = 'Sangat Lemah';
                 color = '#ef4444';
                 width = 20;
             }
-            
+
             if (password.length >= 6) {
                 strength = 2;
                 text = 'Lemah';
                 color = '#f59e0b';
                 width = 40;
             }
-            
+
             if (password.length >= 8 && /[A-Z]/.test(password) && /[0-9]/.test(password)) {
                 strength = 3;
                 text = 'Cukup';
                 color = '#3b82f6';
                 width = 60;
             }
-            
+
             if (password.length >= 10 && /[A-Z]/.test(password) && /[0-9]/.test(password) && /[^A-Za-z0-9]/.test(password)) {
                 strength = 4;
                 text = 'Kuat';
                 color = '#10b981';
                 width = 80;
             }
-            
+
             strengthFill.style.width = width + '%';
             strengthFill.style.backgroundColor = color;
             strengthText.textContent = text;
             strengthText.style.color = color;
-            
+
             // Check password match
             checkPasswordMatch();
         });
-        
+
         // Password confirmation check
         document.getElementById('password_confirmation').addEventListener('input', checkPasswordMatch);
-        
+
         function checkPasswordMatch() {
             const password = document.getElementById('password').value;
             const confirmPassword = document.getElementById('password_confirmation').value;
-            
+
             if (confirmPassword.length === 0) {
                 passwordMatch.textContent = '';
                 passwordMatch.style.color = '#64748b';
                 return;
             }
-            
+
             if (password === confirmPassword) {
                 passwordMatch.textContent = '✓ Password cocok';
                 passwordMatch.style.color = '#10b981';
@@ -763,39 +782,39 @@
                 passwordMatch.style.color = '#ef4444';
             }
         }
-        
+
         // Form submission
-        document.getElementById('registerForm').addEventListener('submit', function(e) {
+        document.getElementById('registerForm').addEventListener('submit', function (e) {
             e.preventDefault();
-            
+
             // Basic validation
             const username = document.getElementById('username').value;
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
             const confirmPassword = document.getElementById('password_confirmation').value;
             const terms = document.getElementById('terms').checked;
-            
+
             if (!username || !email || !password || !confirmPassword) {
                 alert('Harap isi semua kolom yang wajib diisi');
                 return;
             }
-            
+
             if (password !== confirmPassword) {
                 alert('Password dan konfirmasi password tidak cocok');
                 return;
             }
-            
+
             if (!terms) {
                 alert('Anda harus menyetujui Syarat & Ketentuan');
                 return;
             }
-            
+
             // Simulate loading state
             const submitButton = document.getElementById('submitBtn');
             const originalText = submitButton.innerHTML;
             submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memproses...';
             submitButton.disabled = true;
-            
+
             // Submit form
             setTimeout(() => {
                 this.submit();
@@ -803,4 +822,5 @@
         });
     </script>
 </body>
+
 </html>
