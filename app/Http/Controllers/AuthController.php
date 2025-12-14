@@ -15,7 +15,6 @@ class AuthController extends Controller
     // Show login form
     public function showLogin()
     {
-        // Jika sudah login, redirect ke dashboard masing-masing
         if (Auth::check()) {
             $user = Auth::user();
             if ($user->hak_akses == 1) {
@@ -30,7 +29,6 @@ class AuthController extends Controller
     // Show register form
     public function showRegister()
     {
-        // Jika sudah login, redirect ke dashboard
         if (Auth::check()) {
             $user = Auth::user();
             if ($user->hak_akses == 1) {
@@ -45,7 +43,6 @@ class AuthController extends Controller
     // Process login
     public function login(Request $request)
     {
-        // Validasi input
         $request->validate([
             'email' => 'required|email',
             'password' => 'required'
@@ -58,11 +55,9 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
         $remember = $request->has('remember');
 
-        // Coba login
         if (Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();
 
-            // Update waktu aktivitas
             $user = Auth::user();
             $user->waktu_aktivitas = now();
             $user->save();
@@ -73,19 +68,15 @@ class AuthController extends Controller
                 'hak_akses' => $user->hak_akses
             ]);
 
-            // Redirect berdasarkan hak akses
             if ($user->hak_akses == 1) {
-                // Admin ke admin dashboard
                 return redirect()->route('admin.dashboard')
                     ->with('success', 'Selamat datang, Admin ' . $user->username . '!');
             } else {
-                // Penjual ke user dashboard
                 return redirect()->route('dashboard')
                     ->with('success', 'Selamat datang, ' . $user->username . '!');
             }
         }
 
-        // Login gagal
         Log::warning('Login failed', ['email' => $request->email]);
 
         return back()
@@ -93,10 +84,9 @@ class AuthController extends Controller
             ->withInput($request->only('email'));
     }
 
-    // Process register
+    // Process register dengan OTP
     public function register(Request $request)
     {
-        // Validasi input
         $request->validate([
             'username' => 'required|string|max:255|unique:users,username',
             'email' => 'required|email|unique:users,email',
@@ -113,27 +103,27 @@ class AuthController extends Controller
         ]);
 
         try {
-            // Buat user baru
-            $user = User::create([
-                'username' => $request->username,
-                'email' => $request->email,
-                'password' => Hash::make($request->password),
-                'hak_akses' => 2, // Default sebagai penjual
-                'waktu_aktivitas' => now()
+            // Simpan data registrasi ke session
+            session([
+                'registration_data' => [
+                    'username' => $request->username,
+                    'email' => $request->email,
+                    'password' => $request->password,
+                ]
             ]);
 
-            Log::info('User registered successfully', [
-                'user_id' => $user->id,
-                'username' => $user->username,
-                'email' => $user->email
-            ]);
+            // Kirim OTP
+            $otpService = new \App\Services\OtpService();
+            $result = $otpService->sendOtp($request->email, 'register');
 
-            // Auto login setelah register
-            Auth::login($user);
-
-            // Redirect ke dashboard penjual
-            return redirect()->route('dashboard')
-                ->with('success', 'Akun berhasil dibuat! Selamat datang, ' . $user->username . '!');
+            if ($result['success']) {
+                return redirect()->route('otp.verify')
+                    ->with('success', 'Kode OTP telah dikirim ke email Anda. Silakan cek inbox atau spam folder.');
+            } else {
+                return back()
+                    ->withErrors(['error' => $result['message']])
+                    ->withInput($request->except('password', 'password_confirmation'));
+            }
 
         } catch (\Exception $e) {
             Log::error('Registration failed: ' . $e->getMessage());
@@ -141,6 +131,107 @@ class AuthController extends Controller
             return back()
                 ->withErrors(['error' => 'Registrasi gagal. Silakan coba lagi.'])
                 ->withInput($request->except('password', 'password_confirmation'));
+        }
+    }
+
+    // Show OTP verification form
+    public function showOtpVerification()
+    {
+        if (!session('registration_data')) {
+            return redirect()->route('signUp')
+                ->with('error', 'Silakan isi form registrasi terlebih dahulu');
+        }
+
+        return view('admin.verify-otp');
+    }
+
+    // Verify OTP
+    public function verifyOtp(Request $request)
+    {
+        $request->validate([
+            'otp' => 'required|string|size:6'
+        ], [
+            'otp.required' => 'Kode OTP wajib diisi',
+            'otp.size' => 'Kode OTP harus 6 digit'
+        ]);
+
+        $registrationData = session('registration_data');
+
+        if (!$registrationData) {
+            return redirect()->route('signUp')
+                ->with('error', 'Sesi registrasi telah berakhir. Silakan daftar ulang.');
+        }
+
+        try {
+            // Verifikasi OTP
+            $otpService = new \App\Services\OtpService();
+            $result = $otpService->verifyOtp($registrationData['email'], $request->otp, 'register');
+
+            if (!$result['success']) {
+                return back()
+                    ->withErrors(['otp' => $result['message']])
+                    ->withInput();
+            }
+
+            // OTP valid, buat user baru
+            $user = User::create([
+                'username' => $registrationData['username'],
+                'email' => $registrationData['email'],
+                'password' => Hash::make($registrationData['password']),
+                'hak_akses' => 2,
+                'email_verified_at' => now(), // Langsung verified karena sudah verifikasi OTP
+                'waktu_aktivitas' => now()
+            ]);
+
+            Log::info('User registered successfully with OTP', [
+                'user_id' => $user->id,
+                'username' => $user->username,
+                'email' => $user->email
+            ]);
+
+            // Hapus session registration data
+            session()->forget('registration_data');
+
+            // Auto login
+            Auth::login($user);
+
+            return redirect()->route('dashboard')
+                ->with('success', 'Akun berhasil dibuat! Selamat datang, ' . $user->username . '!');
+
+        } catch (\Exception $e) {
+            Log::error('OTP verification failed: ' . $e->getMessage());
+
+            return back()
+                ->withErrors(['error' => 'Verifikasi OTP gagal. Silakan coba lagi.'])
+                ->withInput();
+        }
+    }
+
+    // Resend OTP
+    public function resendOtp(Request $request)
+    {
+        $registrationData = session('registration_data');
+
+        if (!$registrationData) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Sesi registrasi telah berakhir'
+            ]);
+        }
+
+        try {
+            $otpService = new \App\Services\OtpService();
+            $result = $otpService->resendOtp($registrationData['email'], 'register');
+
+            return response()->json($result);
+
+        } catch (\Exception $e) {
+            Log::error('Resend OTP failed: ' . $e->getMessage());
+
+            return response()->json([
+                'success' => false,
+                'message' => 'Gagal mengirim ulang OTP'
+            ]);
         }
     }
 
@@ -164,30 +255,61 @@ class AuthController extends Controller
      */
     public function redirectToGoogle()
     {
-        return Socialite::driver('google')->redirect();
+        try {
+            Log::info('Redirecting to Google OAuth');
+            
+            return Socialite::driver('google')
+                ->with(['prompt' => 'select_account'])
+                ->redirect();
+        } catch (Exception $e) {
+            Log::error('Google redirect error: ' . $e->getMessage());
+            return redirect()->route('signIn')
+                ->with('error', 'Tidak dapat terhubung ke Google. Silakan coba lagi.');
+        }
     }
 
     /**
      * Handle callback dari Google
      */
-    public function handleGoogleCallback()
+    public function handleGoogleCallback(Request $request)
     {
         try {
+            Log::info('Google callback received', [
+                'url' => $request->fullUrl(),
+                'has_code' => $request->has('code'),
+                'has_state' => $request->has('state')
+            ]);
+
+            // Cek jika ada error dari Google
+            if ($request->has('error')) {
+                Log::warning('Google OAuth error', ['error' => $request->get('error')]);
+                return redirect()->route('signIn')
+                    ->with('error', 'Login dengan Google dibatalkan.');
+            }
+
             // Ambil data user dari Google
-            $googleUser = Socialite::driver('google')->user();
+            $googleUser = Socialite::driver('google')->stateless()->user();
+
+            Log::info('Google user data received', [
+                'google_id' => $googleUser->getId(),
+                'email' => $googleUser->getEmail(),
+                'name' => $googleUser->getName()
+            ]);
 
             // Cari user berdasarkan Google ID
             $user = User::where('google_id', $googleUser->getId())->first();
 
             if ($user) {
-                // Jika user sudah ada, update data
+                // User sudah ada dengan Google ID
                 $user->update([
                     'avatar' => $googleUser->getAvatar(),
                     'email_verified_at' => now(),
                     'waktu_aktivitas' => now(),
                 ]);
+
+                Log::info('Existing Google user updated', ['user_id' => $user->id]);
             } else {
-                // Cek apakah email sudah terdaftar (dari registrasi biasa)
+                // Cek apakah email sudah terdaftar
                 $user = User::where('email', $googleUser->getEmail())->first();
 
                 if ($user) {
@@ -198,10 +320,14 @@ class AuthController extends Controller
                         'email_verified_at' => now(),
                         'waktu_aktivitas' => now(),
                     ]);
+
+                    Log::info('Linked existing user with Google', ['user_id' => $user->id]);
                 } else {
                     // Buat user baru dari Google
+                    $username = $this->generateUniqueUsername($googleUser->getName());
+
                     $user = User::create([
-                        'username' => $googleUser->getName(),
+                        'username' => $username,
                         'email' => $googleUser->getEmail(),
                         'google_id' => $googleUser->getId(),
                         'avatar' => $googleUser->getAvatar(),
@@ -210,33 +336,71 @@ class AuthController extends Controller
                         'waktu_aktivitas' => now(),
                         'password' => null, // Password null untuk login Google
                     ]);
+
+                    Log::info('New Google user created', ['user_id' => $user->id]);
                 }
             }
 
-            // Login user
+            // Login user dengan remember token
             Auth::login($user, true);
+            
+            // Regenerate session untuk keamanan
+            $request->session()->regenerate();
 
-            Log::info('User logged in via Google', [
+            Log::info('User logged in via Google successfully', [
                 'user_id' => $user->id,
                 'email' => $user->email,
-                'google_id' => $user->google_id
+                'hak_akses' => $user->hak_akses
             ]);
 
-            // Redirect berdasarkan hak akses
+            // Redirect langsung ke dashboard berdasarkan hak akses
             if ($user->hak_akses == 1) {
-                return redirect()->route('admin.dashboard')
-                    ->with('success', 'Selamat datang, Admin ' . $user->username . '!');
+                return redirect()->intended(route('admin.dashboard'))
+                    ->with('success', 'Selamat datang kembali, Admin ' . $user->username . '!');
             } else {
-                return redirect()->route('dashboard')
-                    ->with('success', 'Selamat datang, ' . $user->username . '!');
+                return redirect()->intended(route('dashboard'))
+                    ->with('success', 'Selamat datang kembali, ' . $user->username . '!');
             }
 
-        } catch (Exception $e) {
-            Log::error('Google Login Error: ' . $e->getMessage());
+        } catch (\Laravel\Socialite\Two\InvalidStateException $e) {
+            Log::error('Google OAuth Invalid State', [
+                'message' => $e->getMessage()
+            ]);
 
             return redirect()->route('signIn')
-                ->with('error', 'Terjadi kesalahan saat login dengan Google. Silakan coba lagi.');
+                ->with('error', 'Sesi login telah habis. Silakan coba lagi.');
+
+        } catch (Exception $e) {
+            Log::error('Google Login Error', [
+                'message' => $e->getMessage(),
+                'file' => $e->getFile(),
+                'line' => $e->getLine(),
+                'trace' => $e->getTraceAsString()
+            ]);
+
+            return redirect()->route('signIn')
+                ->with('error', 'Terjadi kesalahan saat login dengan Google. Silakan coba lagi atau gunakan metode login lainnya.');
         }
     }
 
+    /**
+     * Generate unique username dari nama Google
+     */
+    private function generateUniqueUsername($name)
+    {
+        // Bersihkan nama dan buat username
+        $username = strtolower(str_replace(' ', '_', $name));
+        $username = preg_replace('/[^a-z0-9_]/', '', $username);
+
+        // Cek apakah username sudah ada
+        $originalUsername = $username;
+        $counter = 1;
+
+        while (User::where('username', $username)->exists()) {
+            $username = $originalUsername . '_' . $counter;
+            $counter++;
+        }
+
+        return $username;
+    }
 }

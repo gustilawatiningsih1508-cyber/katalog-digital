@@ -20,6 +20,18 @@ Route::get('/lapak/{id}', [PageController::class, 'lapakDetail'])->name('lapak.d
 Route::get('/lapak/{id}/menu', [PageController::class, 'menuLapak'])->name('lapak.menu');
 
 /* ============================================
+   GOOGLE OAUTH ROUTES
+   PENTING: Jangan gunakan middleware guest di callback
+   karena akan redirect balik ke login
+============================================ */
+Route::get('/auth/google', [AuthController::class, 'redirectToGoogle'])
+    ->middleware('guest')
+    ->name('auth.google');
+
+Route::get('/auth/google/callback', [AuthController::class, 'handleGoogleCallback'])
+    ->name('auth.google.callback');
+
+/* ============================================
    AUTH ROUTES (Guest Only - Belum Login)
 ============================================ */
 Route::middleware('guest')->group(function () {
@@ -29,6 +41,11 @@ Route::middleware('guest')->group(function () {
     
     Route::post('/login', [AuthController::class, 'login'])->name('login.process');
     Route::post('/register', [AuthController::class, 'register'])->name('register.process');
+    
+    // OTP Routes
+    Route::get('/verify-otp', [AuthController::class, 'showOtpVerification'])->name('otp.verify');
+    Route::post('/verify-otp', [AuthController::class, 'verifyOtp'])->name('otp.verify.process');
+    Route::post('/resend-otp', [AuthController::class, 'resendOtp'])->name('otp.resend');
 });
 
 /* ============================================
@@ -87,9 +104,3 @@ Route::fallback(function () {
     }
     return redirect()->route('home');
 });
-
-/* ============================================
-   GOOGLE OAUTH ROUTES
-============================================ */
-Route::get('/auth/google', [AuthController::class, 'redirectToGoogle'])->name('auth.google');
-Route::get('/auth/google/callback', [AuthController::class, 'handleGoogleCallback']);

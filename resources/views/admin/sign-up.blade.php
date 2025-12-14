@@ -11,8 +11,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -42,20 +41,19 @@
             align-items: center;
             justify-content: center;
             padding: 20px;
-            overflow: hidden;
+            overflow-x: hidden;
         }
 
         .container {
             width: 100%;
             max-width: 1200px;
-            height: 90vh;
             min-height: 600px;
-            max-height: 800px;
             display: flex;
             border-radius: 24px;
             overflow: hidden;
             box-shadow: var(--card-shadow);
             background: white;
+            position: relative;
         }
 
         /* Left Panel */
@@ -64,11 +62,12 @@
             background: linear-gradient(160deg, #0ea5e9 0%, #0c4a6e 100%);
             color: white;
             padding: 40px;
-            display: none;
+            display: flex;
             flex-direction: column;
             justify-content: center;
             position: relative;
             overflow: hidden;
+            min-height: 600px;
         }
 
         .left-panel::before {
@@ -104,6 +103,7 @@
         .logo-section img {
             height: 40px;
             margin-right: 12px;
+            filter: brightness(0) invert(1);
         }
 
         .logo-section h1 {
@@ -128,40 +128,52 @@
             font-size: 0.95rem;
             opacity: 0.9;
             margin-bottom: 25px;
+            line-height: 1.5;
         }
 
         .features {
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            margin-top: 20px;
+            gap: 20px;
+            margin-top: 30px;
         }
 
         .feature {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
+            padding: 15px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            transition: var(--smooth-transition);
+        }
+
+        .feature:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateX(5px);
         }
 
         .feature-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 8px;
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
             background: rgba(255, 255, 255, 0.15);
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
+            font-size: 1.2rem;
         }
 
         .feature-text h3 {
-            font-size: 0.9rem;
+            font-size: 1rem;
             font-weight: 600;
-            margin-bottom: 3px;
+            margin-bottom: 5px;
         }
 
         .feature-text p {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             opacity: 0.8;
             margin-bottom: 0;
         }
@@ -173,35 +185,21 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            overflow: hidden;
+            overflow-y: auto;
+            min-width: 0;
         }
 
         .mobile-header {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-
-        .mobile-header img {
-            height: 40px;
-            margin-right: 12px;
-        }
-
-        .mobile-header h1 {
-            font-size: 1.6rem;
-            font-weight: 800;
-            color: #0f172a;
-            letter-spacing: -0.5px;
+            display: none;
         }
 
         .form-header {
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
 
         .form-header h2 {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             font-weight: 800;
             color: #0f172a;
             margin-bottom: 8px;
@@ -209,7 +207,71 @@
 
         .form-header p {
             color: #64748b;
+            font-size: 0.95rem;
+        }
+
+        /* Social Login Buttons */
+        .social-login {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .social-btn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            background: white;
+            color: #475569;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--smooth-transition);
+            text-decoration: none;
+        }
+
+        .social-btn:hover {
+            border-color: var(--primary-color);
+            background: #f8fafc;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.15);
+        }
+
+        .social-btn i {
+            font-size: 1.2rem;
+        }
+
+        .google-btn {
+            color: #ea4335;
+        }
+
+        .google-btn:hover {
+            border-color: #ea4335;
+        }
+
+        /* Divider */
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 25px 0;
+        }
+
+        .divider-line {
+            flex: 1;
+            height: 1px;
+            background: #e2e8f0;
+        }
+
+        .divider-text {
+            padding: 0 15px;
+            color: #94a3b8;
             font-size: 0.9rem;
+            white-space: nowrap;
         }
 
         /* Form */
@@ -220,15 +282,15 @@
         }
 
         .form-group {
-            margin-bottom: 16px;
+            margin-bottom: 20px;
         }
 
         .form-label {
             display: block;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 600;
             color: #475569;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
         }
 
         .input-with-icon {
@@ -237,19 +299,19 @@
 
         .input-icon {
             position: absolute;
-            left: 14px;
+            left: 16px;
             top: 50%;
             transform: translateY(-50%);
             color: #94a3b8;
-            font-size: 1rem;
+            font-size: 1.1rem;
         }
 
         .form-control {
             width: 100%;
-            padding: 12px 14px 12px 42px;
+            padding: 14px 16px 14px 46px;
             border: 2px solid #e2e8f0;
-            border-radius: 10px;
-            font-size: 0.9rem;
+            border-radius: 12px;
+            font-size: 0.95rem;
             font-family: 'Inter', sans-serif;
             color: #334155;
             background: white;
@@ -264,18 +326,26 @@
 
         .password-toggle {
             position: absolute;
-            right: 14px;
+            right: 16px;
             top: 50%;
             transform: translateY(-50%);
             background: transparent;
             border: none;
             color: #94a3b8;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 1.1rem;
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .password-toggle:hover {
+            color: var(--primary-color);
         }
 
         .password-strength {
-            margin-top: 6px;
+            margin-top: 8px;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -283,9 +353,9 @@
 
         .strength-meter {
             flex: 1;
-            height: 4px;
+            height: 6px;
             background: #e2e8f0;
-            border-radius: 2px;
+            border-radius: 3px;
             overflow: hidden;
         }
 
@@ -293,22 +363,22 @@
             height: 100%;
             width: 20%;
             background: #ef4444;
-            border-radius: 2px;
+            border-radius: 3px;
             transition: var(--smooth-transition);
         }
 
         .strength-text {
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: #64748b;
-            min-width: 110px;
+            min-width: 100px;
         }
 
         /* Terms */
         .terms {
-            margin: 15px 0;
+            margin: 20px 0;
             display: flex;
             align-items: flex-start;
-            gap: 10px;
+            gap: 12px;
         }
 
         .terms-checkbox {
@@ -320,10 +390,10 @@
         }
 
         .custom-checkbox {
-            width: 16px;
-            height: 16px;
+            width: 18px;
+            height: 18px;
             border: 2px solid #cbd5e1;
-            border-radius: 4px;
+            border-radius: 5px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -340,14 +410,14 @@
         .terms-checkbox input:checked+.custom-checkbox::after {
             content: '✓';
             color: white;
-            font-size: 0.7rem;
+            font-size: 0.8rem;
             font-weight: bold;
         }
 
         .terms-label {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: #475569;
-            line-height: 1.4;
+            line-height: 1.5;
         }
 
         .terms-label a {
@@ -356,15 +426,19 @@
             font-weight: 600;
         }
 
+        .terms-label a:hover {
+            text-decoration: underline;
+        }
+
         /* Submit Button */
         .submit-btn {
             width: 100%;
-            padding: 12px;
+            padding: 16px;
             background: linear-gradient(to right, var(--primary-color), var(--primary-dark));
             color: white;
             border: none;
-            border-radius: 10px;
-            font-size: 0.95rem;
+            border-radius: 12px;
+            font-size: 1rem;
             font-weight: 700;
             cursor: pointer;
             transition: var(--smooth-transition);
@@ -372,20 +446,24 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 10px;
             margin: 10px 0;
         }
 
         .submit-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(14, 165, 233, 0.25);
+            box-shadow: 0 8px 20px rgba(14, 165, 233, 0.3);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
         }
 
         /* Login Link */
         .login-link {
             text-align: center;
-            margin-top: 15px;
-            font-size: 0.85rem;
+            margin-top: 20px;
+            font-size: 0.9rem;
             color: #64748b;
         }
 
@@ -402,66 +480,16 @@
         /* Footer */
         .footer {
             text-align: center;
-            margin-top: 20px;
+            margin-top: 25px;
             color: #94a3b8;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
         }
 
-        /* Media Queries */
-        @media (min-width: 1024px) {
-            .left-panel {
-                display: flex;
-            }
-
-            .mobile-header {
-                display: none;
-            }
-        }
-
-        @media (max-width: 1023px) {
-            .container {
-                height: auto;
-                min-height: 100vh;
-                max-height: none;
-                flex-direction: column;
-            }
-
-            .left-panel {
-                display: none;
-            }
-
-            .right-panel {
-                padding: 30px 20px;
-            }
-
-            .mobile-header {
-                display: flex;
-            }
-        }
-
-        @media (max-width: 480px) {
-            body {
-                padding: 10px;
-            }
-
-            .container {
-                border-radius: 16px;
-            }
-
-            .right-panel {
-                padding: 25px 15px;
-            }
-
-            .form-header h2 {
-                font-size: 1.4rem;
-            }
-        }
-
-        /* Error message styling */
+        /* Alert */
         .alert {
-            padding: 12px 16px;
-            border-radius: 8px;
-            margin-bottom: 20px;
+            padding: 14px 18px;
+            border-radius: 10px;
+            margin-bottom: 25px;
             font-size: 0.9rem;
         }
 
@@ -479,8 +507,134 @@
 
         .error-message {
             color: #ef4444;
+            font-size: 0.85rem;
+            margin-top: 6px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .error-message::before {
+            content: '⚠';
             font-size: 0.8rem;
-            margin-top: 4px;
+        }
+
+        /* Media Queries */
+        @media (max-width: 1024px) {
+            .container {
+                max-width: 800px;
+            }
+            
+            .left-panel,
+            .right-panel {
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                max-width: 500px;
+                min-height: auto;
+            }
+
+            .left-panel {
+                min-height: 300px;
+                padding: 30px 20px;
+            }
+
+            .left-panel .logo-section {
+                margin-bottom: 20px;
+            }
+
+            .left-panel .content h2 {
+                font-size: 1.4rem;
+            }
+
+            .feature {
+                padding: 12px;
+            }
+
+            .feature-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .feature-text h3 {
+                font-size: 0.9rem;
+            }
+
+            .feature-text p {
+                font-size: 0.8rem;
+            }
+
+            .mobile-header {
+                display: none;
+            }
+
+            .right-panel {
+                padding: 30px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                border-radius: 16px;
+            }
+
+            .left-panel {
+                min-height: 250px;
+                padding: 20px;
+            }
+
+            .left-panel::before,
+            .left-panel::after {
+                display: none;
+            }
+
+            .content h2 {
+                font-size: 1.3rem;
+            }
+
+            .features {
+                margin-top: 20px;
+                gap: 15px;
+            }
+
+            .feature {
+                padding: 10px;
+            }
+
+            .right-panel {
+                padding: 25px 15px;
+            }
+
+            .form-header h2 {
+                font-size: 1.5rem;
+            }
+
+            .form-header p {
+                font-size: 0.9rem;
+            }
+
+            .social-login {
+                flex-direction: column;
+            }
+
+            .form-control {
+                padding: 12px 16px 12px 42px;
+                font-size: 0.9rem;
+            }
+
+            .input-icon {
+                left: 14px;
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
@@ -496,8 +650,7 @@
 
             <div class="content">
                 <h2>Mulai Perjalanan Bisnis Online Anda</h2>
-                <p>Bergabunglah dengan ribuan seller sukses yang telah mempercayai Lapak Go sebagai platform e-commerce
-                    mereka.</p>
+                <p>Bergabunglah dengan ribuan seller sukses yang telah mempercayai Lapak Go sebagai platform e-commerce mereka.</p>
 
                 <div class="features">
                     <div class="feature">
@@ -506,7 +659,7 @@
                         </div>
                         <div class="feature-text">
                             <h3>Dashboard Lengkap</h3>
-                            <p>Kelola produk, pesanan, dan analisis penjualan</p>
+                            <p>Kelola produk, pesanan, dan analisis penjualan dengan mudah</p>
                         </div>
                     </div>
 
@@ -516,7 +669,7 @@
                         </div>
                         <div class="feature-text">
                             <h3>Keamanan Data</h3>
-                            <p>Enkripsi untuk melindungi informasi bisnis</p>
+                            <p>Enkripsi tingkat tinggi untuk melindungi informasi bisnis Anda</p>
                         </div>
                     </div>
 
@@ -526,7 +679,7 @@
                         </div>
                         <div class="feature-text">
                             <h3>Analisis Real-time</h3>
-                            <p>Pantau performa penjualan dengan laporan</p>
+                            <p>Pantau performa penjualan dengan laporan real-time yang akurat</p>
                         </div>
                     </div>
                 </div>
@@ -535,6 +688,7 @@
 
         <!-- Right Panel -->
         <div class="right-panel">
+            <!-- Mobile Header (Hidden by default) -->
             <div class="mobile-header">
                 <img src="{{ asset('assets/admin/images/favicon.png') }}" alt="Lapak Go Logo">
                 <h1>Lapak Go</h1>
@@ -542,23 +696,38 @@
 
             <div class="form-header">
                 <h2>Buat Akun Baru</h2>
-                <p>Isi informasi di bawah untuk memulai perjalanan Anda</p>
+                <p>Daftar dengan Google atau isi form di bawah</p>
             </div>
 
-            <!-- Tampilkan pesan error/success -->
+            <!-- Social Login Buttons -->
+            <div class="social-login">
+                <a href="{{ route('auth.google') }}" class="social-btn google-btn">
+                    <i class="fab fa-google"></i>
+                    <span>Daftar dengan Google</span>
+                </a>
+            </div>
+
+            <div class="divider">
+                <div class="divider-line"></div>
+                <div class="divider-text">atau daftar dengan email</div>
+                <div class="divider-line"></div>
+            </div>
+
+            <!-- Success/Error Messages -->
             @if(session('success'))
                 <div class="alert alert-success">
-                    {{ session('success') }}
+                    <i class="fas fa-check-circle"></i> {{ session('success') }}
                 </div>
             @endif
 
             @if($errors->any())
                 <div class="alert alert-error">
-                    <ul>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <div>
                         @foreach($errors->all() as $error)
-                            <li>{{ $error }}</li>
+                            <div>{{ $error }}</div>
                         @endforeach
-                    </ul>
+                    </div>
                 </div>
             @endif
 
@@ -598,7 +767,7 @@
                         <i class="fas fa-lock input-icon"></i>
                         <input type="password" name="password" id="password" class="form-control"
                             placeholder="Buat password yang kuat" required>
-                        <button type="button" class="password-toggle" id="togglePassword">
+                        <button type="button" class="password-toggle" id="togglePassword" aria-label="Toggle password visibility">
                             <i class="fas fa-eye"></i>
                         </button>
                     </div>
@@ -620,7 +789,7 @@
                         <i class="fas fa-lock input-icon"></i>
                         <input type="password" name="password_confirmation" id="password_confirmation"
                             class="form-control" placeholder="Ulangi password Anda" required>
-                        <button type="button" class="password-toggle" id="toggleConfirmPassword">
+                        <button type="button" class="password-toggle" id="toggleConfirmPassword" aria-label="Toggle password visibility">
                             <i class="fas fa-eye"></i>
                         </button>
                     </div>
@@ -634,23 +803,8 @@
                         <span class="custom-checkbox"></span>
                     </label>
                     <span class="terms-label">
-                        Saya setuju dengan <a href="#">Syarat & Ketentuan</a> dan <a href="#">Kebijakan Privasi</a>
-                        Lapak Go.
+                        Saya setuju dengan <a href="#" target="_blank">Syarat & Ketentuan</a> dan <a href="#" target="_blank">Kebijakan Privasi</a> Lapak Go.
                     </span>
-                </div>
-                <!-- Bagian social login di sign-in.blade.php -->
-                <div class="social-login">
-                    <a href="{{ route('auth.google') }}" class="social-button" title="Login dengan Google">
-                        <i class="fab fa-google"></i>
-                    </a>
-                    <button type="button" class="social-button"
-                        onclick="alert('Fitur Facebook login akan segera tersedia!')">
-                        <i class="fab fa-facebook-f"></i>
-                    </button>
-                    <button type="button" class="social-button"
-                        onclick="alert('Fitur Twitter login akan segera tersedia!')">
-                        <i class="fab fa-twitter"></i>
-                    </button>
                 </div>
                 @error('terms')
                     <div class="error-message">{{ $message }}</div>
@@ -664,12 +818,12 @@
 
                 <!-- Login Link -->
                 <div class="login-link">
-                    Sudah punya akun? <a href="/sign-in">Masuk ke akun Anda</a>
+                    Sudah punya akun? <a href="{{ route('signIn') }}">Masuk ke akun Anda</a>
                 </div>
 
                 <!-- Footer -->
                 <div class="footer">
-                    <p>&copy; 2023 Lapak Go. Hak cipta dilindungi.</p>
+                    <p>&copy; 2024 Lapak Go. Hak cipta dilindungi.</p>
                 </div>
             </form>
         </div>
@@ -688,10 +842,12 @@
                 passwordInput.type = 'text';
                 icon.classList.remove('fa-eye');
                 icon.classList.add('fa-eye-slash');
+                this.setAttribute('aria-label', 'Sembunyikan password');
             } else {
                 passwordInput.type = 'password';
                 icon.classList.remove('fa-eye-slash');
                 icon.classList.add('fa-eye');
+                this.setAttribute('aria-label', 'Tampilkan password');
             }
         });
 
@@ -703,10 +859,12 @@
                 confirmInput.type = 'text';
                 icon.classList.remove('fa-eye');
                 icon.classList.add('fa-eye-slash');
+                this.setAttribute('aria-label', 'Sembunyikan password');
             } else {
                 confirmInput.type = 'password';
                 icon.classList.remove('fa-eye-slash');
                 icon.classList.add('fa-eye');
+                this.setAttribute('aria-label', 'Tampilkan password');
             }
         });
 
@@ -757,7 +915,6 @@
             strengthText.textContent = text;
             strengthText.style.color = color;
 
-            // Check password match
             checkPasswordMatch();
         });
 
@@ -783,29 +940,71 @@
             }
         }
 
-        // Form submission
+        // Form submission with better validation
         document.getElementById('registerForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            // Basic validation
-            const username = document.getElementById('username').value;
-            const email = document.getElementById('email').value;
+            const username = document.getElementById('username').value.trim();
+            const email = document.getElementById('email').value.trim();
             const password = document.getElementById('password').value;
             const confirmPassword = document.getElementById('password_confirmation').value;
             const terms = document.getElementById('terms').checked;
 
-            if (!username || !email || !password || !confirmPassword) {
-                alert('Harap isi semua kolom yang wajib diisi');
-                return;
+            let hasError = false;
+            const errorMessages = [];
+
+            // Clear previous inline errors
+            document.querySelectorAll('.error-message').forEach(el => {
+                if (!el.classList.contains('server-error')) {
+                    el.remove();
+                }
+            });
+
+            // Username validation
+            if (!username) {
+                showError('username', 'Username harus diisi');
+                hasError = true;
+            } else if (username.length < 3) {
+                showError('username', 'Username minimal 3 karakter');
+                hasError = true;
             }
 
-            if (password !== confirmPassword) {
-                alert('Password dan konfirmasi password tidak cocok');
-                return;
+            // Email validation
+            if (!email) {
+                showError('email', 'Email harus diisi');
+                hasError = true;
+            } else if (!isValidEmail(email)) {
+                showError('email', 'Format email tidak valid');
+                hasError = true;
             }
 
+            // Password validation
+            if (!password) {
+                showError('password', 'Password harus diisi');
+                hasError = true;
+            } else if (password.length < 8) {
+                showError('password', 'Password minimal 8 karakter');
+                hasError = true;
+            }
+
+            // Confirm password validation
+            if (!confirmPassword) {
+                showError('password_confirmation', 'Konfirmasi password harus diisi');
+                hasError = true;
+            } else if (password !== confirmPassword) {
+                showError('password_confirmation', 'Password tidak cocok');
+                hasError = true;
+            }
+
+            // Terms validation
             if (!terms) {
-                alert('Anda harus menyetujui Syarat & Ketentuan');
+                const termsError = document.createElement('div');
+                termsError.className = 'error-message';
+                termsError.textContent = 'Anda harus menyetujui Syarat & Ketentuan';
+                document.querySelector('.terms').insertAdjacentElement('afterend', termsError);
+                hasError = true;
+            }
+
+            if (hasError) {
+                e.preventDefault();
                 return;
             }
 
@@ -815,11 +1014,35 @@
             submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memproses...';
             submitButton.disabled = true;
 
-            // Submit form
+            // Re-enable button after 3 seconds if form doesn't submit
             setTimeout(() => {
-                this.submit();
-            }, 1500);
+                submitButton.innerHTML = originalText;
+                submitButton.disabled = false;
+            }, 3000);
         });
+
+        function showError(fieldId, message) {
+            const field = document.getElementById(fieldId);
+            const formGroup = field.closest('.form-group');
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error-message';
+            errorDiv.textContent = message;
+            
+            const existingError = formGroup.querySelector('.error-message');
+            if (existingError && !existingError.classList.contains('server-error')) {
+                existingError.remove();
+            }
+            
+            formGroup.appendChild(errorDiv);
+        }
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // Auto-focus first input
+        document.getElementById('username').focus();
     </script>
 </body>
 
