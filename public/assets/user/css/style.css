@@ -39,14 +39,36 @@ body {
 }
 
 /* UNIVERSAL PADDING — disesuaikan lebih simetris */
-.layout_padding { padding: 6.25rem 0; }
-.layout_padding2 { padding: 5rem 0; }
-.layout_padding2-top { padding-top: 5rem; }
-.layout_padding2-bottom { padding-bottom: 5rem; }
-.layout_padding-top { padding-top: 6.25rem; }
-.layout_padding-bottom { padding-bottom: 6.25rem; }
+.layout_padding {
+  padding: 6.25rem 0;
+}
 
-h1, h2, h3, h4, h5, h6 {
+.layout_padding2 {
+  padding: 5rem 0;
+}
+
+.layout_padding2-top {
+  padding-top: 5rem;
+}
+
+.layout_padding2-bottom {
+  padding-bottom: 5rem;
+}
+
+.layout_padding-top {
+  padding-top: 6.25rem;
+}
+
+.layout_padding-bottom {
+  padding-bottom: 6.25rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading);
   font-weight: 700;
   letter-spacing: 0.02em;
@@ -97,22 +119,27 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   text-align: center;
 }
+
 .heading_container.heading_center h2::after {
   left: 50%;
   transform: translateX(-50%);
 }
 
-a, a:hover, a:focus {
+a,
+a:hover,
+a:focus {
   text-decoration: none;
   color: inherit;
   transition: color 0.3s ease;
 }
 
-a:hover, a:focus {
+a:hover,
+a:focus {
   color: var(--primary-color);
 }
 
-.btn, .btn:focus {
+.btn,
+.btn:focus {
   outline: none;
   box-shadow: none;
   transition: var(--transition-smooth);
@@ -244,7 +271,7 @@ a:hover, a:focus {
   opacity: 1;
 }
 
-.custom_nav-container .navbar-nav .nav-item:hover .nav-link, 
+.custom_nav-container .navbar-nav .nav-item:hover .nav-link,
 .custom_nav-container .navbar-nav .nav-item.active .nav-link {
   color: var(--primary-color);
 }
@@ -341,7 +368,7 @@ a:hover, a:focus {
   border-radius: 5px;
 }
 
-.custom_nav-container .navbar-toggler span::before, 
+.custom_nav-container .navbar-toggler span::before,
 .custom_nav-container .navbar-toggler span::after {
   content: "";
   position: absolute;
@@ -369,7 +396,7 @@ a:hover, a:focus {
   transform: rotate(45deg);
 }
 
-.custom_nav-container .navbar-toggler[aria-expanded="true"] span::before, 
+.custom_nav-container .navbar-toggler[aria-expanded="true"] span::before,
 .custom_nav-container .navbar-toggler[aria-expanded="true"] span::after {
   transform: rotate(90deg);
   top: 0;
@@ -396,7 +423,7 @@ a:hover, a:focus {
 
 .slider_section .detail-box {
   color: var(--light-text);
-  margin-bottom: 2rem; 
+  margin-bottom: 2rem;
   text-align: center;
 }
 
@@ -663,32 +690,33 @@ a:hover, a:focus {
   font-weight: 600;
   color: var(--primary-color);
 }
-  .options {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 10px;
-    }
-    
-    .store-info {
-        display: flex;
-        align-items: center;
-        gap: 4px;
-    }
-    
-    .options h6 {
-        margin: 0;
-        padding: 0;
-        color: #ffa500;
-        font-weight: bold;
-        font-size: 1rem;
-        line-height: 1.2;
-    }
-    
-    .store-info svg {
-        color: #ffa500;
-        vertical-align: middle;
-    }
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.store-info {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.options h6 {
+  margin: 0;
+  padding: 0;
+  color: #ffa500;
+  font-weight: bold;
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.store-info svg {
+  color: #ffa500;
+  vertical-align: middle;
+}
 
 .food_section .box .options a {
   width: 2.5rem;
@@ -796,93 +824,93 @@ a:hover, a:focus {
 
 /* BOOK SECTION */
 .book_section {
-    background: #191820; 
-    padding: 80px 0;
-    min-height: 100vh;
+  background: #191820;
+  padding: 80px 0;
+  min-height: 100vh;
 }
 
 .heading_container h2 {
-    color: white;
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 10px;
+  color: white;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .heading_container p {
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.1rem;
 }
 
 .profile_card {
-    background: #2d3748; 
-    border-radius: 15px;
-    transition: transform 0.3s, box-shadow 0.3s;
-    height: 100%;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+  background: #2d3748;
+  border-radius: 15px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  height: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .profile_card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
 }
 
 .profile_image {
-    display: inline-block;
-    margin: 0 auto;
+  display: inline-block;
+  margin: 0 auto;
 }
 
 .profile_image img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 5px solid #fbbf24;
-    box-shadow: 0 5px 15px rgba(251, 191, 36, 0.3);
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid #fbbf24;
+  box-shadow: 0 5px 15px rgba(251, 191, 36, 0.3);
 }
 
 .profile_info h5 {
-    color: white;
-    font-weight: bold;
-    font-size: 1.3rem;
+  color: white;
+  font-weight: bold;
+  font-size: 1.3rem;
 }
 
 .profile_info p {
-    color: #fbbf24; 
-    font-size: 1rem;
-    font-weight: 600;
+  color: #fbbf24;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 .profile_info small {
-    color: rgba(255, 255, 255, 0.65); 
-    font-size: 0.9rem;
-    display: block;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.9rem;
+  display: block;
 }
 
 .view_more_btn {
-    background: #fbbf24; 
-    color: #222831; 
-    padding: 12px 40px;
-    border-radius: 25px;
-    border: none;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: 0.3s;
-    display: block;
-    margin: 40px auto 0;
+  background: #fbbf24;
+  color: #222831;
+  padding: 12px 40px;
+  border-radius: 25px;
+  border: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 0.3s;
+  display: block;
+  margin: 40px auto 0;
 }
 
 .view_more_btn:hover {
-    background: #f59e0b;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(251, 191, 36, 0.4);
+  background: #f59e0b;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(251, 191, 36, 0.4);
 }
 
 @media (max-width: 768px) {
-    .profile_card {
-        margin-bottom: 20px;
-    }
+  .profile_card {
+    margin-bottom: 20px;
+  }
 }
 
 .book_section .heading_container {
@@ -1297,42 +1325,47 @@ a:hover, a:focus {
 .btn-search:hover {
   color: var(--primary-hover-color);
 }
+
 /* =========================================
    PERBAIKAN POSISI SEARCH BAR (MENU PAGE)
    ========================================= */
 
 /* Container utama Flexbox untuk menengahkan konten */
 .menu-search-container {
-    display: flex !important;
-    justify-content: center !important; /* Kunci: Memusatkan secara horizontal */
-    align-items: center !important;
-    width: 100%;
-    margin-bottom: 2rem;
+  display: flex !important;
+  justify-content: center !important;
+  /* Kunci: Memusatkan secara horizontal */
+  align-items: center !important;
+  width: 100%;
+  margin-bottom: 2rem;
 }
 
 /* Wrapper pembatas lebar agar search bar tidak terlalu lebar di layar besar */
 .menu-search-wrapper {
-    width: 100%;
-    max-width: 600px; /* Lebar maksimal search bar */
-    margin: 0 auto;   /* Cadangan: auto margin untuk centering */
+  width: 100%;
+  max-width: 600px;
+  /* Lebar maksimal search bar */
+  margin: 0 auto;
+  /* Cadangan: auto margin untuk centering */
 }
 
 /* Styling Search Bar agar lebar penuh mengikuti wrapper */
 .search-input-group.custom-search {
-    width: 100% !important; /* Memaksa lebar penuh di dalam wrapper 600px */
-    height: 55px;
-    background-color: var(--dark-bg, #222831);
-    border: 2px solid var(--primary-color, #ffbe33);
-    border-radius: 50px;
-    padding: 0 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    display: flex;
-    align-items: center;
+  width: 100% !important;
+  /* Memaksa lebar penuh di dalam wrapper 600px */
+  height: 55px;
+  background-color: var(--dark-bg, #222831);
+  border: 2px solid var(--primary-color, #ffbe33);
+  border-radius: 50px;
+  padding: 0 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
 }
 
 .search-input-group.custom-search input {
-    color: #fff;
-    width: 100%;
+  color: #fff;
+  width: 100%;
 }
 
 .search-input-group.custom-search .search-input {
@@ -1371,19 +1404,21 @@ a:hover, a:focus {
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(40px) scale(0.95);
   }
+
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
 @keyframes slideInLeft {
   from {
     opacity: 0;
-    transform: translateX(-20px);
+    transform: translateX(-30px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -1393,8 +1428,9 @@ a:hover, a:focus {
 @keyframes slideInRight {
   from {
     opacity: 0;
-    transform: translateX(20px);
+    transform: translateX(30px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -1402,102 +1438,114 @@ a:hover, a:focus {
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
 
-.animate__fadeInUp {
-  opacity: 0;
-  animation: fadeInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-}
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
 
-.heading_container,
-.slider_section .detail-box,
-.offer_section .box,
-.food_section .box,
-.about_section .img-box,
-.about_section .detail-box,
-.book_section .form_container,
-.client_section .box,
-.contact_section .form_container {
-  opacity: 0;
-  animation: fadeInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-}
+  25% {
+    transform: translateY(-5px) rotate(1deg);
+  }
 
-.heading_container { animation-delay: 0.1s; }
-.slider_section .detail-box { animation-delay: 0.2s; }
-.offer_section .box:nth-child(1) { animation-delay: 0.2s; }
-.offer_section .box:nth-child(2) { animation-delay: 0.3s; }
-.offer_section .box:nth-child(3) { animation-delay: 0.4s; }
-.food_section .box:nth-child(1) { animation-delay: 0.2s; }
-.food_section .box:nth-child(2) { animation-delay: 0.3s; }
-.food_section .box:nth-child(3) { animation-delay: 0.4s; }
-.food_section .box:nth-child(4) { animation-delay: 0.5s; }
-.about_section .img-box { animation-delay: 0.2s; }
-.about_section .detail-box { animation-delay: 0.3s; }
-.book_section .form_container { animation-delay: 0.3s; }
-.client_section .box:nth-child(1) { animation-delay: 0.2s; }
-.client_section .box:nth-child(2) { animation-delay: 0.3s; }
-.client_section .box:nth-child(3) { animation-delay: 0.4s; }
-.contact_section .form_container { animation-delay: 0.3s; }
+  50% {
+    transform: translateY(-10px) rotate(0deg);
+  }
 
-/* Subtle floating animation for hero image */
-.slider_section .img-box img {
-  animation: float 6s ease-in-out infinite;
-}
-
-/* Hover scale with depth for cards */
-.food_section .box,
-.offer_section .box,
-.client_section .box .detail-box {
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
-}
-
-/* Button subtle pulse on load */
-.user_option .order_online,
-.slider_section .detail-box a,
-.food_section .btn-box a {
-  animation: pulse 2s ease-in-out 0.5s infinite;
+  75% {
+    transform: translateY(-5px) rotate(-1deg);
+  }
 }
 
 @keyframes pulse {
-  0%, 100% { box-shadow: 0 4px 12px rgba(255, 190, 51, 0.3); }
-  50% { box-shadow: 0 6px 16px rgba(255, 190, 51, 0.4); }
+
+  0%,
+  100% {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    border-color: #ffbe33;
+  }
+
+  50% {
+    box-shadow: 0 15px 50px rgba(255, 190, 51, 0.3);
+    border-color: #ffd666;
+  }
 }
 
-/* MEDIA QUERIES (Updated) */
-@media (max-width: 768px) {
-  .search-input-group {
-    width: 9.375rem;
+@keyframes glow {
+
+  0%,
+  100% {
+    filter: drop-shadow(0 0 5px rgba(255, 190, 51, 0.3));
   }
 
-  /* Penyesuaian search bar menu di mobile */
-  .search-input-group.custom-search {
-    height: 50px;
-    padding: 0 15px;
+  50% {
+    filter: drop-shadow(0 0 15px rgba(255, 190, 51, 0.6));
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
   }
 
-  .search-input {
-    font-size: 0.75rem;
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes cornerExpand {
+  from {
+    width: 0;
+    height: 0;
+    opacity: 0;
   }
 
-  .layout_padding { padding: 4rem 0; }
-  .slider_section .detail-box h1 {
-    font-size: 2.25rem;
-  }
-  .heading_container h2 {
-    font-size: 2.25rem;
-  }
-  .heading_container h2::after {
+  to {
     width: 40px;
-    bottom: -8px;
+    height: 40px;
+    opacity: 1;
   }
-  .custom_nav-container .navbar-nav {
-    padding-left: 0;
-    margin-top: 1rem;
-  }
-  .user_option {
-    flex-wrap: wrap;
-    gap: 0.75rem;
-  }
+}
+
+.business-card {
+  animation: fadeInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
+    pulse 3s ease-in-out 1s infinite;
+}
+
+.business-card::before {
+  animation: shimmer 3s linear infinite;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(255, 190, 51, 0.05) 50%,
+      transparent 100%);
+  background-size: 200% 100%;
+}
+
+.icon-box {
+  animation: slideInLeft 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s backwards,
+    float 4s ease-in-out 1.5s infinite;
+}
+
+.icon-box i {
+  animation: glow 2s ease-in-out 1s infinite;
+}
+
+.card-title {
+  animation: slideInRight 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s backwards;
+}
+
+.card-description {
+  animation: fadeInUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s backwards;
+}
+
+.corner-accent {
+  animation: cornerExpand 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+}
+
+.corner-accent.top-left {
+  animation-delay: 0.6s;
+}
+
+.corner-accent.bottom-right {
+  animation-delay: 0.7s;
 }
