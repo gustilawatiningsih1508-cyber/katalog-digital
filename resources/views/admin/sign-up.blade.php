@@ -11,7 +11,8 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -529,7 +530,7 @@
             .container {
                 max-width: 800px;
             }
-            
+
             .left-panel,
             .right-panel {
                 padding: 30px;
@@ -655,7 +656,8 @@
 
             <div class="content">
                 <h2>Mulai Perjalanan Bisnis Online Anda</h2>
-                <p>Bergabunglah dengan ribuan seller sukses yang telah mempercayai Lapak Go sebagai platform e-commerce mereka.</p>
+                <p>Bergabunglah dengan ribuan seller sukses yang telah mempercayai Lapak Go sebagai platform e-commerce
+                    mereka.</p>
 
                 <div class="features">
                     <div class="feature">
@@ -706,7 +708,7 @@
 
             <!-- Social Login Buttons -->
             <div class="social-login">
-                <a href="{{ route('auth.google') }}" class="social-btn google-btn">
+                <a href="{{ route('auth.google') }}?context=signup" class="social-btn google-btn">
                     <i class="fab fa-google"></i>
                     <span>Daftar dengan Google</span>
                 </a>
@@ -772,7 +774,8 @@
                         <i class="fas fa-lock input-icon"></i>
                         <input type="password" name="password" id="password" class="form-control"
                             placeholder="Buat password yang kuat" required>
-                        <button type="button" class="password-toggle" id="togglePassword" aria-label="Toggle password visibility">
+                        <button type="button" class="password-toggle" id="togglePassword"
+                            aria-label="Toggle password visibility">
                             <i class="fas fa-eye"></i>
                         </button>
                     </div>
@@ -794,7 +797,8 @@
                         <i class="fas fa-lock input-icon"></i>
                         <input type="password" name="password_confirmation" id="password_confirmation"
                             class="form-control" placeholder="Ulangi password Anda" required>
-                        <button type="button" class="password-toggle" id="toggleConfirmPassword" aria-label="Toggle password visibility">
+                        <button type="button" class="password-toggle" id="toggleConfirmPassword"
+                            aria-label="Toggle password visibility">
                             <i class="fas fa-eye"></i>
                         </button>
                     </div>
@@ -808,7 +812,8 @@
                         <span class="custom-checkbox"></span>
                     </label>
                     <span class="terms-label">
-                        Saya setuju dengan <a href="#" target="_blank">Syarat & Ketentuan</a> dan <a href="#" target="_blank">Kebijakan Privasi</a> Lapak Go.
+                        Saya setuju dengan <a href="#" target="_blank">Syarat & Ketentuan</a> dan <a href="#"
+                            target="_blank">Kebijakan Privasi</a> Lapak Go.
                     </span>
                 </div>
                 @error('terms')
@@ -1032,12 +1037,12 @@
             const errorDiv = document.createElement('div');
             errorDiv.className = 'error-message';
             errorDiv.textContent = message;
-            
+
             const existingError = formGroup.querySelector('.error-message');
             if (existingError && !existingError.classList.contains('server-error')) {
                 existingError.remove();
             }
-            
+
             formGroup.appendChild(errorDiv);
         }
 

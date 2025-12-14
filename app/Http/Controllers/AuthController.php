@@ -173,9 +173,9 @@ class AuthController extends Controller
                     ->withInput();
             }
 
-            // CEK: Apakah ini dari Google Sign-Up atau Regular Sign-Up
+            // CEK: Apakah ini dari Google atau Regular Sign-Up
             if (isset($registrationData['user_id'])) {
-                // GOOGLE SIGN-UP: User sudah dibuat, hanya perlu update email_verified_at
+                // GOOGLE: User sudah dibuat, hanya perlu update email_verified_at
                 $user = User::find($registrationData['user_id']);
                 
                 if (!$user) {
@@ -189,19 +189,43 @@ class AuthController extends Controller
 
                 // Update email verification
                 $user->email_verified_at = now();
+                $user->waktu_aktivitas = now();
                 $user->save();
 
                 Log::info('Google user verified via OTP', [
                     'user_id' => $user->id,
-                    'email' => $user->email
+                    'email' => $user->email,
+                    'context' => $registrationData['context'] ?? 'unknown'
                 ]);
 
                 // Hapus session registration data
                 session()->forget('registration_data');
 
-                // Redirect ke sign-in untuk login dengan Google
-                return redirect()->route('signIn')
-                    ->with('success', 'Email berhasil diverifikasi! Silakan login dengan Google untuk melanjutkan.');
+                // CEK CONTEXT: Dari sign-in atau sign-up?
+                $context = $registrationData['context'] ?? 'signup';
+                
+                if ($context === 'signin') {
+                    // Dari SIGN-IN (Login): Langsung login dan ke dashboard
+                    Auth::login($user, true);
+                    $request->session()->regenerate();
+
+                    Log::info('Google user from sign-in logged in after OTP', [
+                        'user_id' => $user->id,
+                        'hak_akses' => $user->hak_akses
+                    ]);
+
+                    if ($user->hak_akses == 1) {
+                        return redirect()->route('admin.dashboard')
+                            ->with('success', 'Email berhasil diverifikasi! Selamat datang, Admin ' . $user->username . '!');
+                    } else {
+                        return redirect()->route('dashboard')
+                            ->with('success', 'Email berhasil diverifikasi! Selamat datang, ' . $user->username . '!');
+                    }
+                } else {
+                    // Dari SIGN-UP: Redirect ke sign-in untuk login dengan Google
+                    return redirect()->route('signIn')
+                        ->with('success', 'Email berhasil diverifikasi! Silakan login dengan Google untuk melanjutkan.');
+                }
 
             } else {
                 // REGULAR SIGN-UP: Buat user baru
@@ -285,10 +309,18 @@ class AuthController extends Controller
     /**
      * Redirect ke Google OAuth
      */
-    public function redirectToGoogle()
+    public function redirectToGoogle(Request $request)
     {
         try {
-            Log::info('Redirecting to Google OAuth');
+            // Simpan context: dari mana user mengklik tombol Google?
+            // Bisa dari sign-in atau sign-up
+            $context = $request->input('context', 'signin'); // default signin
+            session(['google_auth_context' => $context]);
+            
+            Log::info('Redirecting to Google OAuth', [
+                'context' => $context,
+                'referer' => $request->headers->get('referer')
+            ]);
             
             return Socialite::driver('google')
                 ->with(['prompt' => 'select_account'])
@@ -346,6 +378,9 @@ class AuthController extends Controller
                     // User belum terverifikasi, kirim OTP
                     Log::info('Existing Google user not verified, sending OTP', ['user_id' => $user->id]);
 
+                    // Ambil context dari session
+                    $context = session('google_auth_context', 'signin');
+
                     // Simpan data ke session untuk OTP verification
                     session([
                         'registration_data' => [
@@ -353,9 +388,13 @@ class AuthController extends Controller
                             'email' => $user->email,
                             'google_id' => $user->google_id,
                             'avatar' => $user->avatar,
-                            'user_id' => $user->id // Penting: untuk membedakan dengan regular signup
+                            'user_id' => $user->id, // Penting: untuk membedakan dengan regular signup
+                            'context' => $context // signin dari sign-in page, signup dari sign-up page
                         ]
                     ]);
+                    
+                    // Hapus google_auth_context dari session
+                    session()->forget('google_auth_context');
 
                     // Kirim OTP
                     $otpService = new \App\Services\OtpService();
@@ -420,6 +459,9 @@ class AuthController extends Controller
 
                         Log::info('Linked user not verified, sending OTP', ['user_id' => $existingUser->id]);
 
+                        // Ambil context dari session
+                        $context = session('google_auth_context', 'signin');
+
                         // Simpan data ke session untuk OTP verification
                         session([
                             'registration_data' => [
@@ -427,9 +469,13 @@ class AuthController extends Controller
                                 'email' => $existingUser->email,
                                 'google_id' => $existingUser->google_id,
                                 'avatar' => $existingUser->avatar,
-                                'user_id' => $existingUser->id
+                                'user_id' => $existingUser->id,
+                                'context' => $context // signin dari sign-in page, signup dari sign-up page
                             ]
                         ]);
+                        
+                        // Hapus google_auth_context dari session
+                        session()->forget('google_auth_context');
 
                         // Kirim OTP
                         $otpService = new \App\Services\OtpService();
@@ -495,6 +541,14 @@ class AuthController extends Controller
                         'username' => $user->username
                     ]);
 
+                    // Ambil context dari session (disimpan saat redirectToGoogle)
+                    $context = session('google_auth_context', 'signup'); // default signup untuk backward compatibility
+                    
+                    Log::info('Google auth context', [
+                        'context' => $context,
+                        'user_id' => $user->id
+                    ]);
+
                     // Simpan data ke session dengan user_id untuk identifikasi di verifyOtp
                     session([
                         'registration_data' => [
@@ -502,9 +556,13 @@ class AuthController extends Controller
                             'email' => $user->email,
                             'google_id' => $user->google_id,
                             'avatar' => $user->avatar,
-                            'user_id' => $user->id // PENTING: untuk membedakan Google signup vs regular signup
+                            'user_id' => $user->id, // PENTING: untuk membedakan Google signup vs regular signup
+                            'context' => $context // PENTING: signin dari sign-in page, signup dari sign-up page
                         ]
                     ]);
+                    
+                    // Hapus google_auth_context dari session
+                    session()->forget('google_auth_context');
 
                     // Kirim OTP
                     $otpService = new \App\Services\OtpService();

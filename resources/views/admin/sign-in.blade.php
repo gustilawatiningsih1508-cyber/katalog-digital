@@ -533,25 +533,25 @@
                 align-items: flex-start;
                 gap: 1rem;
             }
-            
+
             .login-left {
                 padding: 2rem;
             }
-            
+
             .login-content h2 {
                 font-size: 1.8rem;
             }
         }
-        
+
         @media (max-width: 480px) {
             .login-card {
                 padding: 1.5rem;
             }
-            
+
             body {
                 padding: 1rem;
             }
-            
+
             .login-right {
                 padding: 1rem;
             }
@@ -683,7 +683,8 @@
                     </div>
 
                     <div class="social-login">
-                        <a href="{{ route('auth.google') }}" class="social-button" title="Login dengan Google">
+                        <a href="{{ route('auth.google') }}?context=signin" class="social-button"
+                            title="Login dengan Google">
                             <i class="fab fa-google"></i>
                         </a>
                         <button type="button" class="social-button"
@@ -744,7 +745,7 @@
         });
 
         // Auto focus on email field
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const emailField = document.getElementById('email');
             if (emailField) {
                 emailField.focus();
