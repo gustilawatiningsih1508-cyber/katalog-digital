@@ -13,10 +13,14 @@
 
     <style>
         :root {
-            --primary-color: #0ea5e9;
-            --primary-dark: #0284c7;
-            --success-color: #10b981;
-            --error-color: #ef4444;
+            --primary-color: #8B4513;
+            --primary-dark: #654321;
+            --primary-light: #D2691E;
+            --accent-color: #DEB887;
+            --success-color: #2E7D32;
+            --error-color: #C62828;
+            --light-bg: #FFF8DC;
+            --card-bg: #FAF3E0;
         }
 
         * {
@@ -27,7 +31,7 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            background: linear-gradient(135deg, var(--light-bg) 0%, #FAEBD7 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -41,7 +45,8 @@
             background: white;
             border-radius: 24px;
             padding: 40px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 20px 60px rgba(139, 69, 19, 0.15);
+            border: 1px solid #F5DEB3;
         }
 
         .logo {
@@ -67,21 +72,22 @@
 
         .header h2 {
             font-size: 1.6rem;
-            color: #0f172a;
+            color: var(--primary-dark);
             margin-bottom: 10px;
         }
 
         .header p {
-            color: #64748b;
+            color: #795548;
             font-size: 0.95rem;
         }
 
         .email-info {
-            background: #f0f9ff;
+            background: #FFF8DC;
             border-left: 4px solid var(--primary-color);
             padding: 15px;
             border-radius: 8px;
             margin-bottom: 25px;
+            border: 1px solid #F5DEB3;
         }
 
         .email-info strong {
@@ -101,25 +107,27 @@
             text-align: center;
             font-size: 24px;
             font-weight: 700;
-            border: 2px solid #e2e8f0;
+            border: 2px solid #D7CCC8;
             border-radius: 12px;
             transition: all 0.3s;
+            background: white;
+            color: #5D4037;
         }
 
         .otp-input:focus {
             outline: none;
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.15);
+            box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.15);
         }
 
         .otp-input.filled {
             border-color: var(--primary-color);
-            background: #f0f9ff;
+            background: #FFF8DC;
         }
 
         .otp-input.error {
             border-color: var(--error-color);
-            background: #fee2e2;
+            background: #FFEBEE;
         }
 
         .submit-btn {
@@ -134,11 +142,12 @@
             cursor: pointer;
             transition: all 0.3s;
             margin-top: 20px;
+            font-family: 'Inter', sans-serif;
         }
 
         .submit-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(14, 165, 233, 0.25);
+            box-shadow: 0 8px 16px rgba(139, 69, 19, 0.25);
         }
 
         .submit-btn:disabled {
@@ -150,11 +159,11 @@
             text-align: center;
             margin-top: 25px;
             padding-top: 25px;
-            border-top: 1px solid #e2e8f0;
+            border-top: 1px solid #D7CCC8;
         }
 
         .resend-text {
-            color: #64748b;
+            color: #795548;
             font-size: 0.9rem;
             margin-bottom: 10px;
         }
@@ -167,6 +176,7 @@
             cursor: pointer;
             text-decoration: underline;
             font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
         }
 
         .resend-btn:hover {
@@ -174,7 +184,7 @@
         }
 
         .resend-btn:disabled {
-            color: #94a3b8;
+            color: #8D6E63;
             cursor: not-allowed;
             text-decoration: none;
         }
@@ -192,15 +202,15 @@
         }
 
         .alert-success {
-            background: #d1fae5;
-            color: #065f46;
-            border: 1px solid #a7f3d0;
+            background: #E8F5E9;
+            color: var(--success-color);
+            border: 1px solid #C8E6C9;
         }
 
         .alert-error {
-            background: #fee2e2;
-            color: #991b1b;
-            border: 1px solid #fecaca;
+            background: #FFEBEE;
+            color: var(--error-color);
+            border: 1px solid #FFCDD2;
         }
 
         .back-link {
@@ -209,9 +219,12 @@
         }
 
         .back-link a {
-            color: #64748b;
+            color: #795548;
             text-decoration: none;
             font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .back-link a:hover {
@@ -231,6 +244,14 @@
 
             .otp-input-container {
                 gap: 8px;
+            }
+            
+            .logo h1 {
+                font-size: 1.5rem;
+            }
+            
+            .header h2 {
+                font-size: 1.3rem;
             }
         }
     </style>
@@ -399,6 +420,8 @@
         function startCooldown() {
             cooldown = 60;
             resendBtn.disabled = true;
+            resendBtn.innerHTML = 'Kirim Ulang <span class="timer" id="timer"></span>';
+            timerEl = document.getElementById('timer');
             
             cooldownInterval = setInterval(() => {
                 cooldown--;
@@ -436,14 +459,14 @@
                 } else {
                     alert('❌ ' + result.message);
                     resendBtn.disabled = false;
-                    resendBtn.textContent = 'Kirim Ulang';
+                    resendBtn.innerHTML = 'Kirim Ulang <span class="timer" id="timer"></span>';
                 }
 
             } catch (error) {
                 console.error('Error:', error);
                 alert('❌ Terjadi kesalahan. Silakan coba lagi.');
                 resendBtn.disabled = false;
-                resendBtn.textContent = 'Kirim Ulang';
+                resendBtn.innerHTML = 'Kirim Ulang <span class="timer" id="timer"></span>';
             }
         });
     </script>
