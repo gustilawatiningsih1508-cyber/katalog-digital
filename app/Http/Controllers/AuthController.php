@@ -298,32 +298,36 @@ class AuthController extends Controller
 
             // Cari user berdasarkan Google ID
             $user = User::where('google_id', $googleUser->getId())->first();
+            
+            // Flag untuk mendeteksi apakah ini registrasi baru
+            $isNewRegistration = false;
 
             if ($user) {
-                // User sudah ada dengan Google ID
+                // CASE 1: User sudah ada dengan Google ID - LOGIN
                 $user->update([
                     'avatar' => $googleUser->getAvatar(),
                     'email_verified_at' => now(),
                     'waktu_aktivitas' => now(),
                 ]);
 
-                Log::info('Existing Google user updated', ['user_id' => $user->id]);
+                Log::info('Existing Google user logged in', ['user_id' => $user->id]);
             } else {
-                // Cek apakah email sudah terdaftar
-                $user = User::where('email', $googleUser->getEmail())->first();
+                // Cek apakah email sudah terdaftar tanpa Google ID
+                $existingUser = User::where('email', $googleUser->getEmail())->first();
 
-                if ($user) {
-                    // Link akun yang sudah ada dengan Google
-                    $user->update([
+                if ($existingUser) {
+                    // CASE 2: Link akun yang sudah ada dengan Google - LOGIN
+                    $existingUser->update([
                         'google_id' => $googleUser->getId(),
                         'avatar' => $googleUser->getAvatar(),
                         'email_verified_at' => now(),
                         'waktu_aktivitas' => now(),
                     ]);
 
-                    Log::info('Linked existing user with Google', ['user_id' => $user->id]);
+                    $user = $existingUser;
+                    Log::info('Linked existing user with Google and logged in', ['user_id' => $user->id]);
                 } else {
-                    // Buat user baru dari Google
+                    // CASE 3: User baru - SIGNUP
                     $username = $this->generateUniqueUsername($googleUser->getName());
 
                     $user = User::create([
@@ -337,29 +341,44 @@ class AuthController extends Controller
                         'password' => null, // Password null untuk login Google
                     ]);
 
-                    Log::info('New Google user created', ['user_id' => $user->id]);
+                    $isNewRegistration = true;
+                    Log::info('New user registered via Google', [
+                        'user_id' => $user->id,
+                        'email' => $user->email,
+                        'is_new' => $isNewRegistration
+                    ]);
                 }
             }
 
-            // Login user dengan remember token
-            Auth::login($user, true);
-            
-            // Regenerate session untuk keamanan
-            $request->session()->regenerate();
-
-            Log::info('User logged in via Google successfully', [
-                'user_id' => $user->id,
-                'email' => $user->email,
-                'hak_akses' => $user->hak_akses
-            ]);
-
-            // Redirect langsung ke dashboard berdasarkan hak akses
-            if ($user->hak_akses == 1) {
-                return redirect()->intended(route('admin.dashboard'))
-                    ->with('success', 'Selamat datang kembali, Admin ' . $user->username . '!');
+            // Tentukan redirect berdasarkan kondisi
+            if ($isNewRegistration) {
+                // SIGNUP: User baru, tidak langsung login, redirect ke sign-in dengan pesan
+                Log::info('New user via Google - redirecting to sign-in', ['user_id' => $user->id]);
+                
+                return redirect()->route('signIn')
+                    ->with('success', 'Akun berhasil dibuat dengan Google! Silakan login untuk melanjutkan.')
+                    ->with('google_email', $user->email); // Simpan email untuk autofill
             } else {
-                return redirect()->intended(route('dashboard'))
-                    ->with('success', 'Selamat datang kembali, ' . $user->username . '!');
+                // LOGIN: User sudah ada, langsung login
+                Auth::login($user, true);
+                
+                // Regenerate session untuk keamanan
+                $request->session()->regenerate();
+
+                Log::info('User logged in via Google successfully', [
+                    'user_id' => $user->id,
+                    'email' => $user->email,
+                    'hak_akses' => $user->hak_akses
+                ]);
+
+                // Redirect ke dashboard berdasarkan hak akses
+                if ($user->hak_akses == 1) {
+                    return redirect()->intended(route('admin.dashboard'))
+                        ->with('success', 'Selamat datang kembali, Admin ' . $user->username . '!');
+                } else {
+                    return redirect()->intended(route('dashboard'))
+                        ->with('success', 'Selamat datang kembali, ' . $user->username . '!');
+                }
             }
 
         } catch (\Laravel\Socialite\Two\InvalidStateException $e) {
@@ -391,6 +410,11 @@ class AuthController extends Controller
         // Bersihkan nama dan buat username
         $username = strtolower(str_replace(' ', '_', $name));
         $username = preg_replace('/[^a-z0-9_]/', '', $username);
+
+        // Jika username kosong, gunakan default
+        if (empty($username)) {
+            $username = 'user';
+        }
 
         // Cek apakah username sudah ada
         $originalUsername = $username;
