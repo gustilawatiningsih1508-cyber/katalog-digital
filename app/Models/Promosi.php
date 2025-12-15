@@ -1,4 +1,5 @@
 <?php
+// app/Models/Promosi.php
 
 namespace App\Models;
 
@@ -18,7 +19,8 @@ class Promosi extends Model
         'id_pelaku_usaha',
         'judul_promosi',
         'deskripsi_promosi',
-        'id_admin'
+        'id_admin',
+        'gambar'
     ];
 
     // Relasi ke pelaku usaha
@@ -27,10 +29,9 @@ class Promosi extends Model
         return $this->belongsTo(PelakuUsaha::class, 'id_pelaku_usaha', 'id_pelaku_usaha');
     }
 
-    // Relasi ke admin (jika ada model Admin)
+    // Relasi ke admin
     public function admin()
     {
-        // Kolom id_admin di tabel promosi -> id di tabel users
         return $this->belongsTo(User::class, 'id_admin', 'id');
     }
 }

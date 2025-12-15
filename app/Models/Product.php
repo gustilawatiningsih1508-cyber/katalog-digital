@@ -1,4 +1,5 @@
 <?php
+// app/Models/Product.php
 
 namespace App\Models;
 
@@ -19,6 +20,13 @@ class Product extends Model
         'harga',
         'kategori',
         'deskripsi',
-        'status'
+        'status',
+        'gambar'
     ];
+
+    // Relasi ke Pelaku Usaha
+    public function pelakuUsaha()
+    {
+        return $this->belongsTo(PelakuUsaha::class, 'id_pelaku_usaha', 'id_pelaku_usaha');
+    }
 }

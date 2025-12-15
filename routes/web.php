@@ -1,4 +1,6 @@
 <?php
+// routes/web.php
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
@@ -10,8 +12,11 @@ use App\Http\Controllers\UsersController;
    PUBLIC ROUTES (Tanpa Login)
 ============================================ */
 Route::get('/', [PageController::class, 'home'])->name('home');
-Route::get('/menu', [PageController::class, 'menu'])->name('menu');
-Route::get('/promosi', [PageController::class, 'promosi'])->name('promosi');
+
+// ROUTES DINAMIS - Dari Database
+Route::get('/menu', [ProductController::class, 'publicMenu'])->name('menu');
+Route::get('/promosi', [PromosiController::class, 'publicPromosi'])->name('promosi');
+
 Route::get('/tentangkami', [PageController::class, 'tentangkami'])->name('tentangkami');
 Route::view('/about', 'user.about')->name('about');
 
@@ -21,8 +26,6 @@ Route::get('/lapak/{id}/menu', [PageController::class, 'menuLapak'])->name('lapa
 
 /* ============================================
    GOOGLE OAUTH ROUTES
-   PENTING: Jangan gunakan middleware guest di callback
-   karena akan redirect balik ke login
 ============================================ */
 Route::get('/auth/google', [AuthController::class, 'redirectToGoogle'])
     ->middleware('guest')

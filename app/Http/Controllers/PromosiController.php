@@ -1,5 +1,6 @@
 <?php
 // app/Http/Controllers/PromosiController.php
+
 namespace App\Http\Controllers;
 
 use App\Models\Promosi;
@@ -7,16 +8,40 @@ use App\Models\PelakuUsaha;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 class PromosiController extends Controller
 {
+    // Method untuk menampilkan promosi di halaman publik
+    public function publicPromosi()
+    {
+        $promos = Promosi::with(['pelakuUsaha', 'admin'])
+            ->orderBy('created_at', 'desc')
+            ->get();
+        
+        return view('user.promosi', compact('promos'));
+    }
+
+    // Method untuk admin/penjual
     public function index()
     {
         try {
-            $promos = Promosi::with(['pelakuUsaha', 'admin'])->get();
+            $user = auth()->user();
+            
+            if ($user->hak_akses == 1) {
+                // Admin bisa lihat semua promosi
+                $promos = Promosi::with(['pelakuUsaha', 'admin'])->orderBy('created_at', 'desc')->get();
+            } else {
+                // Penjual hanya lihat promosinya sendiri
+                $promos = Promosi::with(['pelakuUsaha', 'admin'])
+                    ->whereHas('pelakuUsaha', function($query) use ($user) {
+                        $query->where('id_pelaku_usaha', $user->id);
+                    })
+                    ->orderBy('created_at', 'desc')
+                    ->get();
+            }
+            
             $pelakuUsaha = PelakuUsaha::all();
-
-            // PERBAIKAN: Ambil users dengan hak_akses = 1, bukan id_admin
             $admins = User::where('hak_akses', 1)->get();
 
             return view('admin.promosi-admin', compact('promos', 'pelakuUsaha', 'admins'));
@@ -30,7 +55,6 @@ class PromosiController extends Controller
     {
         $pelakuUsaha = PelakuUsaha::all();
         $admins = User::where('hak_akses', 1)->get();
-
         return view('admin.promosi-create', compact('pelakuUsaha', 'admins'));
     }
 
@@ -43,7 +67,8 @@ class PromosiController extends Controller
             'id_pelaku_usaha' => 'required|exists:pelaku_usaha,id_pelaku_usaha',
             'judul_promosi' => 'required|string|max:100',
             'deskripsi_promosi' => 'required|string',
-            'id_admin' => 'nullable|exists:users,id', // Validasi ke tabel users
+            'id_admin' => 'nullable|exists:users,id',
+            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ], [
             'id_pelaku_usaha.required' => 'Pilih pelaku usaha terlebih dahulu.',
             'id_pelaku_usaha.exists' => 'Pelaku usaha yang dipilih tidak valid.',
@@ -57,8 +82,16 @@ class PromosiController extends Controller
                 'id_pelaku_usaha' => $validated['id_pelaku_usaha'],
                 'judul_promosi' => $validated['judul_promosi'],
                 'deskripsi_promosi' => $validated['deskripsi_promosi'],
-                'id_admin' => $validated['id_admin'] ?? auth()->id(), // Default ke user yang login
+                'id_admin' => $validated['id_admin'] ?? auth()->id(),
             ];
+
+            // Handle upload gambar
+            if ($request->hasFile('gambar')) {
+                $file = $request->file('gambar');
+                $filename = time() . '_' . $file->getClientOriginalName();
+                $path = $file->storeAs('promosi', $filename, 'public');
+                $promosiData['gambar'] = $path;
+            }
 
             Promosi::create($promosiData);
 
@@ -115,15 +148,31 @@ class PromosiController extends Controller
             'judul_promosi' => 'required|string|max:100',
             'deskripsi_promosi' => 'required|string',
             'id_admin' => 'nullable|exists:users,id',
+            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         try {
-            $promosi->update([
+            $updateData = [
                 'id_pelaku_usaha' => $validated['id_pelaku_usaha'],
                 'judul_promosi' => $validated['judul_promosi'],
                 'deskripsi_promosi' => $validated['deskripsi_promosi'],
                 'id_admin' => $validated['id_admin'] ?? $promosi->id_admin,
-            ]);
+            ];
+
+            // Handle upload gambar baru
+            if ($request->hasFile('gambar')) {
+                // Hapus gambar lama jika ada
+                if ($promosi->gambar && Storage::disk('public')->exists($promosi->gambar)) {
+                    Storage::disk('public')->delete($promosi->gambar);
+                }
+
+                $file = $request->file('gambar');
+                $filename = time() . '_' . $file->getClientOriginalName();
+                $path = $file->storeAs('promosi', $filename, 'public');
+                $updateData['gambar'] = $path;
+            }
+
+            $promosi->update($updateData);
 
             return redirect()->route('promosi-admin.index')
                 ->with('success', 'Promosi berhasil diperbarui!');
@@ -142,6 +191,12 @@ class PromosiController extends Controller
 
         try {
             $promosi = Promosi::findOrFail($id);
+            
+            // Hapus gambar jika ada
+            if ($promosi->gambar && Storage::disk('public')->exists($promosi->gambar)) {
+                Storage::disk('public')->delete($promosi->gambar);
+            }
+            
             $promosi->delete();
 
             return redirect()->route('promosi-admin.index')

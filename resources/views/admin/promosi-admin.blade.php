@@ -495,7 +495,13 @@
                 <div class="p-6 border-t border-gray-200 rounded-b">
                     <button type="submit" class="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Add Promosi</button>
                 </div>
-            </form>
+                <div class="col-span-6">
+                  <label for="gambar" class="text-sm font-medium text-gray-900 block mb-2">Gambar Promosi</label>
+                  <input type="file" name="gambar" id="gambar" accept="image/*"
+                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5">
+                  <small class="text-gray-500">Format: JPG, PNG, GIF. Max: 2MB</small>
+                </div>
+                </form>
         </div>
     </div>
 </div>

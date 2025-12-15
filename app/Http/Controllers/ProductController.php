@@ -1,51 +1,87 @@
 <?php
+// app/Http/Controllers/ProductController.php
 
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\PelakuUsaha;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
+    // Method untuk menampilkan menu di halaman publik
+    public function publicMenu()
+    {
+        $products = Product::with('pelakuUsaha')
+            ->where('status', 'tersedia')
+            ->orderBy('created_at', 'desc')
+            ->get();
+        
+        return view('user.menu', compact('products'));
+    }
+
+    // Method untuk admin/penjual
     public function index()
     {
-        $products = Product::all();
-        return view('admin.products', compact('products'));
+        $user = auth()->user();
+        
+        if ($user->hak_akses == 1) {
+            // Admin bisa lihat semua produk
+            $products = Product::with('pelakuUsaha')->orderBy('created_at', 'desc')->get();
+        } else {
+            // Penjual hanya lihat produknya sendiri
+            $products = Product::where('id_pelaku_usaha', $user->id)
+                ->orderBy('created_at', 'desc')
+                ->get();
+        }
+        
+        $pelakuUsaha = PelakuUsaha::all();
+        return view('admin.products', compact('products', 'pelakuUsaha'));
     }
 
     public function create()
     {
-        return view('admin.products');
+        $pelakuUsaha = PelakuUsaha::all();
+        return view('admin.products', compact('pelakuUsaha'));
     }
 
     public function store(Request $request)
     {
-        // Debug data yang diterima
         Log::info('Store method dipanggil');
         Log::info('Data request:', $request->all());
 
-        // Validasi
         $validated = $request->validate([
             'id_pelaku_usaha' => 'required|string|max:100',
             'nama_produk' => 'required|string|max:100',
             'harga' => 'required|numeric|min:0',
             'kategori' => 'required|string|max:50',
             'deskripsi' => 'nullable|string',
+            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         try {
             Log::info('Mencoba membuat produk...');
 
-            // Create product
-            $product = Product::create([
+            $productData = [
                 'id_pelaku_usaha' => $validated['id_pelaku_usaha'],
                 'nama_produk' => $validated['nama_produk'],
                 'harga' => $validated['harga'],
                 'kategori' => $validated['kategori'],
                 'deskripsi' => $validated['deskripsi'] ?? '',
                 'status' => 'tersedia'
-            ]);
+            ];
+
+            // Handle upload gambar
+            if ($request->hasFile('gambar')) {
+                $file = $request->file('gambar');
+                $filename = time() . '_' . $file->getClientOriginalName();
+                $path = $file->storeAs('products', $filename, 'public');
+                $productData['gambar'] = $path;
+            }
+
+            $product = Product::create($productData);
 
             Log::info('Produk berhasil dibuat:', $product->toArray());
 
@@ -62,12 +98,15 @@ class ProductController extends Controller
 
     public function show($id)
     {
-        //
+        $product = Product::with('pelakuUsaha')->findOrFail($id);
+        return view('admin.products-show', compact('product'));
     }
 
     public function edit($id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $pelakuUsaha = PelakuUsaha::all();
+        return view('admin.products-edit', compact('product', 'pelakuUsaha'));
     }
 
     public function update(Request $request, $id)
@@ -81,10 +120,25 @@ class ProductController extends Controller
             'harga' => 'required|numeric|min:0',
             'kategori' => 'required|string|max:50',
             'deskripsi' => 'nullable|string',
+            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         try {
             $product = Product::findOrFail($id);
+
+            // Handle upload gambar baru
+            if ($request->hasFile('gambar')) {
+                // Hapus gambar lama jika ada
+                if ($product->gambar && Storage::disk('public')->exists($product->gambar)) {
+                    Storage::disk('public')->delete($product->gambar);
+                }
+
+                $file = $request->file('gambar');
+                $filename = time() . '_' . $file->getClientOriginalName();
+                $path = $file->storeAs('products', $filename, 'public');
+                $validated['gambar'] = $path;
+            }
+
             $product->update($validated);
 
             Log::info('Produk berhasil diupdate');
@@ -106,6 +160,12 @@ class ProductController extends Controller
 
         try {
             $product = Product::findOrFail($id);
+            
+            // Hapus gambar jika ada
+            if ($product->gambar && Storage::disk('public')->exists($product->gambar)) {
+                Storage::disk('public')->delete($product->gambar);
+            }
+            
             $product->delete();
 
             Log::info('Produk berhasil dihapus');
