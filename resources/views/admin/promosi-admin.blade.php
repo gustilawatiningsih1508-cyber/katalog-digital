@@ -226,7 +226,7 @@
                       <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
                     </a>
                     <a href="#" class="text-gray-500 hover:text-gray-900 cursor-pointer p-1 hover:bg-gray-100 rounded inline-flex justify-center">
-                      <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 a2 2 0 010 4zM10 18a2 2 0 110-4 a2 2 0 010 4z"></path></svg>
+                      <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 6a2 2 0 110-4 a2 2 0 010 4zM10 12a2 2 0 110-4 a2 2 0 010 4zM10 18a2 2 0 110-4 a2 2 0 010 4z"></path></svg>
                     </a>
                   </div>
                   <button type="button" data-modal-toggle="add-promosi-modal" class="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium inline-flex items-center rounded-lg text-sm px-3 py-2 text-center sm:ml-auto">
@@ -359,7 +359,7 @@
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>  
                   </button>
                 </div>
-                <form action="{{ route('promosi-admin.update', $promo->id_promosi) }}" method="POST">
+                <form action="{{ route('promosi-admin.update', $promo->id_promosi) }}" method="POST" enctype="multipart/form-data">
                   @csrf
                   @method('PUT')
                   <div class="p-6 space-y-6">
@@ -392,6 +392,23 @@
                           </option>
                           @endforeach
                         </select>
+                      </div>
+                      <div class="col-span-6">
+                        <label for="edit-gambar-{{ $promo->id_promosi }}" class="text-sm font-medium text-gray-900 block mb-2">
+                          Gambar Promosi (Kosongkan jika tidak ingin mengubah)
+                        </label>
+                        
+                        @if($promo->gambar)
+                          <div class="mb-2">
+                            <img src="{{ asset('storage/' . $promo->gambar) }}" 
+                                 alt="Preview" 
+                                 class="h-20 w-20 object-cover rounded">
+                          </div>
+                        @endif
+                        
+                        <input type="file" name="gambar" id="edit-gambar-{{ $promo->id_promosi }}" accept="image/*"
+                          class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5">
+                        <small class="text-gray-500">Format: JPG, PNG, GIF. Max: 2MB</small>
                       </div>
                     </div>
                   </div>
@@ -443,14 +460,13 @@
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>  
                 </button>
             </div>
-            <form action="{{ route('promosi-admin.store') }}" method="POST">
+            <form action="{{ route('promosi-admin.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="p-6 space-y-6">
                     <div class="grid grid-cols-6 gap-6">
                         <div class="col-span-6 sm:col-span-3">
                             <label for="id_pelaku_usaha" class="text-sm font-medium text-gray-900 block mb-2">Pelaku Usaha *</label>
                             <select name="id_pelaku_usaha" id="id_pelaku_usaha" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5 @error('id_pelaku_usaha') border-red-500 @enderror" required>
-                                <!-- PERBAIKAN: Hapus option hardcoded dengan value kosong -->
                                 <option value="">Pilih Pelaku Usaha</option>
                                 @foreach($pelakuUsaha as $usaha)
                                 <option value="{{ $usaha->id_pelaku_usaha }}" {{ old('id_pelaku_usaha') == $usaha->id_pelaku_usaha ? 'selected' : '' }}>
@@ -490,18 +506,18 @@
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
+                        <div class="col-span-6">
+                            <label for="gambar" class="text-sm font-medium text-gray-900 block mb-2">Gambar Promosi</label>
+                            <input type="file" name="gambar" id="gambar" accept="image/*"
+                                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5">
+                            <small class="text-gray-500">Format: JPG, PNG, GIF. Max: 2MB</small>
+                        </div>
                     </div>
                 </div>
                 <div class="p-6 border-t border-gray-200 rounded-b">
                     <button type="submit" class="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Add Promosi</button>
                 </div>
-                <div class="col-span-6">
-                  <label for="gambar" class="text-sm font-medium text-gray-900 block mb-2">Gambar Promosi</label>
-                  <input type="file" name="gambar" id="gambar" accept="image/*"
-                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5">
-                  <small class="text-gray-500">Format: JPG, PNG, GIF. Max: 2MB</small>
-                </div>
-                </form>
+            </form>
         </div>
     </div>
 </div>

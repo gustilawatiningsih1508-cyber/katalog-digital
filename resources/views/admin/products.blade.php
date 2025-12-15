@@ -488,7 +488,7 @@
                     </svg>
                   </button>
                 </div>
-                <form action="{{ route('products.update', $product->id_produk) }}" method="POST">
+                <form action="{{ route('products.update', $product->id_produk) }}" method="POST" enctype="multipart/form-data">
                   @csrf
                   @method('PUT')
                   <div class="p-6 space-y-6">
@@ -530,6 +530,23 @@
                           class="text-sm font-medium text-gray-900 block mb-2">Deskripsi</label>
                         <textarea name="deskripsi" id="edit-deskripsi-{{ $product->id_produk }}"
                           class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5">{{ $product->deskripsi }}</textarea>
+                      </div>
+                      <div class="col-span-6">
+                        <label for="edit-gambar-{{ $product->id_produk }}" class="text-sm font-medium text-gray-900 block mb-2">
+                          Gambar Produk (Kosongkan jika tidak ingin mengubah)
+                        </label>
+                        
+                        @if($product->gambar)
+                          <div class="mb-2">
+                            <img src="{{ asset('storage/' . $product->gambar) }}" 
+                                 alt="Preview" 
+                                 class="h-20 w-20 object-cover rounded">
+                          </div>
+                        @endif
+                        
+                        <input type="file" name="gambar" id="edit-gambar-{{ $product->id_produk }}" accept="image/*"
+                          class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5">
+                        <small class="text-gray-500">Format: JPG, PNG, GIF. Max: 2MB</small>
                       </div>
                     </div>
                   </div>
@@ -607,7 +624,7 @@
                   </svg>
                 </button>
               </div>
-              <form action="{{ route('products.store') }}" method="POST">
+              <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="p-6 space-y-6">
                   <div class="grid grid-cols-6 gap-6">
@@ -641,20 +658,19 @@
                       <textarea name="deskripsi" id="deskripsi"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"></textarea>
                     </div>
+                    <div class="col-span-6">
+                      <label for="gambar" class="text-sm font-medium text-gray-900 block mb-2">Gambar Produk</label>
+                      <input type="file" name="gambar" id="gambar" accept="image/*"
+                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5">
+                      <small class="text-gray-500">Format: JPG, PNG, GIF. Max: 2MB</small>
+                    </div>
                   </div>
-                </div>
-                <div class="col-span-6">
-                  <label for="gambar" class="text-sm font-medium text-gray-900 block mb-2">Gambar Produk</label>
-                  <input type="file" name="gambar" id="gambar" accept="image/*"
-                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5">
-                  <small class="text-gray-500">Format: JPG, PNG, GIF. Max: 2MB</small>
                 </div>
                 <div class="p-6 border-t border-gray-200 rounded-b">
                   <button type="submit"
                     class="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Tambah
                     Produk</button>
                 </div>
-
               </form>
             </div>
           </div>
