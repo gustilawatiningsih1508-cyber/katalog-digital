@@ -7,9 +7,77 @@
 <link rel="stylesheet" href="{{ asset('assets/user/css/bootstrap.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/user/css/font-awesome.min.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/user/css/style.css') }}">
+<style>
+    .product-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+    .box {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        height: 100%;
+        border: 1px solid #eee;
+        border-radius: 10px;
+        overflow: hidden;
+        background: white;
+    }
+    .box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    .img-box {
+        overflow: hidden;
+        height: 200px;
+    }
+    .detail-box {
+        padding: 20px;
+    }
+    .item-name {
+        font-weight: 600;
+        color: #ffbe33;
+        margin-bottom: 10px;
+        font-size: 18px;
+        min-height: 50px;
+    }
+    .item-description {
+        color: #666;
+        font-size: 14px;
+        line-height: 1.5;
+        margin-bottom: 15px;
+        min-height: 65px;
+    }
+    .price {
+        color: #ffbe33;
+        font-weight: 700;
+        font-size: 16px;
+        margin: 0;
+    }
+    .store-info {
+        color: #555;
+        font-size: 14px;
+        margin: 0;
+    }
+    .store-info i {
+        margin-right: 5px;
+    }
+    .no-products {
+        padding: 40px;
+        text-align: center;
+        background: #f8f9fa;
+        border-radius: 10px;
+        border: 2px dashed #dee2e6;
+    }
+    .no-products i {
+        font-size: 48px;
+        color: #ffbe33;
+        margin-bottom: 20px;
+    }
+</style>
+
 <div class="hero_area">
     <div class="bg-box">
-        <img src="{{ asset('assets/user/images//hero-bg.jpg') }}" alt="">
+        <img src="{{ asset('assets/user/images/hero-bg.jpg') }}" alt="">
     </div>
 
     <header class="header_section">
@@ -50,19 +118,19 @@
             <p>Temukan rasa favoritmu dari berbagai pilihan menu terbaik kami</p>
         </div>
 
-       <div class="row mb-4">
-    <div class="col-12">
-        <div class="menu-search-container d-flex justify-content-center animate__fadeInUp" style="animation-delay: 0.1s;">
-            <div class="menu-search-wrapper">
-                <div class="search-input-group custom-search">
-                    <i class="fa fa-search search-icon"></i>
-                    <input type="text" class="search-input" id="searchInput" placeholder="Cari menu favorit kamu...">
-                    <button class="btn-search" type="button" id="searchButton"></button>
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="menu-search-container d-flex justify-content-center animate__fadeInUp" style="animation-delay: 0.1s;">
+                    <div class="menu-search-wrapper">
+                        <div class="search-input-group custom-search">
+                            <i class="fa fa-search search-icon"></i>
+                            <input type="text" class="search-input" id="searchInput" placeholder="Cari menu favorit kamu...">
+                            <button class="btn-search" type="button" id="searchButton"></button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
 
         <ul class="filters_menu animate__fadeInUp" style="animation-delay: 0.2s;">
             <li class="active" data-filter="*">Semua</li>
@@ -76,284 +144,134 @@
                 <i class="fa fa-search" style="font-size: 3rem; margin-bottom: 20px;"></i>
                 <h5 style="font-family: 'Playfair Display', serif; font-weight: 700;">Menu tidak ditemukan</h5>
                 <p class="text-muted">Maaf, kami tidak dapat menemukan menu dengan kata kunci tersebut.</p>
-                <button class="btn btn-warning" id="showAllButton" style="border-radius: 50px; padding: 10px 30px; font-weight: 600; background-color: #ffbe33; border: none;">
+                <button class="btn btn-warning" id="showAllButton" style="border-radius: 50px; padding: 10px 30px; font-weight: 600; background-color: #ffbe33; border: none;">admin
                     Lihat Semua Menu
                 </button>
             </div>
         </div>
 
+        <!-- KONTEN UTAMA: MENU DARI DATABASE -->
         <div class="filters-content">
             <div class="row grid">
-
-                <div class="col-sm-6 col-lg-4 all minuman">
-                    <div class="box animate__fadeInUp">
-                        <div class="img-box">
-                            <img src="{{ asset('assets/user/images/milo.png') }}" alt="Air Milo">
-                        </div>
-                        <div class="detail-box">
-                            <h5 class="item-name">Air Milo</h5>
-                            <p class="item-description">Minuman coklat berenergi yang menyegarkan.</p>
-                            <div class="options">
-                                <h6 class="price">Rp10.000</h6>
-                                <h6 class="store-info" data-store="Miloku">
-                                    <i class="fa fa-store" style="color: #ffbe33;"></i> Miloku
-                                </h6>
+                
+                @if(isset($products) && count($products) > 0)
+                    <!-- MENU DARI DATABASE -->
+                    @foreach($products as $product)
+                        @php
+                            // LOGIKA KATEGORI OTOMATIS
+                            $categoryClass = 'minuman'; // default
+                            $productName = strtolower($product->nama_produk ?? '');
+                            $productCategory = strtolower($product->kategori ?? '');
+                            $productDesc = strtolower($product->deskripsi ?? '');
+                            
+                            // Daftar kata kunci untuk kategori
+                            $minumanKeywords = ['minum', 'teh', 'kopi', 'susu', 'jus', 'es', 'milo', 'lychee', 'lemon', 'soda', 'sirup'];
+                            $jajananKeywords = ['jajan', 'snack', 'kentang', 'pisang', 'tela', 'cilok', 'basreng', 'cireng', 'seblak', 'keripik'];
+                            $makananKeywords = ['makan', 'berat', 'nasi', 'ayam', 'ikan', 'lele', 'telor', 'telur', 'gulai', 'geprek', 'balado'];
+                            
+                            // Cek kategori
+                            $isMinuman = false;
+                            $isJajanan = false;
+                            $isMakanan = false;
+                            
+                            // Cek berdasarkan kata kunci
+                            foreach($minumanKeywords as $keyword) {
+                                if (strpos($productName, $keyword) !== false || 
+                                    strpos($productCategory, $keyword) !== false ||
+                                    strpos($productDesc, $keyword) !== false) {
+                                    $isMinuman = true;
+                                    break;
+                                }
+                            }
+                            
+                            foreach($jajananKeywords as $keyword) {
+                                if (strpos($productName, $keyword) !== false || 
+                                    strpos($productCategory, $keyword) !== false ||
+                                    strpos($productDesc, $keyword) !== false) {
+                                    $isJajanan = true;
+                                    break;
+                                }
+                            }
+                            
+                            foreach($makananKeywords as $keyword) {
+                                if (strpos($productName, $keyword) !== false || 
+                                    strpos($productCategory, $keyword) !== false ||
+                                    strpos($productDesc, $keyword) !== false) {
+                                    $isMakanan = true;
+                                    break;
+                                }
+                            }
+                            
+                            // Tentukan kategori akhir
+                            if ($isMinuman) {
+                                $categoryClass = 'minuman';
+                            } elseif ($isJajanan) {
+                                $categoryClass = 'jajanan';
+                            } elseif ($isMakanan) {
+                                $categoryClass = 'makanan-berat';
+                            }
+                            
+                            // Gambar fallback berdasarkan kategori
+                            $fallbackImage = 'f1.png'; // default minuman
+                            if ($categoryClass == 'jajanan') {
+                                $fallbackImage = 'kentang.jpeg';
+                            } elseif ($categoryClass == 'makanan-berat') {
+                                $fallbackImage = 'ayam1.jpg';
+                            }
+                        @endphp
+                        
+                        <div class="col-sm-6 col-lg-4 all {{ $categoryClass }}">
+                            <div class="box animate__fadeInUp">
+                                <div class="img-box">
+                                    @if($product->gambar && Storage::exists('public/' . $product->gambar))
+                                        <img src="{{ asset('storage/' . $product->gambar) }}" 
+                                             alt="{{ $product->nama_produk }}"
+                                             class="product-image">
+                                    @elseif($product->gambar)
+                                        <img src="{{ asset('storage/' . $product->gambar) }}" 
+                                             alt="{{ $product->nama_produk }}"
+                                             class="product-image"
+                                             onerror="this.onerror=null; this.src='{{ asset('assets/user/images/' . $fallbackImage) }}'">
+                                    @else
+                                        <img src="{{ asset('assets/user/images/' . $fallbackImage) }}" 
+                                             alt="{{ $product->nama_produk }}"
+                                             class="product-image">
+                                    @endif
+                                </div>
+                                <div class="detail-box">
+                                    <h5 class="item-name">{{ $product->nama_produk }}</h5>
+                                    <p class="item-description">
+                                        @if($product->deskripsi)
+                                            {{ Str::limit($product->deskripsi, 100) }}
+                                        @else
+                                            Produk berkualitas dari UMKM Bengkalis.
+                                        @endif
+                                    </p>
+                                    <div class="options">
+                                        <h6 class="price">Rp {{ number_format($product->harga, 0, ',', '.') }}</h6>
+                                        <h6 class="store-info">
+                                            <i class="fa fa-store" style="color: #ffbe33;"></i> 
+                                            {{ $product->pelakuUsaha->nama_usaha ?? 'UMKM Bengkalis' }}
+                                        </h6>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-lg-4 all minuman">
-                    <div class="box animate__fadeInUp">
-                        <div class="img-box">
-                            <img src="{{ asset('assets/user/images/cincau.jpg') }}" alt="Milk Tea">
-                        </div>
-                        <div class="detail-box">
-                            <h5 class="item-name">Milk Tea Mutiara Cincau</h5>
-                            <p class="item-description">Milk tea creamy dengan perpaduan mutiara dan cincau.</p>
-                            <div class="options">
-                                <h6 class="price">Rp15.000</h6>
-                                <h6 class="store-info" data-store="Miloku">
-                                    <i class="fa fa-store" style="color: #ffbe33;"></i> Miloku
-                                </h6>
-                            </div>
+                    @endforeach
+                    
+                @else
+                    <!-- TIDAK ADA PRODUK DI DATABASE - TAMPILKAN DEFAULT MENU -->
+                    <div class="col-12">
+                        <div class="no-products animate__fadeInUp">
+                            <i class="fa fa-utensils"></i>
+                            <h4>Belum Ada Menu dari Database</h4>
+                            <p>Silakan tambahkan produk melalui admin panel terlebih dahulu.</p>
+                            <p class="text-muted mb-4">Sementara ini, menampilkan menu contoh:</p>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-sm-6 col-lg-4 all minuman">
-                    <div class="box animate__fadeInUp">
-                        <div class="img-box">
-                            <img src="{{ asset('assets/user/images/kopi2.jpg') }}" alt="Kopi Milo">
-                        </div>
-                        <div class="detail-box">
-                            <h5 class="item-name">Kopi Milo</h5>
-                            <p class="item-description">Perpaduan kopi kuat dan coklat Milo yang nikmat.</p>
-                            <div class="options">
-                                <h6 class="price">Rp17.000</h6>
-                                <h6 class="store-info" data-store="Miloku">
-                                    <i class="fa fa-store" style="color: #ffbe33;"></i> Miloku
-                                </h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-lg-4 all minuman">
-                    <div class="box animate__fadeInUp">
-                        <div class="img-box">
-                            <img src="{{ asset('assets/user/images/f1.png') }}" alt="Lychee Tea">
-                        </div>
-                        <div class="detail-box">
-                            <h5 class="item-name">Lychee Tea</h5>
-                            <p class="item-description">Rasanya yang lembut, dingin dan menyegarkan.</p>
-                            <div class="options">
-                                <h6 class="price">Rp8.000</h6>
-                                <h6 class="store-info" data-store="Miloku">
-                                    <i class="fa fa-store" style="color: #ffbe33;"></i> Miloku
-                                </h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-lg-4 all minuman">
-                    <div class="box animate__fadeInUp">
-                        <div class="img-box">
-                            <img src="{{ asset('assets/user/images/e.jpg') }}" alt="Lemon Tea">
-                        </div>
-                        <div class="detail-box">
-                            <h5 class="item-name">Lemon Tea</h5>
-                            <p class="item-description">Es teh lemon dingin menggoda dengan irisan lemon.</p>
-                            <div class="options">
-                                <h6 class="price">Rp7.000</h6>
-                                <h6 class="store-info" data-store="Miloku">
-                                    <i class="fa fa-store" style="color: #ffbe33;"></i> Miloku
-                                </h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-lg-4 all jajanan">
-                    <div class="box animate__fadeInUp">
-                        <div class="img-box">
-                            <img src="{{ asset('assets/user/images/kentang.jpeg') }}" alt="Kentang Spiral">
-                        </div>
-                        <div class="detail-box">
-                            <h5 class="item-name">Kentang Spiral</h5>
-                            <p class="item-description">Kentang dipotong spiral dan digoreng renyah.</p>
-                            <div class="options">
-                                <h6 class="price">Rp12.000</h6>
-                                <h6 class="store-info" data-store="Ngemil yuk">
-                                    <i class="fa fa-store" style="color: #ffbe33;"></i> Ngemil yuk
-                                </h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-lg-4 all jajanan">
-                    <div class="box animate__fadeInUp">
-                        <div class="img-box">
-                            <img src="{{ asset('assets/user/images/Pisang.jpg') }}" alt="Pisang Coklat">
-                        </div>
-                        <div class="detail-box">
-                            <h5 class="item-name">Pisang Coklat</h5>
-                            <p class="item-description">Pisang manis dengan lelehan coklat nikmat.</p>
-                            <div class="options">
-                                <h6 class="price">Rp10.000</h6>
-                                <h6 class="store-info" data-store="Ngemil yuk">
-                                    <i class="fa fa-store" style="color: #ffbe33;"></i> Ngemil yuk
-                                </h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-lg-4 all jajanan">
-                    <div class="box animate__fadeInUp">
-                        <div class="img-box">
-                            <img src="{{ asset('assets/user/images/curly.jpg') }}" alt="Kentang Spiral Kecil">
-                        </div>
-                        <div class="detail-box">
-                            <h5 class="item-name">Kentang Spiral Kecil</h5>
-                            <p class="item-description">Kentang goreng spiral kecil yang renyah.</p>
-                            <div class="options">
-                                <h6 class="price">Rp10.000</h6>
-                                <h6 class="store-info" data-store="Ngemil yuk">
-                                    <i class="fa fa-store" style="color: #ffbe33;"></i> Ngemil yuk
-                                </h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-lg-4 all jajanan">
-                    <div class="box animate__fadeInUp">
-                        <div class="img-box">
-                            <img src="{{ asset('assets/user/images/tela.jpg') }}" alt="Tela Tela">
-                        </div>
-                        <div class="detail-box">
-                            <h5 class="item-name">Tela Tela</h5>
-                            <p class="item-description">Tela-tela lezat, pas untuk segala suasana.</p>
-                            <div class="options">
-                                <h6 class="price">Rp10.000</h6>
-                                <h6 class="store-info" data-store="Ngemil yuk">
-                                    <i class="fa fa-store" style="color: #ffbe33;"></i> Ngemil yuk
-                                </h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-lg-4 all jajanan">
-                    <div class="box animate__fadeInUp">
-                        <div class="img-box">
-                            <img src="{{ asset('assets/user/images/f5.png') }}" alt="Kentang Goreng">
-                        </div>
-                        <div class="detail-box">
-                            <h5 class="item-name">Kentang Goreng</h5>
-                            <p class="item-description">Camilan kentang tipis yang digoreng renyah.</p>
-                            <div class="options">
-                                <h6 class="price">Rp10.000</h6>
-                                <h6 class="store-info" data-store="Ngemil yuk">
-                                    <i class="fa fa-store" style="color: #ffbe33;"></i> Ngemil yuk
-                                </h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-lg-4 all makanan-berat">
-                    <div class="box animate__fadeInUp">
-                        <div class="img-box">
-                            <img src="{{ asset('assets/user/images/ayam1.jpg') }}" alt="Ayam Geprek">
-                        </div>
-                        <div class="detail-box">
-                            <h5 class="item-name">Ayam Geprek</h5>
-                            <p class="item-description">Ayam crispy dengan sambal geprek pedas nikmat.</p>
-                            <div class="options">
-                                <h6 class="price">Rp14.000</h6>
-                                <h6 class="store-info" data-store="Warung Makan">
-                                    <i class="fa fa-store" style="color: #ffbe33;"></i> Warung Makan
-                                </h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-lg-4 all makanan-berat">
-                    <div class="box animate__fadeInUp">
-                        <div class="img-box">
-                            <img src="{{ asset('assets/user/images/lele.jpg') }}" alt="Lele Goreng">
-                        </div>
-                        <div class="detail-box">
-                            <h5 class="item-name">Lele Goreng</h5>
-                            <p class="item-description">Lele goreng gurih dengan tekstur renyah.</p>
-                            <div class="options">
-                                <h6 class="price">Rp10.000</h6>
-                                <h6 class="store-info" data-store="Warung Makan">
-                                    <i class="fa fa-store" style="color: #ffbe33;"></i> Warung Makan
-                                </h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-lg-4 all makanan-berat">
-                    <div class="box animate__fadeInUp">
-                        <div class="img-box">
-                            <img src="{{ asset('assets/user/images/telor.jpg') }}" alt="Telor Balado">
-                        </div>
-                        <div class="detail-box">
-                            <h5 class="item-name">Telor Balado</h5>
-                            <p class="item-description">Telur rebus dengan sambal balado pedas menggoda.</p>
-                            <div class="options">
-                                <h6 class="price">Rp10.000</h6>
-                                <h6 class="store-info" data-store="Warung Makan">
-                                    <i class="fa fa-store" style="color: #ffbe33;"></i> Warung Makan
-                                </h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-lg-4 all makanan-berat">
-                    <div class="box animate__fadeInUp">
-                        <div class="img-box">
-                            <img src="{{ asset('assets/user/images/ayamgulai.jpg') }}" alt="Ayam Gulai">
-                        </div>
-                        <div class="detail-box">
-                            <h5 class="item-name">Ayam Gulai</h5>
-                            <p class="item-description">Ayam dimasak dengan bumbu gulai khas Padang.</p>
-                            <div class="options">
-                                <h6 class="price">Rp12.000</h6>
-                                <h6 class="store-info" data-store="Warung Makan">
-                                    <i class="fa fa-store" style="color: #ffbe33;"></i> Warung Makan
-                                </h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-lg-4 all makanan-berat">
-                    <div class="box animate__fadeInUp">
-                        <div class="img-box">
-                            <img src="{{ asset('assets/user/images/sayur.jpg') }}" alt="Sayur Daun Singkong">
-                        </div>
-                        <div class="detail-box">
-                            <h5 class="item-name">Sayur Daun Singkong</h5>
-                            <p class="item-description">Daun singkong lembut dengan bumbu santan yang gurih.</p>
-                            <div class="options">
-                                <h6 class="price">Rp12.000</h6>
-                                <h6 class="store-info" data-store="Warung Makan">
-                                    <i class="fa fa-store" style="color: #ffbe33;"></i> Warung Makan
-                                </h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    
+                    <!-- MENU DEFAULT (STATIS) -->
+                @endif
 
             </div>
         </div>
@@ -447,6 +365,21 @@
                 $('.filters_menu li[data-filter="*"]').addClass('active');
                 $grid.isotope({ filter: '*' });
                 $('#noResults').hide();
+            });
+
+            // 5. Handle error pada gambar
+            $('.product-image').on('error', function() {
+                var category = $(this).closest('.all').hasClass('minuman') ? 'minuman' : 
+                              $(this).closest('.all').hasClass('jajanan') ? 'jajanan' : 'makanan-berat';
+                
+                var fallbackImage = 'f1.png';
+                if (category == 'jajanan') {
+                    fallbackImage = 'kentang.jpeg';
+                } else if (category == 'makanan-berat') {
+                    fallbackImage = 'ayam1.jpg';
+                }
+                
+                $(this).attr('src', '{{ asset("assets/user/images/") }}/' + fallbackImage);
             });
         });
     </script>
