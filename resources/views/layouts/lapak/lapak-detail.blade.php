@@ -11,12 +11,25 @@
         padding: 20px;
         color: #e2e8f0;
     }
-    .container { max-width: 1000px; margin: 0 auto; padding-bottom: 50px; }
+    .container { 
+        max-width: 1000px; 
+        margin: 0 auto; 
+        padding-bottom: 50px; 
+    }
+    
     .back-button {
-        display: inline-flex; align-items: center; gap: 10px;
-        background: rgba(45, 55, 72, 0.9); color: #fbbf24; padding: 10px 20px; border-radius: 50px;
-        font-weight: 600; text-decoration: none; margin-bottom: 25px;
-        transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        display: inline-flex; 
+        align-items: center; 
+        gap: 10px;
+        background: rgba(45, 55, 72, 0.9); 
+        color: #fbbf24; 
+        padding: 10px 20px; 
+        border-radius: 50px;
+        font-weight: 600; 
+        text-decoration: none; 
+        margin-bottom: 25px;
+        transition: all 0.3s ease; 
+        box-shadow: 0 4px 6px rgba(0,0,0,0.2);
         border: 1px solid #fbbf24;
     }
     .back-button:hover { 
@@ -24,106 +37,244 @@
         background: #fbbf24; 
         color: #1a202c;
     }
+    
     .hero-section {
-        background: #2d3748; border-radius: 20px; padding: 40px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.3); margin-bottom: 30px;
-        position: relative; overflow: hidden; display: flex; align-items: center; gap: 30px;
+        background: #2d3748; 
+        border-radius: 20px; 
+        padding: 40px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3); 
+        margin-bottom: 30px;
+        position: relative; 
+        overflow: hidden; 
+        display: flex; 
+        align-items: center; 
+        gap: 30px;
         border: 1px solid #4a5568;
     }
+    
     .business-logo {
-        width: 100px; height: 100px; border-radius: 50%;
+        width: 100px; 
+        height: 100px; 
+        border-radius: 50%;
         background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-        color: #1a202c; font-size: 40px; display: flex; align-items: center;
-        justify-content: center; font-weight: bold; flex-shrink: 0;
+        color: #1a202c; 
+        font-size: 40px; 
+        display: flex; 
+        align-items: center;
+        justify-content: center; 
+        font-weight: bold; 
+        flex-shrink: 0;
         box-shadow: 0 5px 15px rgba(251, 191, 36, 0.4);
     }
-    .business-info h1 { margin: 0; font-size: 2.5rem; font-weight: 800; color: #fbbf24; }
+    
+    .business-info h1 { 
+        margin: 0; 
+        font-size: 2.5rem; 
+        font-weight: 800; 
+        color: #fbbf24; 
+    }
+    
     .owner-tag {
-        display: inline-block; background: #1a202c; color: #fbbf24;
-        padding: 5px 15px; border-radius: 15px; font-size: 0.9rem; margin-top: 10px;
+        display: inline-block; 
+        background: #1a202c; 
+        color: #fbbf24;
+        padding: 5px 15px; 
+        border-radius: 15px; 
+        font-size: 0.9rem; 
+        margin-top: 10px;
         border: 1px solid #fbbf24;
     }
+    
     .info-grid {
-        display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;
+        display: grid; 
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+        gap: 20px;
         margin-bottom: 40px;
     }
+    
     .info-card {
-        background: #2d3748; border-radius: 15px; padding: 25px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.2); transition: transform 0.3s;
+        background: #2d3748; 
+        border-radius: 15px; 
+        padding: 25px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2); 
+        transition: transform 0.3s;
         border: 1px solid #4a5568;
     }
+    
     .info-card:hover { 
         transform: translateY(-5px); 
         border-color: #fbbf24;
     }
-    .card-header { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
+    
+    .card-header { 
+        display: flex; 
+        align-items: center; 
+        gap: 15px; 
+        margin-bottom: 15px; 
+    }
+    
     .icon-box {
-        width: 45px; height: 45px; border-radius: 12px;
-        background: #1a202c; color: #fbbf24;
-        display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+        width: 45px; 
+        height: 45px; 
+        border-radius: 12px;
+        background: #1a202c; 
+        color: #fbbf24;
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        font-size: 1.2rem;
         border: 1px solid #fbbf24;
     }
-    .card-title { font-size: 1.1rem; font-weight: 700; margin: 0; color: #fbbf24; }
+    
+    .card-title { 
+        font-size: 1.1rem; 
+        font-weight: 700; 
+        margin: 0; 
+        color: #fbbf24; 
+    }
     
     .menu-section-title {
-        color: #fbbf24; margin-bottom: 20px; font-weight: 800; 
-        text-shadow: 0 2px 4px rgba(0,0,0,0.3); border-left: 5px solid #fbbf24;
-        padding-left: 15px; display: flex; align-items: center; gap: 10px;
+        color: #fbbf24; 
+        margin-bottom: 20px; 
+        font-weight: 800; 
+        text-shadow: 0 2px 4px rgba(0,0,0,0.3); 
+        border-left: 5px solid #fbbf24;
+        padding-left: 15px; 
+        display: flex; 
+        align-items: center; 
+        gap: 10px;
     }
+    
     .menu-grid {
-        display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px;
+        display: grid; 
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); 
+        gap: 20px;
     }
+    
     .menu-card {
-        background: #2d3748; border-radius: 15px; overflow: hidden;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.2); transition: 0.3s;
-        display: flex; flex-direction: column;
+        background: #2d3748; 
+        border-radius: 15px; 
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2); 
+        transition: 0.3s;
+        display: flex; 
+        flex-direction: column;
         border: 1px solid #4a5568;
     }
+    
     .menu-card:hover { 
         transform: translateY(-5px); 
         box-shadow: 0 15px 30px rgba(251, 191, 36, 0.3); 
         border-color: #fbbf24;
     }
+    
     .menu-img {
-        height: 150px; width: 100%; object-fit: cover; background: #1a202c;
+        height: 150px; 
+        width: 100%; 
+        object-fit: cover; 
+        background: #1a202c;
     }
-    .menu-body { padding: 15px; flex-grow: 1; display: flex; flex-direction: column; }
-    .menu-name { font-weight: 700; font-size: 1.1rem; margin-bottom: 5px; color: #fbbf24; }
-    .menu-desc { font-size: 0.85rem; color: #cbd5e0; margin-bottom: 15px; line-height: 1.4; }
+    
+    .menu-body { 
+        padding: 15px; 
+        flex-grow: 1; 
+        display: flex; 
+        flex-direction: column; 
+    }
+    
+    .menu-name { 
+        font-weight: 700; 
+        font-size: 1.1rem; 
+        margin-bottom: 5px; 
+        color: #fbbf24; 
+    }
+    
+    .menu-desc { 
+        font-size: 0.85rem; 
+        color: #cbd5e0; 
+        margin-bottom: 15px; 
+        line-height: 1.4; 
+    }
+    
     .menu-price {
-        margin-top: auto; font-weight: 800; color: #fbbf24; font-size: 1.1rem;
-        display: flex; justify-content: space-between; align-items: center;
+        margin-top: auto; 
+        font-weight: 800; 
+        color: #fbbf24; 
+        font-size: 1.1rem;
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center;
     }
+    
     .btn-add-cart {
-        width: 30px; height: 30px; border-radius: 50%; background: #1a202c;
-        color: #fbbf24; border: 1px solid #fbbf24; display: flex; align-items: center; justify-content: center;
-        cursor: pointer; transition: 0.2s;
+        width: 30px; 
+        height: 30px; 
+        border-radius: 50%; 
+        background: #1a202c;
+        color: #fbbf24; 
+        border: 1px solid #fbbf24; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center;
+        cursor: pointer; 
+        transition: 0.2s;
     }
-    .btn-add-cart:hover { background: #fbbf24; color: #1a202c; }
+    
+    .btn-add-cart:hover { 
+        background: #fbbf24; 
+        color: #1a202c; 
+    }
 
-    /* --- WHATSAPP BUTTON --- */
-    .whatsapp-section { margin-top: 40px; text-align: center; margin-bottom: 50px; }
+    .whatsapp-section { 
+        margin-top: 40px; 
+        text-align: center; 
+        margin-bottom: 50px; 
+    }
+    
     .btn-wa {
-        background: #25D366; color: white; padding: 15px 40px; border-radius: 50px;
-        font-size: 18px; font-weight: bold; text-decoration: none;
-        display: inline-flex; align-items: center; gap: 10px;
-        box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); transition: 0.3s;
+        background: #25D366; 
+        color: white; 
+        padding: 15px 40px; 
+        border-radius: 50px;
+        font-size: 18px; 
+        font-weight: bold; 
+        text-decoration: none;
+        display: inline-flex; 
+        align-items: center; 
+        gap: 10px;
+        box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); 
+        transition: 0.3s;
         border: 2px solid #25D366;
     }
+    
     .btn-wa:hover { 
         transform: scale(1.05); 
         background: #1a202c; 
         color: #25D366; 
         box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6); 
     }
-    .wa-note { display: block; margin-top: 10px; color: #cbd5e0; font-size: 0.9rem;}
+    
+    .wa-note { 
+        display: block; 
+        margin-top: 10px; 
+        color: #cbd5e0; 
+        font-size: 0.9rem;
+    }
 
     @media (max-width: 768px) {
-        .hero-section { flex-direction: column; text-align: center; }
-        .menu-grid { grid-template-columns: repeat(2, 1fr); }
+        .hero-section { 
+            flex-direction: column; 
+            text-align: center; 
+        }
+        .menu-grid { 
+            grid-template-columns: repeat(2, 1fr); 
+        }
     }
+    
     @media (max-width: 480px) {
-        .menu-grid { grid-template-columns: 1fr; }
+        .menu-grid { 
+            grid-template-columns: 1fr; 
+        }
     }
 </style>
 
@@ -134,45 +285,50 @@
     if($currentId == 1) {
         $detailLapak = [
             'nama' => 'Miloku',
-            'owner' => 'Kak Milo',
-            'deskripsi' => 'Spesialis minuman coklat Milo kekinian dengan berbagai topping melimpah.',
-            'alamat' => 'Jl. Mawar No. 10, Samping Kampus.',
-            'whatsapp' => '6281234567890', // <-- GANTI NOMOR WA LAPAK 1 DISINI
+            'owner' => 'Merianti',
+            'deskripsi' => 'Haus? Yuk mampir ke Miloku! Kami menjual aneka minuman favorit yang siap menghilangkan dahagamu. Harga terjangkau, rasa juara, bikin harimu makin semangat!.',
+            'alamat' => 'JL.Ahmad Yani.',
+            'whatsapp' => '6283840125391',
             'menus' => [
-                ['nama' => 'Milo Dinosaur', 'harga' => 12000, 'desc' => 'Es Milo dengan taburan bubuk milo gunung.', 'img' => 'milo'],
-                ['nama' => 'Milo Cincau', 'harga' => 10000, 'desc' => 'Perpaduan segar milo dan cincau hitam.', 'img' => 'drink'],
-                ['nama' => 'Milo Avocado', 'harga' => 15000, 'desc' => 'Jus alpukat ditambah siraman milo kental.', 'img' => 'avocado'],
+                ['nama' => 'Milo malaysia', 'harga' => 10000, 'desc' => 'Minuman coklat berenergi yang menyegarkan.', 'img' => 'milo.png'],
+                ['nama' => 'Milk Tea Mutiara Cincau', 'harga' => 15000, 'desc' => 'Milk tea creamy dengan perpaduan mutiara dan cincau.', 'img' => 'cincau.jpg'],
+                ['nama' => 'Lychee Tea', 'harga' => 8000, 'desc' => 'Rasanya yang lembut, dingin dan menyegarkan.', 'img' => 'f1.png'],
+                ['nama' => 'Kopi Milo', 'harga' => 17000, 'desc' => 'Perpaduan kopi kuat dan coklat Milo yang nikmat.', 'img' => 'kopi2.jpg'],
+                ['nama' => 'Lemon Tea', 'harga' => 7000, 'desc' => 'Es teh lemon dingin menggoda dengan irisan lemon.', 'img' => 'e.jpg'],
             ]
         ];
     } 
-    // LAPAK 2: AYAM GEPREK
+    // LAPAK 2: NGEMIL YUK
     elseif ($currentId == 2) {
         $detailLapak = [
-            'nama' => 'Ayam Geprek Pak Dwi',
-            'owner' => 'Pak Dwi',
-            'deskripsi' => 'Ayam geprek sambal bawang pedas nampol, pedasnya bikin nagih!',
-            'alamat' => 'Jl. Melati Raya, Depan Indomaret.',
-            'whatsapp' => '6289876543210', // <-- GANTI NOMOR WA LAPAK 2 DISINI
+            'nama' => 'Ngemil yuk',
+            'owner' => 'Tiara',
+            'deskripsi' => 'ngemil yuk hadir sebagai solusi cemilan favoritmu! Menjual beragam snack pilihan mulai dari keripik, kacang, cokelat, permen, hingga camilan kekinian. Harga terjangkau, rasa mantap, bikin ngemilmu makin seru!!',
+            'alamat' => 'Jl.Ahmad Yani.',
+            'whatsapp' => '6281276997358',
             'menus' => [
-                ['nama' => 'Paket Geprek Original', 'harga' => 15000, 'desc' => 'Nasi + Ayam Geprek + Lalapan.', 'img' => 'chicken'],
-                ['nama' => 'Geprek Mozzarella', 'harga' => 20000, 'desc' => 'Ayam geprek dengan lelehan keju mozzarella.', 'img' => 'cheese'],
-                ['nama' => 'Jamur Crispy', 'harga' => 8000, 'desc' => 'Jamur tiram goreng tepung renyah.', 'img' => 'mushroom'],
-                ['nama' => 'Kulit Goreng', 'harga' => 10000, 'desc' => 'Kulit ayam crispy gurih.', 'img' => 'friedchicken'],
+                ['nama' => 'Kentang Spiral', 'harga' => 12000, 'desc' => 'Kentang dipotong spiral dan digoreng renyah.', 'img' => 'kentang.jpeg'],
+                ['nama' => 'Pisang Coklat', 'harga' => 10000, 'desc' => 'Pisang manis dengan lelehan coklat nikmat.', 'img' => 'Pisang.jpg'],
+                ['nama' => 'Kentang Spiral Kecil', 'harga' => 10000, 'desc' => 'Kentang goreng spiral kecil yang renyah.', 'img' => 'curly.jpg'],
+                ['nama' => 'Tela-tela', 'harga' => 10000, 'desc' => 'Tela-tela lezat, pas untuk segala suasana.', 'img' => 'tela.jpg'],
+                ['nama' => 'Kentang goreng', 'harga' => 10000, 'desc' => 'amilan kentang tipis yang digoreng renyah.', 'img' => 'f5.png'],
             ]
         ];
     } 
-    // LAPAK 3: ES TEH JUMBO
+    // LAPAK 3: WARUNG MANGAN LIMO PUTRI
     else {
         $detailLapak = [
-            'nama' => 'Es Teh Jumbo',
-            'owner' => 'Mas Tejo',
-            'deskripsi' => 'Hilangkan dahaga dengan Es Teh Jumbo porsi besar harga merakyat.',
-            'alamat' => 'Jl. Anggrek, Perempatan Lampu Merah.',
-            'whatsapp' => '6285555555555', // <-- GANTI NOMOR WA LAPAK 3 DISINI
+            'nama' => 'Warung mangan limo putri',
+            'owner' => 'Putri',
+            'deskripsi' => 'Lapar dan butuh lauk enak? Warung mangan siap melayani! Aneka lauk pauk dengan bumbu meresap dan rasa juara. Dari yang gurih, pedas, sampai manis - semuanya ada untuk melengkapi nasi putihmu.',
+            'alamat' => 'Jl.Sungai alam.',
+            'whatsapp' => '6282268950436',
             'menus' => [
-                ['nama' => 'Es Teh Original', 'harga' => 3000, 'desc' => 'Teh manis dingin ukuran jumbo.', 'img' => 'tea'],
-                ['nama' => 'Es Teh Kampul', 'harga' => 5000, 'desc' => 'Teh manis dengan irisan jeruk nipis segar.', 'img' => 'lemontea'],
-                ['nama' => 'Es Teh Susu', 'harga' => 7000, 'desc' => 'Teh tarik ala angkringan.', 'img' => 'milktea'],
+                ['nama' => 'Ayam Geprek', 'harga' => 14000, 'desc' => 'Ayam crispy dengan sambal geprek pedas nikmat..', 'img' => 'ayam1.jpg'],
+                ['nama' => 'Lele Goreng', 'harga' => 10000, 'desc' => 'Lele goreng gurih dengan tekstur renyah.', 'img' => 'lele.jpg'],
+                ['nama' => 'Telor Balado', 'harga' => 10000, 'desc' => 'Telur rebus dengan sambal balado pedas menggoda.', 'img' => 'telor.jpg'],
+                ['nama' => 'Ayam Gulai', 'harga' => 12000,'desc' => 'Ayam dimasak dengan bumbu gulai khas Padang.', 'img' => 'ayamgulai.jpg'],
+                ['nama' => 'Sayur Daun Singkong', 'harga' => 12000,'desc' => 'Daun singkong lembut dengan bumbu santan yang gurih.', 'img' => 'sayur.jpg'],
             ]
         ];
     }
@@ -183,14 +339,16 @@
         <i class="fas fa-arrow-left"></i> Kembali
     </a>
 
-    {{-- HEADER TOKO (Mengambil data dari variabel $detailLapak yg kita buat diatas) --}}
+    {{-- HEADER TOKO --}}
     <div class="hero-section">
         <div class="business-logo">
             {{ substr($detailLapak['nama'], 0, 1) }}
         </div>
         <div class="business-info">
             <h1>{{ $detailLapak['nama'] }}</h1>
-            <div class="owner-tag"><i class="fas fa-user-circle"></i> {{ $detailLapak['owner'] }}</div>
+            <div class="owner-tag">
+                <i class="fas fa-user-circle"></i> {{ $detailLapak['owner'] }}
+            </div>
         </div>
     </div>
 
@@ -212,13 +370,14 @@
         </div>
     </div>
 
-    <h2 class="menu-section-title"><i class="fas fa-utensils"></i> Daftar Menu</h2>
+    <h2 class="menu-section-title">
+        <i class="fas fa-utensils"></i> Daftar Menu
+    </h2>
 
     <div class="menu-grid">
         @foreach($detailLapak['menus'] as $menu)
             <div class="menu-card">
-                {{-- Menggunakan Unsplash Source dengan keyword sesuai nama menu --}}
-                <img src="https://source.unsplash.com/400x300/?food,{{ $menu['img'] }}" 
+                <img src="{{ asset('assets/user/images/' . $menu['img']) }}" 
                      alt="{{ $menu['nama'] }}" 
                      class="menu-img">
                 
@@ -233,9 +392,8 @@
         @endforeach
     </div>
 
-    {{-- TOMBOL WHATSAPP SPESIFIK --}}
+    {{-- TOMBOL WHATSAPP --}}
     <div class="whatsapp-section">
-        {{-- Pesan otomatis saat diklik --}}
         @php
             $pesan = "Halo " . $detailLapak['nama'] . ", saya mau pesan menu anda.";
             $linkWa = "https://wa.me/" . $detailLapak['whatsapp'] . "?text=" . urlencode($pesan);

@@ -63,6 +63,7 @@
     </header>
 </div>
 
+<!-- About Section -->
 <section class="about_section layout_padding">
     <div class="container">
         <div class="row align-items-center">
@@ -75,17 +76,21 @@
             <div class="col-md-6">
                 <div class="detail-box">
                     <div class="heading_container">
-                        <h2>
-                            Tentang LapakGo
-                        </h2>
+                        <h2>Tentang LapakGo</h2>
                     </div>
                     <p class="mt-3 text-secondary">
-                         Kami adalah UMKM yang berkomitmen untuk menghadirkan berbagai pilihan makanan dan minuman berkualitas tinggi 
-                        dengan rasa khas. Kami percaya bahwa kepuasan pelanggan adalah prioritas utama dan selalu memberikan 
-                        pelayanan terbaik dalam setiap hidangan yang kami sajikan.
+                        LapakGo adalah UMKM yang berdiri dengan semangat untuk menghadirkan pengalaman kuliner yang tak terlupakan. 
+                        Berawal dari passion kami terhadap cita rasa lokal yang autentik, kami berkomitmen untuk menyajikan berbagai 
+                        pilihan makanan dan minuman berkualitas tinggi dengan rasa khas yang memanjakan lidah.
+                    </p>
+                    <p class="text-secondary">
+                        Setiap hidangan yang kami sajikan dibuat dengan bahan-bahan pilihan dan diproses dengan standar kebersihan 
+                        yang ketat. Kami percaya bahwa kepuasan pelanggan adalah prioritas utama, dan selalu memberikan pelayanan 
+                        terbaik dalam setiap hidangan yang kami sajikan. Di LapakGo, kami tidak hanya menjual makanan, tetapi 
+                        menciptakan momen berharga bersama keluarga dan sahabat.
                     </p>
 
-                    <a href="{{ route('menu') }}" class="btn btn-warning text-white rounded-pill px-4 py-2 mt-4 shadow">
+                    <a href="{{ route('menu') }}" class="btn text-white rounded-pill px-4 py-2 mt-4 shadow" style="background-color: #f4b342;">
                         Jelajahi Menu Kami
                     </a>
                 </div>
@@ -93,57 +98,93 @@
         </div>
     </div>
 </section>
- <section class="book_section layout_padding">
+
+<!-- Vision & Mission Section -->
+<section class="about_section layout_padding">
         <div class="container">
-            <div class="heading_container text-center mb-5">
-                <h2>Meet Our Team</h2>
-                <p class="text-muted">The people behind your perfect dining experience</p>
+            <div class="heading_container heading_center mb-5">
+                <h2>Visi & Misi Kami</h2>
+                <p>Komitmen kami untuk menghadirkan yang terbaik</p>
             </div>
-
             <div class="row justify-content-center">
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="profile_card p-4 shadow rounded text-center">
-                        <div class="profile_image mb-3">
-                            {{-- Perhatikan path ini, jika gambarnya tidak muncul, pastikan chef1.jpg ada di folder images/team --}}
-                           <img src="{{ asset('assets/user/images/tila.jpg') }}" alt="">
-                        </div>
-                        <div class="profile_info">
-                            <h5 class="mb-2">Gustillawati Ningsih</h5>
-                            <p class="text-muted mb-2"></p>
-                            <small class="text-secondary"></small>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="profile_card p-4 shadow rounded text-center">
-                        <div class="profile_image mb-3">
-                            {{-- Perhatikan path ini, jika gambarnya tidak muncul, pastikan chef2.jpg ada di folder images/team --}}
-                            <img src="{{ asset('assets/user/images/afin.jpg') }}" alt="">
-                        </div>
-                        <div class="profile_info">
-                            <h5 class="mb-2">Afin al-rakhi</h5>
-                            <p class="text-muted mb-2"></p>
-                            <small class="text-secondary"></small>
+                <div class="col-md-5 mb-4">
+                    <div class="card text-white p-4 h-100" style="background-color: #2c3e50; border-radius: 10px;">
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <h3 class="text-center mb-3" style="color: #ffc107; font-weight: bold;">Visi</h3>
+                            <p class="text-center">
+                                Menjadi platform kuliner digital terpercaya yang menghubungkan UMKM lokal dengan masyarakat,
+                                menghadirkan pengalaman kuliner terbaik, dan mendukung pertumbuhan ekonomi kreatif
+                                Indonesia.
+                            </p>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="profile_card p-4 shadow rounded text-center">
-                        <div class="profile_image mb-3">
-                            <img src="{{ asset('assets/user/images/aidil1.jpg') }}" alt="Lychee Tea">
-                        </div>
-                        <div class="profile_info">
-                            <h5 class="mb-2">Muhammad Aidil Fitriansyah</h5>
-                            <p class="text-muted mb-2"></p>
-                            <small class="text-secondary"></small>
+                <div class="col-md-5 mb-4">
+                    <div class="card text-white p-4 h-100" style="background-color: #2c3e50; border-radius: 10px;">
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <h3 class="text-center mb-3" style="color: #ffc107; font-weight: bold;">Misi</h3>
+                            <p class="text-center">
+                                Menghubungkan pelanggan dengan lapak-lapak kuliner pilihan, memberdayakan UMKM dengan
+                                teknologi digital, dan menciptakan ekosistem kuliner yang berkualitas dan saling
+                                menguntungkan.
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+<!-- Team Section -->
+<section class="book_section layout_padding">
+    <div class="container">
+        <div class="heading_container text-center mb-5">
+            <h2>Meet Our Team</h2>
+            <p class="text-muted">Tim yang berdedikasi untuk kesuksesan LapakGo</p>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="profile_card p-4 shadow rounded text-center">
+                    <div class="profile_image mb-3">
+                        <img src="{{ asset('assets/user/images/tila.jpg') }}" alt="Gustillawati Ningsih" class="rounded-circle" style="width: 150px; height: 150px; object-fit: cover;">
+                    </div>
+                    <div class="profile_info">
+                        <h5 class="mb-2">Gustillawati Ningsih</h5>
+                        <p class="text-muted mb-2">Co-Founder & Operations Manager</p>
+                        <small class="text-secondary">Bertanggung jawab atas operasional dan standar kualitas</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="profile_card p-4 shadow rounded text-center">
+                    <div class="profile_image mb-3">
+                        <img src="{{ asset('assets/user/images/afin.jpg') }}" alt="Afin al-rakhi" class="rounded-circle" style="width: 150px; height: 150px; object-fit: cover;">
+                    </div>
+                    <div class="profile_info">
+                        <h5 class="mb-2">Afin al-rakhi</h5>
+                        <p class="text-muted mb-2">Co-Founder & Marketing Director</p>
+                        <small class="text-secondary">Memimpin strategi pemasaran dan pengembangan brand</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="profile_card p-4 shadow rounded text-center">
+                    <div class="profile_image mb-3">
+                        <img src="{{ asset('assets/user/images/aidil1.jpg') }}" alt="Muhammad Aidil Fitriansyah" class="rounded-circle" style="width: 150px; height: 150px; object-fit: cover;">
+                    </div>
+                    <div class="profile_info">
+                        <h5 class="mb-2">Muhammad Aidil Fitriansyah</h5>
+                        <p class="text-muted mb-2">Co-Founder & Head Chef</p>
+                        <small class="text-secondary">Menciptakan menu inovatif dengan cita rasa autentik</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
     
 <footer class="footer_section">
     <div class="container">

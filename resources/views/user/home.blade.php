@@ -2,21 +2,22 @@
 @section('title', 'LapakGo - Home')
 @section('content')
 
-{{-- Perbaiki: Deklarasi CSS harus menggunakan link rel="stylesheet" --}}
-<link rel="stylesheet" href="{{ asset('assets/user/css/bootstrap.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/user/css/font-awesome.min.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/user/css/responsive.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/user/css/style.css') }}">
-{{-- Map files and SCSS links are typically not loaded directly as stylesheet --}}
-{{-- <link rel="stylesheet" href="{{ asset('assets/user/css/style.css.map') }}"> --}}
-{{-- <link rel="stylesheet" href="{{ asset('assets/css/style.scss') }}"> --}}
+    {{-- Perbaiki: Deklarasi CSS harus menggunakan link rel="stylesheet" --}}
+    <link rel="stylesheet" href="{{ asset('assets/user/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/user/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/user/css/responsive.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/user/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/user/css/style.css.map') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.scss') }}">
 
-{{-- Font files are usually linked inside CSS or using @font-face --}}
-{{-- <link rel="stylesheet" href="{{ asset('assets/user/fonts/fontawesome-webfont.ttf') }}"> --}}
-{{-- <link rel="stylesheet" href="{{ asset('assets/user/fonts/fontawesome-webfont.woff') }}"> --}}
-{{-- <link rel="stylesheet" href="{{ asset('assets/user/fonts/fontawesome-webfont.woff2') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('assets/user/fonts/fontawesome-webfont.ttf') }}">
+    <link rel="stylesheet" href="{{ asset('assets/user/fonts/fontawesome-webfont.woff') }}">
+    <link rel="stylesheet" href="{{ asset('assets/user/fonts/fontawesome-webfont.woff2') }}">
 
-{{-- **HAPUS PENGGUNAAN LINK REL="STYLESHEET" UNTUK FILE JAVASCRIPT** --}}
+    <link rel="stylesheet" href="{{ asset('assets/user/js/bootstrap.js') }}">
+    <link rel="stylesheet" href="{{ asset('assets/user/js/custom.js') }}">
+    <link rel="stylesheet" href="{{ asset('assets/user/js/jquery-3.4.1.min.js') }}">
+
 
     <div class="hero_area">
         <div class="bg-box">
@@ -119,11 +120,15 @@
                 </ol>
             </div>
         </section>
-        </div>
+    </div>
 
     <section class="offer_section layout_padding-bottom">
         <div class="offer_container">
             <div class="container">
+                <div class="heading_container heading_center">
+                    <h2>Pilih Lapakmu</h2>
+                    <p>Minuman segar, camilan enak, atau makanan berat? Semuanya tersedia!</p>
+                </div>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="box">
@@ -169,6 +174,7 @@
         <div class="container">
             <div class="heading_container heading_center">
                 <h2>Bestseller Menu</h2>
+                <p>Menu favorit pilihan pelanggan kami</p>
             </div>
 
             {{-- PERBAIKAN 1: Sesuaikan data-filter dengan nama class yang logis & tambahkan titik (.) --}}
@@ -182,7 +188,7 @@
             <div class="filters-content">
                 {{-- Pastikan parent memiliki class 'grid' untuk selector Isotope --}}
                 <div class="row grid">
-                    
+
                     {{-- ITEM 1: MILO (DRINKS) --}}
                     {{-- Ubah class 'pizza' menjadi 'drinks' --}}
                     <div class="col-sm-6 col-lg-4 all drinks">
@@ -308,34 +314,47 @@
                     $('.filters_menu li').on('click', function() {
                         $('.filters_menu li').removeClass('active');
                         $(this).addClass('active');
-                        
+
                         var filterValue = $(this).attr('data-filter');
-                        $grid.isotope({ filter: filterValue });
+                        $grid.isotope({
+                            filter: filterValue
+                        });
                     });
                 }
             }
         });
     </script>
     </div>
-</section>
+    </section>
     <section class="about_section layout_padding">
         <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="img-box">
-                        <img src="{{ asset('assets/user/images/es.jpeg') }}" alt="Milo Malaysia">
+            <div class="heading_container heading_center">
+                <h2>Visi & Misi Kami</h2>
+                <p>Komitmen kami untuk menghadirkan yang terbaik</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-5 mb-4">
+                    <div class="card text-white p-4 h-100" style="background-color: #2c3e50; border-radius: 10px;">
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <h3 class="text-center mb-3" style="color: #ffc107; font-weight: bold;">Visi</h3>
+                            <p class="text-center">
+                                Menjadi platform kuliner digital terpercaya yang menghubungkan UMKM lokal dengan masyarakat,
+                                menghadirkan pengalaman kuliner terbaik, dan mendukung pertumbuhan ekonomi kreatif
+                                Indonesia.
+                            </p>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="detail-box">
-                        <div class="heading_container">
-                            <h2>Milo Malaysia</h2>
+                <div class="col-md-5 mb-4">
+                    <div class="card text-white p-4 h-100" style="background-color: #2c3e50; border-radius: 10px;">
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <h3 class="text-center mb-3" style="color: #ffc107; font-weight: bold;">Misi</h3>
+                            <p class="text-center">
+                                Menghubungkan pelanggan dengan lapak-lapak kuliner pilihan, memberdayakan UMKM dengan
+                                teknologi digital, dan menciptakan ekosistem kuliner yang berkualitas dan saling
+                                menguntungkan.
+                            </p>
                         </div>
-                        <p>
-                            Hadir dengan cita rasa cokelat yang kaya dan creamy, MILO Premium Drink menjadi pilihan terbaik
-                            untuk menemani aktivitas harian Anda. Diracik dengan standar kualitas UMKM, setiap gelas
-                            menghadirkan pengalaman minum yang lembut, menyegarkan, dan penuh energi.
-                        </p>
                     </div>
                 </div>
             </div>
@@ -343,9 +362,9 @@
     </section>
     <section class="book_section layout_padding">
         <div class="container">
-            <div class="heading_container text-center mb-5">
-                <h2>Meet Our Team</h2>
-                <p class="text-muted">The people behind your perfect dining experience</p>
+            <div class="heading_container heading_center">
+                <h2>Tim Kami</h2>
+                <p>Dedikasi untuk menghadirkan pengalaman kuliner terbaik</p>
             </div>
 
             <div class="row justify-content-center">
@@ -353,7 +372,7 @@
                     <div class="profile_card p-4 shadow rounded text-center">
                         <div class="profile_image mb-3">
                             {{-- Perhatikan path ini, jika gambarnya tidak muncul, pastikan chef1.jpg ada di folder images/team --}}
-                           <img src="{{ asset('assets/user/images/tila.jpg') }}" alt="">
+                            <img src="{{ asset('assets/user/images/tila.jpg') }}" alt="">
                         </div>
                         <div class="profile_info">
                             <h5 class="mb-2">Gustillawati Ningsih</h5>
@@ -392,56 +411,60 @@
             </div>
         </div>
     </section>
-    <footer class="footer_section">
+   <footer class="footer_section">
         <div class="container">
             <div class="row">
                 <div class="col-md-4 footer-col">
                     <div class="footer_contact">
                         <h4>Contact Us</h4>
                         <div class="contact_link_box">
-                            <a href="#">
+                            <a href="">
                                 <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                <span>Location</span>
+                                <span>Bengkalis, Riau, Indonesia</span>
                             </a>
-                            <a href="tel:+011234567890">
+                            <a href="">
                                 <i class="fa fa-phone" aria-hidden="true"></i>
-                                <span>Call +01 1234567890</span>
+                                <span>Call +62 812-xxxx-xxxx</span>
                             </a>
-                            <a href="mailto:demo@gmail.com">
+                            <a href="mailto:lapakgo.support@gmail.com">
                                 <i class="fa fa-envelope" aria-hidden="true"></i>
-                                <span>demo@gmail.com</span>
+                                <span>lapakgo.support@gmail.com</span>
                             </a>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-md-4 footer-col">
                     <div class="footer_detail">
-                        <a href="{{ url('/') }}" class="footer-logo">LapakGo</a>
+                        <a href="{{ route('home') }}" class="footer-logo">LapakGo</a>
                         <p>
-                            Necessary, making this the first true generator on the Internet. It uses a dictionary of
-                            over 200 Latin words, combined with
+                            Platform digital terpercaya untuk mendukung UMKM lokal Bengkalis. Belanja produk berkualitas dan
+                            dukung ekonomi lokal bersama LapakGo.
                         </p>
                         <div class="footer_social">
-                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                            <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                            <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                            <a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <a href=""><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <a href=""><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                            <a href=""><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                            <a href=""><i class="fa fa-pinterest" aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-md-4 footer-col">
-                    <h4>Opening Hours</h4>
-                    <p>Everyday</p>
-                    <p>10.00 Am - 10.00 Pm</p>
+                    <div class="footer_hours">
+                        <h4>Opening Hours</h4>
+                        <p>Senin - Jumat</p>
+                        <p>09:00 - 21:00</p>
+                        <p>Sabtu - Minggu</p>
+                        <p>10:00 - 20:00</p>
+                    </div>
                 </div>
             </div>
+
             <div class="footer-info">
                 <p>
-                    &copy; <span id="displayYear"></span> All Rights Reserved By
-                    <a href="https://html.design/">Free Html Templates</a><br><br>
-                    &copy; <span id="displayYear"></span> Distributed By
-                    <a href="https://themewagon.com/" target="_blank">ThemeWagon</a>
+                    &copy; <span id="displayYear"></span> LapakGo. All Rights Reserved.
                 </p>
             </div>
         </div>
