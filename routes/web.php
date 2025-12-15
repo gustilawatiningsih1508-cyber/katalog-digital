@@ -7,6 +7,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PromosiController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\ProfileController;
 
 /* ============================================
    PUBLIC ROUTES (Tanpa Login)
@@ -41,10 +42,10 @@ Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
     Route::get('/sign-in', [AuthController::class, 'showLogin'])->name('signIn');
     Route::get('/sign-up', [AuthController::class, 'showRegister'])->name('signUp');
-    
+
     Route::post('/login', [AuthController::class, 'login'])->name('login.process');
     Route::post('/register', [AuthController::class, 'register'])->name('register.process');
-    
+
     // OTP Routes
     Route::get('/verify-otp', [AuthController::class, 'showOtpVerification'])->name('otp.verify');
     Route::post('/verify-otp', [AuthController::class, 'verifyOtp'])->name('otp.verify.process');
@@ -57,19 +58,49 @@ Route::middleware('guest')->group(function () {
 Route::middleware(['auth'])->group(function () {
     // Dashboard - redirect berdasarkan role
     Route::get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
-    
+
     // Products - Bisa diakses Admin & Penjual
     Route::resource('products', ProductController::class);
-    
+
     // Promosi - Bisa diakses Admin & Penjual (Read & Create)
     Route::get('/promosi-admin', [PromosiController::class, 'index'])->name('promosi-admin.index');
     Route::get('/promosi-admin/{id}', [PromosiController::class, 'show'])->name('promosi-admin.show');
     Route::post('/promosi-admin', [PromosiController::class, 'store'])->name('promosi-admin.store');
     Route::get('/promosi-admin/create', [PromosiController::class, 'create'])->name('promosi-admin.create');
-    
+
     // Logout
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
+
+/* ============================================
+   PROFILE ROUTES (Authenticated Users)
+============================================ */
+Route::middleware(['auth'])->group(function () {
+    // ... existing routes ...
+
+    // Profile Routes
+    Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'show'])
+        ->name('profile.show');
+
+    Route::get('/profile/edit', [App\Http\Controllers\ProfileController::class, 'edit'])
+        ->name('profile.edit');
+
+    Route::put('/profile', [App\Http\Controllers\ProfileController::class, 'update'])
+        ->name('profile.update');
+
+    Route::post('/profile/avatar', [App\Http\Controllers\ProfileController::class, 'updateAvatar'])
+        ->name('profile.update-avatar');
+
+    Route::delete('/profile/avatar', [App\Http\Controllers\ProfileController::class, 'deleteAvatar'])
+        ->name('profile.delete-avatar');
+
+    Route::get('/profile/change-password', [App\Http\Controllers\ProfileController::class, 'showChangePassword'])
+        ->name('profile.change-password');
+
+    Route::post('/profile/change-password', [App\Http\Controllers\ProfileController::class, 'changePassword'])
+        ->name('profile.change-password.process');
+});
+
 
 /* ============================================
    ADMIN ONLY ROUTES (Hak Akses = 1)
@@ -78,19 +109,19 @@ Route::middleware(['auth', 'hak_akses:1'])->group(function () {
     // Admin Dashboard
     Route::get('/admin/dashboard', [PageController::class, 'adminDashboard'])
         ->name('admin.dashboard');
-    
+
     Route::get('/admin/settings', [PageController::class, 'adminSettings'])
         ->name('admin.settings');
-    
+
     // Users Management (HANYA ADMIN)
     Route::get('/users/search', [UsersController::class, 'search'])->name('users.search');
     Route::resource('users', UsersController::class);
-    
+
     // Promosi Full Control (Edit & Delete)
     Route::put('/promosi-admin/{id}', [PromosiController::class, 'update'])->name('promosi-admin.update');
     Route::delete('/promosi-admin/{id}', [PromosiController::class, 'destroy'])->name('promosi-admin.destroy');
     Route::get('/promosi-admin/{id}/edit', [PromosiController::class, 'edit'])->name('promosi-admin.edit');
-    
+
     Route::get('/search', [PageController::class, 'search'])->name('search');
 });
 

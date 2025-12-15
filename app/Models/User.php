@@ -1,4 +1,6 @@
 <?php
+// app/Models/User.php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -16,8 +18,13 @@ class User extends Authenticatable
         'username',
         'email',
         'password',
-        'google_id',      // TAMBAHAN
-        'avatar',         // TAMBAHAN
+        'google_id',
+        'avatar',
+        'phone',
+        'address',
+        'birth_date',
+        'gender',
+        'bio',
         'hak_akses',
         'laporan_aktifitas',
         'waktu_aktivitas',
@@ -34,6 +41,7 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'waktu_aktivitas' => 'datetime',
+            'birth_date' => 'date',
             'hak_akses' => 'integer',
         ];
     }
@@ -46,5 +54,27 @@ class User extends Authenticatable
     public function isPenjual()
     {
         return $this->hak_akses === 2;
+    }
+
+    public function getAvatarUrlAttribute()
+    {
+        if ($this->avatar) {
+            // Jika avatar dari Google (URL lengkap)
+            if (filter_var($this->avatar, FILTER_VALIDATE_URL)) {
+                return $this->avatar;
+            }
+            // Jika avatar dari storage
+            return asset('storage/' . $this->avatar);
+        }
+        // Default avatar
+        return asset('assets/admin/images/default-avatar.png');
+    }
+
+    public function getAgeAttribute()
+    {
+        if ($this->birth_date) {
+            return $this->birth_date->age;
+        }
+        return null;
     }
 }

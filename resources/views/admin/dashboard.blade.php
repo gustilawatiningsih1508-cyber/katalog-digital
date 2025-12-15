@@ -15,6 +15,205 @@
 
   <link rel="stylesheet" href="{{ asset('assets/admin/css/app.css') }}">
   <link rel="icon" type="image/png" href="{{ asset('assets/admin/images/favicon.png') }}">
+  
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <style>
+    /* Avatar Dropdown Styles */
+    .avatar-dropdown {
+      position: relative;
+    }
+    
+    .avatar-button {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 12px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s;
+      background: transparent;
+      border: 2px solid transparent;
+      outline: none;
+    }
+    
+    .avatar-button:hover {
+      background: #f3f4f6;
+      border-color: #e5e7eb;
+    }
+    
+    .avatar-button:focus {
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+    
+    .avatar-image {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #667eea;
+      box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+    }
+    
+    .user-info {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .user-name {
+      font-weight: 600;
+      color: #1f2937;
+      font-size: 14px;
+      line-height: 1.2;
+    }
+    
+    .user-role {
+      font-size: 12px;
+      color: #6b7280;
+    }
+    
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      margin-top: 8px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      min-width: 240px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s;
+      z-index: 1000;
+      border: 1px solid #e5e7eb;
+      overflow: hidden;
+    }
+    
+    .dropdown-menu.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    
+    .dropdown-header {
+      padding: 16px;
+      border-bottom: 1px solid #f3f4f6;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    
+    .dropdown-header .avatar-image {
+      width: 50px;
+      height: 50px;
+      border-color: white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    
+    .dropdown-header-info h4 {
+      font-weight: 600;
+      color: white;
+      margin: 0 0 4px 0;
+      font-size: 15px;
+    }
+    
+    .dropdown-header-info p {
+      margin: 0;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    
+    .dropdown-body {
+      padding: 8px;
+    }
+    
+    .dropdown-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px;
+      color: #4b5563;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.2s;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    
+    .dropdown-item:hover {
+      background: #f3f4f6;
+      color: #667eea;
+    }
+    
+    .dropdown-item i {
+      width: 20px;
+      text-align: center;
+      font-size: 16px;
+    }
+    
+    .dropdown-divider {
+      height: 1px;
+      background: #f3f4f6;
+      margin: 8px 0;
+    }
+    
+    .dropdown-item.logout {
+      color: #dc2626;
+    }
+    
+    .dropdown-item.logout:hover {
+      background: #fee2e2;
+      color: #dc2626;
+    }
+    
+    /* Badge Styles */
+    .badge-role {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 4px;
+    }
+    
+    .badge-admin {
+      background: white;
+      color: #667eea;
+    }
+    
+    .badge-seller {
+      background: white;
+      color: #f5576c;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .user-info {
+        display: none;
+      }
+      
+      .avatar-button {
+        padding: 8px;
+      }
+      
+      .dropdown-menu {
+        position: fixed;
+        top: 60px;
+        right: 10px;
+        left: 10px;
+        width: calc(100% - 20px);
+        max-width: 300px;
+        margin: 0 auto;
+      }
+    }
+  </style>
 </head>
 
 <body class="bg-gray-50">
@@ -44,16 +243,105 @@
             <span class="self-center whitespace-nowrap">LapakGo</span>
           </a>
         </div>
+        
+        <!-- Avatar Dropdown -->
         <div class="flex items-center">
-          <div class="hidden lg:flex items-center">
-            <span class="text-base font-normal text-gray-500 mr-5">
-              {{ Auth::user()->username ?? 'User' }}
-              @if(Auth::user()->hak_akses == 1)
-                <span class="ml-2 px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded">Admin</span>
-              @else
-                <span class="ml-2 px-2 py-1 text-xs bg-green-100 text-green-800 rounded">Penjual</span>
-              @endif
-            </span>
+          <div class="avatar-dropdown">
+            <button class="avatar-button" id="avatarButton">
+              @php
+                $avatarUrl = Auth::user()->avatar_url ?? asset('assets/admin/images/default-avatar.png');
+                // Pastikan avatar URL valid
+                if (!filter_var($avatarUrl, FILTER_VALIDATE_URL) && !str_starts_with($avatarUrl, 'http')) {
+                    $avatarUrl = asset($avatarUrl);
+                }
+              @endphp
+              <img src="{{ $avatarUrl }}" 
+                   alt="Avatar" 
+                   class="avatar-image"
+                   onerror="this.src='{{ asset('assets/admin/images/default-avatar.png') }}'">
+              <div class="user-info">
+                <span class="user-name">{{ Auth::user()->username ?? 'User' }}</span>
+                <span class="user-role">
+                  @if(Auth::user()->hak_akses == 1)
+                    Admin
+                  @elseif(Auth::user()->hak_akses == 2)
+                    Penjual
+                  @else
+                    User
+                  @endif
+                </span>
+              </div>
+              <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            
+            <!-- Dropdown Menu -->
+            <div class="dropdown-menu" id="dropdownMenu">
+              <div class="dropdown-header">
+                <img src="{{ $avatarUrl }}" 
+                     alt="Avatar" 
+                     class="avatar-image"
+                     onerror="this.src='{{ asset('assets/admin/images/default-avatar.png') }}'">
+                <div class="dropdown-header-info">
+                  <h4>{{ Auth::user()->username ?? 'User' }}</h4>
+                  <p>{{ Auth::user()->email ?? 'user@example.com' }}</p>
+                  @if(Auth::user()->hak_akses == 1)
+                    <span class="badge-role badge-admin">Admin</span>
+                  @elseif(Auth::user()->hak_akses == 2)
+                    <span class="badge-role badge-seller">Penjual</span>
+                  @else
+                    <span class="badge-role badge-seller">User</span>
+                  @endif
+                </div>
+              </div>
+              
+              <div class="dropdown-body">
+                <a href="{{ route('profile.show') }}" class="dropdown-item">
+                  <i class="fas fa-user"></i>
+                  <span>Profile Saya</span>
+                </a>
+                <a href="{{ route('profile.edit') }}" class="dropdown-item">
+                  <i class="fas fa-user-edit"></i>
+                  <span>Edit Profile</span>
+                </a>
+                <a href="{{ route('profile.change-password') }}" class="dropdown-item">
+                  <i class="fas fa-key"></i>
+                  <span>Ubah Password</span>
+                </a>
+                
+                <div class="dropdown-divider"></div>
+                
+                <a href="{{ route('dashboard') }}" class="dropdown-item">
+                  <i class="fas fa-home"></i>
+                  <span>Dashboard</span>
+                </a>
+                
+                @if(Auth::user()->hak_akses == 1)
+                <a href="{{ route('users.index') }}" class="dropdown-item">
+                  <i class="fas fa-users"></i>
+                  <span>Kelola Users</span>
+                </a>
+                @endif
+                
+                @if(Auth::user()->hak_akses == 2)
+                <a href="{{ route('products.index') }}" class="dropdown-item">
+                  <i class="fas fa-box"></i>
+                  <span>Produk Saya</span>
+                </a>
+                @endif
+                
+                <div class="dropdown-divider"></div>
+                
+                <form method="POST" action="{{ route('logout') }}" id="logoutForm">
+                  @csrf
+                  <a href="#" onclick="event.preventDefault(); document.getElementById('logoutForm').submit();" class="dropdown-item logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                  </a>
+                </form>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -72,7 +360,7 @@
               <!-- Dashboard -->
               <li>
                 <a href="{{ route('dashboard') }}"
-                  class="text-base text-gray-900 font-normal rounded-lg flex items-center p-2 hover:bg-gray-100 group bg-gray-100">
+                  class="text-base text-gray-900 font-normal rounded-lg flex items-center p-2 hover:bg-gray-100 group {{ request()->routeIs('dashboard') ? 'bg-gray-100' : '' }}">
                   <svg class="w-6 h-6 text-gray-900 group-hover:text-gray-900 transition duration-75"
                     fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
@@ -86,14 +374,13 @@
               @if(Auth::user()->hak_akses == 1)
               <li>
                 <a href="{{ route('users.index') }}"
-                  class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group">
+                  class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group {{ request()->routeIs('users.*') ? 'bg-gray-100' : '' }}">
                   <svg class="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75"
                     fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
                       clip-rule="evenodd"></path>
                   </svg>
                   <span class="ml-3 flex-1 whitespace-nowrap">Users</span>
-                  <span class="bg-red-100 text-red-800 text-xs font-medium px-2 py-0.5 rounded"></span>
                 </a>
               </li>
               @endif
@@ -101,7 +388,7 @@
               <!-- Products - ADMIN & PENJUAL -->
               <li>
                 <a href="{{ route('products.index') }}"
-                  class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group">
+                  class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group {{ request()->routeIs('products.*') ? 'bg-gray-100' : '' }}">
                   <svg class="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75"
                     fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd"
@@ -115,7 +402,7 @@
               <!-- Promosi - ADMIN & PENJUAL -->
               <li>
                 <a href="{{ route('promosi-admin.index') }}"
-                  class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group">
+                  class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group {{ request()->routeIs('promosi-admin.*') ? 'bg-gray-100' : '' }}">
                   <svg class="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75"
                     fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd"
@@ -123,6 +410,19 @@
                       clip-rule="evenodd"></path>
                   </svg>
                   <span class="ml-3 flex-1 whitespace-nowrap">Promosi</span>
+                </a>
+              </li>
+
+              <!-- Profile -->
+              <li>
+                <a href="{{ route('profile.show') }}"
+                  class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group {{ request()->routeIs('profile.*') ? 'bg-gray-100' : '' }}">
+                  <svg class="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75"
+                    fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="ml-3 flex-1 whitespace-nowrap">Profile</span>
                 </a>
               </li>
             </ul>
@@ -138,21 +438,18 @@
               </svg>
               <span class="ml-3">Help</span>
             </a>
-            
-            <!-- Logout -->
-            <div class="space-y-2 pt-2">
-              <button style="margin-top: 400px;"></button>
-              <div class="p-4 border-t border-gray-200 mt-auto">
-                <form method="POST" action="{{ route('logout') }}">
-                  @csrf
-                  <button type="submit"
-                    class="w-full block py-2 px-3 rounded bg-red-600 text-center hover:bg-red-700 text-white">
-                    Logout
-                  </button>
-                </form>
-              </div>
-            </div>
           </div>
+        </div>
+        
+        <!-- Logout Button in Sidebar -->
+        <div class="p-4 border-t border-gray-200 mt-auto">
+          <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button type="submit"
+              class="w-full block py-2 px-3 rounded bg-red-600 text-center hover:bg-red-700 text-white transition-colors">
+              Logout
+            </button>
+          </form>
         </div>
       </div>
     </aside>
@@ -305,16 +602,38 @@
             </a>
             @endif
 
-            <a href="#" class="p-4 bg-yellow-50 rounded-lg text-center hover:bg-yellow-100 transition-colors">
+            <a href="{{ route('profile.edit') }}" class="p-4 bg-yellow-50 rounded-lg text-center hover:bg-yellow-100 transition-colors">
               <div class="mx-auto w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center mb-2">
                 <svg class="w-5 h-5 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z">
                   </path>
                 </svg>
               </div>
-              <p class="text-sm font-medium text-yellow-700">Laporan</p>
+              <p class="text-sm font-medium text-yellow-700">Edit Profile</p>
             </a>
+          </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="bg-white rounded-lg shadow p-6">
+          <h2 class="text-lg font-semibold text-gray-900 mb-4">Aktivitas Terbaru</h2>
+          <div class="space-y-4">
+            <div class="flex items-center">
+              <div class="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
+              <span class="text-sm text-gray-600">Login berhasil</span>
+              <span class="text-sm text-gray-400 ml-auto">Baru saja</span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
+              <span class="text-sm text-gray-600">Melihat dashboard</span>
+              <span class="text-sm text-gray-400 ml-auto">5 menit yang lalu</span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-2 h-2 bg-purple-500 rounded-full mr-3"></div>
+              <span class="text-sm text-gray-600">Profile diupdate</span>
+              <span class="text-sm text-gray-400 ml-auto">1 jam yang lalu</span>
+            </div>
           </div>
         </div>
       </main>
@@ -328,14 +647,69 @@
     document.addEventListener('DOMContentLoaded', function () {
       const toggleButton = document.getElementById('toggleSidebarMobile');
       const sidebar = document.getElementById('sidebar');
+      const hamburgerIcon = document.getElementById('toggleSidebarMobileHamburger');
+      const closeIcon = document.getElementById('toggleSidebarMobileClose');
 
       if (toggleButton && sidebar) {
         toggleButton.addEventListener('click', function () {
           sidebar.classList.toggle('hidden');
+          hamburgerIcon.classList.toggle('hidden');
+          closeIcon.classList.toggle('hidden');
         });
+      }
+
+      // Avatar dropdown functionality
+      const avatarButton = document.getElementById('avatarButton');
+      const dropdownMenu = document.getElementById('dropdownMenu');
+
+      if (avatarButton && dropdownMenu) {
+        // Toggle dropdown on button click
+        avatarButton.addEventListener('click', function (e) {
+          e.stopPropagation();
+          dropdownMenu.classList.toggle('show');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function (e) {
+          if (!avatarButton.contains(e.target) && !dropdownMenu.contains(e.target)) {
+            dropdownMenu.classList.remove('show');
+          }
+        });
+
+        // Close dropdown on escape key
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') {
+            dropdownMenu.classList.remove('show');
+          }
+        });
+      }
+
+      // Close dropdown when clicking on a dropdown item
+      const dropdownItems = document.querySelectorAll('.dropdown-item');
+      dropdownItems.forEach(item => {
+        item.addEventListener('click', function () {
+          dropdownMenu.classList.remove('show');
+        });
+      });
+    });
+
+    // Close sidebar on mobile when clicking outside
+    document.addEventListener('click', function (e) {
+      const sidebar = document.getElementById('sidebar');
+      const toggleButton = document.getElementById('toggleSidebarMobile');
+      
+      if (window.innerWidth < 1024 && 
+          sidebar && 
+          !sidebar.classList.contains('hidden') &&
+          !sidebar.contains(e.target) && 
+          !toggleButton.contains(e.target)) {
+        sidebar.classList.add('hidden');
+        const hamburgerIcon = document.getElementById('toggleSidebarMobileHamburger');
+        const closeIcon = document.getElementById('toggleSidebarMobileClose');
+        if (hamburgerIcon) hamburgerIcon.classList.remove('hidden');
+        if (closeIcon) closeIcon.classList.add('hidden');
       }
     });
   </script>
 </body>
-
 </html>

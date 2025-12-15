@@ -11,8 +11,206 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('assets/admin/css/app.css') }}">
+  <!-- Tambahkan Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/admin/images/apple-touch-icon.png') }}">
   <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/admin/images/favicon-32x32.png') }}">
+  
+  <style>
+    /* Avatar Dropdown Styles */
+    .avatar-dropdown {
+      position: relative;
+    }
+    
+    .avatar-button {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 12px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s;
+      background: transparent;
+      border: 2px solid transparent;
+      outline: none;
+    }
+    
+    .avatar-button:hover {
+      background: #f3f4f6;
+      border-color: #e5e7eb;
+    }
+    
+    .avatar-button:focus {
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+    
+    .avatar-image {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #667eea;
+      box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+    }
+    
+    .user-info {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .user-name {
+      font-weight: 600;
+      color: #1f2937;
+      font-size: 14px;
+      line-height: 1.2;
+    }
+    
+    .user-role {
+      font-size: 12px;
+      color: #6b7280;
+    }
+    
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      margin-top: 8px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      min-width: 240px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s;
+      z-index: 1000;
+      border: 1px solid #e5e7eb;
+      overflow: hidden;
+    }
+    
+    .dropdown-menu.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    
+    .dropdown-header {
+      padding: 16px;
+      border-bottom: 1px solid #f3f4f6;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    
+    .dropdown-header .avatar-image {
+      width: 50px;
+      height: 50px;
+      border-color: white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    
+    .dropdown-header-info h4 {
+      font-weight: 600;
+      color: white;
+      margin: 0 0 4px 0;
+      font-size: 15px;
+    }
+    
+    .dropdown-header-info p {
+      margin: 0;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    
+    .dropdown-body {
+      padding: 8px;
+    }
+    
+    .dropdown-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px;
+      color: #4b5563;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.2s;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    
+    .dropdown-item:hover {
+      background: #f3f4f6;
+      color: #667eea;
+    }
+    
+    .dropdown-item i {
+      width: 20px;
+      text-align: center;
+      font-size: 16px;
+    }
+    
+    .dropdown-divider {
+      height: 1px;
+      background: #f3f4f6;
+      margin: 8px 0;
+    }
+    
+    .dropdown-item.logout {
+      color: #dc2626;
+    }
+    
+    .dropdown-item.logout:hover {
+      background: #fee2e2;
+      color: #dc2626;
+    }
+    
+    /* Badge Styles */
+    .badge-role {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 4px;
+    }
+    
+    .badge-admin {
+      background: white;
+      color: #667eea;
+    }
+    
+    .badge-seller {
+      background: white;
+      color: #f5576c;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .user-info {
+        display: none;
+      }
+      
+      .avatar-button {
+        padding: 8px;
+      }
+      
+      .dropdown-menu {
+        position: fixed;
+        top: 60px;
+        right: 10px;
+        left: 10px;
+        width: calc(100% - 20px);
+        max-width: 300px;
+        margin: 0 auto;
+      }
+    }
+  </style>
 </head>
 
 <body class="bg-gray-50">
@@ -39,7 +237,7 @@
             <img src="{{ asset('assets/admin/images/favicon.png') }}" class="h-6 mr-2" alt="LapakGo Logo">
             <span class="self-center whitespace-nowrap">LapakGo</span>
           </a>
-                    <form action="#" method="GET" class="hidden lg:block lg:pl-32">
+          <form action="#" method="GET" class="hidden lg:block lg:pl-32">
             <label for="topbar-search" class="sr-only">Search</label>
             <div class="mt-1 relative lg:w-64">
               <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -56,6 +254,120 @@
             </div>
           </form>
         </div>
+        <div class="flex items-center">
+          <button id="toggleSidebarMobileSearch" type="button"
+            class="lg:hidden text-gray-500 hover:text-gray-900 hover:bg-gray-100 p-2 rounded-lg">
+            <span class="sr-only">Search</span>
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </button>
+          
+          <!-- Avatar Dropdown -->
+          <div class="flex items-center">
+            <div class="avatar-dropdown">
+              <button class="avatar-button" id="avatarButton">
+                @php
+                  $avatarUrl = Auth::user()->avatar ?? asset('assets/admin/images/default-avatar.png');
+                  if ($avatarUrl && !filter_var($avatarUrl, FILTER_VALIDATE_URL) && !str_starts_with($avatarUrl, 'http')) {
+                      $avatarUrl = asset('storage/' . $avatarUrl);
+                  }
+                @endphp
+                <img src="{{ $avatarUrl }}" 
+                     alt="Avatar" 
+                     class="avatar-image"
+                     onerror="this.src='{{ asset('assets/admin/images/default-avatar.png') }}'">
+                <div class="user-info">
+                  <span class="user-name">{{ Auth::user()->username ?? 'User' }}</span>
+                  <span class="user-role">
+                    @if(Auth::user()->hak_akses == 1)
+                      Admin
+                    @elseif(Auth::user()->hak_akses == 2)
+                      Penjual
+                    @else
+                      User
+                    @endif
+                  </span>
+                </div>
+                <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              
+              <!-- Dropdown Menu -->
+              <div class="dropdown-menu" id="dropdownMenu">
+                <div class="dropdown-header">
+                  <img src="{{ $avatarUrl }}" 
+                       alt="Avatar" 
+                       class="avatar-image"
+                       onerror="this.src='{{ asset('assets/admin/images/default-avatar.png') }}'">
+                  <div class="dropdown-header-info">
+                    <h4>{{ Auth::user()->username ?? 'User' }}</h4>
+                    <p>{{ Auth::user()->email ?? 'user@example.com' }}</p>
+                    @if(Auth::user()->hak_akses == 1)
+                      <span class="badge-role badge-admin">Admin</span>
+                    @elseif(Auth::user()->hak_akses == 2)
+                      <span class="badge-role badge-seller">Penjual</span>
+                    @else
+                      <span class="badge-role badge-seller">User</span>
+                    @endif
+                  </div>
+                </div>
+                
+                <div class="dropdown-body">
+                  <a href="{{ route('profile.show') }}" class="dropdown-item">
+                    <i class="fas fa-user"></i>
+                    <span>Profile Saya</span>
+                  </a>
+                  <a href="{{ route('profile.edit') }}" class="dropdown-item">
+                    <i class="fas fa-user-edit"></i>
+                    <span>Edit Profile</span>
+                  </a>
+                  <a href="{{ route('profile.change-password') }}" class="dropdown-item">
+                    <i class="fas fa-key"></i>
+                    <span>Ubah Password</span>
+                  </a>
+                  
+                  <div class="dropdown-divider"></div>
+                  
+                  <a href="{{ route('dashboard') }}" class="dropdown-item">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                  </a>
+                  
+                  @if(Auth::user()->hak_akses == 1)
+                  <a href="{{ route('users.index') }}" class="dropdown-item">
+                    <i class="fas fa-users"></i>
+                    <span>Kelola Users</span>
+                  </a>
+                  @endif
+                  
+                  <a href="{{ route('products.index') }}" class="dropdown-item">
+                    <i class="fas fa-box"></i>
+                    <span>Produk</span>
+                  </a>
+                  
+                  <a href="{{ route('promosi-admin.index') }}" class="dropdown-item">
+                    <i class="fas fa-tag"></i>
+                    <span>Promosi</span>
+                  </a>
+                  
+                  <div class="dropdown-divider"></div>
+                  
+                  <form method="POST" action="{{ route('logout') }}" id="logoutForm">
+                    @csrf
+                    <a href="#" onclick="event.preventDefault(); document.getElementById('logoutForm').submit();" class="dropdown-item logout">
+                      <i class="fas fa-sign-out-alt"></i>
+                      <span>Logout</span>
+                    </a>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </nav>
@@ -71,7 +383,7 @@
               <ul class="space-y-2 pb-2">
                 <li>
                   <a href="{{ route('dashboard') }}"
-                    class="text-base text-gray-900 font-normal rounded-lg flex items-center p-2 hover:bg-gray-100 group">
+                    class="text-base text-gray-900 font-normal rounded-lg flex items-center p-2 hover:bg-gray-100 group {{ request()->routeIs('dashboard') ? 'bg-gray-100' : '' }}">
                     <svg class="w-6 h-6 text-gray-500 group-hover:text-gray-900 transition duration-75" fill="currentColor"
                       viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                       <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
@@ -83,7 +395,7 @@
               
                 <li>
                   <a href="{{ route('users.index') }}"
-                    class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group bg-gray-100">
+                    class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group bg-gray-100 {{ request()->routeIs('users.*') ? 'bg-gray-100' : '' }}">
                     <svg class="w-6 h-6 text-gray-900 flex-shrink-0 group-hover:text-gray-900 transition duration-75"
                       fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                       <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
@@ -94,7 +406,7 @@
               
                 <li>
                   <a href="{{ route('products.index') }}"
-                    class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group">
+                    class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group {{ request()->routeIs('products.*') ? 'bg-gray-100' : '' }}">
                     <svg class="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75"
                       fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                       <path fill-rule="evenodd"
@@ -107,7 +419,7 @@
               
                 <li>
                   <a href="{{ route('promosi-admin.index') }}"
-                    class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group">
+                    class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group {{ request()->routeIs('promosi-admin.*') ? 'bg-gray-100' : '' }}">
                     <svg class="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75"
                       fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                       <path fill-rule="evenodd"
@@ -115,6 +427,18 @@
                         clip-rule="evenodd"></path>
                     </svg>
                     <span class="ml-3 flex-1 whitespace-nowrap">Promosi</span>
+                  </a>
+                </li>
+                
+                <!-- Profile Menu -->
+                <li>
+                  <a href="{{ route('profile.show') }}"
+                    class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group {{ request()->routeIs('profile.*') ? 'bg-gray-100' : '' }}">
+                    <svg class="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75"
+                      fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="ml-3 flex-1 whitespace-nowrap">Profile</span>
                   </a>
                 </li>
               </ul>
@@ -510,6 +834,89 @@
   </div>
 
   <script src="{{ asset('assets/admin/js/app.bundle.js') }}"></script>
-</body>
+  
+  <script>
+    // Toggle sidebar mobile
+    document.addEventListener('DOMContentLoaded', function () {
+      const toggleButton = document.getElementById('toggleSidebarMobile');
+      const sidebar = document.getElementById('sidebar');
+      const hamburgerIcon = document.getElementById('toggleSidebarMobileHamburger');
+      const closeIcon = document.getElementById('toggleSidebarMobileClose');
 
+      if (toggleButton && sidebar) {
+        toggleButton.addEventListener('click', function () {
+          sidebar.classList.toggle('hidden');
+          hamburgerIcon.classList.toggle('hidden');
+          closeIcon.classList.toggle('hidden');
+        });
+      }
+
+      // Avatar dropdown functionality
+      const avatarButton = document.getElementById('avatarButton');
+      const dropdownMenu = document.getElementById('dropdownMenu');
+
+      if (avatarButton && dropdownMenu) {
+        // Toggle dropdown on button click
+        avatarButton.addEventListener('click', function (e) {
+          e.stopPropagation();
+          dropdownMenu.classList.toggle('show');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function (e) {
+          if (!avatarButton.contains(e.target) && !dropdownMenu.contains(e.target)) {
+            dropdownMenu.classList.remove('show');
+          }
+        });
+
+        // Close dropdown on escape key
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') {
+            dropdownMenu.classList.remove('show');
+          }
+        });
+      }
+
+      // Close dropdown when clicking on a dropdown item
+      const dropdownItems = document.querySelectorAll('.dropdown-item');
+      dropdownItems.forEach(item => {
+        item.addEventListener('click', function () {
+          dropdownMenu.classList.remove('show');
+        });
+      });
+    });
+
+    // Close sidebar on mobile when clicking outside
+    document.addEventListener('click', function (e) {
+      const sidebar = document.getElementById('sidebar');
+      const toggleButton = document.getElementById('toggleSidebarMobile');
+      
+      if (window.innerWidth < 1024 && 
+          sidebar && 
+          !sidebar.classList.contains('hidden') &&
+          !sidebar.contains(e.target) && 
+          !toggleButton.contains(e.target)) {
+        sidebar.classList.add('hidden');
+        const hamburgerIcon = document.getElementById('toggleSidebarMobileHamburger');
+        const closeIcon = document.getElementById('toggleSidebarMobileClose');
+        if (hamburgerIcon) hamburgerIcon.classList.remove('hidden');
+        if (closeIcon) closeIcon.classList.add('hidden');
+      }
+    });
+    
+    // Modal toggle functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        // Modal toggle functionality
+        document.querySelectorAll('[data-modal-toggle]').forEach(button => {
+            button.addEventListener('click', function() {
+                const target = this.getAttribute('data-modal-toggle');
+                const modal = document.getElementById(target);
+                if (modal) {
+                    modal.classList.toggle('hidden');
+                }
+            });
+        });
+    });
+  </script>
+</body>
 </html>
