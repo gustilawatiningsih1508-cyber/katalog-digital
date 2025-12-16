@@ -144,7 +144,7 @@
                 <i class="fa fa-search" style="font-size: 3rem; margin-bottom: 20px;"></i>
                 <h5 style="font-family: 'Playfair Display', serif; font-weight: 700;">Menu tidak ditemukan</h5>
                 <p class="text-muted">Maaf, kami tidak dapat menemukan menu dengan kata kunci tersebut.</p>
-                <button class="btn btn-warning" id="showAllButton" style="border-radius: 50px; padding: 10px 30px; font-weight: 600; background-color: #ffbe33; border: none;">admin
+                <button class="btn btn-warning" id="showAllButton" style="border-radius: 50px; padding: 10px 30px; font-weight: 600; background-color: #ffbe33; border: none;">
                     Lihat Semua Menu
                 </button>
             </div>
@@ -158,82 +158,44 @@
                     <!-- MENU DARI DATABASE -->
                     @foreach($products as $product)
                         @php
-                            // LOGIKA KATEGORI OTOMATIS
+                            // LOGIKA KATEGORI OTOMATIS BERDASARKAN KATEGORI DATABASE
                             $categoryClass = 'minuman'; // default
-                            $productName = strtolower($product->nama_produk ?? '');
-                            $productCategory = strtolower($product->kategori ?? '');
-                            $productDesc = strtolower($product->deskripsi ?? '');
+                            $categoryFromDB = strtolower($product->kategori ?? '');
                             
-                            // Daftar kata kunci untuk kategori
-                            $minumanKeywords = ['minum', 'teh', 'kopi', 'susu', 'jus', 'es', 'milo', 'lychee', 'lemon', 'soda', 'sirup'];
-                            $jajananKeywords = ['jajan', 'snack', 'kentang', 'pisang', 'tela', 'cilok', 'basreng', 'cireng', 'seblak', 'keripik'];
-                            $makananKeywords = ['makan', 'berat', 'nasi', 'ayam', 'ikan', 'lele', 'telor', 'telur', 'gulai', 'geprek', 'balado'];
-                            
-                            // Cek kategori
-                            $isMinuman = false;
-                            $isJajanan = false;
-                            $isMakanan = false;
-                            
-                            // Cek berdasarkan kata kunci
-                            foreach($minumanKeywords as $keyword) {
-                                if (strpos($productName, $keyword) !== false || 
-                                    strpos($productCategory, $keyword) !== false ||
-                                    strpos($productDesc, $keyword) !== false) {
-                                    $isMinuman = true;
-                                    break;
-                                }
-                            }
-                            
-                            foreach($jajananKeywords as $keyword) {
-                                if (strpos($productName, $keyword) !== false || 
-                                    strpos($productCategory, $keyword) !== false ||
-                                    strpos($productDesc, $keyword) !== false) {
-                                    $isJajanan = true;
-                                    break;
-                                }
-                            }
-                            
-                            foreach($makananKeywords as $keyword) {
-                                if (strpos($productName, $keyword) !== false || 
-                                    strpos($productCategory, $keyword) !== false ||
-                                    strpos($productDesc, $keyword) !== false) {
-                                    $isMakanan = true;
-                                    break;
-                                }
-                            }
-                            
-                            // Tentukan kategori akhir
-                            if ($isMinuman) {
+                            // Tentukan kategori berdasarkan data database
+                            if (in_array($categoryFromDB, ['minuman', 'drink', 'beverage'])) {
                                 $categoryClass = 'minuman';
-                            } elseif ($isJajanan) {
+                            } elseif (in_array($categoryFromDB, ['jajanan', 'snack', 'cemilan'])) {
                                 $categoryClass = 'jajanan';
-                            } elseif ($isMakanan) {
+                            } elseif (in_array($categoryFromDB, ['makanan', 'food', 'makanan berat', 'main course'])) {
                                 $categoryClass = 'makanan-berat';
                             }
                             
-                            // Gambar fallback berdasarkan kategori
-                            $fallbackImage = 'f1.png'; // default minuman
-                            if ($categoryClass == 'jajanan') {
-                                $fallbackImage = 'kentang.jpeg';
-                            } elseif ($categoryClass == 'makanan-berat') {
-                                $fallbackImage = 'ayam1.jpg';
-                            }
+                            // Tentukan gambar placeholder berdasarkan kategori
+                            $placeholderImage = asset('assets/user/images/no-image.jpg'); // Gambar default
                         @endphp
                         
                         <div class="col-sm-6 col-lg-4 all {{ $categoryClass }}">
                             <div class="box animate__fadeInUp">
                                 <div class="img-box">
-                                    @if($product->gambar && Storage::exists('public/' . $product->gambar))
-                                        <img src="{{ asset('storage/' . $product->gambar) }}" 
-                                             alt="{{ $product->nama_produk }}"
-                                             class="product-image">
-                                    @elseif($product->gambar)
-                                        <img src="{{ asset('storage/' . $product->gambar) }}" 
-                                             alt="{{ $product->nama_produk }}"
-                                             class="product-image"
-                                             onerror="this.onerror=null; this.src='{{ asset('assets/user/images/' . $fallbackImage) }}'">
+                                    @if($product->gambar)
+                                        @php
+                                            // Cek apakah gambar ada di storage
+                                            $imagePath = 'storage/' . $product->gambar;
+                                            $fullPath = public_path($imagePath);
+                                        @endphp
+                                        @if(file_exists($fullPath) && is_file($fullPath))
+                                            <img src="{{ asset($imagePath) }}" 
+                                                 alt="{{ $product->nama_produk }}"
+                                                 class="product-image"
+                                                 onerror="this.onerror=null; this.src='{{ $placeholderImage }}'">
+                                        @else
+                                            <img src="{{ $placeholderImage }}" 
+                                                 alt="{{ $product->nama_produk }}"
+                                                 class="product-image">
+                                        @endif
                                     @else
-                                        <img src="{{ asset('assets/user/images/' . $fallbackImage) }}" 
+                                        <img src="{{ $placeholderImage }}" 
                                              alt="{{ $product->nama_produk }}"
                                              class="product-image">
                                     @endif
@@ -260,17 +222,15 @@
                     @endforeach
                     
                 @else
-                    <!-- TIDAK ADA PRODUK DI DATABASE - TAMPILKAN DEFAULT MENU -->
+                    <!-- TIDAK ADA PRODUK DI DATABASE -->
                     <div class="col-12">
                         <div class="no-products animate__fadeInUp">
                             <i class="fa fa-utensils"></i>
-                            <h4>Belum Ada Menu dari Database</h4>
-                            <p>Silakan tambahkan produk melalui admin panel terlebih dahulu.</p>
-                            <p class="text-muted mb-4">Sementara ini, menampilkan menu contoh:</p>
+                            <h4>Belum Ada Menu Tersedia</h4>
+                            <p>Maaf, saat ini belum ada menu yang dapat ditampilkan.</p>
+                            <p class="text-muted mb-4">Silakan kembali lagi nanti.</p>
                         </div>
                     </div>
-                    
-                    <!-- MENU DEFAULT (STATIS) -->
                 @endif
 
             </div>
@@ -283,104 +243,106 @@
     
     <script>
         $(window).on('load', function() {
-            // Inisialisasi Isotope
-            var $grid = $('.grid').isotope({
-                itemSelector: '.all',
-                layoutMode: 'fitRows'
-            });
-
-            // 1. Logika Klik Filter Kategori
-            $('.filters_menu li').click(function() {
-                // Hapus class active dari semua tombol
-                $('.filters_menu li').removeClass('active');
-                // Tambah class active ke tombol yang diklik
-                $(this).addClass('active');
-
-                // Ambil nilai filter
-                var filterValue = $(this).attr('data-filter');
-                
-                // Jika klik filter kategori, kosongkan kolom pencarian agar tidak bingung
-                $('#searchInput').val(''); 
-                
-                // Jalankan Isotope
-                $grid.isotope({ filter: filterValue });
-
-                // Cek hasil (untuk menampilkan pesan jika kosong, walau jarang terjadi di kategori)
-                setTimeout(checkResults, 200);
-            });
-
-            // 2. Logika Pencarian Real-time
-            function performSearch() {
-                var searchTerm = $('#searchInput').val().toLowerCase().trim();
-
-                // Reset tombol filter visual menjadi "Semua" saat mengetik
-                // Ini UX yang lebih baik: User mengetik = mencari di seluruh menu
-                $('.filters_menu li').removeClass('active');
-                $('.filters_menu li[data-filter="*"]').addClass('active');
-
-                // Filter Isotope dengan fungsi custom
-                $grid.isotope({
-                    filter: function() {
-                        var $this = $(this);
-                        var itemName = $this.find('.item-name').text().toLowerCase();
-                        var itemDesc = $this.find('.item-description').text().toLowerCase();
-                        var storeName = $this.find('.store-info').text().toLowerCase();
-                        
-                        // Cari di Nama, Deskripsi, atau Nama Toko
-                        return itemName.includes(searchTerm) || 
-                               itemDesc.includes(searchTerm) || 
-                               storeName.includes(searchTerm);
-                    }
+            // Inisialisasi Isotope hanya jika ada produk
+            var productCount = {{ count($products ?? []) }};
+            
+            if (productCount > 0) {
+                var $grid = $('.grid').isotope({
+                    itemSelector: '.all',
+                    layoutMode: 'fitRows'
                 });
 
-                checkResults();
-            }
+                // 1. Logika Klik Filter Kategori
+                $('.filters_menu li').click(function() {
+                    // Hapus class active dari semua tombol
+                    $('.filters_menu li').removeClass('active');
+                    // Tambah class active ke tombol yang diklik
+                    $(this).addClass('active');
 
-            // Jalankan pencarian saat mengetik (Input event)
-            $('#searchInput').on('input', function() {
-                performSearch();
-            });
+                    // Ambil nilai filter
+                    var filterValue = $(this).attr('data-filter');
+                    
+                    // Jika klik filter kategori, kosongkan kolom pencarian agar tidak bingung
+                    $('#searchInput').val(''); 
+                    
+                    // Jalankan Isotope
+                    $grid.isotope({ filter: filterValue });
 
-            // Tombol cari diklik (opsional, karena sudah real-time)
-            $('#searchButton').on('click', function() {
-                performSearch();
-            });
+                    // Cek hasil (untuk menampilkan pesan jika kosong, walau jarang terjadi di kategori)
+                    setTimeout(checkResults, 200);
+                });
 
-            // 3. Fungsi Cek Hasil Kosong
-            function checkResults() {
-                // Hitung item yang terlihat
-                var visibleItems = $grid.isotope('getFilteredItemElements').length;
+                // 2. Logika Pencarian Real-time
+                function performSearch() {
+                    var searchTerm = $('#searchInput').val().toLowerCase().trim();
 
-                if (visibleItems === 0) {
-                    $('#noResults').fadeIn();
-                } else {
+                    // Reset tombol filter visual menjadi "Semua" saat mengetik
+                    // Ini UX yang lebih baik: User mengetik = mencari di seluruh menu
+                    $('.filters_menu li').removeClass('active');
+                    $('.filters_menu li[data-filter="*"]').addClass('active');
+
+                    // Filter Isotope dengan fungsi custom
+                    $grid.isotope({
+                        filter: function() {
+                            var $this = $(this);
+                            var itemName = $this.find('.item-name').text().toLowerCase();
+                            var itemDesc = $this.find('.item-description').text().toLowerCase();
+                            var storeName = $this.find('.store-info').text().toLowerCase();
+                            
+                            // Cari di Nama, Deskripsi, atau Nama Toko
+                            return itemName.includes(searchTerm) || 
+                                   itemDesc.includes(searchTerm) || 
+                                   storeName.includes(searchTerm);
+                        }
+                    });
+
+                    checkResults();
+                }
+
+                // Jalankan pencarian saat mengetik (Input event)
+                $('#searchInput').on('input', function() {
+                    performSearch();
+                });
+
+                // Tombol cari diklik (opsional, karena sudah real-time)
+                $('#searchButton').on('click', function() {
+                    performSearch();
+                });
+
+                // 3. Fungsi Cek Hasil Kosong
+                function checkResults() {
+                    // Hitung item yang terlihat
+                    var visibleItems = $grid.isotope('getFilteredItemElements').length;
+
+                    if (visibleItems === 0) {
+                        $('#noResults').fadeIn();
+                    } else {
+                        $('#noResults').hide();
+                    }
+                }
+
+                // 4. Tombol "Tampilkan Semua" pada pesan error
+                $('#showAllButton').click(function() {
+                    $('#searchInput').val('');
+                    $('.filters_menu li').removeClass('active');
+                    $('.filters_menu li[data-filter="*"]').addClass('active');
+                    $grid.isotope({ filter: '*' });
                     $('#noResults').hide();
-                }
+                });
+
+                // 5. Handle error pada gambar
+                $('.product-image').on('error', function() {
+                    $(this).attr('src', '{{ asset('assets/user/images/no-image.jpg') }}');
+                });
+            } else {
+                // Jika tidak ada produk, nonaktifkan filter dan pencarian
+                $('.filters_menu li').click(function(e) {
+                    e.preventDefault();
+                });
+                
+                $('#searchInput').prop('disabled', true).attr('placeholder', 'Tidak ada menu tersedia');
+                $('#searchButton').prop('disabled', true);
             }
-
-            // 4. Tombol "Tampilkan Semua" pada pesan error
-            $('#showAllButton').click(function() {
-                $('#searchInput').val('');
-                $('.filters_menu li').removeClass('active');
-                $('.filters_menu li[data-filter="*"]').addClass('active');
-                $grid.isotope({ filter: '*' });
-                $('#noResults').hide();
-            });
-
-            // 5. Handle error pada gambar
-            $('.product-image').on('error', function() {
-                var category = $(this).closest('.all').hasClass('minuman') ? 'minuman' : 
-                              $(this).closest('.all').hasClass('jajanan') ? 'jajanan' : 'makanan-berat';
-                
-                var fallbackImage = 'f1.png';
-                if (category == 'jajanan') {
-                    fallbackImage = 'kentang.jpeg';
-                } else if (category == 'makanan-berat') {
-                    fallbackImage = 'ayam1.jpg';
-                }
-                
-                $(this).attr('src', '{{ asset("assets/user/images/") }}/' + fallbackImage);
-            });
         });
     </script>
 </section>
