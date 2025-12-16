@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class PromosiController extends Controller
 {
@@ -22,7 +23,7 @@ class PromosiController extends Controller
         return view('user.promosi', compact('promos'));
     }
 
-    // Method untuk admin/penjual
+    // Method untuk admin/penjual - PENTING: Filter berdasarkan id_pelaku_usaha
     public function index()
     {
         try {
@@ -30,13 +31,14 @@ class PromosiController extends Controller
             
             if ($user->hak_akses == 1) {
                 // Admin bisa lihat semua promosi
-                $promos = Promosi::with(['pelakuUsaha', 'admin'])->orderBy('created_at', 'desc')->get();
+                $promos = Promosi::with(['pelakuUsaha', 'admin'])
+                    ->orderBy('created_at', 'desc')
+                    ->get();
             } else {
                 // Penjual hanya lihat promosinya sendiri
+                // PENTING: Filter menggunakan id_pelaku_usaha, bukan id user
                 $promos = Promosi::with(['pelakuUsaha', 'admin'])
-                    ->whereHas('pelakuUsaha', function($query) use ($user) {
-                        $query->where('id_pelaku_usaha', $user->id);
-                    })
+                    ->where('id_pelaku_usaha', $user->id)
                     ->orderBy('created_at', 'desc')
                     ->get();
             }
@@ -95,6 +97,8 @@ class PromosiController extends Controller
 
             Promosi::create($promosiData);
 
+            Log::info('Promosi berhasil dibuat');
+
             return redirect()->route('promosi-admin.index')
                 ->with('success', 'Promosi berhasil ditambahkan!');
 
@@ -121,6 +125,13 @@ class PromosiController extends Controller
     {
         try {
             $promosi = Promosi::findOrFail($id);
+            
+            // PENTING: Cek otorisasi - penjual hanya bisa edit promosi miliknya
+            $user = Auth::user();
+            if ($user->hak_akses != 1 && $promosi->id_pelaku_usaha != $user->id) {
+                abort(403, 'Unauthorized action.');
+            }
+
             $pelakuUsaha = PelakuUsaha::all();
             $admins = User::where('hak_akses', 1)->get();
 
@@ -138,6 +149,12 @@ class PromosiController extends Controller
 
         try {
             $promosi = Promosi::findOrFail($id);
+            
+            // PENTING: Cek otorisasi
+            $user = Auth::user();
+            if ($user->hak_akses != 1 && $promosi->id_pelaku_usaha != $user->id) {
+                abort(403, 'Unauthorized action.');
+            }
         } catch (\Exception $e) {
             return redirect()->route('promosi-admin.index')
                 ->with('error', 'Promosi tidak ditemukan');
@@ -149,6 +166,12 @@ class PromosiController extends Controller
             'deskripsi_promosi' => 'required|string',
             'id_admin' => 'nullable|exists:users,id',
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ], [
+            'id_pelaku_usaha.required' => 'Pilih pelaku usaha terlebih dahulu.',
+            'id_pelaku_usaha.exists' => 'Pelaku usaha yang dipilih tidak valid.',
+            'judul_promosi.required' => 'Judul promosi harus diisi.',
+            'deskripsi_promosi.required' => 'Deskripsi promosi harus diisi.',
+            'id_admin.exists' => 'Admin yang dipilih tidak valid.',
         ]);
 
         try {
@@ -174,6 +197,8 @@ class PromosiController extends Controller
 
             $promosi->update($updateData);
 
+            Log::info('Promosi berhasil diupdate');
+
             return redirect()->route('promosi-admin.index')
                 ->with('success', 'Promosi berhasil diperbarui!');
 
@@ -192,12 +217,20 @@ class PromosiController extends Controller
         try {
             $promosi = Promosi::findOrFail($id);
             
+            // PENTING: Cek otorisasi
+            $user = Auth::user();
+            if ($user->hak_akses != 1 && $promosi->id_pelaku_usaha != $user->id) {
+                abort(403, 'Unauthorized action.');
+            }
+            
             // Hapus gambar jika ada
             if ($promosi->gambar && Storage::disk('public')->exists($promosi->gambar)) {
                 Storage::disk('public')->delete($promosi->gambar);
             }
             
             $promosi->delete();
+
+            Log::info('Promosi berhasil dihapus');
 
             return redirect()->route('promosi-admin.index')
                 ->with('success', 'Promosi berhasil dihapus!');

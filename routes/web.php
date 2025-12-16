@@ -53,54 +53,53 @@ Route::middleware('guest')->group(function () {
 });
 
 /* ============================================
-   SHARED ROUTES (Admin & Penjual)
+   SHARED ROUTES (Admin & Penjual) - HARUS SEBELUM ADMIN ONLY ROUTES
 ============================================ */
 Route::middleware(['auth'])->group(function () {
     // Dashboard - redirect berdasarkan role
     Route::get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
 
-    // Products - Bisa diakses Admin & Penjual
-    Route::resource('products', ProductController::class);
-
-    // Promosi - Bisa diakses Admin & Penjual (Read & Create)
-    Route::get('/promosi-admin', [PromosiController::class, 'index'])->name('promosi-admin.index');
-    Route::get('/promosi-admin/{id}', [PromosiController::class, 'show'])->name('promosi-admin.show');
-    Route::post('/promosi-admin', [PromosiController::class, 'store'])->name('promosi-admin.store');
-    Route::get('/promosi-admin/create', [PromosiController::class, 'create'])->name('promosi-admin.create');
+    // Profile Routes
+    Route::get('/profile', [ProfileController::class, 'show'])
+        ->name('profile.show');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])
+        ->name('profile.edit');
+    Route::put('/profile', [ProfileController::class, 'update'])
+        ->name('profile.update');
+    Route::post('/profile/avatar', [ProfileController::class, 'updateAvatar'])
+        ->name('profile.update-avatar');
+    Route::delete('/profile/avatar', [ProfileController::class, 'deleteAvatar'])
+        ->name('profile.delete-avatar');
+    Route::get('/profile/change-password', [ProfileController::class, 'showChangePassword'])
+        ->name('profile.change-password');
+    Route::post('/profile/change-password', [ProfileController::class, 'changePassword'])
+        ->name('profile.change-password.process');
 
     // Logout
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
 /* ============================================
-   PROFILE ROUTES (Authenticated Users)
+   ADMIN & PENJUAL ROUTES (Hak Akses 1 & 2) - CRUD LENGKAP
 ============================================ */
 Route::middleware(['auth'])->group(function () {
-    // ... existing routes ...
+    // Products - Accessible by Admin (1) and Penjual (2)
+    Route::resource('products', ProductController::class);
 
-    // Profile Routes
-    Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'show'])
-        ->name('profile.show');
+    // Promosi - Accessible by Admin (1) and Penjual (2)
+    Route::resource('promosi-admin', PromosiController::class)->parameters([
+        'promosi-admin' => 'id'
+    ]);
 
-    Route::get('/profile/edit', [App\Http\Controllers\ProfileController::class, 'edit'])
-        ->name('profile.edit');
-
-    Route::put('/profile', [App\Http\Controllers\ProfileController::class, 'update'])
-        ->name('profile.update');
-
-    Route::post('/profile/avatar', [App\Http\Controllers\ProfileController::class, 'updateAvatar'])
-        ->name('profile.update-avatar');
-
-    Route::delete('/profile/avatar', [App\Http\Controllers\ProfileController::class, 'deleteAvatar'])
-        ->name('profile.delete-avatar');
-
-    Route::get('/profile/change-password', [App\Http\Controllers\ProfileController::class, 'showChangePassword'])
-        ->name('profile.change-password');
-
-    Route::post('/profile/change-password', [App\Http\Controllers\ProfileController::class, 'changePassword'])
-        ->name('profile.change-password.process');
+    // Alternative routes untuk Promosi
+    Route::get('/promosi-admin', [PromosiController::class, 'index'])->name('promosi-admin.index');
+    Route::get('/promosi-admin/create', [PromosiController::class, 'create'])->name('promosi-admin.create');
+    Route::post('/promosi-admin', [PromosiController::class, 'store'])->name('promosi-admin.store');
+    Route::get('/promosi-admin/{id}/edit', [PromosiController::class, 'edit'])->name('promosi-admin.edit');
+    Route::put('/promosi-admin/{id}', [PromosiController::class, 'update'])->name('promosi-admin.update');
+    Route::delete('/promosi-admin/{id}', [PromosiController::class, 'destroy'])->name('promosi-admin.destroy');
+    Route::get('/promosi-admin/{id}', [PromosiController::class, 'show'])->name('promosi-admin.show');
 });
-
 
 /* ============================================
    ADMIN ONLY ROUTES (Hak Akses = 1)
@@ -117,11 +116,7 @@ Route::middleware(['auth', 'hak_akses:1'])->group(function () {
     Route::get('/users/search', [UsersController::class, 'search'])->name('users.search');
     Route::resource('users', UsersController::class);
 
-    // Promosi Full Control (Edit & Delete)
-    Route::put('/promosi-admin/{id}', [PromosiController::class, 'update'])->name('promosi-admin.update');
-    Route::delete('/promosi-admin/{id}', [PromosiController::class, 'destroy'])->name('promosi-admin.destroy');
-    Route::get('/promosi-admin/{id}/edit', [PromosiController::class, 'edit'])->name('promosi-admin.edit');
-
+    // Search (HANYA ADMIN)
     Route::get('/search', [PageController::class, 'search'])->name('search');
 });
 
@@ -129,8 +124,8 @@ Route::middleware(['auth', 'hak_akses:1'])->group(function () {
    FALLBACK ROUTE
 ============================================ */
 Route::fallback(function () {
-    if (Auth::check()) {
-        $user = Auth::user();
+    if (\Illuminate\Support\Facades\Auth::check()) {
+        $user = \Illuminate\Support\Facades\Auth::user();
         if ($user->hak_akses == 1) {
             return redirect()->route('admin.dashboard');
         }

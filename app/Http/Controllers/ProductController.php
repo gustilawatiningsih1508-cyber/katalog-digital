@@ -8,6 +8,7 @@ use App\Models\PelakuUsaha;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -22,17 +23,21 @@ class ProductController extends Controller
         return view('user.menu', compact('products'));
     }
 
-    // Method untuk admin/penjual
+    // Method untuk admin/penjual - PENTING: Filter berdasarkan id_pelaku_usaha
     public function index()
     {
         $user = auth()->user();
         
         if ($user->hak_akses == 1) {
             // Admin bisa lihat semua produk
-            $products = Product::with('pelakuUsaha')->orderBy('created_at', 'desc')->get();
+            $products = Product::with('pelakuUsaha')
+                ->orderBy('created_at', 'desc')
+                ->get();
         } else {
-            // Penjual hanya lihat produknya sendiri
-            $products = Product::where('id_pelaku_usaha', $user->id)
+            // Penjual hanya lihat produk miliknya
+            // PENTING: Filter menggunakan id_pelaku_usaha, bukan id user
+            $products = Product::with('pelakuUsaha')
+                ->where('id_pelaku_usaha', $user->id)
                 ->orderBy('created_at', 'desc')
                 ->get();
         }
@@ -105,6 +110,13 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::findOrFail($id);
+        
+        // PENTING: Cek otorisasi - penjual hanya bisa edit produk miliknya
+        $user = Auth::user();
+        if ($user->hak_akses != 1 && $product->id_pelaku_usaha != $user->id) {
+            abort(403, 'Unauthorized action.');
+        }
+        
         $pelakuUsaha = PelakuUsaha::all();
         return view('admin.products-edit', compact('product', 'pelakuUsaha'));
     }
@@ -113,6 +125,14 @@ class ProductController extends Controller
     {
         Log::info('Update method dipanggil untuk ID: ' . $id);
         Log::info('Data request:', $request->all());
+
+        $product = Product::findOrFail($id);
+        
+        // PENTING: Cek otorisasi
+        $user = Auth::user();
+        if ($user->hak_akses != 1 && $product->id_pelaku_usaha != $user->id) {
+            abort(403, 'Unauthorized action.');
+        }
 
         $validated = $request->validate([
             'id_pelaku_usaha' => 'required|string|max:100',
@@ -124,8 +144,6 @@ class ProductController extends Controller
         ]);
 
         try {
-            $product = Product::findOrFail($id);
-
             // Handle upload gambar baru
             if ($request->hasFile('gambar')) {
                 // Hapus gambar lama jika ada
@@ -158,9 +176,15 @@ class ProductController extends Controller
     {
         Log::info('Delete method dipanggil untuk ID: ' . $id);
 
+        $product = Product::findOrFail($id);
+        
+        // PENTING: Cek otorisasi
+        $user = Auth::user();
+        if ($user->hak_akses != 1 && $product->id_pelaku_usaha != $user->id) {
+            abort(403, 'Unauthorized action.');
+        }
+
         try {
-            $product = Product::findOrFail($id);
-            
             // Hapus gambar jika ada
             if ($product->gambar && Storage::disk('public')->exists($product->gambar)) {
                 Storage::disk('public')->delete($product->gambar);
