@@ -415,7 +415,7 @@
                 {{-- Bagian Kiri: Kontak dan Lokasi --}}
                 <div class="col-md-3 footer-col">
                     <div class="footer_contact">
-                        <h4>Contact Us</h4>
+                        <h4 style="color: #ffc107; font-weight: bold;">Hubungi Kami</h4>
                         <div class="contact_link_box">
                             <div class="contact-item">
                                 <i class="fa fa-map-marker" aria-hidden="true"></i>
@@ -435,7 +435,7 @@
                             </a>
                             <div class="contact-item">
                                 <i class="fa fa-envelope" aria-hidden="true"></i>
-                                <span>lapakgo.support@gmail.com</span>
+                                <span>lapakgo954@gmail.com</span>
                             </div>
                         </div>
                     </div>
@@ -460,7 +460,7 @@
                 {{-- Bagian Kanan: Menu --}}
                 <div class="col-md-3 footer-col">
                     <div class="footer_menu">
-                        <h4>Menu</h4>
+                        <h4 style="color: #ffc107; font-weight: bold;">Daftar Halaman</h4>
                         <ul class="footer-links" style="list-style-type: none; padding-left: 0;">
                             <li class="mb-2"><a href="{{ url('/') }}">Beranda</a></li>
                             <li class="mb-2"><a href="{{ url('/menu') }}">Menu</a></li>
