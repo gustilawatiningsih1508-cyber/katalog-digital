@@ -15,7 +15,7 @@
     <!-- Hero Area with Background -->
     <div class="hero_area">
         <div class="bg-box">
-            <img src="{{ asset('assets_user/images/banner-promo.jpg') }}" alt="Banner Promosi">
+            <img src="{{ asset('assets/user/images/hero-bg.jpg') }}" alt="">
         </div>
 
         <!-- Header Section -->
@@ -48,21 +48,6 @@
                                 <a class="nav-link" href="{{ route('tentangkami') }}">Tentang Kami</a>
                             </li>
                         </ul>
-                        <div class="user_option">
-                            <a href="" class="user_link">
-                                <i class="fa fa-user" aria-hidden="true"></i>
-                            </a>
-                            <a class="cart_link" href="#">
-                                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029"
-                                    style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
-                                    <g>
-                                        <g>
-                                        </g>
-                                    </g>
-                                </svg>
-                            </a>
-                        </div>
                     </div>
                 </nav>
             </div>
@@ -120,8 +105,9 @@
                         <div class="food_section">
                             <div class="box">
                                 <div class="img-box">
-                                    @if($promo->gambar)
-                                        <img src="{{ asset('storage/' . $promo->gambar) }}" alt="{{ $promo->judul_promosi }}">
+                                    @if ($promo->gambar)
+                                        <img src="{{ asset('storage/' . $promo->gambar) }}"
+                                            alt="{{ $promo->judul_promosi }}">
                                     @else
                                         <img src="https://source.unsplash.com/400x300/?promotion,sale,discount"
                                             alt="{{ $promo->judul_promosi }}">
@@ -136,26 +122,28 @@
                                             {{ $promo->pelakuUsaha->nama_usaha ?? 'Toko' }}
                                         </h6>
 
-                                        @if($promo->pelakuUsaha && $promo->pelakuUsaha->no_hp)
-                                            <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $promo->pelakuUsaha->no_hp) }}" target="_blank"
+                                        @if ($promo->pelakuUsaha && $promo->pelakuUsaha->no_hp)
+                                            <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $promo->pelakuUsaha->no_hp) }}"
+                                                target="_blank"
                                                 style="display: flex !important; align-items: center !important; justify-content: center !important; width: 44px !important; height: 44px !important; background-color: #25D366 !important; color: white !important; border-radius: 50% !important; text-decoration: none !important; font-size: 20px !important; transition: all 0.3s ease !important; box-sizing: border-box !important; overflow: hidden !important; flex-shrink: 0 !important; padding: 0 !important; margin: 0 !important; line-height: 1 !important;">
                                                 <i class="fa fa-whatsapp"
                                                     style="display: block !important; line-height: 1 !important; font-size: 22px !important;"></i>
                                             </a>
                                         @else
                                             <a href="javascript:void(0)" style="cursor: default; opacity: 0.5;">
-                                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                                    viewBox="0 0 512 512">
                                                     <g>
                                                         <g>
                                                             <path d="M495.625,138.125h-81.792L335.375,59.667C318.417,47.75,295.958,52.083,284.042,69c-11.958,16.958-7.625,39.417,9.333,51.333
-                                                  l62.708,44.792H155.958l62.667-44.792c16.958-11.917,21.292-34.375,9.333-51.333c-11.917-16.917-34.375-21.25-51.333-9.333
-                                                  L98.167,138.125H16.375c-9.042,0-16.375,7.333-16.375,16.375s7.333,16.375,16.375,16.375h20.583v279.75
-                                                  c0,27.125,22,49.125,49.125,49.125h340.667c27.125,0,49.125-22,49.125-49.125v-279.75h19.75c9.042,0,16.375-7.333,16.375-16.375
-                                                  S504.667,138.125,495.625,138.125z M183.458,431.958c0,9.042-7.333,16.375-16.375,16.375s-16.375-7.333-16.375-16.375V239.333
-                                                  c0-9.042,7.333-16.375,16.375-16.375s16.375,7.333,16.375,16.375V431.958z M272.167,431.958c0,9.042-7.333,16.375-16.375,16.375
-                                                  s-16.375-7.333-16.375-16.375V239.333c0-9.042,7.333-16.375,16.375-16.375s16.375,7.333,16.375,16.375V431.958z M360.875,431.958
-                                                  c0,9.042-7.333,16.375-16.375,16.375s-16.375-7.333-16.375-16.375V239.333c0-9.042,7.333-16.375,16.375-16.375
-                                                  s16.375,7.333,16.375,16.375V431.958z" />
+                                                      l62.708,44.792H155.958l62.667-44.792c16.958-11.917,21.292-34.375,9.333-51.333c-11.917-16.917-34.375-21.25-51.333-9.333
+                                                      L98.167,138.125H16.375c-9.042,0-16.375,7.333-16.375,16.375s7.333,16.375,16.375,16.375h20.583v279.75
+                                                      c0,27.125,22,49.125,49.125,49.125h340.667c27.125,0,49.125-22,49.125-49.125v-279.75h19.75c9.042,0,16.375-7.333,16.375-16.375
+                                                      S504.667,138.125,495.625,138.125z M183.458,431.958c0,9.042-7.333,16.375-16.375,16.375s-16.375-7.333-16.375-16.375V239.333
+                                                      c0-9.042,7.333-16.375,16.375-16.375s16.375,7.333,16.375,16.375V431.958z M272.167,431.958c0,9.042-7.333,16.375-16.375,16.375
+                                                      s-16.375-7.333-16.375-16.375V239.333c0-9.042,7.333-16.375,16.375-16.375s16.375,7.333,16.375,16.375V431.958z M360.875,431.958
+                                                      c0,9.042-7.333,16.375-16.375,16.375s-16.375-7.333-16.375-16.375V239.333c0-9.042,7.333-16.375,16.375-16.375
+                                                      s16.375,7.333,16.375,16.375V431.958z" />
                                                         </g>
                                                     </g>
                                                 </svg>
@@ -171,9 +159,11 @@
                     <div class="col-12">
                         <div class="alert alert-info text-center"
                             style="padding: 40px; border-radius: 15px; background: #f8f9fa; border: 2px dashed #dee2e6;">
-                            <i class="fa fa-info-circle" style="font-size: 3rem; color: #17a2b8; margin-bottom: 20px;"></i>
+                            <i class="fa fa-info-circle"
+                                style="font-size: 3rem; color: #17a2b8; margin-bottom: 20px;"></i>
                             <h5 style="margin-bottom: 15px; color: #333;">Belum Ada Promosi Tersedia</h5>
-                            <p style="color: #666; margin-bottom: 20px;">Promosi menarik akan segera hadir. Pantau terus halaman
+                            <p style="color: #666; margin-bottom: 20px;">Promosi menarik akan segera hadir. Pantau terus
+                                halaman
                                 ini untuk mendapatkan penawaran terbaik!</p>
                             <a href="{{ route('menu') }}" class="btn btn-warning"
                                 style="border-radius: 25px; padding: 10px 30px; font-weight: 600;">
@@ -186,10 +176,10 @@
             </div>
 
             <script>
-                document.addEventListener('DOMContentLoaded', function () {
+                document.addEventListener('DOMContentLoaded', function() {
                     // Smooth scroll untuk link dengan href yang dimulai dengan #
                     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                        anchor.addEventListener('click', function (e) {
+                        anchor.addEventListener('click', function(e) {
                             e.preventDefault();
                             const targetId = this.getAttribute('href');
                             const targetElement = document.querySelector(targetId);
@@ -221,65 +211,6 @@
     </section>
     <!-- End Promo Section -->
 
-    <!-- Footer Section -->
-    <footer class="footer_section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 footer-col">
-                    <div class="footer_contact">
-                        <h4>Contact Us</h4>
-                        <div class="contact_link_box">
-                            <a href="">
-                                <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                <span>Bengkalis, Riau, Indonesia</span>
-                            </a>
-                            <a href="">
-                                <i class="fa fa-phone" aria-hidden="true"></i>
-                                <span>Call +62 812-xxxx-xxxx</span>
-                            </a>
-                            <a href="mailto:lapakgo.support@gmail.com">
-                                <i class="fa fa-envelope" aria-hidden="true"></i>
-                                <span>lapakgo.support@gmail.com</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 footer-col">
-                    <div class="footer_detail">
-                        <a href="{{ route('home') }}" class="footer-logo">LapakGo</a>
-                        <p>
-                            Platform digital terpercaya untuk mendukung UMKM lokal Bengkalis. Belanja produk berkualitas dan
-                            dukung ekonomi lokal bersama LapakGo.
-                        </p>
-                        <div class="footer_social">
-                            <a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                            <a href=""><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                            <a href=""><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                            <a href=""><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                            <a href=""><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 footer-col">
-                    <div class="footer_hours">
-                        <h4>Opening Hours</h4>
-                        <p>Senin - Jumat</p>
-                        <p>09:00 - 21:00</p>
-                        <p>Sabtu - Minggu</p>
-                        <p>10:00 - 20:00</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="footer-info">
-                <p>
-                    &copy; <span id="displayYear"></span> LapakGo. All Rights Reserved.
-                </p>
-            </div>
-        </div>
-    </footer>
     <!-- End Footer Section -->
 
     <script src="{{ asset('assets/user/js/jquery-3.4.1.min.js') }}"></script>

@@ -18,7 +18,6 @@
     <link rel="stylesheet" href="{{ asset('assets/user/js/custom.js') }}">
     <link rel="stylesheet" href="{{ asset('assets/user/js/jquery-3.4.1.min.js') }}">
 
-
     <div class="hero_area">
         <div class="bg-box">
             <img src="{{ asset('assets/user/images/coklat.png') }}" alt="Background">
@@ -371,13 +370,12 @@
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="profile_card p-4 shadow rounded text-center">
                         <div class="profile_image mb-3">
-                            {{-- Perhatikan path ini, jika gambarnya tidak muncul, pastikan chef1.jpg ada di folder images/team --}}
-                            <img src="{{ asset('assets/user/images/tila.jpg') }}" alt="">
+                            <img src="{{ asset('assets/user/images/tila.jpg') }}" alt="Gustillawati Ningsih"
+                                class="rounded-circle" style="width: 150px; height: 150px; object-fit: cover;">
                         </div>
                         <div class="profile_info">
                             <h5 class="mb-2">Gustillawati Ningsih</h5>
-                            <p class="text-muted mb-2"></p>
-                            <small class="text-secondary"></small>
+                            <p class="text-muted mb-2">UI/UX Designer and Project Documentation Lead</p>
                         </div>
                     </div>
                 </div>
@@ -385,13 +383,12 @@
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="profile_card p-4 shadow rounded text-center">
                         <div class="profile_image mb-3">
-                            {{-- Perhatikan path ini, jika gambarnya tidak muncul, pastikan chef2.jpg ada di folder images/team --}}
-                            <img src="{{ asset('assets/user/images/afin.jpg') }}" alt="">
+                            <img src="{{ asset('assets/user/images/afin.jpg') }}" alt="Afin al-rakhi"
+                                class="rounded-circle" style="width: 150px; height: 150px; object-fit: cover;">
                         </div>
                         <div class="profile_info">
                             <h5 class="mb-2">Afin al-rakhi</h5>
-                            <p class="text-muted mb-2"></p>
-                            <small class="text-secondary"></small>
+                            <p class="text-muted mb-2">Backend Developer and Database Designer</p>
                         </div>
                     </div>
                 </div>
@@ -399,73 +396,79 @@
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="profile_card p-4 shadow rounded text-center">
                         <div class="profile_image mb-3">
-                            <img src="{{ asset('assets/user/images/aidil1.jpg') }}" alt="Lychee Tea">
+                            <img src="{{ asset('assets/user/images/aidil1.jpg') }}" alt="Muhammad Aidil Fitriansyah"
+                                class="rounded-circle" style="width: 150px; height: 150px; object-fit: cover;">
                         </div>
                         <div class="profile_info">
                             <h5 class="mb-2">Muhammad Aidil Fitriansyah</h5>
-                            <p class="text-muted mb-2"></p>
-                            <small class="text-secondary"></small>
+                            <p class="text-muted mb-2">Frontend Developer and System Analyst</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-   <footer class="footer_section">
+
+    <footer class="footer_section">
         <div class="container">
-            <div class="row">
-                <div class="col-md-4 footer-col">
+            <div class="row justify-content-between">
+                {{-- Bagian Kiri: Kontak dan Lokasi --}}
+                <div class="col-md-3 footer-col">
                     <div class="footer_contact">
                         <h4>Contact Us</h4>
                         <div class="contact_link_box">
-                            <a href="">
+                            <div class="contact-item">
                                 <i class="fa fa-map-marker" aria-hidden="true"></i>
                                 <span>Bengkalis, Riau, Indonesia</span>
+                            </div>
+                            <a href="https://wa.me/6289501783080" class="contact-item" target="_blank">
+                                <i class="fa fa-whatsapp" aria-hidden="true"></i>
+                                <span>+62 895 0178 3080</span>
                             </a>
-                            <a href="">
-                                <i class="fa fa-phone" aria-hidden="true"></i>
-                                <span>Call +62 812-xxxx-xxxx</span>
+                            <a href="https://wa.me/6285375854459" class="contact-item" target="_blank">
+                                <i class="fa fa-whatsapp" aria-hidden="true"></i>
+                                <span>+62 853 7585 4459</span>
                             </a>
-                            <a href="mailto:lapakgo.support@gmail.com">
+                            <a href="https://wa.me/6282236345814" class="contact-item" target="_blank">
+                                <i class="fa fa-whatsapp" aria-hidden="true"></i>
+                                <span>+62 822 3634 5814</span>
+                            </a>
+                            <div class="contact-item">
                                 <i class="fa fa-envelope" aria-hidden="true"></i>
                                 <span>lapakgo.support@gmail.com</span>
-                            </a>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-4 footer-col">
+                {{-- Bagian Tengah: Logo dan Deskripsi --}}
+                <div class="col-md-6 footer-col text-center">
                     <div class="footer_detail">
-                        <a href="{{ route('home') }}" class="footer-logo">LapakGo</a>
-                        <p>
-                            Platform digital terpercaya untuk mendukung UMKM lokal Bengkalis. Belanja produk berkualitas dan
-                            dukung ekonomi lokal bersama LapakGo.
+                        <a href="{{ route('home') }}" class="footer-logo mb-3">LapakGo</a>
+                        <p class="mx-auto" style="max-width: 400px;">
+                            Platform digital terpercaya untuk mendukung<br>
+                            UMKM lokal Bengkalis. Belanja produk<br>
+                            berkualitas dan dukung ekonomi lokal<br>
+                            bersama LapakGo.
                         </p>
-                        <div class="footer_social">
-                            <a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                            <a href=""><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                            <a href=""><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                            <a href=""><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                            <a href=""><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                        </div>
+                        <p>
+                            © 2025 LapakGo. All Rights Reserved.
+                        </p>
                     </div>
                 </div>
 
-                <div class="col-md-4 footer-col">
-                    <div class="footer_hours">
-                        <h4>Opening Hours</h4>
-                        <p>Senin - Jumat</p>
-                        <p>09:00 - 21:00</p>
-                        <p>Sabtu - Minggu</p>
-                        <p>10:00 - 20:00</p>
+                {{-- Bagian Kanan: Menu --}}
+                <div class="col-md-3 footer-col">
+                    <div class="footer_menu">
+                        <h4>Menu</h4>
+                        <ul class="footer-links" style="list-style-type: none; padding-left: 0;">
+                            <li class="mb-2"><a href="{{ url('/') }}">Beranda</a></li>
+                            <li class="mb-2"><a href="{{ url('/menu') }}">Menu</a></li>
+                            <li class="mb-2"><a href="{{ url('/promosi') }}">Promosi</a></li>
+                            <li class="mb-2"><a href="{{ url('/tentangkami') }}">Tentang Kami</a></li>
+                        </ul>
                     </div>
                 </div>
-            </div>
-
-            <div class="footer-info">
-                <p>
-                    &copy; <span id="displayYear"></span> LapakGo. All Rights Reserved.
-                </p>
             </div>
         </div>
     </footer>

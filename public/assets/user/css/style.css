@@ -1,11 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap");
 
 /* =================================================================
-   GLOBAL SETTINGS & CSS VARIABLES — Enhanced for Elegance
+   GLOBAL SETTINGS & CSS VARIABLES – Enhanced for Elegance
 ================================================================= */
 
 :root {
-  /* Warna tetap sama — tidak diubah */
+  /* Warna tetap sama – tidak diubah */
   --primary-color: #ffbe33;
   --primary-hover-color: #e69c00;
   --dark-bg: #222831;
@@ -36,10 +36,10 @@ body {
   font-weight: 400;
   letter-spacing: 0.3px;
   line-height: 1.6;
-  animation: pageLoadFade 0.8s ease-out;
+  animation: pageLoadFade 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* UNIVERSAL PADDING — disesuaikan lebih simetris */
+/* UNIVERSAL PADDING – disesuaikan lebih simetris */
 .layout_padding {
   padding: 6.25rem 0;
 }
@@ -212,7 +212,7 @@ a:focus {
   top: 0;
   z-index: 1000;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  animation: navSlideDown 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: navSlideDown 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 .header_section .container-fluid {
@@ -427,7 +427,7 @@ a:focus {
   color: var(--light-text);
   margin-bottom: 2rem;
   text-align: center;
-  animation: heroSlideUp 1s ease-out 0.3s backwards;
+  animation: heroSlideUp 1.2s cubic-bezier(0.34, 1.56, 0.64, 1.4) 0.3s backwards;
 }
 
 .slider_section .detail-box h1 {
@@ -476,7 +476,7 @@ a:focus {
 }
 
 .slider_section .img-box {
-  animation: scaleIn 0.8s ease-out 0.5s backwards;
+  animation: scaleIn 1s cubic-bezier(0.34, 1.56, 0.64, 1.4) 0.5s backwards;
 }
 
 .slider_section .img-box img {
@@ -525,7 +525,7 @@ a:focus {
   color: var(--light-text);
   box-shadow: var(--card-shadow);
   transition: var(--transition-smooth);
-  animation: fadeInUp 0.8s ease-out backwards;
+  animation: fadeInUp 0.9s cubic-bezier(0.34, 1.56, 0.64, 1.4) backwards;
 }
 
 .offer_section .box:nth-child(1) { animation-delay: 0.1s; }
@@ -649,7 +649,7 @@ a:focus {
   background-color: var(--dark-bg);
   box-shadow: var(--card-shadow);
   transition: var(--transition-smooth);
-  animation: fadeInUp 0.8s ease-out backwards;
+  animation: fadeInUp 0.9s cubic-bezier(0.34, 1.56, 0.64, 1.4) backwards;
 }
 
 .food_section .box:nth-child(1) { animation-delay: 0.1s; }
@@ -800,7 +800,7 @@ a:focus {
   position: relative;
   display: flex;
   justify-content: center;
-  animation: fadeInUp 0.8s ease-out backwards;
+  animation: fadeInUp 0.9s cubic-bezier(0.34, 1.56, 0.64, 1.4) backwards;
 }
 
 .about_section .img-box img {
@@ -813,7 +813,7 @@ a:focus {
 }
 
 .about_section .detail-box {
-  animation: fadeInUp 0.8s ease-out backwards;
+  animation: fadeInUp 0.9s cubic-bezier(0.34, 1.56, 0.64, 1.4) backwards;
   animation-delay: 0.2s;
 }
 
@@ -1358,7 +1358,6 @@ a:focus {
 .menu-search-container {
   display: flex !important;
   justify-content: center !important;
-  /* Kunci: Memusatkan secara horizontal */
   align-items: center !important;
   width: 100%;
   margin-bottom: 2rem;
@@ -1368,15 +1367,12 @@ a:focus {
 .menu-search-wrapper {
   width: 100%;
   max-width: 600px;
-  /* Lebar maksimal search bar */
   margin: 0 auto;
-  /* Cadangan: auto margin untuk centering */
 }
 
 /* Styling Search Bar agar lebar penuh mengikuti wrapper */
 .search-input-group.custom-search {
   width: 100% !important;
-  /* Memaksa lebar penuh di dalam wrapper 600px */
   height: 55px;
   background-color: var(--dark-bg, #222831);
   border: 2px solid var(--primary-color, #ffbe33);
@@ -1422,245 +1418,640 @@ a:focus {
 }
 
 /* =================================================================
-   ANIMATIONS — Elegant Entrance & Interaction Effects (ADDED)
+   ANIMATIONS – Premium Smooth & Elegant Effects (TANPA BLUR)
 ================================================================= */
 
-/* Animasi untuk page load pertama kali */
+/* Page load dengan opacity dan scale yang smooth */
 @keyframes pageLoadFade {
-  from {
+  0% {
     opacity: 0;
+    transform: translateY(20px) scale(0.98);
   }
-  to {
-    opacity: 1;
+  70% {
+    opacity: 0.8;
+    transform: translateY(5px) scale(1.01);
   }
-}
-
-@keyframes heroSlideUp {
-  from {
-    opacity: 0;
-    transform: translateY(60px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes navSlideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-100%);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px) scale(0.95);
-  }
-  to {
+  100% {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
 }
 
+/* Hero slide up dengan easing premium */
+@keyframes heroSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(60px) scale(0.95);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-5px) scale(1.02);
+  }
+  80% {
+    transform: translateY(2px) scale(0.99);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Navbar slide down dengan fade */
+@keyframes navSlideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-40px);
+    background-color: rgba(34, 40, 49, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    background-color: rgba(34, 40, 49, 0.7);
+  }
+}
+
+/* Scale in dengan 3D effect tanpa blur */
+@keyframes scaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) rotateY(-5deg) rotateX(3deg);
+  }
+  60% {
+    transform: scale(1.05) rotateY(1deg);
+  }
+  80% {
+    transform: scale(0.98) rotateY(-0.5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotateY(0) rotateX(0);
+  }
+}
+
+/* Fade in up yang smooth */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-8px) scale(1.02);
+  }
+  80% {
+    transform: translateY(3px) scale(0.99);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Slide from left dengan overshoot */
 @keyframes slideInLeft {
-  from {
+  0% {
     opacity: 0;
-    transform: translateX(-30px);
+    transform: translateX(-50px) scale(0.9);
   }
-
-  to {
+  70% {
+    transform: translateX(10px) scale(1.02);
+  }
+  85% {
+    transform: translateX(-3px) scale(0.99);
+  }
+  100% {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateX(0) scale(1);
   }
 }
 
+/* Slide from right dengan overshoot */
 @keyframes slideInRight {
-  from {
+  0% {
     opacity: 0;
-    transform: translateX(30px);
+    transform: translateX(50px) scale(0.9);
   }
-
-  to {
+  70% {
+    transform: translateX(-10px) scale(1.02);
+  }
+  85% {
+    transform: translateX(3px) scale(0.99);
+  }
+  100% {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateX(0) scale(1);
   }
 }
 
+/* Premium floating animation */
 @keyframes float {
-
-  0%,
-  100% {
-    transform: translateY(0) rotate(0deg);
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
   }
-
   25% {
-    transform: translateY(-5px) rotate(1deg);
+    transform: translateY(-10px) rotate(0.5deg);
   }
-
   50% {
-    transform: translateY(-10px) rotate(0deg);
+    transform: translateY(-15px) rotate(0deg);
   }
-
   75% {
-    transform: translateY(-5px) rotate(-1deg);
+    transform: translateY(-10px) rotate(-0.5deg);
   }
 }
 
+/* Premium pulse dengan shadow */
 @keyframes pulse {
-
-  0%,
-  100% {
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-    border-color: #ffbe33;
+  0%, 100% {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3),
+                0 0 0 0 rgba(255, 190, 51, 0.1);
+    transform: scale(1);
   }
-
   50% {
-    box-shadow: 0 15px 50px rgba(255, 190, 51, 0.3);
-    border-color: #ffd666;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4),
+                0 0 0 15px rgba(255, 190, 51, 0);
+    transform: scale(1.03);
   }
 }
 
+/* Glow effect yang lebih halus */
 @keyframes glow {
-
-  0%,
-  100% {
+  0%, 100% {
     filter: drop-shadow(0 0 5px rgba(255, 190, 51, 0.3));
+    opacity: 0.8;
   }
-
   50% {
     filter: drop-shadow(0 0 15px rgba(255, 190, 51, 0.6));
+    opacity: 1;
   }
 }
 
+/* Shimmer effect tanpa blur */
 @keyframes shimmer {
   0% {
     background-position: -200% center;
   }
-
   100% {
     background-position: 200% center;
   }
 }
 
+/* Corner expand yang smooth */
 @keyframes cornerExpand {
-  from {
+  0% {
     width: 0;
     height: 0;
     opacity: 0;
+    transform: scale(0) rotate(-45deg);
   }
-
-  to {
+  60% {
+    transform: scale(1.1) rotate(5deg);
+    opacity: 0.7;
+  }
+  80% {
+    transform: scale(0.95) rotate(-2deg);
+  }
+  100% {
     width: 40px;
     height: 40px;
     opacity: 1;
+    transform: scale(1) rotate(0deg);
   }
 }
 
-/* Animasi scroll reveal - untuk elemen yang muncul saat di-scroll */
+/* Scroll reveal tanpa blur */
 @keyframes scrollReveal {
-  from {
+  0% {
     opacity: 0;
-    transform: translateY(50px);
+    transform: translateY(60px) scale(0.95);
   }
-  to {
+  70% {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(-10px) scale(1.02);
+  }
+  85% {
+    transform: translateY(3px) scale(0.99);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
 
-/* Class helper untuk scroll animations */
+/* Zoom in rotasi tanpa blur */
+@keyframes zoomInRotate {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) rotateY(-10deg) rotateX(5deg);
+  }
+  60% {
+    transform: scale(1.08) rotateY(3deg);
+  }
+  80% {
+    transform: scale(0.98) rotateY(-1deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotateY(0) rotateX(0);
+  }
+}
+
+/* Bounce in yang lebih smooth */
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) rotate(-3deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05) rotate(1deg);
+  }
+  70% {
+    transform: scale(0.95) rotate(-0.5deg);
+  }
+  85% {
+    transform: scale(1.02) rotate(0.3deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* Flip in yang halus */
+@keyframes flipInX {
+  0% {
+    opacity: 0;
+    transform: perspective(1000px) rotateX(-90deg) scale(0.9);
+  }
+  40% {
+    transform: perspective(1000px) rotateX(20deg) scale(1.02);
+  }
+  60% {
+    transform: perspective(1000px) rotateX(-10deg);
+  }
+  80% {
+    transform: perspective(1000px) rotateX(5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(1000px) rotateX(0deg) scale(1);
+  }
+}
+
+/* Slide up bounce yang smooth */
+@keyframes slideUpBounce {
+  0% {
+    opacity: 0;
+    transform: translateY(80px) scale(0.95);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-15px) scale(1.02);
+  }
+  75% {
+    transform: translateY(5px) scale(0.99);
+  }
+  90% {
+    transform: translateY(-3px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Spinner yang clean */
+@keyframes spinLoader {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+/* Morphing gradient untuk background */
+@keyframes morphGradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Text gradient shimmer */
+@keyframes textShimmer {
+  0% {
+    background-position: -100% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+/* Button hover pulse */
+@keyframes buttonPulse {
+  0% {
+    box-shadow: 0 4px 15px rgba(255, 190, 51, 0.2);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 8px 25px rgba(255, 190, 51, 0.4);
+    transform: scale(1.05);
+  }
+  100% {
+    box-shadow: 0 4px 15px rgba(255, 190, 51, 0.2);
+    transform: scale(1);
+  }
+}
+
+/* Card hover lift */
+@keyframes cardLift {
+  0% {
+    transform: translateY(0) scale(1);
+    box-shadow: var(--card-shadow);
+  }
+  100% {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* =================================================================
+   ANIMATION CLASSES - Enhanced tanpa blur
+================================================================= */
+
+/* Base animation classes */
 .animate-on-scroll {
   opacity: 0;
-  animation: scrollReveal 0.8s ease-out forwards;
+  animation: scrollReveal 1.2s cubic-bezier(0.34, 1.56, 0.64, 1.4) forwards;
+  animation-play-state: paused;
 }
 
-/* Loading screen animation (optional) */
-@keyframes spinLoader {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+.animate-on-scroll.animated {
+  animation-play-state: running;
 }
 
+.animate-fade-in {
+  animation: pageLoadFade 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-zoom-in {
+  animation: zoomInRotate 1s cubic-bezier(0.34, 1.56, 0.64, 1.4) forwards;
+}
+
+.animate-bounce-in {
+  animation: bounceIn 0.8s cubic-bezier(0.68, -0.6, 0.32, 1.6) forwards;
+}
+
+.animate-flip-in {
+  animation: flipInX 0.9s cubic-bezier(0.34, 1.56, 0.64, 1.4) forwards;
+}
+
+.animate-slide-up {
+  animation: slideUpBounce 0.9s cubic-bezier(0.34, 1.56, 0.64, 1.4) forwards;
+}
+
+.animate-slide-left {
+  animation: slideInLeft 0.9s cubic-bezier(0.34, 1.56, 0.64, 1.4) forwards;
+}
+
+.animate-slide-right {
+  animation: slideInRight 0.9s cubic-bezier(0.34, 1.56, 0.64, 1.4) forwards;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse {
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* Hover animations */
+.hover-lift {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hover-lift:hover {
+  animation: cardLift 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.hover-pulse:hover {
+  animation: buttonPulse 0.6s ease-in-out;
+}
+
+/* Staggered delays */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+.stagger-6 { animation-delay: 0.6s; }
+.stagger-7 { animation-delay: 0.7s; }
+.stagger-8 { animation-delay: 0.8s; }
+.stagger-9 { animation-delay: 0.9s; }
+.stagger-10 { animation-delay: 1s; }
+
+/* Enhanced page loader */
 .page-loader {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--body-bg);
+  background: linear-gradient(135deg, var(--body-bg) 0%, #0f1419 100%);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 9999;
-  animation: pageLoadFade 0.5s ease-out 1.5s forwards reverse;
+  animation: pageLoadFade 0.6s ease-out 1.8s forwards reverse;
   pointer-events: none;
+  animation: morphGradient 8s ease-in-out infinite;
+  background-size: 300% 300%;
+}
+
+.page-loader::before {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border: 3px solid rgba(255, 190, 51, 0.1);
+  border-radius: 50%;
+  animation: pulse 2.5s ease-in-out infinite;
 }
 
 .page-loader::after {
   content: "";
-  width: 60px;
-  height: 60px;
-  border: 4px solid rgba(255, 190, 51, 0.2);
+  width: 80px;
+  height: 80px;
+  border: 4px solid transparent;
   border-top-color: var(--primary-color);
+  border-right-color: rgba(255, 190, 51, 0.8);
+  border-bottom-color: rgba(255, 190, 51, 0.4);
+  border-left-color: rgba(255, 190, 51, 0.2);
   border-radius: 50%;
-  animation: spinLoader 0.8s linear infinite;
+  animation: spinLoader 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
 }
 
+/* Text gradient animation */
+.text-gradient-animate {
+  background: linear-gradient(
+    90deg,
+    var(--light-text) 0%,
+    var(--primary-color) 25%,
+    var(--light-text) 50%,
+    var(--primary-color) 75%,
+    var(--light-text) 100%
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textShimmer 3s linear infinite;
+}
+
+/* Enhanced business card animations */
 .business-card {
-  animation: fadeInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
-    pulse 3s ease-in-out 1s infinite;
+  animation: zoomInRotate 0.9s cubic-bezier(0.34, 1.56, 0.64, 1.4) forwards,
+             pulse 4s ease-in-out 1.2s infinite;
+  transform-origin: center center;
 }
 
 .business-card::before {
-  animation: shimmer 3s linear infinite;
-  background: linear-gradient(90deg,
-      transparent 0%,
-      rgba(255, 190, 51, 0.05) 50%,
-      transparent 100%);
+  animation: shimmer 4s linear infinite;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 190, 51, 0.15) 25%,
+    rgba(255, 190, 51, 0.3) 50%,
+    rgba(255, 190, 51, 0.15) 75%,
+    transparent 100%
+  );
   background-size: 200% 100%;
 }
 
 .icon-box {
-  animation: slideInLeft 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s backwards,
-    float 4s ease-in-out 1.5s infinite;
+  animation: bounceIn 0.9s cubic-bezier(0.68, -0.6, 0.32, 1.6) 0.4s backwards,
+             float 6s ease-in-out 1.5s infinite;
+  transform-origin: center center;
 }
 
 .icon-box i {
-  animation: glow 2s ease-in-out 1s infinite;
+  animation: glow 3.5s ease-in-out 1s infinite;
+  display: inline-block;
 }
 
 .card-title {
-  animation: slideInRight 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s backwards;
+  animation: slideInRight 0.9s cubic-bezier(0.34, 1.56, 0.64, 1.4) 0.5s backwards;
 }
 
 .card-description {
-  animation: fadeInUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s backwards;
+  animation: fadeInUp 0.9s cubic-bezier(0.34, 1.56, 0.64, 1.4) 0.7s backwards;
 }
 
 .corner-accent {
-  animation: cornerExpand 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+  animation: cornerExpand 0.8s cubic-bezier(0.68, -0.6, 0.32, 1.6) backwards;
 }
 
 .corner-accent.top-left {
-  animation-delay: 0.6s;
+  animation-delay: 0.8s;
 }
 
 .corner-accent.bottom-right {
-  animation-delay: 0.7s;
+  animation-delay: 0.9s;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Responsive animations */
+@media (max-width: 768px) {
+  .animate-on-scroll,
+  .animate-fade-in,
+  .animate-zoom-in,
+  .animate-bounce-in,
+  .animate-flip-in,
+  .animate-slide-up,
+  .animate-slide-left,
+  .animate-slide-right {
+    animation-duration: 0.8s;
+  }
+  
+  .slider_section .detail-box {
+    animation: heroSlideUp 0.9s cubic-bezier(0.34, 1.56, 0.64, 1.4) 0.3s backwards;
+  }
+  
+  .slider_section .img-box {
+    animation: scaleIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1.4) 0.5s backwards;
+  }
+  
+  .header_section {
+    animation: navSlideDown 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+}
+
+/* Tambahan efek untuk card hover */
+.food_section .box,
+.offer_section .box {
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.food_section .box:hover,
+.offer_section .box:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4),
+              0 0 0 1px rgba(255, 190, 51, 0.1);
+}
+
+/* Efek khusus untuk tombol */
+.btn-animate {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-animate::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: 0.5s;
+}
+
+.btn-animate:hover::before {
+  left: 100%;
+}
+
+/* Loading spinner tambahan */
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(255, 190, 51, 0.1);
+  border-top: 3px solid var(--primary-color);
+  border-radius: 50%;
+  animation: spinLoader 1s linear infinite;
 }
